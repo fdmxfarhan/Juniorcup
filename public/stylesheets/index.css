@@ -1,0 +1,12 @@
+@font-face{
+    font-family: 'iransans';
+    src: url('iransans.ttf');
+}
+
+:root {
+    --purple: #341a7a;
+    --yellow: #987cc5;
+    --dark: #000000;
+    --textcolor: rgb(29, 29, 29);
+}
+
