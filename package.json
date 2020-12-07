@@ -1,0 +1,30 @@
+{
+  "name": "juniorcup",
+  "version": "1.0.0",
+  "description": "Juniorcup2021 Robotic Competition WebSite",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdmxfarhan/juniorcup.git"
+  },
+  "keywords": [
+    "juniorcup",
+    "robocup",
+    "robotic"
+  ],
+  "author": "fdmxfarhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fdmxfarhan/juniorcup/issues"
+  },
+  "homepage": "https://github.com/fdmxfarhan/juniorcup#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "jade": "^1.11.0",
+    "morgan": "^1.10.0"
+  }
+}
