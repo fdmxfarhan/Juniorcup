@@ -142,7 +142,7 @@ header .on-image-text a.rounded-rect-button:hover{
     font-size: 2.5vw;
 }
 .large{
-    font-size: 7vw;
+    font-size: 7.2vw;
     line-height: 8vw;
 }
 .yellow{
@@ -212,10 +212,26 @@ img.bottom-curv{
 .content a.social-media-link:hover{
     color: var(--purple);
 }
+.curv{
+    position: relative;
+}
+.curv i{
+    position: absolute;
+    color: white;
+    left: 45%;
+}
+.content .right-text a.see-more{
+    color: rgb(82, 137, 255);
+    font-family: 'iransans';
+    display: block;
+    font-size: 1.2vw;
+    text-decoration: none;
+}
+.content .right-text a.see-more:hover{
+    color: var(--purple);
+}
 
-
-
-
+/* ------------- poster-content ---------------- */
 
 
 
