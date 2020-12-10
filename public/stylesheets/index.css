@@ -1,3 +1,4 @@
+/* --------- Declarations ----------- */
 @font-face{
     font-family: 'iransans';
     src: url('iransans.ttf');
@@ -12,7 +13,7 @@
     to {margin-right: 0;}
 }
 @keyframes goUp {
-    from {margin-top: 3vw;}
+    from {margin-top: 5vw;}
     to {margin-top: 0.5vw;}
 }
 
@@ -20,7 +21,8 @@
     --purple: #8305be;
     --yellow: #ffcc00;
     --hover: #ffcc00;
-    --dark: #000000;
+    --dark: #050507;
+    --light: white;
     --textcolor: rgb(29, 29, 29);
 }
 
@@ -33,9 +35,11 @@ body{
     direction: rtl;
 }
 
+/* --------- Header ----------- */
 header{
     background-color: var(--dark);
-    color: white;
+    /* background-image: url('../images/landing/bg.jpg'); */
+    color: var(--light);
     position: relative;
     overflow: hidden;
     height: 54vw;
@@ -51,7 +55,7 @@ nav{
 nav button.navbar-toggler{
     background: none;
     border: none;
-    color: white;
+    color: var(--light);
     font-size: 3vw;
     padding: 0.4vw 1vw;
     float: right;
@@ -64,7 +68,7 @@ nav button.navbar-toggler:hover{
 nav a.nav-link{
     font-family: 'iransans';
     font-size: 1.5vw;
-    color: white;
+    color: var(--light);
     float: right;
     display: block;
     text-decoration: none;
@@ -72,14 +76,14 @@ nav a.nav-link{
     margin: 0 1vw;
     direction: rtl;
     font-weight: 550;
-    border-bottom: black 2px solid;
+    border-bottom: var(--dark) 2px solid;
     transition-duration: 600ms;
 }
 nav a.nav-link:hover{
-    border-bottom: white 2px solid;
+    border-bottom: var(--light) 2px solid;
 }
 nav a.nav-link.active{
-    border-bottom: white 2px solid;
+    border-bottom: var(--light) 2px solid;
 }
 nav a.nav-link i{
     padding-left: 0.5vw;
@@ -87,7 +91,7 @@ nav a.nav-link i{
 nav a.user-login{
     float: left;
     font-size: 1.7vw;
-    color: white;
+    color: var(--light);
     text-decoration: none;
     font-family: 'iransans';
     transition-duration: 600ms;
@@ -121,7 +125,7 @@ header .on-image-text a.rounded-rect-button{
     font-size: 1.5vw;
     padding: 0.5vw 4vw;
     border-radius: 2vw;
-    background-image: linear-gradient(to right, #8305be, #7617e4);
+    background-image: linear-gradient(to right, #7610a5, #7617e4);
     transition-duration: 600ms;
     animation-name: goUp;
     animation-duration: 3s;
@@ -152,8 +156,67 @@ header img.robot{
     left: 0;
     top: 7vw;
     width: 60vw;
+    animation-name: fade;
+    animation-duration: 2s;
 }
 img.bottom-curv{
     width: 100%;
     height: 4vw;
 }
+
+
+
+/* --------- Content ----------- */
+.content{
+    /* background-color: cyan; */
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 8vw;
+    padding: 3vw 5vw;
+    border-radius: 2vw;
+    box-shadow: 0 0.1vw 0.5vw 0.2vw rgba(174, 0, 255, 0.2);
+}
+.content .right-text{
+    float: right;
+    width: 50%;
+    margin-left: 10%;
+}
+.content .right-text h1{
+    font-family: 'iransans';
+    font-size: 2vw;
+    font-weight: bold;
+    color: var(--purple);
+}
+.content .right-text p{
+    font-family: 'iransans';
+    font-size: 1.5vw;
+    text-align: justify;
+    direction: rtl;
+    color: var(--textcolor);
+    margin-bottom: 0.5vw;
+}
+.content .img-area{
+    float: right;
+    width: 40%;
+}
+.content .img-area img{
+    width: 100%;
+}
+.content a.social-media-link{
+    font-size: 3vw;
+    margin-left: 1vw;
+    color: rgb(0, 140, 255);
+    transition-duration: 600ms;
+}
+.content a.social-media-link:hover{
+    color: var(--purple);
+}
+
+
+
+
+
+
+
+
