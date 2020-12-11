@@ -23,6 +23,7 @@
     --hover: #ffcc00;
     --dark: #050507;
     --light: white;
+    --blue: rgb(0, 140, 255);
     --textcolor: rgb(29, 29, 29);
 }
 
@@ -33,6 +34,7 @@ body{
     outline: none;
     font-family: 'iransans';
     direction: rtl;
+    background-color: white;
 }
 
 /* --------- Header ----------- */
@@ -206,7 +208,7 @@ img.bottom-curv{
 .content a.social-media-link{
     font-size: 3vw;
     margin-left: 1vw;
-    color: rgb(0, 140, 255);
+    color: var(--blue);
     transition-duration: 600ms;
 }
 .content a.social-media-link:hover{
@@ -232,7 +234,425 @@ img.bottom-curv{
 }
 
 /* ------------- poster-content ---------------- */
+.poster-content{
+    /* background-color: violet; */
+    padding-top: 6vw;
+    overflow: hidden;
+    width: 75%;
+    margin: auto;
+}
+.poster-content .img-area{
+    float: right;
+    width: 34%;
+    margin-left: 5%;
+}
+.poster-content .img-area img{
+    width: 100%;
+    border-radius: 2vw;
+    filter: brightness(1);
+    transition-duration: 600ms;
+}
+.poster-content .img-area img:hover{
+    filter: brightness(1.5);
+}
+.poster-content .text-area{
+    float: right;
+    width: 60%;
+    margin-top: 1vw;
+}
+.poster-content .text-area .item{
+    margin-bottom: 2vw;
+    /* background-color: lightblue; */
+    overflow: hidden;
+}
+.poster-content .text-area .item img{
+    width: 5vw;
+    float: right;
+    /* margin-top: 1vw; */
+    margin-left: 2vw;
+}
+.poster-content .text-area .item .text-item{
+    width: 5vw;
+    float: right;
+    width: 80%;
+}
+.poster-content .text-area .item h1{
+    font-family: 'iransans';
+    font-size: 1.3vw;
+    margin: 0;
+}
+.poster-content .text-area .item p{
+    font-family: 'iransans';
+    font-size: 1.1vw;
+    margin: 0;
+    margin-top: 0;
+    text-align: justify;
+}
+
+/* ---------- dark-content ------------ */
+.dark-content{
+    background-color: var(--dark);
+    margin-top: 5vw;
+    padding: 10vw 5vw;
+    overflow: hidden;
+}
+.dark-content .part{
+    width: 49%;
+    float: right;
+}
+.dark-content .part .img-area{
+    width: 20vw;
+    height: 12vw;
+    float: right;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
+    position: relative;
+}
+.dark-content .part img{
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5vw;
+}
+.dark-content .part .last{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0), var(--dark));
+}
+.dark-content .part a.goto{
+    font-family: 'iransans';
+    font-size: 1.5vw;
+    color: rgb(129, 129, 129);
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    transition-duration: 600ms;
+}
+.dark-content .part a.goto:hover{
+    color: var(--yellow);
+}
+.dark-content .line{
+    background-image: linear-gradient(to bottom ,rgba(165, 165, 165, 0.678), rgba(255, 255, 255, 0.678), rgba(167, 167, 167, 0.678));
+    width: 0.1%;
+    height: 30vw;
+    margin-top: 5vw;
+    float: right;
+}
+.dark-content .video-area{
+    width: 90%;
+    margin: auto;
+    margin-top: 2vw;
+}
+.dark-content .video-area h1{
+    font-family: 'iransans';
+    color: white;
+    font-size: 1.5vw;
+    text-align: right;
+    margin: 0;
+    border-bottom: white 1px solid;
+    width: fit-content;
+    /* margin: auto; */
+    padding: 0 0 0.2vw 1vw;
+}
+.dark-content .video-area h2{
+    font-family: 'iransans';
+    color: var(--purple);
+    font-size: 1.3vw;
+    text-align: right;
+    margin: 0;
+    /* border-bottom: white 1px solid; */
+    width: fit-content;
+    /* margin: auto; */
+    padding: 0.5vw 0 0.5vw 1vw;
+    margin-bottom: 2vw;
+}
+.dark-content .video-area .actions{
+    direction: left;
+    overflow: hidden;
+    padding: 1vw 0;
+}
+.dark-content .video-area .actions i{
+    color: white;
+    font-size: 1.7vw;
+    float: left;
+    transition-duration: 600ms;
+}
+.dark-content .video-area .actions h3{
+    float: left;
+    color: lightgray;
+    font-size: 1.1vw;
+    margin: 0;
+    margin-right: 1vw;
+    margin-left: 0.4vw;
+}
+.dark-content .video-area .actions i.heart:hover{
+    color: red;
+}
 
 
+/* ---------- two-side-content --------- */
+.two-side-content{
+    /* background-color: cyan; */
+    width: 80%;
+    margin: auto;
+    margin-top: 5vw;
+}
+.two-side-content h1.title{
+    font-family: 'iransans';
+    font-size: 1.7vw;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 0.3vw;
+    color: var(--textcolor);
+    border-bottom: var(--dark) 2px solid;
+}
+.two-side-content h1.under-title{
+    font-family: 'iransans';
+    font-size: 1.2vw;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 0.3vw;
+    margin-top: 2vw;
+    color: rgb(102, 102, 102);
+}
+.two-side-content .items-area{
+    overflow: hidden;
+    padding: 1vw 0;
+}
+.two-side-content .item{
+    float: right;
+    width: 45%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2vw;
+    border-radius: 1vw;
+    box-shadow: 0 0.4vw 0.7vw 0.1vw rgba(78, 0, 114, 0.2);
+    border: lightblue 1px solid;
+    padding: 0;
+    transition-duration: 600ms;
+}
+.two-side-content .item:hover{
+    box-shadow: 0 0.4vw 0.7vw 0.1vw rgba(0, 0, 0, 0.507);
+}
+.two-side-content .item .top{
+    background-color: rgb(241, 241, 241);
+    border-bottom: lightgray 1px solid;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    padding: 1vw;
+    overflow: hidden;
+    position: relative;
+}
+.two-side-content .item .top i{
+    font-size: 2vw;
+    float: right;
+    color: var(--blue);
+}
+.two-side-content .item .top h1.name{
+    margin: 0;
+    float: right;
+    font-family: 'iransans';
+    font-size: 1.3vw;
+    color: var(--textcolor);
+    padding-right: 1vw;
+}
+.two-side-content .item .top h1.state{
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    margin: 0;
+    font-family: 'iransans';
+    font-size: 0.8vw;
+    color: white;
+    padding: 0.2vw 1vw;
+    background-color: var(--purple);
+    border-radius: 0.5vw;
+}
+.two-side-content .item table{
+    width: 90%;
+    margin: 1vw auto;
+    text-align: center;
+}
+.two-side-content .item th{
+    font-family: 'iransans';
+    font-size: 1.2vw;
+    padding: 0.5vw 0;
+    color: var(--textcolor);
+    border-bottom: lightgray 2px solid;
+}
+
+.two-side-content .item td{
+    font-family: 'iransans';
+    font-size: 1.2vw;
+    padding: 0.5vw 0;
+    color: var(--textcolor);
+}
+.two-side-content .item td a{
+    text-decoration: none;
+    font-family: 'iransans';
+    color: var(--blue);
+    transition-duration: 600ms;
+}
+.two-side-content .item td a:hover{
+    color: var(--purple);
+}
+
+
+/* ---------- counter-content ----------- */
+.counter-content{
+    margin-top: 5vw;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+.counter-content img{
+    width: 100%;
+}
+.counter-content .counter{
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 0;
+    right: 0;
+    height: 50vw;
+}
+.counter-content .counter h1.title{
+    font-family: 'iransans';
+    font-size: 1.7vw;
+    color: white;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 5vw;
+    border-bottom: rgb(116, 116, 116) 2px solid;
+    padding-bottom: 0.5vw;
+}
+.counter-content .counter .parts-area{
+    /* background-color: cyan; */
+    overflow: hidden;
+    width: fit-content;
+    margin: 1vw auto;
+}
+.counter-content .counter .parts-area .part{
+    float: right;
+    margin: 0 2vw;
+    color: white;
+}
+.counter-content .counter .parts-area .part h1.number{
+    font-size: 6vw;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: center;
+}
+.counter-content .counter .parts-area .part h1.name{
+    font-family: 'iransans';
+    font-size: 1.5vw;
+    font-weight: normal;
+    margin-top: 0;
+    text-align: center;
+}
+
+
+/* ------------ supporters-content ------------ */
+.supporters-content{
+    margin-top: 5vw;
+}
+.supporters-content h1.title{
+    font-family: 'iransans';
+    font-size: 1.5vw;
+    color: var(--textcolor);
+    border-bottom: lightgray 2px solid;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 1vw;
+}
+.supporters-content .supporters{
+    /* background-color: lightblue; */
+    /* display: inline; */
+    text-align: center;
+    margin-top: 5vw;
+}
+.supporters-content .supporters .part{
+    width: fit-content;
+    display: inline-block;
+    /* background-color: lightgreen; */
+    margin: 0 2vw;
+}
+.supporters-content .supporters .part img{
+    width: 10vw;
+}
+.supporters-content .supporters .part img.larger{
+    width: 15vw;
+}
+.supporters-content .supporters .part h1{
+    font-family: 'iransans';
+    font-size: 1.2vw;
+}
+
+/* ---------- footer ----------- */
+footer{
+    position: relative;
+    background-color: var(--dark);
+    color: white;
+    margin: 0;
+    overflow: hidden;
+    margin-top: 10vw;
+    padding: 4vw 7vw;
+    padding-bottom: 10vw;
+}
+footer .column{
+    float: right;
+    width: 30%;
+}
+footer .column h1.title{
+    font-family: 'iransans';
+    font-size: 1.5vw;
+    color: var(--purple);
+}
+footer .column i{
+    font-size: 1vw;
+    padding-left: 1vw;
+    /* color: var(--yellow); */
+}
+footer .column a{
+    color: lightgray;
+    text-decoration: none;
+    display: block;
+    font-family: 'iransans';
+    font-size: 1.2vw;
+}
+footer .column a:hover{
+    color: var(--yellow);
+}
+footer .column .contact i{
+    color: var(--yellow);
+    font-size: 1.5vw;
+}
+footer .column iframe{
+    width: 80%;
+    margin: auto;
+    height: 10vw;
+}
+footer .soc{
+    overflow: hidden;
+}
+footer a.social-media{
+    color: white;
+    float: left;
+}
+footer a.social-media i{
+    font-size: 2vw;
+}
+footer h1.privacy{
+    font-family: 'iransans';
+    font-size: 1.4vw;
+    font-weight: normal;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+}
 
 
