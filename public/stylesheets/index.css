@@ -667,7 +667,7 @@ body{
         color: var(--light);
         position: relative;
         overflow: hidden;
-        height: 80vw;
+        height: 120vw;
     }
     .collapse{
         display: none;
@@ -771,14 +771,14 @@ body{
         padding: 1vw 10vw;
     }
     .small{
-        font-size: 3.5vw;
+        font-size: 4vw;
     }
     .medium{
-        font-size: 4.2vw;
+        font-size: 5vw;
     }
     .large{
-        font-size: 12vw;
-        line-height: 12vw;
+        font-size: 14.5vw;
+        line-height: 15vw;
     }
     .yellow{
         color: var(--yellow);
@@ -789,8 +789,8 @@ body{
     header img.robot{
         position: absolute;
         left: 0;
-        top: 30vw;
-        width: 60vw;
+        top: 50vw;
+        width: 80vw;
         animation-name: fade;
         animation-duration: 2s;
     }
