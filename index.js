@@ -1,9 +1,15 @@
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
 const express = require('express')
 const app = express()
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
+var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
 
+var credentials = {key: privateKey, cert: certificate};
 // routs requirement
 var indexRouter = require('./routes/index');
 
@@ -50,6 +56,12 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(port, () => {
-  console.log(`Juniorcup is started at port ${port}`);
-});
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(3000);
+httpsServer.listen(8443);
+
+// app.listen(port, () => {
+//   console.log(`Juniorcup is started at port ${port}`);
+// });
