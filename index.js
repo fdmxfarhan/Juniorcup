@@ -60,7 +60,7 @@ var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(3000);
-httpsServer.listen(8443);
+httpsServer.listen(3000);
 
 // app.listen(port, () => {
 //   console.log(`Juniorcup is started at port ${port}`);
