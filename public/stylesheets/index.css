@@ -742,6 +742,7 @@ body{
         position: absolute;
         top: 15vw;
         right: 7vw;
+        z-index: 10;
         direction: rtl;
     }
     header .on-image-text h1{
