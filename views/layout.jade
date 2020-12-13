@@ -3,9 +3,81 @@ doctype html
 html
     head
         title Juniorcup
-        link(rel='stylesheet', href='/stylesheets/index.css')
+        block styles
+        link(rel='stylesheet', href='/stylesheets/layout.css')
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         script(src="/javascripts/jquery-1.6.4.min.js")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(name="theme-color" content="#050507")
+        script(src="/javascripts/layout.js")
     
     body
-        
+        .transparent-modal
+        nav
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                i.fa.fa-list-ul
+            #navbarSupportedContent.collapse
+                a.nav-link#nav-link1.active(href='/') 
+                    i.fa.fa-home.nav-icon 
+                    | صفحه اصلی
+                a.nav-link#nav-link3(href='/education')
+                    //- i.fa.fa-photo.nav-icon 
+                    | لیگ ها
+                a.nav-link#nav-link3(href='/education')
+                    //- i.fa.fa-photo.nav-icon 
+                    | گالری
+                a.nav-link#nav-link4(href='/exam') 
+                    //- i.fa.fa-tv.nav-icon 
+                    | آموزش
+                a.nav-link#nav-link6(href='/gallery') 
+                    //- i.fa.fa-question.nav-icon 
+                    | درباره ما
+                a.nav-link#nav-link5(href='/about') 
+                    //- i.fa.fa-phone.nav-icon 
+                    | تماس با ما
+            a.user-login(href="/")
+                | ورود
+                i.fa.fa-user-o
+
+        block content
+
+        footer
+            .column
+                h1.title لیگ های مسابقات
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | ربات های فوتبالیست سبک وزن
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | ربات های فوتبالیست وزن آزاد
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | ربات های امداد فضای مشترک
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | برنامه نویسی مقدماتی
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | برنامه نویسی پیشرفته
+            .column
+                h1.title مسابقات
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | جونیورکاپ ۲۰۱۸
+                a(href="/")
+                    i.fa.fa-chevron-left
+                    | جونیورکاپ ۲۰۱۹
+            .column
+                .contact
+                    i.fa.fa-phone
+                    | 09197228658
+                .contact
+                    i.fa.fa-map-marker
+                    | تهران، امیرآباد، بالاتر از پمپ بنزین، خیابان خسروی، پلاک ۶۶، واحد ۳
+                .soc
+                    a.social-media(href="/")
+                        i.fa.fa-telegram
+                    a.social-media(href="/")
+                        i.fa.fa-instagram
+                iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d680.9807751354139!2d51.38947156571338!3d35.71862500610051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e01d604d0bf83%3A0x68049a6e05924526!2z2KLaqdin2K_ZhduMINix2KjYp9iq24zaqSDYp9uM2LHYp9mG!5e0!3m2!1sen!2s!4v1607695527828!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0")
+            h1.privacy کلیه حقوق این سایت مطعلق به کمیته برگزاری مسابقات جونیورکاپ می باشد

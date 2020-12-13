@@ -1,0 +1,18 @@
+extends layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/register.css')
+
+block content
+    .register
+        h1.title ثبت نام
+        form(action="/users/register" id="register" method="POST")
+            input(type="text" placeholder="Username" name="uname" value= "#{ typeof uname != 'undefined' ? uname: '' }")
+            input(type="email" placeholder="E-mail" name="email" value= "#{ typeof email != 'undefined' ? email: '' }")
+            input(type="tel" placeholder="phone" name="phone" value= "#{ typeof phone != 'undefined' ? phone: '' }")
+            input(type="text" placeholder="fullname" name="fullname" value= "#{ typeof fullname != 'undefined' ? fullname: '' }")
+            input(type="password" placeholder="Password" name="psw" value= "#{ typeof psw != 'undefined' ? psw: '' }")
+            input(type="password" placeholder="Password" name="configpsw" value= "#{ typeof configpsw != 'undefined' ? configpsw: '' }")
+            button(type="submit") ثبت نام
+            a(href="/users/login") قبلا عضو شده اید؟
+        

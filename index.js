@@ -4,14 +4,25 @@ var https = require('https');
 const express = require('express')
 const app = express()
 var path = require('path');
+const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
-var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
 
-var credentials = {key: privateKey, cert: certificate};
 // routs requirement
 var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+
+// Mongo DB connect
+mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
+    if(err) throw err;
+    else console.log('Database connected :)');
+});
+  
+// HTTPS key and ssl
+var privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
+var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
 // port setup
 const port = 3000
@@ -29,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes Handlers
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,7 +73,7 @@ var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(3000);
 httpsServer.listen(443);
-console.log('Juniorcup is started :)')
+console.log('Juniorcup server is started :)')
 
 // app.listen(port, () => {
 //   console.log(`Juniorcup is started at port ${port}`);
