@@ -16,7 +16,6 @@
     from {margin-top: 5vw;}
     to {margin-top: 0.5vw;}
 }
-
 :root {
     --purple: #8305be;
     --yellow: #ffcc00;
@@ -44,7 +43,6 @@ body{
     height: 100%;
     z-index: 1;
 }
-
 @media only screen and (min-width: 800px) {
     /* --------- Navigation Bar ----------- */
     button.navbar-toggler{
