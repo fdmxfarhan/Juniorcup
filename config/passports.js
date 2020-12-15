@@ -1,5 +1,4 @@
 const LocalStrategy = require('passport-local').Strategy;
-const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
@@ -8,15 +7,15 @@ const User = require('../models/User');
 
 module.exports = function(){
     passport.use(
-        new LocalStrategy({ usernameField: 'uname' , passwordField: 'psw'}, function(uname, psw, done){
+        new LocalStrategy({ usernameField: 'username' , passwordField: 'password'}, function(username, password, done){
             //Match User
-            User.findOne({uname: uname})
+            User.findOne({username: username})
                 .then(user => {
                     if(!user){
                         return done(null,false, {message: 'نام کاربری یافت نشد!'});
                     }
                     // Match password
-                    bcrypt.compare(psw, user.psw, function(err, isMatch){
+                    bcrypt.compare(password, user.password, function(err, isMatch){
                         if(err) throw err;
                         if(isMatch){
                             return done(null, user);

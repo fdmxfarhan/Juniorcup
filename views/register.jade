@@ -4,6 +4,17 @@ block styles
     link(rel='stylesheet', href='/stylesheets/register.css')
 
 block content
+    //- include partials/messages
+    -if(errors){
+        .errors-area
+            -for(var i=0; i<errors.length; i++){
+                .error(id='error#{i}')
+                    i.fa.fa-warning
+                    h1= errors[i].msg
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time#{i}')
+            -}
+    -}
     .register
         h1.title 
             i.fa.fa-user-plus 
@@ -30,3 +41,4 @@ block content
             .text-input-area
                 button.submit(type="submit") ثبت نام
             a.link(href="/users/login") قبلا عضو شده اید؟
+    script(src="/javascripts/register.js")

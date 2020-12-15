@@ -1,0 +1,23 @@
+
+- if(typeof errors != 'undefined') {
+    - errors.forEach(function(errors){
+        .dismiss
+            h1.error= errors.msg 
+    - });
+- }
+
+- if(success_msg != ''){
+    .dismiss
+        h1.success= success_msg
+- }
+
+- if(error_msg != ''){
+    .dismiss
+        h1.error= error_msg
+- }
+
+- if(error != ''){
+    .dismiss
+        h1.error= error
+- }
+

@@ -8,17 +8,57 @@ const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var createError = require('createerror');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport'); 
 // routs requirement
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var dashboardRouter = require('./routes/dashboard');
+var docsRouter = require('./routes/docs');
 
 // Mongo DB connect
 mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
     if(err) throw err;
     else console.log('Database connected :)');
 });
-  
+
+// express session middleware
+const{
+    SESS_NAME = 'sid',
+    SESS_TIME = 1000 * 60 * 60 * 2 
+} = process.env
+
+app.use(session({
+    name: SESS_NAME,
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: SESS_TIME ,
+        sameSite: true,
+        secure: false
+    }
+}));
+
+// passport config
+require('./config/passports')(passport);
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// connect flash
+app.use(flash());
+
+//Global vars
+app.use(function(req, res, next){
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
 // HTTPS key and ssl
 var privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
 var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
@@ -41,6 +81,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes Handlers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/dashboard', dashboardRouter);
+app.use('/docs', docsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
