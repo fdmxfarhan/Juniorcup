@@ -256,7 +256,7 @@
         background-color: var(--bgcolor);
     }
     .content{
-        width: 93%;
+        width: 100%;
         margin: 2vw auto;
         border-radius: 3vw;
         border: var(--bordercolor) 0.1vw solid;
@@ -394,7 +394,7 @@
 
 
     .content .content-padding{
-        padding: 3vw 6vw;
+        padding: 3vw 5vw;
         direction: rtl;
         text-align: right;
         color: var(--txtcolor);
