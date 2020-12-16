@@ -9,7 +9,6 @@
     --bordercolor: rgb(37, 37, 37); */
 }
 
-
 @media only screen and (min-width: 800px) {
     .docs{
         overflow: hidden;
@@ -54,7 +53,8 @@
         display: block;
         text-decoration: none;
         font-family: 'iransans';
-        font-size: 1.3vw;
+        font-size: 1.1vw;
+        direction: rtl;
         padding: 0.4vw 1vw;
         background-color: var(--bgcolor);
         transition-duration: 500ms;
@@ -73,6 +73,7 @@
         box-shadow: none;
         transition-duration: 700ms;
         color: var(--txtcolor);
+        border: var(--bordercolor) 1px solid;
     }
     .content .document:hover{
         box-shadow: 0 0.3vw 0.8vw 0.3vw #5b167a3b;
@@ -149,7 +150,6 @@
     .bg-toggle .sun{display: none;}
     /* ----- flag ------- */
 }
-
 
 @media only screen and (max-width: 800px) {
     .docs{
