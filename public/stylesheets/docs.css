@@ -8,7 +8,15 @@
     --txtcolor: white;
     --bordercolor: rgb(37, 37, 37); */
 }
-
+.red{
+    color: red;
+}
+.bold{
+    font-weight: bold;
+}
+.inline{
+    display: inline;
+}
 @media only screen and (min-width: 800px) {
     .docs{
         overflow: hidden;
