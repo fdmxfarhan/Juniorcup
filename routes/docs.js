@@ -4,7 +4,7 @@ const { ensureAuthenticated } = require('../config/auth');
 
 
 router.get('/', (req, res, next) => {
-    res.send('home');
+    res.render('./docs/home');
 });
 
 

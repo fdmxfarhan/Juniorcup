@@ -1,6 +1,42 @@
-extends layout
+extends ../layout
 
 block styles
     link(rel='stylesheet', href='/stylesheets/docs.css')
 
 block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | مطالب آموزشی
+            a.link(href="/") آموزش فلان
+            a.link(href="/") آموزش فلان
+            a.link(href="/") آموزش فلان
+            a.link(href="/") آموزش فلان
+            a.link(href="/") آموزش فلان
+        .content
+            .document
+                .img-area
+                    img(src="/images/docs/03.jpg")
+                .info
+                    h1.title عنوان مطلب
+                    p.desc توضیحات مختصر و کوتاه در مورد مطلب آموزشی
+                    a.link(href="/") شروع
+            .document
+                .img-area
+                    img(src="/images/docs/03.jpg")
+                .info
+                    h1.title عنوان مطلب
+                    p.desc توضیحات مختصر و کوتاه در مورد مطلب آموزشی
+                    a.link(href="/") شروع
+            .document
+                .img-area
+                    img(src="/images/docs/03.jpg")
+                .info
+                    h1.title عنوان مطلب
+                    p.desc توضیحات مختصر و کوتاه در مورد مطلب آموزشی
+                    a.link(href="/") شروع
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

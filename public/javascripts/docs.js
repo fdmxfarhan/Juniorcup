@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $('.sidebar-toggle').click(()=>{
+        $('.sidebar').show(1000);
+        $('.sidebar-modal').fadeIn(800);
+    });
+    $('.sidebar-modal').click(()=>{
+        $('.sidebar').hide(1000);
+        $('.sidebar-modal').fadeOut(800);
+    })
+});
