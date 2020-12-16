@@ -152,6 +152,39 @@
     }
     .bg-toggle .sun{display: none;}
     /* ----- flag ------- */
+    .content .content-padding{
+        padding: 2vw 4vw;
+        direction: rtl;
+        text-align: right;
+        color: var(--txtcolor);
+    }
+    .content .purple{
+        color: var(--purple);
+    }
+    .content .font{
+        font-family: 'iransans';
+    }
+    .content .medium{
+        font-size: 1.5vw;
+    }
+    .content .small{
+        font-size: 1.1vw;
+    }
+    .content .text{
+        text-align: justify;
+    }
+    .content img.fullsize{
+        width: 100%;
+    }
+    .content .caption{
+        color: rgb(122, 122, 122);
+        text-align: center;
+        margin-top: -0.5vw;
+    }
+    .content a.inline{
+        color: var(--blue);
+        text-decoration: none;
+    }
 }
 
 @media only screen and (max-width: 800px) {
