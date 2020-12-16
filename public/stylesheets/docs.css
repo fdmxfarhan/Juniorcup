@@ -195,6 +195,10 @@
     .content img.fullsize{
         width: 100%;
     }
+    .content img.smallsize{
+        width: 90%;
+        margin-right: 5%;
+    }
     .content .caption{
         color: rgb(122, 122, 122);
         text-align: center;
@@ -436,6 +440,10 @@
     }
     .content img.fullsize{
         width: 100%;
+    }
+    .content img.smallsize{
+        width: 100%;
+        /* margin-right: 5%; */
     }
     .content .caption{
         color: rgb(122, 122, 122);
