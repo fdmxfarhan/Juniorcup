@@ -62,6 +62,9 @@
     .sidebar a.link:hover{
         background-color: lightgray;
     }
+    .sidebar a.link.active{
+        background-color: lightgray;
+    }
     .content .document{
         /* background-color: lightblue; */
         width: 80%;
@@ -214,6 +217,9 @@
         padding: 2vw 5vw;
     }
     .sidebar a.link:hover{
+        background-color: lightgray;
+    }
+    .sidebar a.link.active{
         background-color: lightgray;
     }
     .content .document{

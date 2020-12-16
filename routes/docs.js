@@ -7,5 +7,11 @@ router.get('/', (req, res, next) => {
     res.render('./docs/home');
 });
 
+router.get('/soccer-light-python', (req, res, next) => {
+    if(req.query.page)
+        res.render(`./docs/soccer-light-python/${req.query.page}`, {page: req.query.page});
+    else
+        res.render(`./docs/soccer-light-python/1`, {page: 0});
+});
 
 module.exports = router;

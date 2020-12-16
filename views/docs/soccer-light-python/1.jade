@@ -1,0 +1,23 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | مطالب آموزشی
+            include pages
+        .content
+            
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")
