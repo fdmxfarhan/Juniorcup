@@ -10,14 +10,41 @@ block content
                 i.fa.fa-book
                 | مطالب آموزشی
             include pages
-            
         .content
-
+            .content-padding
+                h1.purple.medium.font نصب python
+                p.font.small.text 
+                    | برای اجرای برنامه های نوشته شده به زبان پایتون ابتدا باید آن را بر روی سیستم عامل خود نصب کنید. برای اینکار ابتدا پایتون را از لینک زیر به صورت مستقیم و یا از وب سایت 
+                    a.font.inline.small.blue(href="http://python.org" download) python.org 
+                    | دانلود نمایید.
+                a.font.download.small.blue(href="/docs/python/03/Python_x86.exe" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود پایتون - نسخه ۳۲ بیتی
+                a.font.download.small.blue(href="/docs/python/03/Python_x64.exe" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود پایتون - نسخه ۶۴ بیتی
+                p.font.small.text 
+                    | پس از دانلود نرم افزار پایتون سازگار با سیستم عامل خود آن را اجرا کرده و بر روی گزینه Install Now کلیک کنید.
+                img.fullsize(src="/docs/python/03/img-01.png")
+                p.font.small.text 
+                    | پس از اتمام نصب گزینه close را انتخاب نمایید.
+                img.fullsize(src="/docs/python/03/img-06.png")
+                img.fullsize(src="/docs/python/03/img-07.png")
+                p.font.small.text 
+                    | اکنون نرم افزار پایتون نصب شده است و شما می توانید برنامه های خود را با پسوند py. ذخیره کرده و اجرا کنید. اما برای اینکار نیاز به یک نرم افزار Editor خواهیم داشت. 
+                    | ادیتور های مختلفی جهت نوشتن برنامه وجود دارند که هر کدام مزایا و معایب خاص خودشان را دارا هستند. در این آموزش قصد داریم از ادیتور Visual Studio Code استفاده کنیم. 
+                
+            .buttons
+                a.prev(href="/docs/soccer-light-python?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/soccer-light-python?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
     .bg-toggle
         .bg-button
             i.fa.fa-moon-o.moon
             i.fa.fa-sun-o.sun
-            
     .sidebar-modal
     .sidebar-toggle
         i.fa.fa-chevron-left
