@@ -1,0 +1,65 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+        .content
+            .content-padding
+                h1.purple.medium.font نصب Visual Studio Code
+                p.font.small.text 
+                    | Visual Studio Code یک محیط یکپارچه توسعه نرم ‌افزار است که به منظور طراحی و ایجاد اپلیکیشن ها و برنامه های مختلف طراحی شده است. 
+                    | ابزارهای ساده و در عین حال کاربردی این برنامه از نظر عملکرد مشابه 
+                    | Visual Studio هستند اما دارای ویژگی های به روزتر و جامع تری می باشند و این برنامه مجموعه ای 
+                    | از ابزارهای کاربردی را در محیط کاربری مدرن و کارآمدی ارائه می کند.
+                a.font.download.small.blue(href="/docs/python/04/VSCodeSetup-x32-1.52.0.exe" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود VS code - نسخه ۳۲ بیتی
+                a.font.download.small.blue(href="/docs/python/04/VSCodeSetup-x64-1.52.0.exe" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود VS code - نسخه ۶۴ بیتی
+                img.fullsize(src="/docs/python/04/img-00.png")
+                p.font.small.text 
+                    | پس از دانلود نرم افزار VS code سازگار با سیستم عامل خود آن را اجرا کرده و I accept the agreement را انتخاب کنید. سپس گزینه next را انتخاب بزنید.
+                img.smallsize(src="/docs/python/04/img-01.png")
+                p.font.small.text 
+                    | مسیر نصب نرم افزار را مشخص کنید و بر روی گزینه Next کلیک کنید.
+                img.smallsize(src="/docs/python/04/img-02.png")
+                p.font.small.text 
+                    | سپس بر روی گزینه Next کلیک کنید.
+                img.smallsize(src="/docs/python/04/img-03.png")
+                p.font.small.text 
+                    | در این مرحله در صورت فعال کردن Create desktop icon پس از نصب نرم افزار، بر روی صفحه desktop به صورت shortcut اضافه می شود. 
+                    | با فعال کردن دو گزینه Add "Open with code" ... می توان از قابلیت open with code استفاده کرد و به شما این امکان را می دهد که تنها با کلیک راست کردن بر روی هر فایلی آن را با VS code باز نمایید.
+                img.smallsize(src="/docs/python/04/img-05.png")
+                p.font.small.text 
+                    | بر روی گزینه Install کلیک کنید.
+                img.smallsize(src="/docs/python/04/img-06.png")
+                p.font.small.text 
+                    | بر روی گزینه Install کلیک کنید و پس از اتمام نصب، گزینه Finish را بزنید.
+                img.smallsize(src="/docs/python/04/img-07.png")
+                img.smallsize(src="/docs/python/04/img-08.png")
+                
+                
+            .buttons
+                a.prev(href="/docs/soccer-light-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/soccer-light-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

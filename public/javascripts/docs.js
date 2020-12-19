@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+    $('#nav-link1').removeClass('active');
+    $('#nav-link4').addClass('active');
+    
     var theme = 'light';
     $('.sidebar-toggle').click(()=>{
         $('.sidebar').show(1000);

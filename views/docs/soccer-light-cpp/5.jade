@@ -1,0 +1,59 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+            
+        .content
+            .content-padding
+                h1.purple.medium.font اجرای برنامه
+                p.font.small.text 
+                    | در مرحله اول یک فولدر در مکان دلخواه خود ایجاد کنید و در آن کلیک راست کرده و Open with code را انتخاب کنید تا با استفاده از نرم افزار Visual Studio Code باز شود.
+                img.fullsize(src="/docs/python/05/img-01.png")
+                p.font.small.text 
+                    | سپس در قسمت سمت چپ همانند تصویر کلیک راست کرده و گزینه New File را انتخاب نمایید. 
+                    | برای فایل برنامه خود یک اسم با پسوند py. مشخص کنید و Enter بزنید.
+                img.fullsize(src="/docs/python/05/img-04.png")
+                img.fullsize(src="/docs/python/05/img-05.png")
+                p.font.small.text 
+                    | برای استفاده از توابع و دستورات مربوط به شبیه سازی روبات فوتبالیست می بایست فایل juniorcup.py را ابتدا از لینک زیر دانلود کنید و 
+                    | سپس در پوشه پروژه خود قرار دهید. 
+                a.font.download.small.blue(href="/docs/python/05/juniorcup.py" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود فایل juniorcup.py
+                img.fullsize(src="/docs/python/05/img-07.png")
+                img.fullsize(src="/docs/python/05/img-08.png")
+                p.font.small.text 
+                    | در فایل پایتونی که در مرحله اول ساخته بودید دستورات زیر را وارد کنید. در خط اول کتابخانه juniorcup فراخوانی می شود. در خط دوم یک شیئ از کلاس Robot با نام دلخواه (در اینجا myRobot) ساخته می شود. 
+                    | در خط آخر برنامه نیز تمام موتور های ربات را با سرعت ۱۰۰ در جهت ساعت گرد می چرخاند.
+                img.fullsize(src="/docs/python/05/img-09.png")
+                p.font.small.text.red.bold توجه: قبل از اجرای برنامه ابتدا نرم افزار شبیه ساز را اجرا نمایید.
+                p.font.small.text 
+                    | پس از آنکه سیمولاتور را اجرا نمودید با استفاده از کلید Alt + Tab به VS code بازگردید و از گوشه سمت راست مثلث سبزرنگ را انتخاب کنید تا برنامه اجرا شود.
+                    | حال به سیمولاتور بروید و می توانید مشاهده کنید که ربات به دور خود می چرخد. اگر سرعت موتور ها را تغییر دهیم حرکت های مختلف ربات را می توان مشاهده کرد.
+                img.fullsize(src="/docs/python/05/img-10.png")
+                img.fullsize(src="/docs/python/05/img-11.png")
+                
+            .buttons
+                a.prev(href="/docs/soccer-light-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/soccer-light-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

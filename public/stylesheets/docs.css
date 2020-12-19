@@ -114,6 +114,7 @@
         color: var(--txtcolor);
         font-family: 'iransans';
         font-size: 1.1vw;
+        text-align: justify;
     }
     .content .document .info a.link{
         font-family: 'iransans';
