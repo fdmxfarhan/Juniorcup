@@ -12,40 +12,37 @@ block content
             include pages
         .content
             .content-padding
-                h1.purple.medium.font نصب Visual Studio Code
+                h1.purple.medium.font ساخت پروژه
                 p.font.small.text 
-                    | Visual Studio Code یک محیط یکپارچه توسعه نرم ‌افزار است که به منظور طراحی و ایجاد اپلیکیشن ها و برنامه های مختلف طراحی شده است. 
-                    | ابزارهای ساده و در عین حال کاربردی این برنامه از نظر عملکرد مشابه 
-                    | Visual Studio هستند اما دارای ویژگی های به روزتر و جامع تری می باشند و این برنامه مجموعه ای 
-                    | از ابزارهای کاربردی را در محیط کاربری مدرن و کارآمدی ارائه می کند.
-                a.font.download.small.blue(href="/docs/python/04/VSCodeSetup-x32-1.52.0.exe" download) 
-                    i.fa.fa-cloud-download
-                    | دانلود VS code - نسخه ۳۲ بیتی
-                a.font.download.small.blue(href="/docs/python/04/VSCodeSetup-x64-1.52.0.exe" download) 
-                    i.fa.fa-cloud-download
-                    | دانلود VS code - نسخه ۶۴ بیتی
-                img.fullsize(src="/docs/python/04/img-00.png")
+                    | برای اجرای برنامه و برقراری ارتباط با سیمولاتور ابتدا باید در CodeBlocs یک پروژه جدید بسازید. بدین منظور ابتدا گزینه Create a new project را بزنید.
+                img.fullsize(src="/docs/cpp/img/11.png")
                 p.font.small.text 
-                    | پس از دانلود نرم افزار VS code سازگار با سیستم عامل خود آن را اجرا کرده و I accept the agreement را انتخاب کنید. سپس گزینه next را انتخاب بزنید.
-                img.smallsize(src="/docs/python/04/img-01.png")
+                    | سپس گزینه ctalk console را انتخاب کرده و بر روی Go کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/12.png")
                 p.font.small.text 
-                    | مسیر نصب نرم افزار را مشخص کنید و بر روی گزینه Next کلیک کنید.
-                img.smallsize(src="/docs/python/04/img-02.png")
+                    | در این قسمت Next بزنید.
+                img.fullsize(src="/docs/cpp/img/13.png")
                 p.font.small.text 
-                    | سپس بر روی گزینه Next کلیک کنید.
-                img.smallsize(src="/docs/python/04/img-03.png")
+                    | زبان برنامه نویسی ++C را انتخاب کرده و Next بزنید.
+                img.fullsize(src="/docs/cpp/img/14.png")
                 p.font.small.text 
-                    | در این مرحله در صورت فعال کردن Create desktop icon پس از نصب نرم افزار، بر روی صفحه desktop به صورت shortcut اضافه می شود. 
-                    | با فعال کردن دو گزینه Add "Open with code" ... می توان از قابلیت open with code استفاده کرد و به شما این امکان را می دهد که تنها با کلیک راست کردن بر روی هر فایلی آن را با VS code باز نمایید.
-                img.smallsize(src="/docs/python/04/img-05.png")
+                    | نام پروژه خود را در قسمت Project title مشخص کرده و با زدن ... مسیر ذخیره سازی آن را نیز مشخص کنید.
+                img.fullsize(src="/docs/cpp/img/15.png")
+                img.fullsize(src="/docs/cpp/img/16.png")
                 p.font.small.text 
-                    | بر روی گزینه Install کلیک کنید.
-                img.smallsize(src="/docs/python/04/img-06.png")
+                    | بر روی Next کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/17.png")
                 p.font.small.text 
-                    | بر روی گزینه Install کلیک کنید و پس از اتمام نصب، گزینه Finish را بزنید.
-                img.smallsize(src="/docs/python/04/img-07.png")
-                img.smallsize(src="/docs/python/04/img-08.png")
-                
+                    | کامپایلر خود را بر روی GNU GCC Compiler قرار دهید و گزینه Finish را بزنید
+                img.fullsize(src="/docs/cpp/img/18.png")
+                p.font.small.text 
+                    | پروژه شما ساخته شده و حالا آماده است. به صورت خودکار CodeBlocks چند تا از کتابخانه های مهم و پرکاربرد ++C را به برنامه شما اضافه می کند. 
+                    | همچنین تابع ()main برنامه نیز به صورت خودکار ساخته می شود و در آن با استفاده از دستور cout عبارت !Hello World چاپ می شود.
+                img.fullsize(src="/docs/cpp/img/19.png")
+                p.font.small.text 
+                    | برای اجرای برنامه ها کافی است از قسمت نوار بالا گزینه build and run را همانند تصویر بزنید و یا از کلید میانبر F9 استفاده کنید.
+                img.fullsize(src="/docs/cpp/img/20.png")
+                img.fullsize(src="/docs/cpp/img/21.png")
                 
             .buttons
                 a.prev(href="/docs/soccer-light-cpp?page=#{page-1}") 
