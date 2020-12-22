@@ -1,0 +1,159 @@
+:root{
+    --bgcolor: white;
+    --bgcolor2: transparent;
+    --txtcolor: rgb(26, 26, 26);
+    --bordercolor: lightgray;
+    /* --bgcolor: rgb(26, 26, 26);
+    --bgcolor2: rgb(26, 26, 26);
+    --txtcolor: white;
+    --bordercolor: rgb(37, 37, 37); */
+}
+
+.gallery{
+    background-color: var(--bgcolor2);
+    padding: 0;
+    direction: ltr;
+    display: flex;
+    text-align: center;
+}
+.gallery .images-area{
+    float: left;
+    width: 50%;
+    padding: 2vw;
+}
+.gallery .preview{
+    /* position: fixed; */
+    /* right: 0; */
+    /* top: 0; */
+    /* z-index: -1; */
+    float: left;
+    background-color: var(--dark);
+    width: 45%;
+}
+.gallery .preview-content{
+    position: fixed;
+    width: 45%;
+}
+.gallery .images-area img{
+    height: 10vw;
+    margin: 0.7vw;
+    transition-duration: 500ms;
+}
+.gallery .preview img{
+    height: 22vw;
+    margin: auto;
+    margin-top: 2vw;
+    box-shadow: 0 0 0.4vw 0.1vw rgba(255, 255, 255, 0.24);
+}
+.gallery .actions{
+    /* background-color: lightblue; */
+    /* padding: 0 2vw; */
+    overflow: hidden;
+    border-top: rgb(41, 41, 41) 0.1vw solid;
+    width: 90%;
+    margin: auto;
+}
+.gallery .actions a{
+    float: left;
+    margin: 0;
+    color: white;
+}
+.gallery .actions a:hover{
+    color: red;
+}
+.gallery .actions h3{
+    float: left;
+    margin: 0;
+    color: white;
+    padding: 0.5vw 0;
+    font-family: 'iransans';
+    font-size: 1.3vw;
+}
+.gallery .actions i{
+    float: left;
+    margin: 0;
+    color: white;
+    padding: 0.5vw 0.5vw;
+    padding-left: 1vw;
+    font-size: 2vw;
+}
+.gallery .actions i:hover{
+    color: red;
+}
+.gallery .comments{
+    /* background-color: lightblue; */
+    height: 10vw;
+    overflow-y: scroll;
+    width: 90%;
+    margin: auto;
+    color: white;
+    direction: rtl;
+    text-align: right;
+    /* padding: 1vw 0; */
+}
+.gallery .comments::-webkit-scrollbar {
+    display: none;
+}
+.gallery .comment{
+    /* background-color: lightgreen; */
+    margin-bottom: 0.5vw;
+    overflow: hidden;
+}
+.gallery .comment i{
+    float: right;
+    padding-top: 0.5vw;
+    padding-left: 0.5vw;
+    /* font-family: 'iransans'; */
+    font-size: 1.5vw;
+    
+}
+.gallery .comment .name{
+    float: right;
+    padding-top: 0.1vw;
+    padding-left: 1vw;
+    /* font-family: 'iransans'; */
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: rgb(197, 197, 197);
+}
+.gallery .comment .text{
+    float: right;
+    padding-top: 0.2vw;
+    /* font-family: 'iransans'; */
+    font-size: 1.1vw;
+    font-weight: normal;
+    color: rgb(197, 197, 197);
+}
+.gallery .add-comment{
+    /* background-color: lightgreen; */
+    margin-top: 1vw;
+}
+.gallery .add-comment input{
+    background-color: transparent;
+    border: rgb(109, 109, 109) 0.1vw solid;
+    padding: 0.4vw 1vw;
+    border-radius: 2vw;
+    font-family: 'iransans';
+    font-size: 1.1vw;
+    width: 70%;
+    color: white;
+}
+.gallery .add-comment button{
+    background-color: transparent;
+    border: rgb(109, 109, 109) 0.1vw solid;
+    padding: 0.4vw 0.7vw;
+    border-radius: 50%;
+    font-family: 'iransans';
+    font-size: 1vw;
+    color: white;
+    margin-left: 1vw;
+    cursor: pointer;
+}
+.gallery .add-comment button:hover{
+    background-color: var(--blue);
+    border: var(--blue) 0.1vw solid;
+}
+.gallery .add-comment button:focus, .gallery .add-comment input:focus{
+    outline: none;
+    border: var(--blue) 0.1vw solid;
+}
