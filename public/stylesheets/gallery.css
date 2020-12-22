@@ -15,11 +15,23 @@
     direction: ltr;
     display: flex;
     text-align: center;
+    overflow: hidden;
 }
 .gallery .images-area{
     float: left;
-    width: 50%;
+    width: 100%;
     padding: 2vw;
+
+}
+.gallery .preview span.close{
+    color: white;
+    position: absolute;
+    right: 4vw;
+    font-size: 2vw;
+    cursor: pointer;
+}
+.gallery .preview span.close:hover{
+    color: chocolate;
 }
 .gallery .preview{
     /* position: fixed; */
@@ -29,15 +41,23 @@
     float: left;
     background-color: var(--dark);
     width: 45%;
+    overflow: hidden;
+    display: none;
 }
 .gallery .preview-content{
     position: fixed;
     width: 45%;
+    top: 5vw;
 }
 .gallery .images-area img{
     height: 10vw;
     margin: 0.7vw;
     transition-duration: 500ms;
+    cursor: pointer;
+}
+.gallery .images-area img:hover, .gallery .images-area img.active{
+    outline: lightgray 1px solid;
+    box-shadow: 0 0.2vw 1vw 0.4vw rgba(0, 0, 0, 0.342);
 }
 .gallery .preview img{
     height: 22vw;
@@ -52,6 +72,7 @@
     border-top: rgb(41, 41, 41) 0.1vw solid;
     width: 90%;
     margin: auto;
+    color: white;
 }
 .gallery .actions a{
     float: left;
@@ -68,17 +89,14 @@
     padding: 0.5vw 0;
     font-family: 'iransans';
     font-size: 1.3vw;
+    font-weight: normal;
 }
 .gallery .actions i{
     float: left;
     margin: 0;
-    color: white;
     padding: 0.5vw 0.5vw;
     padding-left: 1vw;
     font-size: 2vw;
-}
-.gallery .actions i:hover{
-    color: red;
 }
 .gallery .comments{
     /* background-color: lightblue; */
@@ -156,4 +174,7 @@
 .gallery .add-comment button:focus, .gallery .add-comment input:focus{
     outline: none;
     border: var(--blue) 0.1vw solid;
+}
+.hidden{
+    display: none;
 }

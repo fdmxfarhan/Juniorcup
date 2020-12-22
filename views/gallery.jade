@@ -12,43 +12,39 @@ block content
                 -else
                     img(src="images/juniorcup2018/#{i}.jpg" id="img#{i}")
             -}
-        .preview
-            .preview-content
-                span.close#signinclose &times;
-                img(src="images/juniorcup2018/05.jpg")
-                .actions
-                    a(href="/")
-                        i.fa.fa-heart.heart
-                    h3 100
-                    i.fa.fa-eye
-                    h3 100
-                .comments
-                    .comment
-                        i.fa.fa-user
-                        .name mamad
-                        .text عالیی بود
-                    .comment
-                        i.fa.fa-user
-                        .name mamad
-                        .text عالیی بود
-                    .comment
-                        i.fa.fa-user
-                        .name mamad
-                        .text عالیی بود
-                    .comment
-                        i.fa.fa-user
-                        .name mamad
-                        .text عالیی بود
-                    .comment
-                        i.fa.fa-user
-                        .name mamad
-                        .text عالیی بود
-                    .comment
-                        i.fa.fa-user
-                        .name mamad
-                        .text عالیی بود
-                .add-comment
-                    form(action="")
-                        input(type="text" placeholder="Comment...")
-                        button(type="submit")
-                            i.fa.fa-send
+        -for(var i=1; i<=36; i++){
+            .preview(id=`preview${i}`)
+                .preview-content
+                    span.close#closebtn &times;
+                    -if(i < 10)
+                        img(src="images/juniorcup2018/0#{i}.jpg" id="img#{i}")
+                    -else
+                        img(src="images/juniorcup2018/#{i}.jpg" id="img#{i}")
+                    .actions
+                        a(href="/gallery/like?id=#{i}")
+                            i.fa.fa-heart.heart
+                        -for(var j=0; j<galleries.length; j++){
+                            -if(galleries[j].key == i)
+                                h3= galleries[j].like
+                        -}
+                        i.fa.fa-eye
+                        h3= galleries[0].seen
+                    .comments
+                        -for(var j=0; j<galleries.length; j++){
+                            -if(galleries[j].key == i){
+                                -for(var t=0; t<galleries[j].comments.length; t++){
+                                    .comment
+                                        i.fa.fa-user
+                                        .name= galleries[j].comments[t].user
+                                        .text= galleries[j].comments[t].text
+                                -}
+                            -}    
+                        -}
+                    .add-comment
+                        form(action="/gallery/comment" method="POST")
+                            input(type="text" name="text" placeholder="Comment...")
+                            input.hidden(type="number" name="key" value='#{i}')
+                            button(type="submit")
+                                i.fa.fa-send
+        -}
+    script(src="/javascripts/gallery.js")
