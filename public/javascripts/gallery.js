@@ -5,18 +5,20 @@ $(document).ready(function(){
     $(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
         // alert(scroll);
-        if(scroll <= 70){
-            $('.preview-content').css('position', 'fixed');
-            $('.preview-content').css('top', '5vw');
-        }
-        else if(scroll > 70 && scroll <= 1650)
-        {
-            $('.preview-content').css('position', 'fixed');
-            $('.preview-content').css('top', '0');
-        }
-        else if(scroll > 1650){
-            $('.preview-content').css('position', 'absolute');
-            $('.preview-content').css('top', '120vw');
+        if($(window).width() > 800){
+            if(scroll <= 70){
+                $('.preview-content').css('position', 'fixed');
+                $('.preview-content').css('top', '5vw');
+            }
+            else if(scroll > 70 && scroll <= 1650)
+            {
+                $('.preview-content').css('position', 'fixed');
+                $('.preview-content').css('top', '0');
+            }
+            else if(scroll > 1650){
+                $('.preview-content').css('position', 'absolute');
+                $('.preview-content').css('top', '120vw');
+            }
         }
     });
     var images = [];
