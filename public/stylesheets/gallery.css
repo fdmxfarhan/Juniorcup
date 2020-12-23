@@ -321,7 +321,7 @@
     }
     .gallery .add-comment input{
         background-color: transparent;
-        border: rgb(109, 109, 109) 0.3vw solid;
+        border: rgb(109, 109, 109) 0.5vw solid;
         padding: 1vw 3vw;
         border-radius: 4vw;
         font-family: 'iransans';
@@ -331,7 +331,7 @@
     }
     .gallery .add-comment button{
         background-color: transparent;
-        border: rgb(109, 109, 109) 0.3vw solid;
+        border: rgb(109, 109, 109) 0.5vw solid;
         padding: 1vw 2vw;
         border-radius: 50%;
         font-family: 'iransans';
