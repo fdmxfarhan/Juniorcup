@@ -1,6 +1,39 @@
 extends layout
 
 block content
+    .two-part
+        .part
+            img.avatar(src="/images/man.png", alt="avatar")
+            .text
+                h1= user.fullname
+                .item.blue= user.username
+                .item 
+                    i.fa.fa-envelope
+                    | #{user.email}
+                .item 
+                    i.fa.fa-phone
+                    | #{user.phone}
+                a.edit(href="/dashboard")
+                    i.fa.fa-edit
+                    | ویرایش اطلاعات
+        .part
+            h1.part-title
+                i.fa.fa-newspaper-o
+                | آخرین اخبار
+            .last-news
+                table
+                    tr
+                        td.title
+                            //- i.fa.fa-newspaper-o
+                            | عنوان
+                        td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
+                    tr
+                        td.title عنوان
+                        td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
+                    tr
+                        td.title عنوان
+                        td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
+                
     h1.title 
         i.fa.fa-users
         | تیم های من

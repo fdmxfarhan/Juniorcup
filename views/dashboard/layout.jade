@@ -53,6 +53,7 @@ html
                         //- i.fa.fa-phone.nav-icon 
                         | تماس با ما
                 a.user-login(href="#")
+                    .username #{user.username}
                     i.fa.fa-user
             .user-action
                 .acount
@@ -67,7 +68,7 @@ html
                     a(href="/dashboard")
                         i.fa.fa-gears
                         | تنظیمات
-                    a(href="/dashboard")
+                    a(href="/users/logout")
                         i.fa.fa-sign-out
                         | خروج
             block content
