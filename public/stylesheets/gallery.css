@@ -242,7 +242,7 @@
         /* background-color: lightblue; */
         /* padding: 0 2vw; */
         overflow: hidden;
-        border-top: rgb(41, 41, 41) 0.1vw solid;
+        border-top: rgb(41, 41, 41) 0.3vw solid;
         width: 80%;
         margin: auto;
         color: white;
@@ -321,7 +321,7 @@
     }
     .gallery .add-comment input{
         background-color: transparent;
-        border: rgb(109, 109, 109) 0.1vw solid;
+        border: rgb(109, 109, 109) 0.3vw solid;
         padding: 1vw 3vw;
         border-radius: 4vw;
         font-family: 'iransans';
@@ -331,7 +331,7 @@
     }
     .gallery .add-comment button{
         background-color: transparent;
-        border: rgb(109, 109, 109) 0.1vw solid;
+        border: rgb(109, 109, 109) 0.3vw solid;
         padding: 1vw 2vw;
         border-radius: 50%;
         font-family: 'iransans';
