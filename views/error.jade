@@ -1,2 +1,16 @@
-H1 An error was found
-p= error.message
+extends layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/error.css")
+block content
+    .error-area
+        .text
+            h1.error 404
+            h1.title متاسفانه صفحه مورد نظر یافت نشد.
+            p مسیر مورد نظر را بررسی کرده و مجددا تلاش کنید. در صورت وقوع هر مشکلی با پشتیبانی سایت تماس حاصل فرمایید.
+            audio.audio(autoplay="autoplay" controls loop  id="playAudio")
+                source(src="/musics/Martin-Landh-Angel-Song-128.mp3")
+        .image
+            img(src="/images/sad1.png", alt="")
+
+    script(src="/javascripts/error.js")

@@ -9,7 +9,10 @@ router.get('/register', (req, res, next) => {
   res.render('register');
 });
 router.get('/login', (req, res, next) => {
-  res.render('login');
+  if(req.user)
+    res.redirect('/dashboard');
+  else
+    res.render('login');
 });
 
 router.post('/register', (req, res, next) => {

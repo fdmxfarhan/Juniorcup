@@ -1,0 +1,34 @@
+.error-area{
+    overflow: hidden;
+    padding: 2vw 5vw;
+}
+.error-area .text{
+    float: right;
+    width: 55%;
+}
+.error-area .image{
+    float: right;
+    width: 45%;
+}
+.error-area .image img{
+    width: 100%;
+}
+.error-area .text h1.error{
+    font-size: 10vw;
+    margin: 0;
+    color: var(--blue);
+    margin-top: 10vw;
+    /* background-color: lightgray; */
+    padding: 0;
+    line-height: 10vw;
+}
+.error-area .text h1.title{
+    margin: 0;
+}
+.error-area audio{
+    width: 60%;
+}
+.error-area audio:focus{
+    outline: none;
+}
+
