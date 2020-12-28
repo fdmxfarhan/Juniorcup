@@ -204,7 +204,7 @@ body{
     }
     .content .right-text p{
         font-family: 'iransans';
-        font-size: 1.5vw;
+        font-size: 1.3vw;
         text-align: justify;
         direction: rtl;
         color: var(--textcolor);
