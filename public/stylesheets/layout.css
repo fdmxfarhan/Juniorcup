@@ -17,7 +17,8 @@
     to {margin-top: 0.5vw;}
 }
 :root {
-    --purple: #8305be;
+    /* --purple: #8305be; */
+    --purple: #1971e4;
     --yellow: #ffcc00;
     --hover: #8305be;
     --dark: #050507;

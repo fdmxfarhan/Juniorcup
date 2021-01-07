@@ -15,45 +15,19 @@ block content
             .content-padding
                 h1.purple.medium.font اجرای برنامه
                 p.font.small.text 
-                    | برای استفاده از سیمولاتور و اجرای دستورات بر روی آن ابتدا باید در مسیری که پروژه خود را ساخته اید فایل های کتابخانه مربوط به سیمولاتور را قرار دهید تا برنامه بتواند از پروتکل ارتباطی با سیمولاتور استفاده کند.
-                a.font.download.small.blue(href="/docs/cpp/library.rar" download) 
+                    | پس از نصب نرم افزار Code Blocks جهت راه اندازی روبات در سیمولاتور جونیورکاپ و کنترل آن ابتدا فایل زیر را دانلود کرده و از حالت فشرده خارج نمایید.
+                a.font.download.small.blue(href="/docs/python/05/Python Juniorcup.rar" download) 
                     i.fa.fa-cloud-download
-                    | دانلود فایل کتابخانه ها به صورت فشرده
-                img.fullsize(src="/docs/cpp/img/22.png")
+                    | دانلود پروژه نمونه به زبان ++C
+                img.fullsize(src="/docs/cpp/img/33.png")
                 p.font.small.text 
-                    | فایل های داخل فایل فشرده را در پوشه پروژه خود قرار دهید.
-                img.fullsize(src="/docs/cpp/img/23.png")
-                p.font.small.text 
-                    | حال به CodeBlocks بروید و پروژه ای که ساخته بودید را باز کنید. در قسمت projects در سمت چپ بر روی پروژه خود کلیک راست کرده و Add files را انتخاب کنید.
-                img.fullsize(src="/docs/cpp/img/24.png")
-                p.font.small.text 
-                    | فایل هایی که اضافه کرده بودید را انتخاب کرده و Open را بزنید.
-                img.fullsize(src="/docs/cpp/img/25.png")
-                p.font.small.text 
-                    | در این قسمت گزینه Ok را انتخاب کنید.
-                img.fullsize(src="/docs/cpp/img/26.png")
-                p.font.small.text 
-                    | می بینید که تمام فایل ها به پروژه شما اضافه شده است. حال لازم است برنامه ای جهت اجرا بر روی روبات بنویسیم.
-                img.fullsize(src="/docs/cpp/img/27.png")
-                p.font.small.text 
-                    | در برنامه زیر ابتدا کتابخانه protocol.h فراخوانی می شود و یک شیء از کلاس Robot با نام Robot_Team_A ساخته می شود.
-                    | در تابع ()main نیز ابتدا تابع ()socket_Init فراخوانی می شود تا تنظیمات اولیه را برای برقراری ارتباط با ربات انجام دهد.
-                    | سپس دستور motor تمام موتور های ربات را با سرعت 100 در جهت ساعتگرد میچرخاند و باعث چرخیدن خود ربات در این جهت می شود.
-                img.fullsize(src="/docs/cpp/img/28.png")
-                p.font.small.text.red.bold توجه: قبل از اجرای برنامه حتما موارد زیر را انجام دهید تا به Error برخورد نکنید. این قسمت تنها کافی است برای یک بار تنظیم شود.
-                p.font.small.text 
-                    | از نوار بالا در قسمت Project گزینه Build options را انتخاب نمایید.
-                img.fullsize(src="/docs/cpp/img/30.png")
-                p.font.small.text 
-                    | به قسمت Linker settings رفته و در باکس Other linker options دو خط زیر را اضافه کنید.
-                p.code.small
-                    | -lwsock32
-                    br
-                    | -lws2_32
-                img.fullsize(src="/docs/cpp/img/31.png")
+                    | وارد پوشه استخراج شده شوید و فایل juniorc.cbp را با استفاده از CodeBlocks باز کنید.
+                img.fullsize(src="/docs/cpp/img/34.png")
+                img.fullsize(src="/docs/cpp/img/35.png")
+                
                 p.font.small.text.red.bold توجه: قبل از اجرای برنامه ابتدا باید سیمولاتور را باز کنید.
                 p.font.small.text 
-                    | حال می توانید برنامه خود را اجرا کرده و لذت ببرید.
+                    | حال می توانید با استفاده از کلید F9 برنامه خود را اجرا کرده و لذت ببرید.
                 img.fullsize(src="/docs/cpp/img/32.png")
                 
             .buttons
