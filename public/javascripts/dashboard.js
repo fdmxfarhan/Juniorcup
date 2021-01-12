@@ -31,5 +31,16 @@ $(document).ready(function(){
         $('.transparent-modal').hide();
         // $('.user-action').hide(500);
     });
-    
+    $('a.add-team').click(()=>{
+        $('.pop-up-modal').fadeIn(500);
+        $('#add-team-popup').show(500);
+    });
+    $('.pop-up-modal').click(()=>{
+        $('.pop-up-modal').hide();
+        $('#add-team-popup').hide();
+    });
+    $('#close-pup-up').click(()=>{
+        $('.pop-up-modal').hide();
+        $('#add-team-popup').hide();
+    });
 });

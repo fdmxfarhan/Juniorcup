@@ -33,17 +33,51 @@ block content
                     tr
                         td.title عنوان
                         td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
-                
     h1.title 
         i.fa.fa-users
         | تیم های من
     .teams-area
         .all-content
-            a.team(href="#")
-                .name fdmx
-                .item سرپرست: دائمی مژدهی
-                .item فوتبالیست سبک وزن
-            
-            a.add-team(href="#")
+            -if(teams){
+                -for(var i=0; i<teams.length; i++){
+                    a.team(href="#")
+                        .name= teams[i].teamName
+                        .item= teams[i].mentor
+                        .item= teams[i].league
+                -}
+            -}
+            a.add-team
                 i.fa.fa-plus
                 h1 افزودن تیم جدید
+    .pop-up-modal
+    .pop-up#add-team-popup
+        span.close#close-pup-up &times;
+        h1.popup-title افزودن تیم جدید
+        form(action="/dashboard/register-team" method="POST")
+            .text-input
+                i.fa.fa-users
+                input(type="text" name="teamName" placeholder="نام تیم" required)
+            .text-input
+                i.fa.fa-user
+                input(type="text" name="mentor" placeholder="نام سرپرست" required)
+            .text-input
+                i.fa.fa-envelope
+                input(type="text" name="email" placeholder="پست الکترنیکی" value="#{user.email}" required)
+            .text-input
+                i.fa.fa-phone
+                input(type="text" name="phone" placeholder="تلفن" value="#{user.phone}" required)
+            .text-input
+                i.fa.fa-link
+                input(type="text" name="affiliation" placeholder="وابستگی" required)
+            .text-input
+                select#select(name="league" required)
+                    option(value="فوتبالیست سبک وزن") فوتبالیست سبک وزن
+                    option(value="فوتبالیست وزن آزاد") فوتبالیست وزن آزاد
+                    option(value="امداد فضای مشترک") امداد فضای مشترک
+                    option(value="برنامه نویسی مقدماتی") برنامه نویسی مقدماتی
+                    option(value="برنامه نویسی پیشرفته") برنامه نویسی پیشرفته
+                    option(value="خودروهای هوشمند") خودروهای هوشمند
+            input.submit(type="submit" value="ثبت")
+            
+
+            
