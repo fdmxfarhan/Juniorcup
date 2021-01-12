@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    .two-part
+        .part
+            img.avatar(src="/images/man.png", alt="avatar")
+            .text
+                h1= user.fullname
+                .item.blue= user.username
+                .item 
+                    i.fa.fa-envelope
+                    | #{user.email}
+                .item 
+                    i.fa.fa-phone
+                    | #{user.phone}
+                a.edit(href="/dashboard")
+                    i.fa.fa-edit
+                    | ویرایش اطلاعات
+        .part
+            h1.part-title
+                i.fa.fa-newspaper-o
+                | آخرین اخبار
+            .last-news
+                table
+                    tr
+                        td.title
+                            //- i.fa.fa-newspaper-o
+                            | عنوان
+                        td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
+                    tr
+                        td.title عنوان
+                        td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
+                    tr
+                        td.title عنوان
+                        td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
+    table
+        -for(var i=0; i<users.length; i++){
+            tr
+                td= users[i].fullname
+                td= users[i].username
+                td= users[i].email
+                td= users[i].phone
+                td= users[i].role
+                
+        -}
+    //- h1.title 
+    //-     i.fa.fa-users
+    //-     | تیم های من
+    //- .teams-area
+    //-     .all-content
+    //-         a.team(href="#")
+    //-             .name fdmx
+    //-             .item سرپرست: دائمی مژدهی
+    //-             .item فوتبالیست سبک وزن
+            
+    //-         a.add-team(href="#")
+    //-             i.fa.fa-plus
+    //-             h1 افزودن تیم جدید

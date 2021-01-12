@@ -4,22 +4,20 @@ const { ensureAuthenticated } = require('../config/auth');
 var User = require('../models/User');
 
 router.get('/', ensureAuthenticated,(req, res, next) => {
-    res.render('./dashboard/user-dashboard',{
-        user: req.user
-    });
+    if(req.user.role == 'user'){
+        res.render('./dashboard/user-dashboard',{
+            user: req.user
+        });
+    }
+    else if(req.user.role == 'admin'){
+        User.find({}, (err, users) => {
+            res.render('./dashboard/admin-dashboard',{
+                user: req.user,
+                users
+            });
+        });
+    }
 });
-// router.get('/users',(req, res, next) => {
-//     User.updateMany({username: 'fdmxfarhan'}, {$set: {role: 'admin'}}, (err, res) => {
-//         if(err) console.log(err);
-//     })
-//     User.find({}, (err, users) => {
-//         if(err) console.log(err);
-//         console.log(users);
-//         res.render('./dashboard/users',{
-//             users
-//         });
-//     });
-// });
 
 
 module.exports = router;
