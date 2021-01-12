@@ -8,18 +8,18 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
         user: req.user
     });
 });
-router.get('/users',(req, res, next) => {
-    User.updateMany({username: 'fdmxfarhan'}, {$set: {role: 'admin'}}, (err, res) => {
-        if(err) console.log(err);
-    })
-    User.find({}, (err, users) => {
-        if(err) console.log(err);
-        console.log(users);
-        res.render('./dashboard/users',{
-            users
-        });
-    });
-});
+// router.get('/users',(req, res, next) => {
+//     User.updateMany({username: 'fdmxfarhan'}, {$set: {role: 'admin'}}, (err, res) => {
+//         if(err) console.log(err);
+//     })
+//     User.find({}, (err, users) => {
+//         if(err) console.log(err);
+//         console.log(users);
+//         res.render('./dashboard/users',{
+//             users
+//         });
+//     });
+// });
 
 
 module.exports = router;
