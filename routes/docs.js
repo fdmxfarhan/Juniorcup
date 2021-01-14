@@ -19,5 +19,12 @@ router.get('/soccer-light-cpp', (req, res, next) => {
     else
         res.render(`./docs/soccer-light-cpp/1`, {page: 0});
 });
+router.get('/soccer-open-cpp', (req, res, next) => {
+    if(req.query.page)
+        res.render(`./docs/soccer-open-cpp/${req.query.page}`, {page: parseInt(req.query.page)});
+    else
+        res.render(`./docs/soccer-open-cpp/1`, {page: 0});
+});
+
 
 module.exports = router;

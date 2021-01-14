@@ -1,0 +1,47 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+        .content
+            .content-padding
+                h1.purple.medium.font معرفی
+                p.font.small.text 
+                    | در این آموزش با نحوه نصب و راه اندازی شبیه ساز ربات های فوتبالیست سبک وزن آشنا خواهیم شد. نحوه راه اندازی موتور ها و دریافت اطلاعات سنسور ها از ربات در زبان برنامه نویسی پایتون و ++C انجام می شود. 
+                    | نرم افزار شبیه سازی ربات های فوتبالیست توسط نرم افزار Unity طراحی شده که شامل محیطی گرافیکی از زمین مسابقه طبق استاندارد های 
+                    a.font.inline.small.blue(href="/docs/LightWeight2021.pdf" download) قوانین مسابقات ربوکاپ 
+                    | و ربات ها می باشد. با استفاده از این سیمولاتور می توان تمام حرکات و تصمیماتی که ربات در مقابل اطلاعات دریافتی از محیط اطراف خود می گیرد را شبیه سازی کرد.
+                img.fullsize(src="/docs/python/01/images/unity.png")
+                .caption محیط نرم افزار unity
+                h1.purple.medium.font زبان برنامه نویسی
+                p.font.small.text 
+                    | ++C بر اساس آخرین رتبه‌بندی‌ها در رده چهارم محبوب‌ترین زبان‌های برنامه‌نویسی قرار دارد. یادگیری زبان برنامه‌نویسی ++C برای همه برنامه‌نویس‌ها یک سرمایه‌گذاری هوشمندانه محسوب می‌شود.  
+                    | نرم افزار سیمولاتور فوتبالیست سبک وزن این امکان را دارد تا اطلاعات ربات که شامل مقادیر سنسورهای آن می شود را در اختیار برنامه شما قرار دهد و برنامه شما نیز می تواند به راحتی به ربات دستورات حرکتی و تصمیم گیری را ارسال کند.
+                img.fullsize(src="/docs/cpp/cover.png")
+                .caption محیط سیمولاتور ربات های فوتبالیست
+                
+            .buttons
+                //- a.prev(href="/docs/soccer-light-cpp?page=#{page-1}") 
+                //-     i.fa.fa-chevron-right
+                //-     | صفحه قبل
+                a.next(href="/docs/soccer-light-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+                
+                
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

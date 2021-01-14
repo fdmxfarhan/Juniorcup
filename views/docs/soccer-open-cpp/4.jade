@@ -1,0 +1,62 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+        .content
+            .content-padding
+                h1.purple.medium.font ساخت پروژه
+                p.font.small.text 
+                    | برای اجرای برنامه و برقراری ارتباط با سیمولاتور ابتدا باید در CodeBlocs یک پروژه جدید بسازید. بدین منظور ابتدا گزینه Create a new project را بزنید.
+                img.fullsize(src="/docs/cpp/img/11.png")
+                p.font.small.text 
+                    | سپس گزینه ctalk console را انتخاب کرده و بر روی Go کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/12.png")
+                p.font.small.text 
+                    | در این قسمت Next بزنید.
+                img.fullsize(src="/docs/cpp/img/13.png")
+                p.font.small.text 
+                    | زبان برنامه نویسی ++C را انتخاب کرده و Next بزنید.
+                img.fullsize(src="/docs/cpp/img/14.png")
+                p.font.small.text 
+                    | نام پروژه خود را در قسمت Project title مشخص کرده و با زدن ... مسیر ذخیره سازی آن را نیز مشخص کنید.
+                img.fullsize(src="/docs/cpp/img/15.png")
+                img.fullsize(src="/docs/cpp/img/16.png")
+                p.font.small.text 
+                    | بر روی Next کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/17.png")
+                p.font.small.text 
+                    | کامپایلر خود را بر روی GNU GCC Compiler قرار دهید و گزینه Finish را بزنید
+                img.fullsize(src="/docs/cpp/img/18.png")
+                p.font.small.text 
+                    | پروژه شما ساخته شده و حالا آماده است. به صورت خودکار CodeBlocks چند تا از کتابخانه های مهم و پرکاربرد ++C را به برنامه شما اضافه می کند. 
+                    | همچنین تابع ()main برنامه نیز به صورت خودکار ساخته می شود و در آن با استفاده از دستور cout عبارت !Hello World چاپ می شود.
+                img.fullsize(src="/docs/cpp/img/19.png")
+                p.font.small.text 
+                    | برای اجرای برنامه ها کافی است از قسمت نوار بالا گزینه build and run را همانند تصویر بزنید و یا از کلید میانبر F9 استفاده کنید.
+                img.fullsize(src="/docs/cpp/img/20.png")
+                img.fullsize(src="/docs/cpp/img/21.png")
+                
+            .buttons
+                a.prev(href="/docs/soccer-light-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/soccer-light-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")
