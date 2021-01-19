@@ -2,8 +2,14 @@ var express = require('express');
 var router = express.Router();
 var Gallery = require('../models/Gallery');
 
+const competitionDate = new Date('April 15, 2021 07:00:00');
+
 router.get('/', (req, res, next) => {
-    res.render('index');
+    var todayDate = Date.now();
+    var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
+    res.render('index', {
+        milisecUntilCompetition
+    });
 });
 
 router.get('/gallery', (req, res, next) => {

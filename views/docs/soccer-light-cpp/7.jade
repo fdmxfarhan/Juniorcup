@@ -12,6 +12,18 @@ block content
             include pages
             
         .content
+            .content-padding
+                h1.purple.medium.font سنسورهای TSOP
+                p.font.small.text 
+                    | 
+                
+            .buttons
+                a.prev(href="/docs/soccer-light-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/soccer-light-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
 
     .bg-toggle
         .bg-button
