@@ -36,4 +36,30 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
     });
 });
 
+router.post('/add-member', ensureAuthenticated, (req, res, next) => {
+    const {teamName, member} = req.body;
+    User.findOne({username: member}, (err, user)=>{
+        if(err) console.log(err);
+        if(user){
+            Team.findOne({teamName: teamName}, (err, team)=>{
+                var flag = true;
+                for(var i=0; i<team.members.length; i++){
+                    if(team.members[i].username == member) flag = false;
+                }
+                if(flag){
+                    var membersList = team.members;
+                    var price = team.price;
+                    price += 300000;
+                    membersList.push(user);
+                    Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
+                        res.redirect('/dashboard');
+                    });
+                }
+                else res.send('member was added befor');
+            });
+        }
+        else res.send('user not found');
+    });
+});
+
 module.exports = router;

@@ -250,6 +250,7 @@ body{
         text-decoration: none;
         color: var(--textcolor);
         transition-duration: 500ms;
+        cursor: pointer;
     }
     .dashboard .teams-area a.team:hover{
         background-color: cyan;
@@ -440,7 +441,7 @@ body{
         padding-bottom: 1vw;
         margin-bottom: 2vw;
     }
-    .pop-up form .text-input{
+    .pop-up form.add-team-form .text-input{
         background-color: white;
         box-shadow: 0 0 0.5vw 0.2vw rgba(0, 0, 0, 0.2);
         border-radius: 2vw;
@@ -451,23 +452,23 @@ body{
         text-align: right;
         padding: 0;
     }
-    .pop-up form .text-input input{
+    .pop-up form.add-team-form .text-input input{
         width: 80%;
         border: none;
         font-family: 'iransans';
         font-size: 1.1vw;
         padding: 0.4vw 1vw;
     }
-    .pop-up form .text-input input:focus{
+    .pop-up form.add-team-form .text-input input:focus{
         outline: none;
     }
-    .pop-up form .text-input i{
+    .pop-up form.add-team-form .text-input i{
         font-size: 1.3vw;
         padding: 0 1vw;
         color: var(--purple);
         display: inline;
     }
-    .pop-up form select{
+    .pop-up form.add-team-form select{
         border: none;
         width: 90%;
         background-color: white;
@@ -476,14 +477,14 @@ body{
         padding: 0.4vw 0;
         font-family: 'iransans';
     }
-    .pop-up form select:focus{
+    .pop-up form.add-team-form select:focus{
         outline: none;
     }
     .pop-up form object{
         padding: 0.5vw 0;
         font-family: 'iransans';
     }
-    .pop-up form input.submit{
+    .pop-up form.add-team-form input.submit{
         display: block;
         width: 60%;
         margin: 2vw auto;
@@ -497,14 +498,159 @@ body{
         padding: 0.4vw 0;
         border-radius: 2vw;
     }
-    .pop-up form input.submit:hover{
+    .pop-up form.add-team-form input.submit:hover{
         background-color: chocolate;
     }
-    .pop-up form input.submit:focus{
+    .pop-up form.add-team-form input.submit:focus{
         outline: none;
     }
     /* ----------------------- flag ----------------------------- */
-    
+    .pop-up.team-info-popup{
+        text-align: right;
+        direction: rtl;
+    }
+    .pop-up h1.info-title{
+        font-family: 'iransans';
+        font-size: 1.5vw;
+        color: var(--purple);
+        margin: 0;
+        padding: 1.5vw 0;
+    }
+    .pop-up .info{
+        font-family: 'iransans';
+        border-radius: 1.5vw;
+        border: var(--hover) 2px dashed;
+        padding: 1vw 2vw;
+        width: 70%;
+    }
+    .pop-up .info h1.name{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+    }
+    .pop-up .info .red{
+        color: red;
+        display: inline;
+    }
+    .pop-up .info .green{
+        color: green;
+        display: inline;
+    }
+    .pop-up .info .purple{
+        color: var(--purple);
+        display: inline;
+    }
+    .pop-up .part{
+        float: right;
+        width: 50%;
+    }
+    .pop-up .member{
+        background-color: rgb(176, 236, 196);
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        border-radius: 1vw;
+        /* border: lightgray 0.1vw solid; */
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        padding: 0.4vw 1vw;
+        color: var(--textcolor);
+        position: relative;
+        margin-bottom: 1vw;
+    }
+    .pop-up .member .actions{
+        /* background-color: lightgreen; */
+        position: absolute;
+        left: 1vw;
+        top: 0.4vw;
+    }
+    .pop-up .member .actions a{
+        color: rgb(115, 168, 238);
+        transition-duration: 500ms;
+    }
+    .pop-up .member .actions a:hover{
+        color: chocolate;
+    }
+    a.add-member{
+        background-color: var(--purple);
+        color: white;
+        cursor: pointer;
+        border-radius: 1vw;
+        padding: 0.4vw 1vw;
+        display: block;
+        width: fit-content;
+        transition-duration: 500ms;
+        margin-top: 2vw;
+    }
+    a.add-member:hover{
+        background-color: chocolate;
+        padding: 0.4vw 2vw;
+    }
+    a.add-member i{
+        padding-left: 1vw;
+    }
+    form.add-member{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+    }
+    form.add-member input.inline-input{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        padding: 0.4vw 2vw;
+        background-color: white;
+        /* border-radius: 0.5vw; */
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        border-left: none;
+        width: 70%;
+    }
+    form.add-member input.inline-input:focus{
+        outline: none;
+    }
+    form.add-member input.inline-submit{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        padding: 0.4vw 1vw;
+        background-color: var(--purple);
+        /* border-radius: 0.5vw; */
+        border-top-left-radius: 1vw;
+        border-bottom-left-radius: 1vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        border-right: none;
+        color: white;
+        cursor: pointer;
+        width: 15%;
+    }
+    form.add-member input.inline-submit:hover{
+        background-color: chocolate;
+    }
+
+    .pop-up .no-members{
+        color: rgb(180, 180, 180);
+    }
+    .pop-up a.pay{
+        /* background-color: var(--purple);
+        font-size: 1.1vw;
+        color: white;
+        border-radius: 1vw; */
+        /* background-color: var(--purple); */
+        color: var(--purple);
+        border-radius: 1vw;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 0.3vw 1vw;
+        display: block;
+        width: fit-content;
+        margin-top: 1vw;
+    }
+    .pop-up a.pay:hover{color: chocolate;}
+    .pop-up a.pay i{
+        padding-left: 0.5vw;
+    }
 }
 @media only screen and (max-width: 800px) {
     .navigation{
@@ -741,6 +887,7 @@ body{
         text-decoration: none;
         color: var(--textcolor);
         transition-duration: 500ms;
+        cursor: pointer;
     }
     .dashboard .teams-area a.team:hover{
         background-color: cyan;

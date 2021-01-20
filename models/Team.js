@@ -8,9 +8,20 @@ var TeamSchema = new mongoose.Schema({
   phone: String,
   affiliation: String,
   members: [Object],
-  qualified: Boolean,
+  qualified: {
+    type: Boolean,
+    default: false
+  },
   dateOfRegister: Date,
-  league: String
+  league: String,
+  payed: {
+    type: Boolean,
+    default: false
+  },
+  price: {
+    type: Number,
+    default: 500000
+  }
 });
 
 var Team = mongoose.model('Team', TeamSchema);

@@ -42,8 +42,8 @@ block content
     
     .register
         h1.title 
-            i.fa.fa-user-plus 
-            | ثبت نام 
+            i.fa.fa-sign-in
+            | ورود
         form(action="/users/login" id="register" method="POST")
             .text-input-area
                 input.textinput(type="text" placeholder="نام کاربری" name="username" value= "#{ typeof uname != 'undefined' ? uname: '' }")
@@ -52,6 +52,6 @@ block content
                 input.textinput(type="password" placeholder="رمز عبور" name="password" value= "#{ typeof psw != 'undefined' ? psw: '' }")
                 i.fa.fa-key
             .text-input-area
-                button.submit(type="submit") ثبت نام
+                button.submit(type="submit") ورود
             a.link(href="/users/register") هنوز ثبت نام نکرده اید؟
     script(src="/javascripts/register.js")

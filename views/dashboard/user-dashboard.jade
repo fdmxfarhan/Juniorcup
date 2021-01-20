@@ -40,7 +40,7 @@ block content
         .all-content
             -if(teams){
                 -for(var i=0; i<teams.length; i++){
-                    a.team(href="#")
+                    a.team(id="team-info-btn-#{i}")
                         .name= teams[i].teamName
                         .item= teams[i].mentor
                         .item= teams[i].league
@@ -53,7 +53,7 @@ block content
     .pop-up#add-team-popup
         span.close#close-pup-up &times;
         h1.popup-title افزودن تیم جدید
-        form(action="/dashboard/register-team" method="POST")
+        form.add-team-form(action="/dashboard/register-team" method="POST")
             .text-input
                 i.fa.fa-users
                 input(type="text" name="teamName" placeholder="نام تیم" required)
@@ -78,6 +78,48 @@ block content
                     option(value="برنامه نویسی پیشرفته") برنامه نویسی پیشرفته
                     option(value="خودروهای هوشمند") خودروهای هوشمند
             input.submit(type="submit" value="ثبت")
-            
-
-            
+    -for(var i=0; i<teams.length; i++){
+        .pop-up.team-info-popup(id="team-info-#{i}")
+            span.close#close-pup-up &times;
+            .part
+                h1.info-title اطلاعات تیم
+                .info
+                    h1.name نام تیم: #{teams[i].teamName}
+                    .item سرپرست: #{teams[i].mentor}
+                    .item لیگ: #{teams[i].league}
+                    .item وابستگی: #{teams[i].affiliation}
+                    .item هزینه ثبت نام: #{teams[i].price} ریال
+                    .item وضعیت پرداخت: 
+                        -if(teams[i].payed)
+                            .green پرداخت شده
+                        -else
+                            .red پرداخت نشده
+                    .item وضعیت تایید: 
+                        -if(teams[i].qualified)
+                            .green تایید شده
+                        -else
+                            .purple در حال بررسی
+                a.pay(href="#") 
+                    i.fa.fa-tag
+                    | پرداخت هزینه
+            .part
+                h1.info-title اعضا
+                -for(var j=0; j<teams[i].members.length; j++){
+                    .member
+                        .name= teams[i].members[j].fullname
+                        .actions
+                            a(href="/dashboard/remove-member?member=#{teams[i].members[j].username}")
+                                i.fa.fa-trash
+                -}
+                -if(teams[i].members.length == 0){
+                    .no-members هیچ عضوی برای این تیم ثبت نشده.
+                -}
+                form.add-member(action="/dashboard/add-member" method="POST")
+                    input.hidden(type="text" name="teamName" value="#{teams[i].teamName}")
+                    input.inline-input(type="text" name="member" placeholder="نام کاربری")
+                    input.inline-submit(type="submit" value="ثبت")
+                a.add-member
+                    i.fa.fa-user-plus
+                    | افزودن عضو جدید
+    -}
+        
