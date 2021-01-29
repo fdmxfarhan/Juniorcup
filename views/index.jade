@@ -19,7 +19,7 @@ html
                     a.nav-link#nav-link1.active(href='/') 
                         i.fa.fa-home.nav-icon 
                         | صفحه اصلی
-                    a.nav-link#nav-link3(href='/education')
+                    a.nav-link#nav-link3(href='/leagues')
                         //- i.fa.fa-photo.nav-icon 
                         | لیگ ها
                     a.nav-link#nav-link3(href='/gallery')
@@ -130,7 +130,7 @@ html
                                 th پذیرفته شده
                                 th قوانین
                             tr
-                                td 0
+                                td= soccerLightNum
                                 td 0
                                 td 
                                     a(href="/" download) دانلود قوانین
@@ -146,7 +146,39 @@ html
                                 th پذیرفته شده
                                 th قوانین
                             tr
+                                td= soccerOpenNum
                                 td 0
+                                td 
+                                    a(href="/" download) دانلود قوانین
+                .item
+                    .top
+                        i.fa.fa-gears
+                        h1.name خودرو هوشمند
+                        h1.state غیر حضوری
+                    .bottom
+                        table
+                            tr
+                                th تعداد تیم ها
+                                th پذیرفته شده
+                                th قوانین
+                            tr
+                                td= smartCarNum
+                                td 0
+                                td 
+                                    a(href="/" download) دانلود قوانین
+                .item
+                    .top
+                        i.fa.fa-code
+                        h1.name برنامه نویسی
+                        h1.state غیر حضوری
+                    .bottom
+                        table
+                            tr
+                                th تعداد تیم ها
+                                th پذیرفته شده
+                                th قوانین
+                            tr
+                                td= cospaceNum
                                 td 0
                                 td 
                                     a(href="/" download) دانلود قوانین
@@ -162,39 +194,7 @@ html
                                 th پذیرفته شده
                                 th قوانین
                             tr
-                                td 0
-                                td 0
-                                td 
-                                    a(href="/" download) دانلود قوانین
-                .item
-                    .top
-                        i.fa.fa-code
-                        h1.name برنامه نویسی مقدماتی
-                        h1.state غیر حضوری
-                    .bottom
-                        table
-                            tr
-                                th تعداد تیم ها
-                                th پذیرفته شده
-                                th قوانین
-                            tr
-                                td 0
-                                td 0
-                                td 
-                                    a(href="/" download) دانلود قوانین
-                .item
-                    .top
-                        i.fa.fa-code
-                        h1.name برنامه نویسی پیشرفته
-                        h1.state غیر حضوری
-                    .bottom
-                        table
-                            tr
-                                th تعداد تیم ها
-                                th پذیرفته شده
-                                th قوانین
-                            tr
-                                td 0
+                                td= programmingNum
                                 td 0
                                 td 
                                     a(href="/" download) دانلود قوانین

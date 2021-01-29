@@ -4,6 +4,10 @@ const { ensureAuthenticated } = require('../config/auth');
 var User = require('../models/User');
 var Team = require('../models/Team');
 
+const memberPrice = 300000;
+
+// Team.deleteMany({}, (err) => console.log(err));
+
 router.get('/', ensureAuthenticated,(req, res, next) => {
     if(req.user.role == 'user'){
         Team.find({username: req.user.username}, (err, teams) => {
@@ -37,28 +41,41 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
 });
 
 router.post('/add-member', ensureAuthenticated, (req, res, next) => {
-    const {teamName, member} = req.body;
-    User.findOne({username: member}, (err, user)=>{
-        if(err) console.log(err);
-        if(user){
-            Team.findOne({teamName: teamName}, (err, team)=>{
-                var flag = true;
-                for(var i=0; i<team.members.length; i++){
-                    if(team.members[i].username == member) flag = false;
-                }
-                if(flag){
-                    var membersList = team.members;
-                    var price = team.price;
-                    price += 300000;
-                    membersList.push(user);
-                    Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
-                        res.redirect('/dashboard');
-                    });
-                }
-                else res.send('member was added befor');
+    const {teamName, fullName, idNumber, birth, phone, address} = req.body;
+    if(teamName && fullName && idNumber && birth && phone && address){
+        Team.findOne({teamName: teamName}, (err, team)=>{
+            var flag = true;
+            for(var i=0; i<team.members.length; i++){
+                if(team.members[i].username == fullName) flag = false;
+            }
+            if(flag){
+                var membersList = team.members;
+                var price = team.price;
+                price += memberPrice;
+                membersList.push({fullName, idNumber, birth, phone, address});
+                Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
+                    res.redirect(`/dashboard/team?teamName=${teamName}`);
+                });
+            }
+            else res.send('member was added befor');
+        });
+    } else res.send('error');
+});
+
+router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
+    const {idNumber, teamName} = req.query;
+    Team.findOne({teamName: teamName}, (err, team)=>{
+        var membersList = [];
+        team.members.forEach(member => {
+            if(member.idNumber != idNumber){
+                membersList.push(member);
+            }
+            var price = team.price;
+            price -= memberPrice;
+            Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
+                res.redirect(`/dashboard/team?teamName=${teamName}`);
             });
-        }
-        else res.send('user not found');
+        });
     });
 });
 
@@ -68,4 +85,12 @@ router.get('/setting', ensureAuthenticated, (req, res, next) => {
     });
 });
 
+router.get('/team', ensureAuthenticated, (req, res, next) => {
+    Team.findOne({teamName: req.query.teamName}, (err, team)=> {
+        res.render('./dashboard/teamView', {
+            user: req.user,
+            team
+        })
+    });
+});
 module.exports = router;

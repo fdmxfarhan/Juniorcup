@@ -1,0 +1,61 @@
+extends layout
+
+block content
+    .team-info-panel
+        .part
+            h1.info-title اطلاعات تیم
+            .info
+                h1.name نام تیم: #{team.teamName}
+                .item سرپرست: #{team.mentor}
+                .item لیگ: #{team.league}
+                .item وابستگی: #{team.affiliation}
+                .item هزینه ثبت نام: #{team.price} ریال
+                .item وضعیت پرداخت: 
+                    -if(team.payed)
+                        .green پرداخت شده
+                    -else
+                        .red پرداخت نشده
+                .item وضعیت تایید: 
+                    -if(team.qualified)
+                        .green تایید شده
+                    -else
+                        .purple در حال بررسی
+            a.pay(href="#") 
+                i.fa.fa-tag
+                | پرداخت هزینه
+        .part
+            h1.info-title اعضا
+            -for(var j=0; j<team.members.length; j++){
+                .member
+                    .name= team.members[j].fullName
+                    .actions
+                        a(href="/dashboard/remove-member?idNumber=#{team.members[j].idNumber}&teamName=#{team.teamName}")
+                            i.fa.fa-trash
+            -}
+            -if(team.members.length == 0){
+                .no-members هیچ عضوی برای این تیم ثبت نشده.
+            -}
+            form.add-member(action="/dashboard/add-member" method="POST")
+                input.hidden(type="text" name="teamName" value="#{team.teamName}")
+                .text-input
+                    i.fa.fa-user
+                    input(type="text" name="fullName" placeholder="نام و نام خانوادگی")
+                .text-input
+                    i.fa.fa-user
+                    input(type="Number" name="idNumber" placeholder="کد ملی")
+                .text-input
+                    i.fa.fa-user
+                    input(type="text" name="birth" placeholder="تاریخ تولد")
+                .text-input
+                    i.fa.fa-user
+                    input(type="Number" name="phone" placeholder="شماره تلفن")
+                .text-input
+                    i.fa.fa-user
+                    input(type="text" name="address" placeholder="آدرس پستی")
+                
+                input.inline-submit(type="submit" value="ثبت")
+            -if(team.members.length < 3){
+                a.add-member
+                    i.fa.fa-user-plus
+                    | افزودن عضو جدید
+            -}

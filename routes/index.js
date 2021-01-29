@@ -1,15 +1,34 @@
 var express = require('express');
 var router = express.Router();
 var Gallery = require('../models/Gallery');
+const Team = require('../models/Team');
 
 const competitionDate = new Date('April 15, 2021 07:00:00');
 
 router.get('/', (req, res, next) => {
     var todayDate = Date.now();
     var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
-    res.render('index', {
-        milisecUntilCompetition
-    });
+    Team.find({}, (err, teams) => {
+        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
+        for(var i=0; i < teams.length; i++)
+        {
+            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
+            if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
+            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+            if(teams[i].league == 'برنامه نویسی')       programmingNum++;
+            if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
+            
+        }
+        res.render('index', {
+            milisecUntilCompetition,
+            teams,
+            soccerLightNum,
+            soccerOpenNum,
+            smartCarNum,
+            cospaceNum,
+            programmingNum
+        });
+    })
 });
 
 router.get('/gallery', (req, res, next) => {

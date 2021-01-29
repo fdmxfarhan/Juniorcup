@@ -505,45 +505,47 @@ body{
         outline: none;
     }
     /* ----------------------- flag ----------------------------- */
-    .pop-up.team-info-popup{
+    .team-info-panel{
+        width: 90%;
         text-align: right;
         direction: rtl;
+        margin: auto;
     }
-    .pop-up h1.info-title{
+    .team-info-panel h1.info-title{
         font-family: 'iransans';
         font-size: 1.5vw;
         color: var(--purple);
         margin: 0;
         padding: 1.5vw 0;
     }
-    .pop-up .info{
+    .team-info-panel .info{
         font-family: 'iransans';
         border-radius: 1.5vw;
         border: var(--hover) 2px dashed;
         padding: 1vw 2vw;
         width: 70%;
     }
-    .pop-up .info h1.name{
+    .team-info-panel .info h1.name{
         font-family: 'iransans';
         font-size: 1.3vw;
     }
-    .pop-up .info .red{
+    .team-info-panel .info .red{
         color: red;
         display: inline;
     }
-    .pop-up .info .green{
+    .team-info-panel .info .green{
         color: green;
         display: inline;
     }
-    .pop-up .info .purple{
+    .team-info-panel .info .purple{
         color: var(--purple);
         display: inline;
     }
-    .pop-up .part{
+    .team-info-panel .part{
         float: right;
         width: 50%;
     }
-    .pop-up .member{
+    .team-info-panel .member{
         background-color: rgb(176, 236, 196);
         font-family: 'iransans';
         font-size: 1.2vw;
@@ -555,17 +557,17 @@ body{
         position: relative;
         margin-bottom: 1vw;
     }
-    .pop-up .member .actions{
+    .team-info-panel .member .actions{
         /* background-color: lightgreen; */
         position: absolute;
         left: 1vw;
         top: 0.4vw;
     }
-    .pop-up .member .actions a{
+    .team-info-panel .member .actions a{
         color: rgb(115, 168, 238);
         transition-duration: 500ms;
     }
-    .pop-up .member .actions a:hover{
+    .team-info-panel .member .actions a:hover{
         color: chocolate;
     }
     a.add-member{
@@ -592,20 +594,29 @@ body{
         width: 100%;
         display: none;
     }
-    form.add-member input.inline-input{
-        font-family: 'iransans';
-        font-size: 1.1vw;
-        padding: 0.4vw 2vw;
+    form.add-member .text-input{
         background-color: white;
-        /* border-radius: 0.5vw; */
-        border-top-right-radius: 1vw;
-        border-bottom-right-radius: 1vw;
+        border-radius: 1.5vw;
         border: lightgray 0.1vw solid;
         box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
         border-left: none;
-        width: 70%;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1vw;
     }
-    form.add-member input.inline-input:focus{
+    form.add-member .text-input input{
+        font-size: 1.2vw;
+        font-family: 'iransans';
+        padding: 0.5vw 1vw;
+        border: none;
+        width: 80%;
+    }
+    form.add-member .text-input i{
+        color: var(--purple);
+        font-size: 1.4vw;
+        padding: 0.5vw 1vw;
+    }
+    form.add-member input:focus{
         outline: none;
     }
     form.add-member input.inline-submit{
@@ -614,8 +625,7 @@ body{
         padding: 0.4vw 1vw;
         background-color: var(--purple);
         /* border-radius: 0.5vw; */
-        border-top-left-radius: 1vw;
-        border-bottom-left-radius: 1vw;
+        border-radius: 1vw;
         border: lightgray 0.1vw solid;
         box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
         border-right: none;
@@ -627,10 +637,10 @@ body{
         background-color: chocolate;
     }
 
-    .pop-up .no-members{
+    .team-info-panel .no-members{
         color: rgb(180, 180, 180);
     }
-    .pop-up a.pay{
+    .team-info-panel a.pay{
         /* background-color: var(--purple);
         font-size: 1.1vw;
         color: white;
@@ -647,8 +657,8 @@ body{
         width: fit-content;
         margin-top: 1vw;
     }
-    .pop-up a.pay:hover{color: chocolate;}
-    .pop-up a.pay i{
+    .team-info-panel a.pay:hover{color: chocolate;}
+    .team-info-panel a.pay i{
         padding-left: 0.5vw;
     }
 }
