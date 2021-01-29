@@ -62,4 +62,10 @@ router.post('/add-member', ensureAuthenticated, (req, res, next) => {
     });
 });
 
+router.get('/setting', ensureAuthenticated, (req, res, next) => {
+    res.render('./dashboard/user-setting', {
+        user: req.user
+    });
+});
+
 module.exports = router;
