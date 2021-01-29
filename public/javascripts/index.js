@@ -1,14 +1,15 @@
 $(document).ready(function(){
     $('.navbar-toggler').click(() => {
-        $('#navbarSupportedContent').show(1000);
-        $('.transparent-modal').show();
+        if($(window).width() < 800){
+            $('#navbarSupportedContent').show(1000);
+            $('.transparent-modal').show();
+        }
     });
     $('.transparent-modal').click(() => {
         $('#navbarSupportedContent').hide();
         $('.transparent-modal').hide();
     });
-
-
+    
     // var Showinfo = false;
     // $('#info-text').hide();
     // $('#info-img').hide();

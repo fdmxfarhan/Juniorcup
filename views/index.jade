@@ -28,10 +28,10 @@ html
                     a.nav-link#nav-link4(href='/docs') 
                         //- i.fa.fa-tv.nav-icon 
                         | آموزش
-                    a.nav-link#nav-link6(href='/gallery') 
+                    a.nav-link#nav-link6(href='/about') 
                         //- i.fa.fa-question.nav-icon 
                         | درباره ما
-                    a.nav-link#nav-link5(href='/about') 
+                    a.nav-link#nav-link5(href='/contact') 
                         //- i.fa.fa-phone.nav-icon 
                         | تماس با ما
                 a.user-login(href="/users/login")
@@ -201,22 +201,22 @@ html
         .counter-content
             img(src="/images/landing/bigfield.jpg", alt="bigfield")
             .counter
-                h1.title تا شروع مسابقه بعدی
+                h1.title تا شروع مسابقه
                 .parts-area
                     .part
-                        h1.number ۵۹
+                        h1.number= time.secconds
                         h1.name ثانیه
                     .part
-                        h1.number ۳۰
+                        h1.number= time.minuts
                         h1.name دقیقه
                     .part
-                        h1.number ۵
+                        h1.number= time.hours
                         h1.name ساعت
                     .part
-                        h1.number ۳
+                        h1.number= time.days
                         h1.name روز
                     .part
-                        h1.number 10 
+                        h1.number= time.weeks
                         //- milisecUntilCompetition % (60 * 60 * 24 * 7)
                         h1.name هفته
         .supporters-content
