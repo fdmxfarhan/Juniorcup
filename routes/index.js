@@ -5,6 +5,15 @@ const Team = require('../models/Team');
 
 const competitionDate = new Date('April 15, 2021 07:00:00');
 
+var getMax = (arr) => {
+    max = 0;
+    for(var i=0; i<arr.length; i++)
+    {
+        if(arr[i] > max) max = arr[i];
+    }
+    return max;
+}
+
 router.get('/', (req, res, next) => {
     var todayDate = Date.now();
     var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
@@ -92,7 +101,27 @@ router.post('/gallery/comment', (req, res, next) => {
 });
 
 router.get('/leagues', (req, res, next) => {
-    res.render('./leagues/home');
+    Team.find({}, (err, teams) => {
+        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
+        for(var i=0; i < teams.length; i++)
+        {
+            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
+            if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
+            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+            if(teams[i].league == 'برنامه نویسی')       programmingNum++;
+            if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
+        }
+        var maxNum = getMax([soccerLightNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum]);
+        res.render('./leagues/home', {
+            teams,
+            soccerLightNum,
+            soccerOpenNum,
+            smartCarNum,
+            cospaceNum,
+            programmingNum,
+            maxNum
+        });
+    })
 });
 
 module.exports = router;

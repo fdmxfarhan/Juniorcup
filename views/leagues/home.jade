@@ -1,1 +1,107 @@
 extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/leagues.css")
+
+block content
+    h1.content-title لیگ های مسابقات جونیورکاپ ۲۰۲۱
+    .leagues-cards
+        .card
+            a(href="/leagues/soccer-light")
+                .img
+                    img(src="/images/leagues/light-min.png")
+                h1.title ربات های فوتبالیست سبک وزن
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | بازی فوتبال بین ربات ها با توپ خاصی که از خود نور مادون قرمز ارسال میکند و ربات ها با تشخیص این توپ می توانند به طرف آن حرکت کنند.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= soccerLightNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((soccerLightNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+        .card
+            a(href="/leagues/soccer-open")
+                .img
+                    img(src="/images/leagues/Open-min.png")
+                h1.title ربات های فوتبالیست وزن آزاد
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | بازی فوتبال بین ربات ها با توپ نارنجی رنگ. ربات ها با تشخیص این توپ می توانند به طرف آن حرکت کنند.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= soccerOpenNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((soccerOpenNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+        .card
+            a(href="/leagues/smartcar")
+                .img
+                    img(src="/images/leagues/pathfinder-min.png")
+                h1.title خودرو هوشمند
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | خودرو هوشمندی که در یک شهر کوچک شبیه سازی شده به دستور شما حرکت میکند و اطلاعات محیط اطراف را پردازش میکند.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= smartCarNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((smartCarNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال بررسی
+        .card
+            a(href="/leagues/cospace")
+                .img
+                    img(src="/images/leagues/cospace-min.png")
+                h1.title امداد فضای مشترک
+                .contact
+                    i.fa.fa-envelope 
+                    | f_daemi@yahoo.com
+                p.text
+                    | ربات های امدادگر که وظیفه دارند در یک محیط شبیه سازی شده مسدومی را تشخیص دهند و موقعیت آن را اعلام کنند.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= cospaceNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((cospaceNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+        .card
+            a(href="/leagues/soccer-open")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title برنامه نویسی
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | حل سوالات برنامه نویسی به زبان های Python، ++C و C با استفاده از الگوریتم های حل مسئله و دانش ریاضی.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= programmingNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((programmingNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+    script(src="/javascripts/leagues.js")
