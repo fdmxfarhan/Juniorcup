@@ -91,5 +91,8 @@ router.post('/gallery/comment', (req, res, next) => {
     res.redirect('/gallery');
 });
 
+router.get('/leagues', (req, res, next) => {
+    res.render('./leagues/home');
+});
 
 module.exports = router;

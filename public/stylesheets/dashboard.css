@@ -504,7 +504,6 @@ body{
     .pop-up form.add-team-form input.submit:focus{
         outline: none;
     }
-    /* ----------------------- flag ----------------------------- */
     .team-info-panel{
         width: 90%;
         text-align: right;
@@ -639,6 +638,7 @@ body{
 
     .team-info-panel .no-members{
         color: rgb(180, 180, 180);
+        margin-bottom: 2vw;
     }
     .team-info-panel a.pay{
         /* background-color: var(--purple);
@@ -661,6 +661,8 @@ body{
     .team-info-panel a.pay i{
         padding-left: 0.5vw;
     }
+    /* ----------------------- flag ----------------------------- */
+    
 }
 @media only screen and (max-width: 800px) {
     .navigation{
@@ -1154,5 +1156,173 @@ body{
     }
     .pop-up form input.submit:focus{
         outline: none;
+    }
+    
+
+
+
+    .team-info-panel{
+        width: 90%;
+        text-align: right;
+        direction: rtl;
+        margin: auto;
+        max-height: 90%;
+        overflow-y: scroll;
+    }
+    .team-info-panel h1.info-title{
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        color: var(--purple);
+        margin: 0;
+        padding: 1.5vw 0;
+    }
+    .team-info-panel .info{
+        font-family: 'iransans';
+        border-radius: 3.5vw;
+        border: var(--hover) 2px dashed;
+        padding: 2vw 3vw;
+        width: 90%;
+    }
+    .team-info-panel .info h1.name{
+        font-family: 'iransans';
+        font-size: 3.3vw;
+        margin: 0;
+        
+    }
+    .team-info-panel .info .red{
+        color: red;
+        display: inline;
+    }
+    .team-info-panel .info .green{
+        color: green;
+        display: inline;
+    }
+    .team-info-panel .info .purple{
+        color: var(--purple);
+        display: inline;
+    }
+    .team-info-panel .part{
+        float: right;
+        width: 100%;
+    }
+    .team-info-panel .member{
+        background-color: rgb(176, 236, 196);
+        font-family: 'iransans';
+        font-size: 3.7vw;
+        border-radius: 3vw;
+        /* border: lightgray 0.1vw solid; */
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        padding: 1vw 3vw;
+        color: var(--textcolor);
+        position: relative;
+        margin-bottom: 3vw;
+    }
+    .team-info-panel .member .actions{
+        /* background-color: lightgreen; */
+        position: absolute;
+        left: 3vw;
+        top: 0.5vw;
+    }
+    .team-info-panel .member .actions a{
+        color: rgb(115, 168, 238);
+        transition-duration: 500ms;
+        font-size: 4vw;
+    }
+    .team-info-panel .member .actions a:hover{
+        color: chocolate;
+    }
+    a.add-member{
+        background-color: var(--purple);
+        color: white;
+        cursor: pointer;
+        border-radius: 3vw;
+        padding: 1vw 3vw;
+        display: block;
+        width: fit-content;
+        transition-duration: 500ms;
+        margin-top: 2vw;
+    }
+    a.add-member:hover{
+        background-color: chocolate;
+        padding: 1vw 5vw;
+    }
+    a.add-member i{
+        padding-left: 3vw;
+    }
+    form.add-member{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+    }
+    form.add-member .text-input{
+        background-color: white;
+        border-radius: 3.5vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        border-left: none;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 3vw;
+    }
+    form.add-member .text-input input{
+        font-size: 3.2vw;
+        font-family: 'iransans';
+        padding: 0.5vw 1vw;
+        border: none;
+        width: 80%;
+    }
+    form.add-member .text-input i{
+        color: var(--purple);
+        font-size: 3.4vw;
+        padding: 0.5vw 1vw;
+    }
+    form.add-member input:focus{
+        outline: none;
+    }
+    form.add-member input.inline-submit{
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        padding: 1vw 4vw;
+        background-color: var(--purple);
+        /* border-radius: 0.5vw; */
+        border-radius: 3vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        border-right: none;
+        color: white;
+        cursor: pointer;
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+    form.add-member input.inline-submit:hover{
+        background-color: chocolate;
+    }
+
+    .team-info-panel .no-members{
+        color: rgb(180, 180, 180);
+        margin-bottom: 2vw;
+    }
+    .team-info-panel a.pay{
+        /* background-color: var(--purple);
+        font-size: 1.1vw;
+        color: white;
+        border-radius: 1vw; */
+        /* background-color: var(--purple); */
+        color: var(--purple);
+        border-radius: 1vw;
+        font-family: 'iransans';
+        font-size: 4vw;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 0.3vw 1vw;
+        display: block;
+        width: fit-content;
+        margin-top: 3vw;
+    }
+    .team-info-panel a.pay:hover{color: chocolate;}
+    .team-info-panel a.pay i{
+        padding-left: 2vw;
     }
 }

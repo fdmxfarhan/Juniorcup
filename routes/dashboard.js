@@ -65,16 +65,17 @@ router.post('/add-member', ensureAuthenticated, (req, res, next) => {
 router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
     const {idNumber, teamName} = req.query;
     Team.findOne({teamName: teamName}, (err, team)=>{
+        if(err) console.log(err);
         var membersList = [];
-        team.members.forEach(member => {
-            if(member.idNumber != idNumber){
-                membersList.push(member);
+        for(var i=0; i<team.members.length; i++){
+            if(team.members[i].idNumber != idNumber){
+                membersList.push(team.members[i]);
             }
-            var price = team.price;
-            price -= memberPrice;
-            Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
-                res.redirect(`/dashboard/team?teamName=${teamName}`);
-            });
+        }
+        var price = team.price;
+        price -= memberPrice;
+        Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
+            res.redirect(`/dashboard/team?teamName=${teamName}`);
         });
     });
 });
@@ -86,11 +87,15 @@ router.get('/setting', ensureAuthenticated, (req, res, next) => {
 });
 
 router.get('/team', ensureAuthenticated, (req, res, next) => {
-    Team.findOne({teamName: req.query.teamName}, (err, team)=> {
-        res.render('./dashboard/teamView', {
-            user: req.user,
-            team
-        })
-    });
+    if(req.query.teamName){
+        Team.findOne({teamName: req.query.teamName}, (err, team)=> {
+            if(err) console.log(err);
+            res.render('./dashboard/teamView', {
+                user: req.user,
+                team
+            })
+        });
+    }
+    else res.send('error');
 });
 module.exports = router;
