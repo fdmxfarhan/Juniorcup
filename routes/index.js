@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
     var hours = Math.floor((a - weeks * 604800 - days * 86400) / 3600);
     var minuts = Math.floor((a - weeks * 604800 - days * 86400 - hours * 3600) / 60);
     var secconds = Math.floor(a%60);
-    console.log(milisecUntilCompetition);
+    // console.log(milisecUntilCompetition);
     Team.find({}, (err, teams) => {
         var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
         for(var i=0; i < teams.length; i++)

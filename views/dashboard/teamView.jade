@@ -39,19 +39,19 @@ block content
                 input.hidden(type="text" name="teamName" value="#{team.teamName}")
                 .text-input
                     i.fa.fa-user
-                    input(type="text" name="fullName" placeholder="نام و نام خانوادگی")
+                    input(type="text" name="fullName" placeholder="نام و نام خانوادگی" required)
                 .text-input
                     i.fa.fa-user
-                    input(type="Number" name="idNumber" placeholder="کد ملی")
+                    input(type="Number" name="idNumber" placeholder="کد ملی" required)
                 .text-input
                     i.fa.fa-user
-                    input(type="text" name="birth" placeholder="تاریخ تولد")
+                    input(type="text" name="birth" placeholder="تاریخ تولد" required)
                 .text-input
                     i.fa.fa-user
-                    input(type="Number" name="phone" placeholder="شماره تلفن")
+                    input(type="Number" name="phone" placeholder="شماره تلفن" required)
                 .text-input
                     i.fa.fa-user
-                    input(type="text" name="address" placeholder="آدرس پستی")
+                    input(type="text" name="address" placeholder="آدرس پستی" required)
                 
                 input.inline-submit(type="submit" value="ثبت")
             -if(team.members.length < 3){
