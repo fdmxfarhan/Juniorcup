@@ -124,4 +124,21 @@ router.get('/leagues', (req, res, next) => {
     })
 });
 
+router.get('/leagues/soccer-light', (req, res, next) => {
+    res.render('./leagues/soccer-light');
+});
+
+router.get('/leagues/soccer-open', (req, res, next) => {
+    res.render('./leagues/soccer-light');
+});
+
+router.get('/leagues/smartcar', (req, res, next) => {
+    res.render('./leagues/soccer-light');
+});
+
+router.get('/leagues/cospace', (req, res, next) => {
+    res.render('./leagues/soccer-light');
+});
+
+
 module.exports = router;
