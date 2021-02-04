@@ -140,5 +140,15 @@ router.get('/leagues/cospace', (req, res, next) => {
     res.render('./leagues/soccer-light');
 });
 
+router.get('/about', (req, res, next) => {
+    res.render('about');
+});
+
+router.get('/contact', (req, res, next) => {
+    res.render('contact');
+});
+
+
+
 
 module.exports = router;
