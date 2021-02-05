@@ -242,9 +242,9 @@ p.code{
     }
     /* ----- flag ------- */
     .content img.double{
-        width: 49%;
-        height: 18vw;
-        margin-right: 1%;
+        width: 42%;
+        /* height: 18vw; */
+        margin-right: 5%;
     }
     .code{
         text-align: left;
