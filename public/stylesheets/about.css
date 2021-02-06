@@ -1,0 +1,120 @@
+@media only screen and (min-width: 800px) {
+    h1.about-title{
+        font-family: 'iransans';
+        font-size: 2vw;
+        color: var(--purple);
+        padding: 1vw 4vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        margin: 3vw 10vw;
+        text-align: center;
+        transition:  text-shadow 0.2s linear;
+        text-shadow: 2px 2px 5px white;
+    } 
+ 
+  h1.about-title:hover{
+    text-shadow: 2px 2px 5px blueviolet;
+  } 
+  p.about-text{
+    text-align: justify;
+    margin: 00.85em;
+    font-size: 1.5w;
+    margin: 0 5%;
+  }
+
+    .panel{
+        margin: 0 5%;
+        overflow: hidden;
+    }
+    .panel .contact-info{
+        width: 49%;
+        float: right;
+        margin: 3%;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        padding: 2vw;
+
+
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+    }
+    .panel .google-map{
+        width: 30%;
+        margin: 0%;
+        float: right;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+    }
+    p.information{
+      font-size: 1vw;
+      transition: text-shadow 0.1s linear;
+      color: black;
+      margin: 0.85em;
+      text-shadow: 2px 2px 5px white;
+      
+    
+    }
+    p.information:hover{
+      color: blueviolet;
+      text-shadow: 2px 2px 5px blueviolet;
+    }
+}
+@media only screen and (max-width: 800px) {
+    h1.about-title{
+        font-family: 'iransans';
+        font-size: 5vw;
+        color: var(--purple);
+        padding: 1vw 4vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        margin: 3vw 10vw;
+        text-align: center;
+    }
+    .panel{
+        margin: 0 3%;
+        overflow: hidden;
+    }
+   
+    .panel .contact-info{
+      width: 90%;
+      margin: 3%;
+      border-radius: 2vw;
+      box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+      padding: 2vw;
+
+
+      border: 4px solid transparent;
+      border-radius: 7px;
+      background: 
+          linear-gradient(to right, white, white), 
+          linear-gradient(15deg, red , blue); 
+      background-clip: padding-box, border-box;
+      background-origin: padding-box, border-box;
+  }
+    .panel .google-map{
+      width: 90%;
+      margin: 0%;
+  }
+    p.information{
+      font-size: 4vw;
+      color: black;
+      margin: 0.85em;
+    }
+    p.about-text{
+      text-align: justify;
+      margin: 00.5em;
+      font-size: 3.7vw;
+    }
+} 
+
+
