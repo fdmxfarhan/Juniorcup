@@ -102,4 +102,20 @@ router.get('/team', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('error');
 });
+
+router.get('/users-list', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.find({}, (err, users) => {
+            if(err) console.log(err);
+            else{
+                res.render('./dashboard/admin-users-list', {
+                    user: req.user,
+                    users: users
+                });
+            }
+        });
+    }
+    else res.send('Access Denied!!')
+});
 module.exports = router;

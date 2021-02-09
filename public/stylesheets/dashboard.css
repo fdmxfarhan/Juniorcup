@@ -667,7 +667,45 @@ body{
         margin-top: 0;
         margin-bottom: 1vw;
     }
+    a.admin-link{
+        background-color: lightcoral;
+        color: white;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        text-decoration: none;
+        display: block;
+        width: fit-content;
+        margin-right: 5vw;
+        margin-top: 1vw;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        transition-duration: 500ms;
+    }
+    a.admin-link:hover{background-color: var(--purple);}
+    a.admin-link i{
+        padding-left: 1vw;
+    }
     /* ----------------------- flag ----------------------------- */
+    .table-content{
+        max-height: 78vh;
+        overflow-y: scroll;
+    }
+    table.list-info{
+        width: 80%;
+        margin: auto;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    table.list-info th{
+        background-color: lightgreen;
+        padding: 0.7vw 0;
+    }
+    table.list-info td{
+        border-bottom: var(--purple) 0.1vw solid;
+        padding: 0.5vw 0;
+
+    }
     
 }
 @media only screen and (max-width: 800px) {
@@ -1336,5 +1374,25 @@ body{
         padding: 0;
         margin-top: 0;
         margin-bottom: 3vw;
+    }
+    a.admin-link{
+        background-color: lightcoral;
+        color: white;
+        font-family: 'iransans';
+        font-size: 4vw;
+        text-decoration: none;
+        display: block;
+        /* width: fit-content; */
+        margin-right: 5vw;
+        margin-left: 5vw;
+        margin-top: 3vw;
+        padding: 0.5vw 2vw;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        transition-duration: 500ms;
+    }
+    a.admin-link:hover{background-color: var(--purple);}
+    a.admin-link i{
+        padding-left: 1vw;
     }
 }
