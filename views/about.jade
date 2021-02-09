@@ -1,7 +1,24 @@
 extends layout
 
 block styles
-    link(rel="stylesheet", href="stylesheets/about.css")
+    link(rel="stylesheet", href="/stylesheets/about.css")
 
 block content
-    h1 about
+    h1.about-title درباره ما
+    .panel
+        .about-box
+            p.about-text جونیورکاپ چیست؟
+            p.about-text جونیورکاپ یک مسابقه رباتیک دانش آموزی است که علاقه مندان به ربوکاپ را دور هم جمع می کند تا در فضای آرام و دوستانه رقابتی ایجاد نماید که فارغ از هرگونه حاشیه آموخته ی خود را محک بزنند، از یکدیگر یاد بگیرند، تجربیان خود را به اشتراک بگذارند و از مسابقه دادن لذت ببرند بدون آنکه به برد و باخت اهمیت بدهند.
+            p.about-text دوازده دوره از این مسابقات با عناوین مختلف و با میزبانی مدارس حلی و فرزانگان و باحضور صدها دانش آموز مشتاق رباتیک در محیطی صمیمانه برگزار گردید. اما اکنون در شرایط خاص شیوع بیماری کرونا بر آن شدیم تا طرحی نو بیافرینیم و سیزدهمین دوره مسابقات رباتیک دانش آموزی را به شکل مجازی برگزار نماییم. کمیته فنی جونیورکاپ از مدتها قبل روی این طرح کار کرده که حاصل آن را در بخش های دیگر مشاهده خواهید کرد. 
+            p.about-text امیدواریم توانسته باشیم همراهی و نظر شما را جلب کرده باشیم.
+    h1.about-title تماس با ما
+    .panel
+        .contact-info
+            p.information شماره تماس: 
+                a(href="tel:09197228658") 09197228658 
+            p.information ما را در اینستاگرام دنبال کنید: 
+                a(href="tel:https://www.instagram.com/junior_cup/") instagram.com/junior_cup
+            p.information تهران، امیرآباد، کوچه خسروی، پلاک ۲۵، واحد ۳
+        .google-map
+            iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d680.9807751354139!2d51.38947156571338!3d35.71862500610051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e01d604d0bf83%3A0x68049a6e05924526!2z2KLaqdin2K_ZhduMINix2KjYp9iq24zaqSDYp9uM2LHYp9mG!5e0!3m2!1sen!2s!4v1607695527828!5m2!1sen!2s" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0")
+            //a(href="/gallery") google
