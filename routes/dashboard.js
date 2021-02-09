@@ -4,7 +4,8 @@ const { ensureAuthenticated } = require('../config/auth');
 var User = require('../models/User');
 var Team = require('../models/Team');
 
-const memberPrice = 300000;
+const memberPrice = 750000;
+const cupPrice = 750000;
 
 // Team.deleteMany({}, (err) => console.log(err));
 
@@ -41,7 +42,7 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
 });
 
 router.post('/add-member', ensureAuthenticated, (req, res, next) => {
-    const {teamName, fullName, idNumber, birth, phone, address} = req.body;
+    const {teamName, fullName, idNumber, birth, phone, address, cup} = req.body;
     if(teamName && fullName && idNumber && birth && phone && address){
         Team.findOne({teamName: teamName}, (err, team)=>{
             var flag = true;
@@ -52,7 +53,8 @@ router.post('/add-member', ensureAuthenticated, (req, res, next) => {
                 var membersList = team.members;
                 var price = team.price;
                 price += memberPrice;
-                membersList.push({fullName, idNumber, birth, phone, address});
+                if(cup == 'on') price += cupPrice;
+                membersList.push({fullName, idNumber, birth, phone, address, cup});
                 Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
                     res.redirect(`/dashboard/team?teamName=${teamName}`);
                 });
@@ -67,13 +69,15 @@ router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
     Team.findOne({teamName: teamName}, (err, team)=>{
         if(err) console.log(err);
         var membersList = [];
+        var price = team.price;
+        price -= memberPrice;
         for(var i=0; i<team.members.length; i++){
             if(team.members[i].idNumber != idNumber){
                 membersList.push(team.members[i]);
             }
+            else if(team.members[i].cup) price -= cupPrice;
         }
-        var price = team.price;
-        price -= memberPrice;
+        
         Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
             res.redirect(`/dashboard/team?teamName=${teamName}`);
         });

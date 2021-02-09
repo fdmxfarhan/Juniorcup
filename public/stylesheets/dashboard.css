@@ -661,6 +661,12 @@ body{
     .team-info-panel a.pay i{
         padding-left: 0.5vw;
     }
+    form.add-member p.note{
+        color: darkgray;
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 1vw;
+    }
     /* ----------------------- flag ----------------------------- */
     
 }
@@ -1324,5 +1330,11 @@ body{
     .team-info-panel a.pay:hover{color: chocolate;}
     .team-info-panel a.pay i{
         padding-left: 2vw;
+    }
+    form.add-member p.note{
+        color: darkgray;
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 3vw;
     }
 }

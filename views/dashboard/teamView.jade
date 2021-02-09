@@ -52,7 +52,10 @@ block content
                 .text-input
                     i.fa.fa-user
                     input(type="text" name="address" placeholder="آدرس پستی" required)
-                
+                input(type="checkbox" name="cup")
+                label(for="cup") مایل به دریافت تندیس مسابقات
+                br
+                p.note (مبلغ ۷۵ هزار تومان بابت ساخت تندیس به هزینه ثبت نام شما اضافه می شود)
                 input.inline-submit(type="submit" value="ثبت")
             -if(team.members.length < 3){
                 a.add-member
