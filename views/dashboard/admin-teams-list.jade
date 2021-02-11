@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    .table-content    
+        table.list-info
+            tr 
+                th نام تیم
+                th سرپرست
+                th لیگ
+                th اعضا
+                th عملیات
+            -for(var i=0; i<teams.length; i++){
+                tr
+                    td= teams[i].teamName
+                    td= teams[i].mentor
+                    td= teams[i].league
+                    td
+                        -for(var j=0; j<teams[i].members.length; j++) {
+                            | #{teams[i].members[j].fullName} 
+                            -if(teams[i].members[j].cup)
+                                //- i.fa.fa-check
+                                | (دریافت تندیس)
+                            br
+                        -}
+                    td
+                        a.change-user(href="#") 
+                            i.fa.fa-edit 
+                            | ویرایش
+            -}

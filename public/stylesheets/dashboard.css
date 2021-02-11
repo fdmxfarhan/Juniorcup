@@ -686,7 +686,6 @@ body{
     a.admin-link i{
         padding-left: 1vw;
     }
-    /* ----------------------- flag ----------------------------- */
     .table-content{
         max-height: 78vh;
         overflow-y: scroll;
@@ -706,6 +705,19 @@ body{
         padding: 0.5vw 0;
 
     }
+    table.list-info td a{
+        color: white;
+        background-color: var(--purple);
+        padding: 0.3vw 1vw;
+        border-radius: 1vw;
+        text-decoration: none;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        transition-duration: 500ms;
+    }
+    table.list-info td a:hover{background-color: chocolate;}
+    table.list-info td a i{padding-left: 1vw;}
+    /* ----------------------- flag ----------------------------- */
     
 }
 @media only screen and (max-width: 800px) {
@@ -1395,4 +1407,36 @@ body{
     a.admin-link i{
         padding-left: 1vw;
     }
+    .table-content{
+        max-height: 78vh;
+        overflow-y: scroll;
+        padding: 0 3vw;
+    }
+    table.list-info{
+        width: 250%;
+        margin-top: 2vw;
+        text-align: center;
+        overflow-x: scroll;
+    }
+    table.list-info th{
+        background-color: lightgreen;
+        padding: 0.7vw 0;
+    }
+    table.list-info td{
+        border-bottom: var(--purple) 0.1vw solid;
+        padding: 0.5vw 0;
+
+    }
+    table.list-info td a{
+        color: white;
+        background-color: var(--purple);
+        padding: 0.8vw 3vw;
+        border-radius: 2vw;
+        text-decoration: none;
+        font-family: 'iransans';
+        font-size: 3.2vw;
+        transition-duration: 500ms;
+    }
+    table.list-info td a:hover{background-color: chocolate;}
+    table.list-info td a i{padding-left: 1vw;}
 }

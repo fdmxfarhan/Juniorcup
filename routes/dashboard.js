@@ -53,7 +53,8 @@ router.post('/add-member', ensureAuthenticated, (req, res, next) => {
                 var membersList = team.members;
                 var price = team.price;
                 price += memberPrice;
-                if(cup == 'on') price += cupPrice;
+                if(cup == 'on') {price += cupPrice;cup=true;}
+                else cup = false;
                 membersList.push({fullName, idNumber, birth, phone, address, cup});
                 Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
                     res.redirect(`/dashboard/team?teamName=${teamName}`);
@@ -118,4 +119,21 @@ router.get('/users-list', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('Access Denied!!')
 });
+
+router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.find({}, (err, teams) => {
+            if(err) console.log(err);
+            else{
+                res.render('./dashboard/admin-teams-list', {
+                    user: req.user,
+                    teams: teams
+                });
+            }
+        });
+    }
+    else res.send('Access Denied!!')
+});
+
 module.exports = router;

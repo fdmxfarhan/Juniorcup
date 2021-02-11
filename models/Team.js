@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var TeamSchema = new mongoose.Schema({
   teamName: String,
   username: String,
-  mentor: Object,
+  mentor: String,
   email: String,
   phone: String,
   affiliation: String,
