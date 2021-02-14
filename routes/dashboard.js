@@ -33,16 +33,26 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
     // I'm writing this part of code. but the only thing that 
     // I can think is that she left me and its all because of me. I loved her and I still do :(
     var {teamName, mentor, email, phone, affiliation, league} = req.body;
-    const newTeam = new Team({username: req.user.username, teamName, mentor, email, phone, affiliation, league});
-    newTeam.save().then(doc => {
-        res.redirect('/dashboard');
-    }).catch(err => {
-        if(err) console.log(err);
+    var price = 750000;
+    Team.findOne({teamName: teamName}, (err, foundTeam) => {
+        if(!foundTeam)
+        {
+            Team.findOne({username: req.user.username}, (err, foundTeam) => {
+                if(foundTeam) price = 0;
+                const newTeam = new Team({username: req.user.username, teamName, mentor, email, phone, affiliation, league, price});
+                newTeam.save().then(doc => {
+                    res.redirect('/dashboard');
+                }).catch(err => {
+                    if(err) console.log(err);
+                });
+            });
+        }
+        else res.send('نام تیم قبلا ثبت شده');
     });
 });
 
 router.post('/add-member', ensureAuthenticated, (req, res, next) => {
-    const {teamName, fullName, idNumber, birth, phone, address, cup} = req.body;
+    var {teamName, fullName, idNumber, birth, phone, address, cup} = req.body;
     if(teamName && fullName && idNumber && birth && phone && address){
         Team.findOne({teamName: teamName}, (err, team)=>{
             var flag = true;
@@ -134,6 +144,38 @@ router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
         });
     }
     else res.send('Access Denied!!')
+});
+
+router.get('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.findById(req.query.id, (err, team) => {
+            res.render('./dashboard/admin-edit-team', {
+                user: req.user,
+                team: team
+            });
+        });
+    }
+});
+
+router.get('/delete-team', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.deleteOne({_id: req.query.id}, (err) => {
+            if(err) console.log(err);
+            res.redirect(`/dashboard/teams-list`);
+        });
+    }
+});
+
+router.post('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
+    var {id, teamName, mentor, affiliation, league, price} = req.body;
+    if(req.user.role == 'admin')
+    {
+        Team.updateMany({_id: id}, {$set: {teamName, mentor, affiliation, league, price}}, (err, raw) => {
+            res.redirect(`/dashboard/admin-edit-team?id=${id}`);
+        });
+    }
 });
 
 module.exports = router;

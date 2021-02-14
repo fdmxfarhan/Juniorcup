@@ -717,8 +717,82 @@ body{
     }
     table.list-info td a:hover{background-color: chocolate;}
     table.list-info td a i{padding-left: 1vw;}
+    
     /* ----------------------- flag ----------------------------- */
     
+    .edit-team-panel{
+        padding: 1vw 4vw;
+        overflow: hidden;
+    }
+    .edit-team-panel .column{
+        width: 50%;
+        float: right;
+        /* margin-left: 3%; */
+    }
+    .edit-team-panel a.delete-team{
+        color: red;
+        text-decoration: none;
+        font-size: 1.5vw;
+        display: block;
+        width: fit-content;
+        margin-bottom: 1vw;
+    }
+    .edit-team-panel a.delete-team:hover{color: chocolate;}
+    .edit-team-panel a.delete-team i{padding-left: 0.5vw;}
+    .edit-team-panel form.edit-team .input-item{
+        margin-bottom: 1vw;
+    }
+    .edit-team-panel form.edit-team .input-item label{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        font-weight: bold;
+    }
+    .edit-team-panel form.edit-team .input-item input{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+
+    }
+    .edit-team-panel form.edit-team input.submit{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        display: block;
+        width: fit-content;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .edit-team-panel form.edit-team input.submit:hover{
+        background-color: chocolate;
+    }
+    .edit-team-panel table.members{
+        width: 100%;
+    }
+    .edit-team-panel table.members th{
+        padding: 0.4vw 0;
+        background-color: var(--purple);
+        color: white;
+        text-align: center;
+    }
+    .edit-team-panel table.members td{
+        padding: 0.4vw 0;
+        color: var(--textcolor);
+        text-align: center;
+        border-bottom: lightgray 0.15vw solid;
+        /* border-left: lightgray 0.15vw solid; */
+    }
+    .edit-team-panel h1.title{
+        border: none;
+        margin: 0;
+        padding: 0;
+        font-family: 'iransans';
+        font-size: 1.5vw;
+        margin-bottom: 1vw;
+    }
 }
 @media only screen and (max-width: 800px) {
     .navigation{

@@ -1,0 +1,51 @@
+extends layout
+
+block content
+    .edit-team-panel
+        .column
+            a.delete-team(href="/dashboard/delete-team?id=#{team._id}")
+                i.fa.fa-times 
+                | حذف تیم
+            form.edit-team(action="/dashboard/admin-edit-team" method="POST") 
+                input.hidden(type="text" name="id" value="#{team._id}")
+                .input-item
+                    label(for="teamName") نام تیم: 
+                    input(type="text" name="teamName" value="#{team.teamName}")
+                .input-item
+                    label(for="mentor") سرپرست: 
+                    input(type="text" name="mentor" value="#{team.mentor}")
+                .input-item
+                    label(for="league") لیگ: 
+                    input(type="text" name="league" value="#{team.league}")
+                .input-item
+                    label(for="affiliation") وابستگی: 
+                    input(type="text" name="affiliation" value="#{team.affiliation}")
+                .input-item
+                    label(for="price") هزینه: 
+                    input(type="number" name="price" value="#{team.price}")
+                input.submit(type="submit" value="ثبت تغییرات")
+        .column
+            h1.title اعضای تیم
+            table.members
+                tr 
+                    th نام و نام خانوادگی
+                    th کد ملی
+                    th تاریخ تولد
+                    th شماره تلفن
+                    th آدرس پستی
+                    th دریافت تندیس
+                - for(var i=0; i<team.members.length; i++){
+                    tr 
+                        td= team.members[i].fullName
+                        td= team.members[i].idNumber
+                        td= team.members[i].birth
+                        td= team.members[i].phone
+                        td= team.members[i].address
+                        td 
+                            -if(team.members[i].cup)
+                                .green بله
+                            -else
+                                .red خیر
+                - }
+                    
+

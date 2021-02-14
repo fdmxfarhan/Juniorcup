@@ -19,8 +19,7 @@ var TeamSchema = new mongoose.Schema({
     default: false
   },
   price: {
-    type: Number,
-    default: 750000
+    type: Number
   },
   cup: Boolean
 });
