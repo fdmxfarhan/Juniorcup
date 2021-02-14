@@ -102,45 +102,6 @@ router.post('/gallery/comment', (req, res, next) => {
     res.redirect('/gallery');
 });
 
-router.get('/leagues', (req, res, next) => {
-    Team.find({}, (err, teams) => {
-        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
-        for(var i=0; i < teams.length; i++)
-        {
-            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
-            if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
-            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
-            if(teams[i].league == 'برنامه نویسی')       programmingNum++;
-            if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
-        }
-        var maxNum = getMax([soccerLightNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum]);
-        res.render('./leagues/home', {
-            teams,
-            soccerLightNum,
-            soccerOpenNum,
-            smartCarNum,
-            cospaceNum,
-            programmingNum,
-            maxNum
-        });
-    })
-});
-
-router.get('/leagues/soccer-light', (req, res, next) => {
-    res.render('./leagues/soccer-light');
-});
-
-router.get('/leagues/soccer-open', (req, res, next) => {
-    res.render('./leagues/soccer-light');
-});
-
-router.get('/leagues/smartcar', (req, res, next) => {
-    res.render('./leagues/soccer-light');
-});
-
-router.get('/leagues/cospace', (req, res, next) => {
-    res.render('./leagues/soccer-light');
-});
 
 router.get('/about', (req, res, next) => {
     res.render('about');
@@ -149,6 +110,8 @@ router.get('/about', (req, res, next) => {
 router.get('/contact', (req, res, next) => {
     res.render('contact');
 });
+
+
 
 
 

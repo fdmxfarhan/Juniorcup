@@ -15,6 +15,8 @@
     height: 45vw; 
     border: 0; 
 }
+.green{color: green;}
+.red{color: red;}
 
 
 @media only screen and (min-width: 800px) {
@@ -154,8 +156,63 @@
         margin-top: 4vw;
         margin-bottom: 1vw;
         text-align: center;
-        border-bottom: var(--purple) 0.25vw dotted;
+        border-bottom: var(--purple) 0.15vw dotted;
         padding-bottom: 1vw;
+    }
+    p.text{
+        font-family: 'iransans';
+        color: var(--textcolor);
+        padding: 0 10%;
+        text-align: justify;
+        font-size: 1.2vw;
+    }
+    p.text a{
+        text-decoration: none;
+        color: var(--purple);
+    }
+    p.text a:hover{
+        text-decoration: underline;
+        color: chocolate;
+    }
+    a.rules{
+        font-size: 1.7vw;
+        color: var(--purple);
+        text-decoration: none;
+        display: block;
+        margin: 0 10%;
+        width: fit-content;
+        transition-duration: 500ms;
+        margin-bottom: 4vw;
+    }
+    a.rules:hover{
+        color: chocolate;
+    }
+    a.rules i{
+        padding-left: 1vw;
+        font-size: 2.5vw;
+    }
+    h1.teams-title{
+        font-family: 'iransans';
+        font-size: 1.4vw;
+        color: var(--purple);
+        margin: 0 10%;
+    }
+    table.teams{
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        margin-top: 1vw;
+    }
+    table.teams th{
+        padding: 0.5vw 0;
+        background-color: var(--purple);
+        color: white;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+    }
+    table.teams td{
+        padding: 0.5vw 0;
+        border-bottom: lightgray 0.2vw solid;
     }
 }
 
