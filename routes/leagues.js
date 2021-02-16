@@ -55,11 +55,21 @@ router.get('/soccer-open', (req, res, next) => {
 });
 
 router.get('/smartcar', (req, res, next) => {
-    res.render('./leagues/smartcar');
+    Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
+        res.render('./leagues/smartcar', {teams});
+    });
 });
 
 router.get('/cospace', (req, res, next) => {
-    res.render('./leagues/cospace');
+    Team.find({league: 'امداد فضای مشترک'}, (err, teams) => {
+        res.render('./leagues/cospace', {teams});
+    });
+});
+
+router.get('/programming', (req, res, next) => {
+    Team.find({league: 'برنامه نویسی'}, (err, teams) => {
+        res.render('./leagues/programming', {teams});
+    });
 });
 
 

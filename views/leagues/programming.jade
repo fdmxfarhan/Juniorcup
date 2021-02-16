@@ -1,0 +1,34 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/leagues.css")
+
+block content
+    h1.league-title لیگ برنامه نویسی
+    //- .r1_iframe_embed
+    //-     iframe(src="https://player.arvancloud.com/index.html?config=https://juniorcup.arvanlive.com/rAq5JdYEBj/RkBwRWmbnY/origin_config.json" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true")
+    p.text 
+        //- | در این لیگ 
+    //- a.rules(href="/rules/JuniorSoccer-OpenWeightSoccerRuls-2021.pdf" download) 
+    //-     i.fa.fa-cloud-download
+    //-     | دانلود قوانین لیگ ربات های فوتبالیست وزن آزاد
+    h1.teams-title تیم های ثبت نام شده
+    table.teams
+        tr 
+            th ردیف
+            th نام تیم
+            th سرپرست
+            th وابستگی
+            th وضعیت
+        -for(var i=0; i<teams.length; i++){
+            tr 
+                td= i
+                td= teams[i].teamName
+                td= teams[i].mentor
+                td= teams[i].affiliation
+                td
+                    -if(teams[i].qualified)
+                        .green تایید شده
+                    -else
+                        .red در حال بررسی
+        -}
