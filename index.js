@@ -16,6 +16,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dashboardRouter = require('./routes/dashboard');
 var docsRouter = require('./routes/docs');
+var leagues = require('./routes/leagues');
 
 // Mongo DB connect
 mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
@@ -83,6 +84,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/docs', docsRouter);
+app.use('/leagues', leagues);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
