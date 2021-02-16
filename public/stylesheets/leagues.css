@@ -145,8 +145,6 @@
     .leagues-cards .card .labels .label i{
         padding-left: 0.5vw;
     }
-
-    /* ---------------------- flag -------------------- */
     h1.league-title{
         color: var(--purple);
         font-family: 'iransans';
@@ -214,6 +212,8 @@
         padding: 0.5vw 0;
         border-bottom: lightgray 0.2vw solid;
     }
+    /* ---------------------- flag -------------------- */
+    
 }
 
 @media only screen and (max-width: 800px) {
@@ -344,5 +344,76 @@
     }
     .leagues-cards .card .labels .label i{
         padding-left: 1vw;
+    }
+    
+
+    h1.league-title{
+        color: var(--purple);
+        font-family: 'iransans';
+        font-size: 4vw;
+        width: 80%;
+        margin: auto;
+        margin-top: 4vw;
+        margin-bottom: 4vw;
+        text-align: center;
+        border-bottom: var(--purple) 0.3vw dotted;
+        padding-bottom: 1vw;
+    }
+    p.text{
+        font-family: 'iransans';
+        color: var(--textcolor);
+        padding: 0 5%;
+        text-align: justify;
+        font-size: 3.5vw;
+    }
+    p.text a{
+        text-decoration: none;
+        color: var(--purple);
+    }
+    p.text a:hover{
+        text-decoration: underline;
+        color: chocolate;
+    }
+    a.rules{
+        font-size: 3.7vw;
+        color: var(--purple);
+        text-decoration: none;
+        display: block;
+        margin: 0 10%;
+        width: fit-content;
+        transition-duration: 500ms;
+        margin-bottom: 4vw;
+    }
+    a.rules:hover{
+        color: chocolate;
+    }
+    a.rules i{
+        padding-left: 1vw;
+        font-size: 4.5vw;
+    }
+    h1.teams-title{
+        font-family: 'iransans';
+        font-size: 3.4vw;
+        color: var(--purple);
+        margin: 0 5%;
+    }
+    table.teams{
+        width: 95%;
+        margin: auto;
+        text-align: center;
+        margin-top: 3vw;
+    }
+    table.teams th{
+        padding: 1vw 0;
+        background-color: var(--purple);
+        color: white;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+        font-size: 3vw;
+    }
+    table.teams td{
+        padding: 1vw 0;
+        border-bottom: lightgray 0.2vw solid;
+        font-size: 3vw;
     }
 }
