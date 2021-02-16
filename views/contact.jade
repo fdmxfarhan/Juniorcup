@@ -1,8 +1,66 @@
 extends layout
-
 block styles
     link(rel="stylesheet", href="stylesheets/contact.css")
 
 block content
-    h1 contact
-    script(src="/javascripts/contact.js")
+    -if(errors || success_msg || error_msg || error){
+        .errors-area
+            //- -if(errors){
+            //-     -for(var i=0; i<errors.length; i++){
+            //-         .error(id='error#{i}')
+            //-             i.fa.fa-warning
+            //-             h1= errors[i].msg
+            //-             i.fa.fa-times.close-error
+            //-             .time-interval(id='time#{i}')
+            //-     -}
+            //- -}
+            -if(success_msg != ''){
+                .success(id='error3')
+                    i.fa.fa-warning
+                    h1= success_msg
+                    i.fa.fa-times.close-error
+                    .time-interval()
+            -}
+            -if(error_msg != ''){
+                .error(id='error4')
+                    i.fa.fa-warning
+                    h1= error_msg
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time4')
+            -}
+            -if(error != ''){
+                .error(id='error5')
+                    i.fa.fa-warning
+                    h1= error
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time5')
+            -}
+            
+    -}
+    
+    h1.about-title تماس با ما
+    .panel
+        .contact-info
+            p.information شماره تماس: 
+                a(href="tel:09197228658") 09197228658 
+            p.information ما را در اینستاگرام دنبال کنید: 
+                a(href="tel:https://www.instagram.com/junior_cup/") instagram.com/junior_cup
+            p.information تهران، امیرآباد، کوچه خسروی، پلاک ۲۵، واحد ۳
+        .google-map
+            iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d680.9807751354139!2d51.38947156571338!3d35.71862500610051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e01d604d0bf83%3A0x68049a6e05924526!2z2KLaqdin2K_ZhduMINix2KjYp9iq24zaqSDYp9uM2LHYp9mG!5e0!3m2!1sen!2s!4v1607695527828!5m2!1sen!2s" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0")
+    .login-box
+        h2 سوالات و نظرات خود را ارسال کنید
+        form(action="/send-massage" method="post")
+            .user-box
+                input(type="fullname" name="name" required="")
+                label(for="fullname") نام و نام خانوادگی
+            .user-box
+                input(type="text" name="problem" required="")
+                label(for="text")  موضوع
+            .user-box
+                input(type="email" name="mail" required="")
+                label(for="email") ایمیل
+            .user-box
+                textarea(name="text", type="text", placeholder="سوالات یا نظرات خود را بنویسید")
+            button(type="submit") ارسال
+     

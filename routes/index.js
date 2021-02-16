@@ -152,5 +152,22 @@ router.get('/contact', (req, res, next) => {
 
 
 
+var mail=require('../config/mail');
+router.post('/send-massage', (req, res, next) => {
+    if(req.body.text != '')
+    {
+        mail('mohammadh.z.1393@gmail.com',req.body.problem,req.body.name+'\n'+req.body.mail+'\n'+req.body.text);
+        mail('fdmxfarhan@gmail.com',req.body.problem,req.body.name+'\n'+req.body.mail+'\n'+req.body.text);
+        req.flash('success_msg', 'پیام شما با موفقیت ارسال شد');
+    }
+    else
+    {
+        req.flash('error_msg', 'لطفا متن پیام خود را بنویسید');
+    }
+    res.redirect('/contact');
+
+});
+
+
 
 module.exports = router;

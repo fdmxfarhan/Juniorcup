@@ -1,0 +1,694 @@
+@media only screen and (min-width: 800px) {
+  
+  .errors-area{
+    /* background-color: coral; */
+    position: fixed;
+    width: 40vw;
+    bottom: 0;
+    left: 2vw;
+    z-index: 100;
+}
+.errors-area .success{
+  background-color: rgba(14, 105, 1, 0.842);
+  position: relative;
+  margin: 1vw;
+  border-radius: 1vw;
+  color: white;
+  padding: 0.7vw 1vw;
+  padding-bottom: 0;
+}
+.errors-area .success h1{
+  display: inline-block;
+  padding-right: 0;
+  margin: 0;
+  font-family: 'iransans';
+  font-size: 1.2vw;
+}
+.errors-area .success i{
+  display: inline-block;
+  padding-left: 1vw;
+}
+.errors-area .success i.close-error{
+  position: absolute;
+  top: 1vw;
+  left: 0;
+  cursor: pointer;
+}
+.errors-area .success .time-interval{
+  background-color: rgba(255, 255, 255, 0.664);
+  /* position: absolute;
+  bottom: 0; */
+  width: 0;
+  height: 0.3vw;
+  margin-top: 0.5vw;
+}
+.errors-area .error{
+    background-color: rgba(220, 20, 20, 0.842);
+    position: relative;
+    margin: 1vw;
+    border-radius: 1vw;
+    color: white;
+    padding: 0.7vw 1vw;
+    padding-bottom: 0;
+}
+.errors-area .error h1{
+    display: inline-block;
+    padding-right: 0;
+    margin: 0;
+    font-family: 'iransans';
+    font-size: 1.2vw;
+}
+.errors-area .error i{
+    display: inline-block;
+    padding-left: 1vw;
+}
+.errors-area .error i.close-error{
+    position: absolute;
+    top: 1vw;
+    left: 0;
+    cursor: pointer;
+}
+.errors-area .error .time-interval{
+    background-color: rgba(255, 255, 255, 0.664);
+    /* position: absolute;
+    bottom: 0; */
+    width: 0;
+    height: 0.3vw;
+    margin-top: 0.5vw;
+}
+      textarea{
+        font-size: medium;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        font-family: 'iransans';
+        width: 50%;
+        height: 100٪;
+        min-height:220px;
+        min-width:500px; 
+        max-width:70%;
+        width:70%;
+        text-align: right;
+        direction: ltr;
+        position: absolute;
+        margin: 0;
+        margin-left: 4%;
+        padding-left: 1vw;
+        margin-right: 20%;
+        
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+      }
+      .login-box {
+       
+        padding: 5vw;
+        margin: 5vw;
+        background: rgb(253, 250, 255);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        border-radius: 10px;
+       
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+      }
+      
+      .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: rgb(200, 42, 161);
+        text-align: center;
+      }
+      
+      .login-box .user-box {
+        position: relative;
+      }
+      
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid rgb(211, 26, 218);
+        outline: none;
+        background: transparent;
+      }
+      .login-box .user-box label {
+        position: absolute;
+        top:0;
+        right: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.582);
+        pointer-events: none;
+        transition: .5s;
+      }
+      
+      .login-box .user-box input:focus ~ label,
+      .login-box .user-box input:valid ~ label {
+        top: -20px;
+        right: 0;
+        color: #d003f4dc;
+        font-size: 12px;
+      }
+      
+      .login-box form button {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #f403e0;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 40px;
+
+        /* for btn */
+        margin-right: 4%;
+        font-family: 'iransans';
+        outline:none;
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        /* letter-spacing: 4px */
+      }
+      
+      .login-box button:hover {
+        background: #d803f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #d803f4,
+                    0 0 25px #d803f4,
+                    0 0 50px #d803f4,
+                    0 0 100px #d803f4;
+      }
+      
+      .login-box button span {
+        position: absolute;
+        display: block;
+      }
+      
+      .login-box button span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+      
+     
+      
+      
+      .login-box button span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      } 
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        50%,100% {
+          left: 100%;
+        }
+      }
+      
+      .login-box button span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: .25s
+      }
+      
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        50%,100% {
+          top: 100%;
+        }
+      }
+      
+      .login-box button span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: .5s
+      }
+      
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        50%,100% {
+          right: 100%;
+        }
+      }
+      
+      .login-box button span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: .75s
+      }
+      
+      @keyframes btn-anim4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,100% {
+          bottom: 100%;
+        }
+      }
+      
+    h1.about-title{
+        font-family: 'iransans';
+        font-size: 2vw;
+        color: var(--purple);
+        padding: 1vw 4vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        margin: 3vw 10vw;
+        text-align: center;
+        transition:  text-shadow 0.2s linear;
+        text-shadow: 2px 2px 5px white;
+    } 
+ 
+  h1.about-title:hover{
+    text-shadow: 2px 2px 5px blueviolet;
+  } 
+  p.about-text{
+    text-align: justify;
+    margin: 00.85em;
+    font-size: 1.5w;
+    margin: 0 5%;
+  }
+
+    .panel{
+        margin: 0 5%;
+        overflow: hidden;
+    }
+    .panel .contact-info{
+        width: 49%;
+        float: right;
+        margin: 3%;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        padding: 2vw;
+
+
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+    }
+    .panel .google-map{
+        width: 30%;
+        margin-top: 2%;
+        /* margin: 1%; */
+        float: right;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+    }
+    p.information{
+      font-size: 1vw;
+      transition: text-shadow 0.1s linear;
+      color: black;
+      margin: 0.85em;
+      text-shadow: 2px 2px 5px white;
+      
+    
+    }
+    p.information:hover{
+      color: blueviolet;
+      text-shadow: 2px 2px 5px blueviolet;
+    }
+}
+@media only screen and (max-width: 800px) {
+   
+  .errors-area{
+    /* background-color: coral; */
+    position: fixed;
+    width: 40vw;
+    bottom: 0;
+    left: 2vw;
+    z-index: 100;
+}
+.errors-area .success{
+  background-color: rgba(14, 105, 1, 0.842);
+  position: relative;
+  margin: 1vw;
+  border-radius: 1vw;
+  color: white;
+  padding: 0.7vw 1vw;
+  padding-bottom: 0;
+}
+.errors-area .success h1{
+  display: inline-block;
+  padding-right: 0;
+  margin: 0;
+  font-family: 'iransans';
+  font-size: 1.2vw;
+}
+.errors-area .success i{
+  display: inline-block;
+  padding-left: 1vw;
+}
+.errors-area .success i.close-error{
+  position: absolute;
+  top: 1vw;
+  left: 0;
+  cursor: pointer;
+}
+.errors-area .success .time-interval{
+  background-color: rgba(255, 255, 255, 0.664);
+  /* position: absolute;
+  bottom: 0; */
+  width: 0;
+  height: 0.3vw;
+  margin-top: 0.5vw;
+}
+.errors-area .error{
+    background-color: rgba(220, 20, 20, 0.842);
+    position: relative;
+    margin: 1vw;
+    border-radius: 1vw;
+    color: white;
+    padding: 0.7vw 1vw;
+    padding-bottom: 0;
+}
+.errors-area .error h1{
+    display: inline-block;
+    padding-right: 0;
+    margin: 0;
+    font-family: 'iransans';
+    font-size: 1.2vw;
+}
+.errors-area .error i{
+    display: inline-block;
+    padding-left: 1vw;
+}
+.errors-area .error i.close-error{
+    position: absolute;
+    top: 1vw;
+    left: 0;
+    cursor: pointer;
+}
+.errors-area .error .time-interval{
+    background-color: rgba(255, 255, 255, 0.664);
+    /* position: absolute;
+    bottom: 0; */
+    width: 0;
+    height: 0.3vw;
+    margin-top: 0.5vw;
+}
+      textarea{
+        font-size: medium;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+        font-family: 'iransans';
+        width: 100%;
+        height: 100٪;
+        /* min-height:100px;
+        min-width:200px; 
+        max-width:70%; */
+        text-align: right;
+        direction: ltr;
+        position: static;
+        margin: 0;
+        margin-left: 0%;
+        padding-left: 0vw;
+        margin-right: 0%;
+        
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+      }
+      .login-box {
+       
+        padding: 5vw;
+        margin: 5vw;
+        background: rgb(253, 250, 255);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        border-radius: 10px;
+       
+        border: 4px solid transparent;
+        border-radius: 7px;
+        background: 
+            linear-gradient(to right, white, white), 
+            linear-gradient(15deg, red , blue); 
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+      }
+      
+      .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: rgb(200, 42, 161);
+        text-align: center;
+      }
+      
+      .login-box .user-box {
+        position: relative;
+      }
+      
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid rgb(211, 26, 218);
+        outline: none;
+        background: transparent;
+      }
+      .login-box .user-box label {
+        position: absolute;
+        top:0;
+        right: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.582);
+        pointer-events: none;
+        transition: .5s;
+      }
+      
+      .login-box .user-box input:focus ~ label,
+      .login-box .user-box input:valid ~ label {
+        top: -20px;
+        right: 0;
+        color: #d003f4dc;
+        font-size: 12px;
+      }
+      
+      .login-box form button {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #f403e0;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 40px;
+
+        /* for btn */
+        margin-right: 4%;
+        font-family: 'iransans';
+        outline:none;
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        /* letter-spacing: 4px */
+      }
+      
+      .login-box button:hover {
+        background: #d803f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #d803f4,
+                    0 0 25px #d803f4,
+                    0 0 50px #d803f4,
+                    0 0 100px #d803f4;
+      }
+      
+      .login-box button span {
+        position: absolute;
+        display: block;
+      }
+      
+      .login-box button span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+      
+     
+      
+      
+      .login-box button span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      } 
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        50%,100% {
+          left: 100%;
+        }
+      }
+      
+      .login-box button span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: .25s
+      }
+      
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        50%,100% {
+          top: 100%;
+        }
+      }
+      
+      .login-box button span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: .5s
+      }
+      
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        50%,100% {
+          right: 100%;
+        }
+      }
+      
+      .login-box button span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: .75s
+      }
+      
+      @keyframes btn-anim4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,100% {
+          bottom: 100%;
+        }
+      }
+      
+    h1.about-title{
+        font-family: 'iransans';
+        font-size: 5vw;
+        color: var(--purple);
+        padding: 1vw 4vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        margin: 3vw 10vw;
+        text-align: center;
+    }
+    .panel{
+        margin: 0 3%;
+        overflow: hidden;
+    }
+   
+    .panel .contact-info{
+      width: 90%;
+      margin: 3%;
+      border-radius: 2vw;
+      box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
+      padding: 2vw;
+
+
+      border: 4px solid transparent;
+      border-radius: 7px;
+      background: 
+          linear-gradient(to right, white, white), 
+          linear-gradient(15deg, red , blue); 
+      background-clip: padding-box, border-box;
+      background-origin: padding-box, border-box;
+  }
+    .panel .google-map{
+      width: 90%;
+      margin: 0%;
+  }
+    p.information{
+      font-size: 4vw;
+      color: black;
+      margin: 0.85em;
+    }
+    p.about-text{
+      text-align: justify;
+      margin: 00.5em;
+      font-size: 3.7vw;
+    }
+} 
+
+
