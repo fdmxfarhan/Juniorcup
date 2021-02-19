@@ -67,7 +67,7 @@ router.post('/add-member', ensureAuthenticated, (req, res, next) => {
                 else cup = false;
                 membersList.push({fullName, idNumber, birth, phone, address, cup});
                 Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
-                    res.redirect(`/dashboard/team?teamName=${teamName}`);
+                    res.redirect(`/dashboard/team?id=${team._id}`);
                 });
             }
             else res.send('member was added befor');
@@ -79,6 +79,7 @@ router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
     const {idNumber, teamName} = req.query;
     Team.findOne({teamName: teamName}, (err, team)=>{
         if(err) console.log(err);
+        var id = team._id;
         var membersList = [];
         var price = team.price;
         price -= memberPrice;
@@ -90,7 +91,7 @@ router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
         }
         
         Team.updateMany({teamName: teamName}, {$set: {members: membersList, price}}, (err, doc)=>{
-            res.redirect(`/dashboard/team?teamName=${teamName}`);
+            res.redirect(`/dashboard/team?id=${id}`);
         });
     });
 });
@@ -102,8 +103,8 @@ router.get('/setting', ensureAuthenticated, (req, res, next) => {
 });
 
 router.get('/team', ensureAuthenticated, (req, res, next) => {
-    if(req.query.teamName){
-        Team.findOne({teamName: req.query.teamName}, (err, team)=> {
+    if(req.query.id){
+        Team.findById(req.query.id, (err, team)=> {
             if(err) console.log(err);
             res.render('./dashboard/teamView', {
                 user: req.user,

@@ -34,7 +34,7 @@ block content
             -if(teams){
                 -for(var i=0; i<teams.length; i++){
                     //- a.team(id="team-info-btn-#{i}")
-                    a.team(href="/dashboard/team?teamName=#{teams[i].teamName}")
+                    a.team(href="/dashboard/team?id=#{teams[i]._id}")
                         .name= teams[i].teamName
                         .item= teams[i].mentor
                         .item= teams[i].league
