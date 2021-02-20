@@ -26,5 +26,12 @@ router.get('/soccer-open-cpp', (req, res, next) => {
         res.render(`./docs/soccer-open-cpp/1`, {page: 0});
 });
 
+router.get('/smartcar-cpp', (req, res, next) => {
+    if(req.query.page)
+        res.render(`./docs/smartcar-cpp/${req.query.page}`, {page: parseInt(req.query.page)});
+    else
+        res.render(`./docs/smartcar-cpp/1`, {page: 0});
+});
+
 
 module.exports = router;

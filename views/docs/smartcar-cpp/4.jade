@@ -1,0 +1,48 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+            
+        .content
+            .content-padding
+                h1.purple.medium.font اجرای برنامه
+                p.font.small.text 
+                    | پس از نصب نرم افزار Code Blocks جهت راه اندازی روبات در سیمولاتور جونیورکاپ و کنترل آن ابتدا فایل زیر را دانلود کرده و از حالت فشرده خارج نمایید.
+                a.font.download.small.blue(href="/docs/smart_car_v1.0.rar" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود پروژه نمونه به زبان ++C
+                //- img.fullsize(src="/docs/cpp/img/33.png")
+                p.font.small.text 
+                    | وارد پوشه استخراج شده شوید و فایل juniorc.cbp را با استفاده از CodeBlocks باز کنید.
+                //- img.fullsize(src="/docs/cpp/img/34.png")
+                //- img.fullsize(src="/docs/cpp/img/35.png")
+                
+                p.font.small.text.red.bold توجه: قبل از اجرای برنامه ابتدا باید سیمولاتور را باز کنید.
+                p.font.small.text 
+                    | حال می توانید با استفاده از کلید F9 برنامه خود را اجرا کرده و لذت ببرید.
+                //- img.fullsize(src="/docs/cpp/img/32.png")
+                
+            .buttons
+                a.prev(href="/docs/smartcar-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/smartcar-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")
