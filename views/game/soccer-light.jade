@@ -1,0 +1,80 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/game.css")
+
+block content
+    h1.league-title لیگ ربات های فوتبالیست سبک وزن
+    .tab-view 
+        .tab-links 
+            -if(field == 'A')
+                a.active(href="/game/soccer-light?field=A") زمین A
+            -else
+                a(href="/game/soccer-light?field=A") زمین A
+            -if(field == 'B')
+                a.active(href="/game/soccer-light?field=B") زمین B
+            -else 
+                a(href="/game/soccer-light?field=B") زمین B
+            -if(field == 'C')
+                a.active(href="/game/soccer-light?field=C") زمین C
+            -else 
+                a(href="/game/soccer-light?field=C") زمین C
+            -if(field == 'D')
+                a.active(href="/game/soccer-light?field=D") زمین D
+            -else 
+                a(href="/game/soccer-light?field=D") زمین D
+        .tab-content 
+            .score-board
+                img.score(src="/images/score.png")
+                .team-a تیم A 
+                .goals 0 - 0
+                .team-b تیم B
+                
+            .iframe-holder
+                iframe(scrolling="no" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  src ="https://www.aparat.com/embed/live/fdmx") 
+            a.stream(href="https://www.aparat.com/fdmx/live") 
+                i.fa.fa-external-link
+                | نمایش استریم
+            .two-part
+                .partial
+                    a.upload آپلود برنامه
+                    form.hidden.upload(action="/upload/code") 
+                        input.file(type="file" name="myFile")
+                        input.submit(type="submit" value="ارسال")
+                .partial
+                    a.objection ثبت اعتراض
+                    form.hidden.objection(action="/game/objection") 
+                        textarea(name="objection") 
+                        input.submit(type="submit" value="ارسال")
+    a.big-link(href="#") 
+        i.fa.fa-external-link
+        | مشاهده بازی های ضبط شده
+    h1.table-title جدول امتیازات
+    table.score-table
+        tr 
+            th رتبه
+            th نام تیم
+            th تعداد برد
+            th تعداد باخت
+            th تعداد مساوی
+            th گل زده
+            th گل خورده
+            th تفاضل گل
+            th امتیاز تکنیکال
+            th امتیاز نهایی
+        -for(var i=0; i<teams.length; i++){
+            tr 
+                td= i + 1
+                td= teams[i].teamName
+                td 0
+                td 0
+                td 0
+                td 0
+                td 0
+                td 0
+                td 0
+                td 0
+        -}
+
+    script(src="/javascripts/game.js") 
+

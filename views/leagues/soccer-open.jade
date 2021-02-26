@@ -4,7 +4,7 @@ block styles
     link(rel="stylesheet", href="/stylesheets/leagues.css")
 
 block content
-    h1.league-title لیگ ربات های فوتبالیست سبک وزن
+    h1.league-title لیگ ربات های فوتبالیست وزن آزاد
     //- .r1_iframe_embed
     //-     iframe(src="https://player.arvancloud.com/index.html?config=https://juniorcup.arvanlive.com/rAq5JdYEBj/RkBwRWmbnY/origin_config.json" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true")
     p.text 
@@ -26,7 +26,7 @@ block content
             th وضعیت
         -for(var i=0; i<teams.length; i++){
             tr 
-                td= i
+                td= i + 1
                 td= teams[i].teamName
                 td= teams[i].mentor
                 td= teams[i].affiliation
