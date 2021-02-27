@@ -3,11 +3,13 @@ var router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
 var User = require('../models/User');
 var Team = require('../models/Team');
+var Game = require('../models/Game');
 
 const memberPrice = 750000;
 const cupPrice = 750000;
 
 // Team.deleteMany({}, (err) => console.log(err));
+// Game.deleteMany({}, (err) => console.log(err));
 
 router.get('/', ensureAuthenticated,(req, res, next) => {
     if(req.user.role == 'user'){
@@ -24,6 +26,17 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
             res.render('./dashboard/admin-dashboard',{
                 user: req.user,
                 users
+            });
+        });
+    }
+    else if(req.user.role == 'refree'){
+        Team.find({}, (err, teams) => {
+            Game.find({}, (err, games) => {
+                res.render('./dashboard/refree-dashboard',{
+                    user: req.user,
+                    teams,
+                    games
+                });
             });
         });
     }
@@ -178,5 +191,180 @@ router.post('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
+
+router.get('/upgrade-user', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.findById(req.query.id, (err, _user) => {
+            res.render('./dashboard/admin-upgrade-user', {id: _user._id, user: req.user});
+        });
+    }
+    else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
+});
+
+router.get('/upgrade-to-user', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.updateMany({_id: req.query.id}, {$set: {role: 'user'}}, (err, doc) => {
+            res.redirect('/dashboard/users-list');
+        });
+    }
+    else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
+});
+
+router.get('/upgrade-to-admin', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.updateMany({_id: req.query.id}, {$set: {role: 'admin'}}, (err, doc) => {
+            res.redirect('/dashboard/users-list');
+        });
+    }
+    else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
+});
+
+router.get('/upgrade-to-refree', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.updateMany({_id: req.query.id}, {$set: {role: 'refree'}}, (err, doc) => {
+            res.redirect('/dashboard/users-list');
+        });
+    }
+    else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
+});
+
+router.post('/add-game', ensureAuthenticated, (req, res, next) => {
+    var {idA, idB, field} = req.body;
+    Team.findById(idA, (err, teamA) => {
+        Team.findById(idB, (err, teamB) => {
+            var newGame = new Game({teamA, teamB, field, league: teamA.league});
+            newGame.save().then(doc => {
+                res.redirect('/dashboard');
+            }).catch(err => console.log(err));
+        });
+    });
+});
+
+router.get('/game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.findById(req.query.id, (err, game) => {
+            res.render('./dashboard/refree-game', {
+                user: req.user,
+                game
+            });
+        });
+    }
+    else res.send('Error!!');
+});
+
+router.get('/start-game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.updateMany({_id: req.query.id}, {$set: {started: true}}, (err, doc) => {
+            res.redirect(`/dashboard/game?id=${req.query.id}`);
+        });
+    }
+});
+
+router.get('/end-game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.updateMany({_id: req.query.id}, {$set: {started: false}}, (err, doc) => {
+            res.redirect(`/dashboard/game?id=${req.query.id}`);
+        });
+        Game.findById(req.query.id, (err, game) =>{
+            if(game.goalA > game.goalB){
+                Team.findById(game.teamA._id, (err, team) => {
+                    Team.updateMany({_id: team._id}, {$set: {
+                        goalzade: team.goalzade + game.goalA,
+                        goalkhorde: team.goalkhorde + game.goalB,
+                        score: team.score + 3,
+                        win: team.win + 1
+                    }}, (err, doc) => {if(err) console.log(err)});
+                });
+                Team.findById(game.teamB._id, (err, team) => {
+                    Team.updateMany({_id: team._id}, {$set: {
+                        goalzade: team.goalzade + game.goalB,
+                        goalkhorde: team.goalkhorde + game.goalA,
+                        lose: team.lose + 1
+                    }}, (err, doc) => {if(err) console.log(err)});
+                });
+            }
+            else if(game.goalA < game.goalB){
+                Team.findById(game.teamA._id, (err, team) => {
+                    Team.updateMany({_id: team._id}, {$set: {
+                        goalzade: team.goalzade + game.goalA,
+                        goalkhorde: team.goalkhorde + game.goalB,
+                        lose: team.lose + 1
+                    }}, (err, doc) => {if(err) console.log(err)});
+                });
+                Team.findById(game.teamB._id, (err, team) => {
+                    Team.updateMany({_id: team._id}, {$set: {
+                        goalzade: team.goalzade + game.goalB,
+                        goalkhorde: team.goalkhorde + game.goalA,
+                        score: team.score + 3,
+                        win: team.win + 1
+                    }}, (err, doc) => {if(err) console.log(err)});
+                });
+            }
+            else{
+                Team.findById(game.teamA._id, (err, team) => {
+                    Team.updateMany({_id: team._id}, {$set: {
+                        goalzade: team.goalzade + game.goalA,
+                        goalkhorde: team.goalkhorde + game.goalB,
+                        score: team.score + 1,
+                        equals: team.equals + 1
+                    }}, (err, doc) => {if(err) console.log(err)});
+                });
+                Team.findById(game.teamB._id, (err, team) => {
+                    Team.updateMany({_id: team._id}, {$set: {
+                        goalzade: team.goalzade + game.goalB,
+                        goalkhorde: team.goalkhorde + game.goalA,
+                        score: team.score + 1,
+                        equals: team.equals + 1
+                    }}, (err, doc) => {if(err) console.log(err)});
+                });
+            }
+        });
+    }
+});
+
+router.get('/add-goalA', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.findById(req.query.id, (err, game) => {
+            Game.updateMany({_id: req.query.id}, {$set: {goalA: game.goalA+1}}, (err, doc) => {
+                res.redirect(`/dashboard/game?id=${req.query.id}`);
+            });
+        })
+    }
+});
+
+router.get('/add-goalB', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.findById(req.query.id, (err, game) => {
+            Game.updateMany({_id: req.query.id}, {$set: {goalB: game.goalB+1}}, (err, doc) => {
+                res.redirect(`/dashboard/game?id=${req.query.id}`);
+            });
+        })
+    }
+});
+
+router.get('/decrease-goalA', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.findById(req.query.id, (err, game) => {
+            Game.updateMany({_id: req.query.id}, {$set: {goalA: game.goalA-1}}, (err, doc) => {
+                res.redirect(`/dashboard/game?id=${req.query.id}`);
+            });
+        })
+    }
+});
+
+router.get('/decrease-goalB', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.findById(req.query.id, (err, game) => {
+            Game.updateMany({_id: req.query.id}, {$set: {goalB: game.goalB-1}}, (err, doc) => {
+                res.redirect(`/dashboard/game?id=${req.query.id}`);
+            });
+        })
+    }
+});
+
 
 module.exports = router;

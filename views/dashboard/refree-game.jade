@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1.game-title.underLine #{game.teamA.teamName} درمقابل #{game.teamB.teamName} (زمین #{game.field})
+    -if(!game.started){
+        a.start-game(href="/dashboard/start-game?id=#{game._id}") شروع بازی
+    -}else{
+        .game-two-part 
+            .part.border 
+                h1 #{game.teamA.teamName} (#{game.goalA})
+                a(href="/dashboard/add-goalA?id=#{game._id}") ثبت گل
+            .part
+                h1 #{game.teamB.teamName} (#{game.goalB})
+                a(href="/dashboard/add-goalB?id=#{game._id}") ثبت گل
+        a.end-game(href="/dashboard/end-game?id=#{game._id}") اتمام بازی
+    -}

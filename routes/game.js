@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Gallery = require('../models/Gallery');
 const Team = require('../models/Team');
+const Game = require('../models/Game');
 
 
 
@@ -9,9 +10,14 @@ router.get('/soccer-light', (req, res, next) => {
     var {field} = req.query;
     if(!field) field = 'A';
     Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
-        res.render('./game/soccer-light', {
-            teams,
-            field
+        Game.findOne({field: field, league: 'فوتبالیست سبک وزن', started: true}, (err, game) => {
+            if(err) console.log(err);
+            // console.log(game);
+            res.render('./game/soccer-light', {
+                teams,
+                field,
+                game
+            });
         });
     });
 });

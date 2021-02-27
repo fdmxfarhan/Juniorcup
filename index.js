@@ -18,6 +18,7 @@ var dashboardRouter = require('./routes/dashboard');
 var docsRouter = require('./routes/docs');
 var leagues = require('./routes/leagues');
 var game = require('./routes/game');
+var uploadHandler = require('./routes/upload');
 
 // Mongo DB connect
 mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
@@ -68,6 +69,9 @@ var credentials = {key: privateKey, cert: certificate};
 
 // port setup
 const port = 3000
+
+// Upload
+app.use('/upload', uploadHandler);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

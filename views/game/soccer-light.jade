@@ -26,10 +26,15 @@ block content
         .tab-content 
             .score-board
                 img.score(src="/images/score.png")
-                .team-a تیم A 
-                .goals 0 - 0
-                .team-b تیم B
-                
+                -if(!game){
+                    .team-a تیم A 
+                    .goals 0 - 0
+                    .team-b تیم B
+                -}else{
+                    .team-a= game.teamA.teamName
+                    .goals #{game.goalA} - #{game.goalB}
+                    .team-b= game.teamB.teamName
+                -}
             .iframe-holder
                 iframe(scrolling="no" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  src ="https://www.aparat.com/embed/live/fdmx") 
             a.stream(href="https://www.aparat.com/fdmx/live") 
@@ -38,11 +43,11 @@ block content
             .two-part
                 .partial
                     a.upload آپلود برنامه
-                    form.hidden.upload(action="/upload/code") 
+                    form.hidden.upload(action="/upload/code" method="POST" enctype="multipart/form-data")
                         input.file(type="file" name="myFile")
                         input.submit(type="submit" value="ارسال")
                 .partial
-                    a.objection ثبت اعتراض
+                    a.objection ارسال پیام
                     form.hidden.objection(action="/game/objection") 
                         textarea(name="objection") 
                         input.submit(type="submit" value="ارسال")
@@ -66,14 +71,14 @@ block content
             tr 
                 td= i + 1
                 td= teams[i].teamName
-                td 0
-                td 0
-                td 0
-                td 0
-                td 0
-                td 0
-                td 0
-                td 0
+                td= teams[i].win
+                td= teams[i].lose
+                td= teams[i].equals
+                td= teams[i].goalzade
+                td= teams[i].goalkhorde
+                td= Math.abs(teams[i].goalkhorde - teams[i].goalzade)
+                td= teams[i].technical
+                td= teams[i].score
         -}
 
     script(src="/javascripts/game.js") 

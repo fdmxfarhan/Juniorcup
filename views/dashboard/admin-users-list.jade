@@ -18,5 +18,5 @@ block content
                     td= users[i].phone
                     td= users[i].role
                     td
-                        a.change-user(href="#") تغییر
+                        a.change-user(href="/dashboard/upgrade-user?id=#{users[i]._id}") تغییر
             -}
