@@ -33,7 +33,8 @@ router.get('/', (req, res, next) => {
             smartCarNum,
             cospaceNum,
             programmingNum,
-            maxNum
+            maxNum,
+            count: teams.length
         });
     })
 });
