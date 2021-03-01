@@ -579,6 +579,7 @@ body{
         width: fit-content;
         transition-duration: 500ms;
         margin-top: 2vw;
+        text-decoration: none;
     }
     a.add-member:hover{
         background-color: chocolate;
@@ -725,10 +726,11 @@ body{
         overflow: hidden;
     }
     .edit-team-panel .column{
-        width: 50%;
+        width: 40%;
         float: right;
         /* margin-left: 3%; */
     }
+    .edit-team-panel .column.seccond{width: 60%;}
     .edit-team-panel a.delete-team{
         color: red;
         text-decoration: none;
@@ -773,10 +775,12 @@ body{
         width: 100%;
     }
     .edit-team-panel table.members th{
-        padding: 0.4vw 0;
+        padding: 0.6vw 0;
         background-color: var(--purple);
         color: white;
         text-align: center;
+        border-top-right-radius: 1vw;
+        border-top-left-radius: 1vw;
     }
     .edit-team-panel table.members td{
         padding: 0.4vw 0;
@@ -784,6 +788,15 @@ body{
         text-align: center;
         border-bottom: lightgray 0.15vw solid;
         /* border-left: lightgray 0.15vw solid; */
+    }
+    .edit-team-panel table.members td a{
+        color: var(--purple);
+        font-size: 1.5vw;
+        text-decoration: none;
+        transition-duration: 500ms;
+    }
+    .edit-team-panel table.members td a:hover{
+        color: chocolate;
     }
     .edit-team-panel h1.title{
         border: none;
