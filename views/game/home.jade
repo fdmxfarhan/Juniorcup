@@ -1,0 +1,70 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/leagues.css")
+
+block content
+    h1.content-title لیگ های مسابقات جونیورکاپ ۲۰۲۱
+    h2.under-title تعداد تیم های ثبت نام شده: #{count}
+    .leagues-cards
+        .card.small
+            a(href="/game/soccer-light")
+                .img
+                    img(src="/images/leagues/light-min.png")
+                h1.title ربات های فوتبالیست سبک وزن
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/soccer-open")
+                .img
+                    img(src="/images/leagues/Open-min.png")
+                h1.title ربات های فوتبالیست وزن آزاد
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/smartcar")
+                .img
+                    img(src="/images/leagues/pathfinder-min.png")
+                h1.title خودرو هوشمند
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/cospace")
+                .img
+                    img(src="/images/leagues/cospace-min.png")
+                h1.title امداد فضای مشترک
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="http://juniorcupjudge.ir/")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title برنامه نویسی
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/soccer2d")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title فوتبال ۲ بعدی
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+    script(src="/javascripts/leagues.js")

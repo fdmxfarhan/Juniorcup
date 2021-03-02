@@ -5,6 +5,30 @@ const Team = require('../models/Team');
 const Game = require('../models/Game');
 
 
+router.get('/', (req, res, next) => {
+    Team.find({}, (err, teams) => {
+        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0;
+        for(var i=0; i < teams.length; i++)
+        {
+            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
+            if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
+            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+            if(teams[i].league == 'برنامه نویسی')       programmingNum++;
+            if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
+            if(teams[i].league == 'فوتبال ۲ بعدی')      soccer2d++;
+        }
+        res.render('./game/home', {
+            teams,
+            soccerLightNum,
+            soccerOpenNum,
+            smartCarNum,
+            cospaceNum,
+            programmingNum,
+            soccer2d,
+            count: teams.length
+        });
+    })
+});
 
 router.get('/soccer-light', (req, res, next) => {
     var {field} = req.query;
