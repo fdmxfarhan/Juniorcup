@@ -530,6 +530,7 @@ router.post('/refree-soccer2d-score', ensureAuthenticated, (req, res, next) => {
 router.get('/make-member-account', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.find({}, (err, teams) => {
+            res.redirect('/dashboard');
             teams.forEach(team => {
                 team.members.forEach(member => {
                     var newUser = new User({
@@ -550,12 +551,12 @@ router.get('/make-member-account', ensureAuthenticated, (req, res, next) => {
                                 newUser.save()
                                     .then(user => console.log(newUser))
                                     .catch(err => console.log(err));
+                                console.log(newUser);
                             }));
                         }
                     })
                 });
             });
-            res.redirect('/dashboard');
         });
     }
 });
