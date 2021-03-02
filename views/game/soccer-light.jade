@@ -37,10 +37,21 @@ block content
                 -}
             .iframe-holder
                 -if(field == 'A')
-                    //- iframe(frameborder="0" scrolling="no" src="https://player.twitch.tv/?channel=juniorcupa&parent=juniorcupa&autoplay=false") 
                     iframe(src="https://player.twitch.tv/?channel=juniorcupa&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'B')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupb&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'C')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupc&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'D')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupd&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'E')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupe&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'F')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupf&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'G')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupg&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
                 
-            a.stream(href="https://www.aparat.com/fdmx/live") 
+            a.stream(href="https://www.twitch.tv/juniorcup#{field}") 
                 i.fa.fa-external-link
                 | نمایش استریم
             .two-part
