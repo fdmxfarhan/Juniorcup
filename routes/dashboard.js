@@ -243,6 +243,16 @@ router.get('/upgrade-to-refree', ensureAuthenticated, (req, res, next) => {
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
 
+router.get('/upgrade-to-student', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.updateMany({_id: req.query.id}, {$set: {role: 'student'}}, (err, doc) => {
+            res.redirect('/dashboard/users-list');
+        });
+    }
+    else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
+});
+
 router.post('/add-game-light', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -609,5 +619,10 @@ router.get('/soccer2d-delete-game', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/admin-accept-team', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Team.updateMany({_id: req.query.id}, {$set: {qualified: true}},(err, doc) => res.redirect('/dashboard/teams-list'));
+    }
+});
 
 module.exports = router;
