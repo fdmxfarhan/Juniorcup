@@ -7,7 +7,10 @@ var TeamSchema = new mongoose.Schema({
   email: String,
   phone: String,
   affiliation: String,
-  members: [Object],
+  members: {
+    type: [Object],
+    default: []
+  },
   qualified: {
     type: Boolean,
     default: false
