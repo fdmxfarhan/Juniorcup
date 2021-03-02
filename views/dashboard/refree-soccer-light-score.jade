@@ -1,0 +1,91 @@
+extends layout
+
+block content
+    //- h1.game-title لیست بازی ها
+    //- .game-list 
+    //-     table
+    //-         tr 
+    //-             th ردیف
+    //-             th تیم A 
+    //-             th گل A
+    //-             th تیم B
+    //-             th گل B
+    //-             th زمین
+    //-             th مشاهده
+    //-         -for(var i=0; i<games.length; i++){
+    //-             tr 
+    //-                 td= i+1
+    //-                 td= games[i].teamA.teamName
+    //-                 td= games[i].goalA
+    //-                 td= games[i].teamB.teamName
+    //-                 td= games[i].goalB
+    //-                 td= games[i].field
+    //-                 td 
+    //-                     a(href="/dashboard/game?id=#{games[i]._id}") 
+    //-                         i.fa.fa-external-link
+    //-         -}
+    h1.game-title جدول امتیازات
+    .game-list 
+        table
+            tr 
+                th رتبه
+                th نام تیم
+                th تعداد برد
+                th تعداد باخت
+                th تعداد مساوی
+                th گل زده
+                th گل خورده
+                th تفاضل گل
+                th امتیاز تکنیکال
+                th امتیاز نهایی
+                th ویرایش
+            -for(var i=0; i<teams.length; i++){
+                tr 
+                    td= i + 1
+                    td= teams[i].teamName
+                    td= teams[i].win
+                    td= teams[i].lose
+                    td= teams[i].equals
+                    td= teams[i].goalzade
+                    td= teams[i].goalkhorde
+                    td= teams[i].goalzade - teams[i].goalkhorde
+                    td= teams[i].technical
+                    td= teams[i].score
+                    td 
+                        a.edit-score(id="edit#{i}")
+                            i.fa.fa-edit
+            -}
+    a.link.return(href="/dashboard/soccer-light") بازگشت
+    .modal
+    -for(var i=0; i<teams.length; i++){
+        .pop-up(id="editpanel#{i}")
+            span.close#close-pup-up &times;
+            h1.popup-title ویرایش امتیازات #{teams[i].teamName}
+            form(action="/dashboard/refree-soccer-light-score" method="POST") 
+                input.hidden(type="text" name="teamName" value="#{teams[i].teamName}")
+                input.hidden(type="text" name="id" value="#{teams[i]._id}")
+                .input-pannel
+                    label.num(for="win") تعداد برد:‌ 
+                    input.num(type="number" name="win" value="#{teams[i].win}")
+                .input-pannel
+                    label.num(for="lose") تعداد باخت:‌ 
+                    input.num(type="number" name="lose" value="#{teams[i].lose}")
+                .input-pannel
+                    label.num(for="equals") تعداد مساوی:‌ 
+                    input.num(type="number" name="equals" value="#{teams[i].equals}")
+                .input-pannel
+                    label.num(for="goalzade") گل زده:‌ 
+                    input.num(type="number" name="goalzade" value="#{teams[i].goalzade}")
+                .input-pannel
+                    label.num(for="goalkhorde") گل خورده:‌ 
+                    input.num(type="number" name="goalkhorde" value="#{teams[i].goalkhorde}")
+                .input-pannel
+                    label.num(for="technical") امتیاز تکنیکال:‌ 
+                    input.num(type="number" name="technical" value="#{teams[i].technical}")
+                .input-pannel
+                    label.num(for="score") امتیاز نهایی:‌ 
+                    input.num(type="number" name="score" value="#{teams[i].score}")
+                
+                input.submit(type="submit" value="ثبت")
+    -}
+            

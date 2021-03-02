@@ -4,22 +4,16 @@ block styles
     link(rel="stylesheet", href="/stylesheets/game.css")
 
 block content
-    h1.league-title لیگ ربات های فوتبالیست سبک وزن
+    h1.league-title لیگ فوتبال ۲ بعدی
     .tab-view 
         .tab-links 
-            -if(field == 'A')
-                a.active(href="/game/soccer-light?field=A") زمین A
-            -else
-                a(href="/game/soccer-light?field=A") زمین A
-            -if(field == 'B')
-                a.active(href="/game/soccer-light?field=B") زمین B
+            -if(field == 'G')
+                a.active(href="/game/soccer2d?field=G") زمین G
             -else 
-                a(href="/game/soccer-light?field=B") زمین B
-            -if(field == 'C')
-                a.active(href="/game/soccer-light?field=C") زمین C
-            -else 
-                a(href="/game/soccer-light?field=C") زمین C
+                a(href="/game/soccer2d?field=G") زمین G
+            
         .tab-content 
+            br
             .score-board
                 img.score(src="/images/score.png")
                 -if(!game){

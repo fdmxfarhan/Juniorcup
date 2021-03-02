@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
+const bcrypt = require('bcryptjs');
 var User = require('../models/User');
 var Team = require('../models/Team');
 var Game = require('../models/Game');
+var shamsi = require('../config/shamsi');
 
 const memberPrice = 750000;
 const cupPrice = 750000;
@@ -37,6 +39,15 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
                     teams,
                     games
                 });
+            });
+        });
+    }
+    else if(req.user.role == 'student'){
+        Team.find({_id: req.user.teamID}, (err, team) =>{
+            res.render('./dashboard/student-dashboard', {
+                user: req.user,
+                team,
+                shamsi
             });
         });
     }
@@ -232,13 +243,37 @@ router.get('/upgrade-to-refree', ensureAuthenticated, (req, res, next) => {
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
 
-router.post('/add-game', ensureAuthenticated, (req, res, next) => {
+router.post('/add-game-light', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field} = req.body;
     Team.findById(idA, (err, teamA) => {
         Team.findById(idB, (err, teamB) => {
             var newGame = new Game({teamA, teamB, field, league: teamA.league});
             newGame.save().then(doc => {
-                res.redirect('/dashboard');
+                res.redirect('/dashboard/soccer-light');
+            }).catch(err => console.log(err));
+        });
+    });
+});
+
+router.post('/add-game-open', ensureAuthenticated, (req, res, next) => {
+    var {idA, idB, field} = req.body;
+    Team.findById(idA, (err, teamA) => {
+        Team.findById(idB, (err, teamB) => {
+            var newGame = new Game({teamA, teamB, field, league: teamA.league});
+            newGame.save().then(doc => {
+                res.redirect('/dashboard/soccer-open');
+            }).catch(err => console.log(err));
+        });
+    });
+});
+
+router.post('/add-game-soccer2d', ensureAuthenticated, (req, res, next) => {
+    var {idA, idB, field} = req.body;
+    Team.findById(idA, (err, teamA) => {
+        Team.findById(idB, (err, teamB) => {
+            var newGame = new Game({teamA, teamB, field, league: teamA.league});
+            newGame.save().then(doc => {
+                res.redirect('/dashboard/soccer2d');
             }).catch(err => console.log(err));
         });
     });
@@ -247,9 +282,16 @@ router.post('/add-game', ensureAuthenticated, (req, res, next) => {
 router.get('/game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
-            res.render('./dashboard/refree-game', {
-                user: req.user,
-                game
+            User.find({teamID: game.teamA._id}, (err, teamAusers) => {
+                User.find({teamID: game.teamB._id}, (err, teamBusers) => {
+                    // console.log(teamAusers);
+                    res.render('./dashboard/refree-game', {
+                        user: req.user,
+                        game,
+                        teamAusers,
+                        teamBusers
+                    });
+                });
             });
         });
     }
@@ -263,7 +305,13 @@ router.get('/start-game', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
+router.get('/end-game-nosave', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.updateMany({_id: req.query.id}, {$set: {started: false}}, (err, doc) => {
+            res.redirect(`/dashboard/game?id=${req.query.id}`);
+        });
+    }
+});
 router.get('/end-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.updateMany({_id: req.query.id}, {$set: {started: false}}, (err, doc) => {
@@ -363,6 +411,200 @@ router.get('/decrease-goalB', ensureAuthenticated, (req, res, next) => {
                 res.redirect(`/dashboard/game?id=${req.query.id}`);
             });
         })
+    }
+});
+
+router.get('/soccer-light', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
+            Game.find({league: 'فوتبالیست سبک وزن'}, (err, games) => {
+                res.render('./dashboard/refree-soccer-light',{
+                    user: req.user,
+                    teams,
+                    games
+                });
+            });
+        });
+    }
+});
+
+router.get('/soccer-light-score', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
+            res.render('./dashboard/refree-soccer-light-score',{
+                user: req.user,
+                teams
+            });
+        });
+    }
+});
+
+router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
+            Game.find({league: 'فوتبالیست وزن آزاد'}, (err, games) => {
+                res.render('./dashboard/refree-soccer-open',{
+                    user: req.user,
+                    teams,
+                    games
+                });
+            });
+        });
+    }
+});
+
+router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
+            res.render('./dashboard/refree-soccer-open-score',{
+                user: req.user,
+                teams
+            });
+        });
+    }
+});
+
+router.get('/soccer2d-score', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
+            res.render('./dashboard/refree-soccer2d-score',{
+                user: req.user,
+                teams
+            });
+        });
+    }
+});
+
+router.get('/smartcar', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
+            res.render('./dashboard/refree-smartcar',{
+                user: req.user,
+                teams,
+            });
+        });
+    }
+});
+
+router.get('/soccer2d', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
+            Game.find({league: 'فوتبال ۲ بعدی'}, (err, games) => {
+                res.render('./dashboard/refree-soccer2d',{
+                    user: req.user,
+                    teams,
+                    games
+                });
+            });
+        });
+    }
+});
+
+router.post('/refree-soccer-light-score', ensureAuthenticated, (req, res, next) => {
+    var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
+    if(req.user.role == 'refree'){
+        Team.updateMany({_id: id}, {$set: {win, lose, equals, goalzade, goalkhorde, technical, score}}, (err, teams) => {
+            res.redirect('/dashboard/soccer-light-score');
+        });
+    }
+});
+
+router.post('/refree-soccer-open-score', ensureAuthenticated, (req, res, next) => {
+    var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
+    if(req.user.role == 'refree'){
+        Team.updateMany({_id: id}, {$set: {win, lose, equals, goalzade, goalkhorde, technical, score}}, (err, teams) => {
+            res.redirect('/dashboard/soccer-open-score');
+        });
+    }
+});
+
+router.post('/refree-soccer2d-score', ensureAuthenticated, (req, res, next) => {
+    var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
+    if(req.user.role == 'refree'){
+        Team.updateMany({_id: id}, {$set: {win, lose, equals, goalzade, goalkhorde, technical, score}}, (err, teams) => {
+            res.redirect('/dashboard/soccer2d-score');
+        });
+    }
+});
+
+router.get('/make-member-account', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Team.find({}, (err, teams) => {
+            teams.forEach(team => {
+                team.members.forEach(member => {
+                    var newUser = new User({
+                        username: member.idNumber,
+                        email: 'test@gmail.com',
+                        phone: member.phone,
+                        fullname: member.fullName,
+                        role: 'student',
+                        teamName: team.teamName,
+                        teamID: team._id,
+                        password: member.idNumber
+                    });
+                    User.find({username: newUser.username}, (err, user) => {
+                        if(user.length == 0){
+                            bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+                                if(err) throw err;
+                                newUser.password = hash;
+                                newUser.save()
+                                    .then(user => console.log(newUser))
+                                    .catch(err => console.log(err));
+                            }));
+                        }
+                    })
+                });
+            });
+            res.redirect('/dashboard');
+        });
+    }
+});
+
+router.get('/delete-member-account', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Team.find({}, (err, teams) => {
+            teams.forEach(team => {
+                team.members.forEach(member => {
+                    User.deleteMany({username: member.idNumber}, (err, doc) => console.log('removed!'));
+                });
+            });
+            res.redirect('/dashboard');
+        });
+    }
+});
+
+router.get('/remove-user', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        User.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/users-list'));
+    }
+});
+
+router.get('/remove-upload', ensureAuthenticated, (req, res, next) => {
+    var path = req.query.path;
+    var newFile = [];
+    req.user.file.forEach(file => {
+        if(file.path != path) newFile.push(file);
+    });
+    User.updateMany({_id: req.user._id}, {$set: {file: newFile}}, (err, doc) => {
+        res.redirect('/dashboard');
+    });
+});
+
+router.get('/light-delete-game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer-light'));
+    }
+});
+
+router.get('/open-delete-game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer-open'));
+    }
+});
+
+router.get('/soccer2d-delete-game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer2d'));
     }
 });
 

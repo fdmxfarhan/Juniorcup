@@ -23,16 +23,28 @@ router.get('/soccer-light', (req, res, next) => {
 });
 
 router.get('/soccer-open', (req, res, next) => {
+    var field = 'D';
     Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
-        res.render('./game/soccer-open',{
-            teams
+        Game.findOne({field: field, league: 'فوتبالیست وزن آزاد', started: true}, (err, game) => {
+            if(err) console.log(err);
+            // console.log(game);
+            res.render('./game/soccer-open', {
+                teams,
+                field,
+                game
+            });
         });
     });
 });
 
 router.get('/smartcar', (req, res, next) => {
+    var {field} = req.query;
+    if(!field) field = 'E';
     Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
-        res.render('./game/smartcar', {teams});
+        res.render('./game/smartcar', {
+            teams,
+            field
+        });
     });
 });
 
@@ -48,5 +60,19 @@ router.get('/programming', (req, res, next) => {
     });
 });
 
+router.get('/soccer2d', (req, res, next) => {
+    var field = 'G';
+    Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
+        Game.findOne({field: field, league: 'فوتبال ۲ بعدی', started: true}, (err, game) => {
+            if(err) console.log(err);
+            // console.log(game);
+            res.render('./game/soccer2d', {
+                teams,
+                field,
+                game
+            });
+        });
+    });
+});
 
 module.exports = router;

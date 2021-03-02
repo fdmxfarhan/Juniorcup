@@ -4,33 +4,31 @@ block styles
     link(rel="stylesheet", href="/stylesheets/game.css")
 
 block content
-    h1.league-title لیگ ربات های فوتبالیست سبک وزن
+    h1.league-title لیگ خودروهای هوشمند
     .tab-view 
         .tab-links 
-            -if(field == 'A')
-                a.active(href="/game/soccer-light?field=A") زمین A
-            -else
-                a(href="/game/soccer-light?field=A") زمین A
-            -if(field == 'B')
-                a.active(href="/game/soccer-light?field=B") زمین B
+            -if(field == 'E')
+                a.active(href="/game/smartcar?field=E") زمین E
             -else 
-                a(href="/game/soccer-light?field=B") زمین B
-            -if(field == 'C')
-                a.active(href="/game/soccer-light?field=C") زمین C
+                a(href="/game/smartcar?field=E") زمین E
+            -if(field == 'F')
+                a.active(href="/game/smartcar?field=F") زمین F
             -else 
-                a(href="/game/soccer-light?field=C") زمین C
+                a(href="/game/smartcar?field=F") زمین F
+            
         .tab-content 
-            .score-board
-                img.score(src="/images/score.png")
-                -if(!game){
-                    .team-a تیم A 
-                    .goals 0 - 0
-                    .team-b تیم B
-                -}else{
-                    .team-a= game.teamA.teamName
-                    .goals #{game.goalA} - #{game.goalB}
-                    .team-b= game.teamB.teamName
-                -}
+            br
+            //- .score-board
+            //-     img.score(src="/images/score.png")
+            //-     -if(!game){
+            //-         .team-a تیم A 
+            //-         .goals 0 - 0
+            //-         .team-b تیم B
+            //-     -}else{
+            //-         .team-a= game.teamA.teamName
+            //-         .goals #{game.goalA} - #{game.goalB}
+            //-         .team-b= game.teamB.teamName
+            //-     -}
             .iframe-holder
                 -if(field == 'A')
                     iframe(src="https://player.twitch.tv/?channel=juniorcupa&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
@@ -64,32 +62,32 @@ block content
     a.big-link(href="#") 
         i.fa.fa-external-link
         | مشاهده بازی های ضبط شده
-    h1.table-title جدول امتیازات
-    table.score-table
-        tr 
-            th رتبه
-            th نام تیم
-            th تعداد برد
-            th تعداد باخت
-            th تعداد مساوی
-            th گل زده
-            th گل خورده
-            th تفاضل گل
-            th امتیاز تکنیکال
-            th امتیاز نهایی
-        -for(var i=0; i<teams.length; i++){
-            tr 
-                td= i + 1
-                td= teams[i].teamName
-                td= teams[i].win
-                td= teams[i].lose
-                td= teams[i].equals
-                td= teams[i].goalzade
-                td= teams[i].goalkhorde
-                td= Math.abs(teams[i].goalkhorde - teams[i].goalzade)
-                td= teams[i].technical
-                td= teams[i].score
-        -}
+    //- h1.table-title جدول امتیازات
+    //- table.score-table
+    //-     tr 
+    //-         th رتبه
+    //-         th نام تیم
+    //-         th تعداد برد
+    //-         th تعداد باخت
+    //-         th تعداد مساوی
+    //-         th گل زده
+    //-         th گل خورده
+    //-         th تفاضل گل
+    //-         th امتیاز تکنیکال
+    //-         th امتیاز نهایی
+    //-     -for(var i=0; i<teams.length; i++){
+    //-         tr 
+    //-             td= i + 1
+    //-             td= teams[i].teamName
+    //-             td= teams[i].win
+    //-             td= teams[i].lose
+    //-             td= teams[i].equals
+    //-             td= teams[i].goalzade
+    //-             td= teams[i].goalkhorde
+    //-             td= Math.abs(teams[i].goalkhorde - teams[i].goalzade)
+    //-             td= teams[i].technical
+    //-             td= teams[i].score
+    //-     -}
 
     script(src="/javascripts/game.js") 
 

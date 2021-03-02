@@ -847,11 +847,26 @@ body{
         transition-duration: 500ms;
         margin-right: 2vw;
     }
+    a.link{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+        margin-right: 2vw;
+        text-decoration: none;
+        float: left;
+        margin-left: 2vw;
+    }
     .game-list{
         width: 100%;
         margin: auto;
         text-align: center;
-        max-height: 60vh;
+        max-height: 55vh;
         overflow-y: scroll;
     }
     .game-list table{
@@ -894,6 +909,7 @@ body{
         width: 49%;
         float: right;
         text-align: center;
+        padding-bottom: 2vw;
     }
     h1.game-title.underLine{
         border-bottom: var(--purple) 0.2vw solid;
@@ -915,15 +931,176 @@ body{
         font-size: 1.3vw;
         background-color: var(--purple);
         color: white;
-        padding: 0.5vw 2vw;
+        padding: 0.2vw 1vw;
         border-radius: 1vw;
         transition-duration: 500ms;
-        display: block;
-        width: fit-content;
-        margin: auto;
+        /* display: block;
+        width: fit-content; */
+        margin-right: 0.5vw;
     }
     .game-two-part .part a:hover{background-color: chocolate;}
+    .modal{
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        display: none;
+    }
+    .pop-up label.num{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        margin-left: 1vw;
+    }
+    .pop-up input.num{
+        background-color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        border: none;
+        border-radius: 1vw;
+        padding: 0.5vw 2vw;
+        box-shadow: -0.2vw -0.2vw 0.3vw 0 rgb(233, 233, 233), 0.2vw 0.2vw 0.3vw 0.1vw rgba(0, 0, 0, 0.2);
+        border: lightgray 0.1vw solid;
+        width: 5vw;
+    }
+    .pop-up input.num:focus{
+        outline: none;
+        border: var(--purple) 0.1vw solid;
+    }
+    .pop-up .input-pannel{
+        margin: 1vw 0;
+        text-align: right;
+    }
+    .pop-up input.submit{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+        margin-right: 2vw;
+    }
+    .pop-up input.submit:hover{background-color: chocolate;}
+    a.edit-score{
+        color: var(--blue);
+        cursor: pointer;
+        font-size: 1.5vw;
+        transition-duration: 500ms;
+    }
+    a.edit-score:hover{
+        color: chocolate;
+    }
+    a.link.return{
+        position: absolute;
+        left: 5vw;
+        bottom: 2vw;
+    }
+    a.link.return:hover{background-color: chocolate;}
+    .file-list{
+        max-height: 17vw;
+        overflow-y: scroll;
+    }
+    .file-list table{
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+    .file-list table th{
+        background-color: var(--purple);
+        padding: 0.4vw 0;
+        color: white;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+    }
+    .file-list table td{
+        padding: 0.4vw 0;
+        border-bottom: lightgray 0.1vw solid;
+    }
+    .file-list table td a{
+        color: var(--purple);
+        text-decoration: none;
+        font-size: 1.5vw;
+        transition-duration: 500ms;
+    }
+    .file-list table td a:hover{color: chocolate;}
+    form.upload-code{
+        width: 80%;
+        margin: auto;
+        padding: 1vw 0;
+        /* background-color: lightgreen; */
+    }
+    form.upload-code input.file{
+        border: lightsalmon 0.1vw dashed;
+        border-radius: 1vw;
+        padding: 0.5vw;
+    }
+    form.upload-code input.file:focus{
+        outline: none;
+        color: red;
+    }
+    form.upload-code input.submit{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+        margin-right: 2vw;
+    }
+    form.upload-code input.submit:hover{background-color: chocolate;}
+    .download-file{
+        width: 60%;
+        margin: auto;
+        margin-top: 2vw;
+        height: 13vw;
+        overflow-y: scroll;
+    }
+    .download-file table{
+        width: 100%;
+        text-align: center;
+    }
+    .download-file table th{
+        color: white;
+        background-color: var(--purple);
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+    }
+    .download-file table td{
+        border-bottom: lightgray 0.1vw solid;
+        padding: 0.3vw 0;
+    }
+    .download-file table td a.download{
+        color: var(--purple);
+        background-color: transparent;
+        padding: 0;
+        font-size: 1.5vw;
+    }
+    .download-file table td a.download:hover{
+        background-color: transparent;
+        color: chocolate;
+    }
+    a.goto-game{
+        text-decoration: none;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        color: var(--purple);
+        transition-duration: 500ms;
+        position: absolute;
+        bottom: 2vw;
+        right: 5vw;
+    }
+    a.goto-game:hover{color: chocolate;}
+    a.goto-game i{padding-left: 1vw;}
 }
+
 @media only screen and (max-width: 800px) {
     .navigation{
         /* direction: ltr; */

@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    var edits = [];
+    for(var i=0; i<300; i++){
+        edits.push({link: `#edit${i}`, panel: `#editpanel${i}`});
+    }
     var numbers = [];
     for(var i=0; i<100; i++)
     {
@@ -53,6 +57,10 @@ $(document).ready(function(){
         numbers.forEach(num => {
             $(`#team-info-${num}`).hide();
         });
+        for(var i=0; i<300; i++){
+            $(edits[i].panel).hide();
+        }
+        $('.modal').hide();
     });
     numbers.forEach(num => {
         $(`#team-info-btn-${num}`).click(()=>{
@@ -64,4 +72,17 @@ $(document).ready(function(){
         $('form.add-member').slideDown(500);
         $('a.add-member').fadeOut(100);
     });
+    $('.modal').click(()=>{
+        for(var i=0; i<300; i++){
+            $(edits[i].panel).hide();
+        }
+        $('.modal').hide();
+    });
+    edits.forEach(edit => {
+        $(edit.link).click(() => {
+            $(edit.panel).show(500);
+            $('.modal').show();
+        });
+    });
+
 });
