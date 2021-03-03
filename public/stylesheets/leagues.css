@@ -258,6 +258,13 @@
     .room-links-area a:hover{
         background-color: var(--purple);
         color: white;
+        border: none;
+    }
+    .room-links-area a.bold{
+        font-weight: bold;
+        font-size: 1.4vw;
+        border: lightblue 0.1vw solid;
+        padding: 0.5vw 3vw;
     }
     /* ---------------------- flag -------------------- */
     
@@ -508,5 +515,11 @@
     .room-links-area a:hover{
         background-color: var(--purple);
         color: white;
+    }
+    .room-links-area a.bold{
+        font-weight: bold;
+        font-size: 3.4vw;
+        border: lightblue 0.1vw solid;
+        padding: 1vw 7vw;
     }
 }
