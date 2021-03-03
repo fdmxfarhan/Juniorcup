@@ -225,6 +225,40 @@
         margin-top: 1vw;
         padding: 0;
     }
+    .room-choose{
+        text-align: center;
+        margin-top: 4vw;
+    }
+    a.room-link{
+        background-color: var(--purple);
+        color: white;
+        margin: 0.3vw;
+        padding: 0.3vw 1vw;
+        border-radius: 1vw;
+        text-decoration: none;
+        font-size: 1vw;
+    }
+    a.room-link:hover, a.room-link.active{background-color: chocolate; color: white;}
+    .room-links-area{
+        text-align: center;
+        margin-top: 2vw;
+    }
+    .room-links-area a{
+        color: var(--purple);
+        display: block;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.1vw 3vw;
+        text-decoration: none;
+        background-color: white;
+        width: fit-content;
+        border-radius: 1vw;
+        margin: auto;
+    }
+    .room-links-area a:hover{
+        background-color: var(--purple);
+        color: white;
+    }
     /* ---------------------- flag -------------------- */
     
 }
@@ -437,5 +471,42 @@
         margin: 0;
         margin-top: 3vw;
         padding: 0;
+    }
+    .leagues-cards .card.small{
+        min-height: 8vw;
+    }
+    .room-choose{
+        text-align: center;
+        margin-top: 4vw;
+    }
+    a.room-link{
+        background-color: var(--purple);
+        color: white;
+        margin: 0.3vw;
+        padding: 1vw 3vw;
+        border-radius: 3vw;
+        text-decoration: none;
+        font-size: 3vw;
+    }
+    a.room-link:hover, a.room-link.active{background-color: chocolate; color: white;}
+    .room-links-area{
+        text-align: center;
+        margin-top: 2vw;
+    }
+    .room-links-area a{
+        color: var(--purple);
+        display: block;
+        font-family: 'iransans';
+        font-size: 3.2vw;
+        padding: 0.5vw 6vw;
+        text-decoration: none;
+        background-color: white;
+        width: fit-content;
+        border-radius: 3vw;
+        margin: 0.5vw auto;
+    }
+    .room-links-area a:hover{
+        background-color: var(--purple);
+        color: white;
     }
 }

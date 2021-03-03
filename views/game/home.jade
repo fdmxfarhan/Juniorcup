@@ -67,4 +67,54 @@ block content
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
+    .room-choose
+        -if(room == 'soccer')
+            a.room-link.active(href="/game?room=soccer") فوتبالیست 
+        -else
+            a.room-link(href="/game?room=soccer") فوتبالیست 
+        -if(room == 'smartcar')
+            a.room-link.active(href="/game?room=smartcar") خودرو هوشمند 
+        -else
+            a.room-link(href="/game?room=smartcar") خودرو هوشمند 
+        -if(room == 'cospace')
+            a.room-link.active(href="/game?room=cospace") امداد فضای مشترک 
+        -else
+            a.room-link(href="/game?room=cospace") امداد فضای مشترک 
+        -if(room == 'programming')
+            a.room-link.active(href="/game?room=programming") برنامه نویسی 
+        -else
+            a.room-link(href="/game?room=programming") برنامه نویسی 
+        -if(room == 'soccer2d')
+            a.room-link.active(href="/game?room=soccer2d") فوتبال ۲ بعدی 
+        -else
+            a.room-link(href="/game?room=soccer2d") فوتبال ۲ بعدی 
+    .room-links-area
+        -if(room == 'soccer'){
+            -for(var i=0; i<soccerRooms.length; i++){
+                a(href="#{soccerRooms[i].link}")= soccerRooms[i].name 
+            -}
+        -}
+        -if(room == 'smartcar'){
+            -for(var i=0; i<smartcarRooms.length; i++){
+                a(href="#{smartcarRooms[i].link}")= smartcarRooms[i].name 
+            -}
+        -}
+        -if(room == 'cospace'){
+            -for(var i=0; i<cospaceRooms.length; i++){
+                a(href="#{cospaceRooms[i].link}")= cospaceRooms[i].name 
+            -}
+        -}
+        -if(room == 'programming'){
+            -for(var i=0; i<programmingRooms.length; i++){
+                a(href="#{programmingRooms[i].link}")= programmingRooms[i].name 
+            -}
+        -}
+        -if(room == 'soccer2d'){
+            -for(var i=0; i<soccer2dRooms.length; i++){
+                a(href="#{soccer2dRooms[i].link}")= soccer2dRooms[i].name 
+            -}
+        -}
+        
+
+    
     script(src="/javascripts/leagues.js")

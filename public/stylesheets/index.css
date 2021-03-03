@@ -763,7 +763,8 @@ body{
         font-size: 4vw;
         padding: 1vw 7vw;
         border-radius: 3.5vw;
-        background-image: linear-gradient(to right, #7610a5, #7617e4);
+        /* background-image: linear-gradient(to right, #7610a5, #7617e4); */
+        background-image: linear-gradient(to right, #1044a5, #17cce4);
         transition-duration: 600ms;
         animation-name: goUp;
         animation-duration: 3s;

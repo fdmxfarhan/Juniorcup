@@ -1111,6 +1111,17 @@ body{
         width: 3vw;
     }
     form.add-game input.num:focus{outline: none;}
+    form.add-game input.text{
+        background-color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        border: none;
+        border-radius: 1vw;
+        padding: 0.5vw 2vw;
+        box-shadow: -0.2vw -0.2vw 0.3vw 0 rgb(233, 233, 233), 0.2vw 0.2vw 0.3vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 5vw;
+    }
+    form.add-game input.text:focus{outline: none;}
     .round-links{
         margin-bottom: 1vw;
         text-align: center;
@@ -1124,6 +1135,23 @@ body{
         text-decoration: none;
     }
     a.round:hover, a.round.active{background-color: chocolate; color: white;}
+    a.score-board-edit{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+        margin-right: 2vw;
+        text-decoration: none;
+        position: absolute;
+        bottom: 2vw;
+        left: 15vw;
+    }
+    a.score-board-edit:hover{background-color: chocolate;}
 }
 
 @media only screen and (max-width: 800px) {

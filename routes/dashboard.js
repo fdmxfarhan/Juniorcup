@@ -264,24 +264,24 @@ router.get('/upgrade-to-student', ensureAuthenticated, (req, res, next) => {
 });
 
 router.post('/add-game-light', ensureAuthenticated, (req, res, next) => {
-    var {idA, idB, field, round} = req.body;
+    var {idA, idB, field, round, time} = req.body;
     Team.findById(idA, (err, teamA) => {
         Team.findById(idB, (err, teamB) => {
-            var newGame = new Game({teamA, teamB, field, league: teamA.league, round});
+            var newGame = new Game({teamA, teamB, field, league: teamA.league, round, time});
             newGame.save().then(doc => {
-                res.redirect('/dashboard/soccer-light');
+                res.redirect(`/dashboard/soccer-light?round=${round}`);
             }).catch(err => console.log(err));
         });
     });
 });
 
 router.post('/add-game-open', ensureAuthenticated, (req, res, next) => {
-    var {idA, idB, field} = req.body;
+    var {idA, idB, field, round, time} = req.body;
     Team.findById(idA, (err, teamA) => {
         Team.findById(idB, (err, teamB) => {
-            var newGame = new Game({teamA, teamB, field, league: teamA.league});
+            var newGame = new Game({teamA, teamB, field, league: teamA.league, round, time});
             newGame.save().then(doc => {
-                res.redirect('/dashboard/soccer-open');
+                res.redirect(`/dashboard/soccer-open?round=${round}`);
             }).catch(err => console.log(err));
         });
     });
@@ -461,13 +461,16 @@ router.get('/soccer-light-score', ensureAuthenticated, (req, res, next) => {
 });
 
 router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
+    var round = req.query.round;
+    if(!round) round = 1;
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
-            Game.find({league: 'فوتبالیست وزن آزاد'}, (err, games) => {
+            Game.find({league: 'فوتبالیست وزن آزاد', round: round}, (err, games) => {
                 res.render('./dashboard/refree-soccer-open',{
                     user: req.user,
                     teams,
-                    games
+                    games,
+                    round
                 });
             });
         });
@@ -614,7 +617,7 @@ router.get('/remove-upload', ensureAuthenticated, (req, res, next) => {
 
 router.get('/light-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
-        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer-light'));
+        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer-light?round=1'));
     }
 });
 

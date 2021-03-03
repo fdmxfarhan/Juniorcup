@@ -8,9 +8,9 @@ block content
     .tab-view 
         .tab-links 
             -if(field == 'D')
-                a.active(href="/game/soccer-open?field=D") زمین D
+                a.active(href="/game/soccer-open?field=D&round=#{round}") زمین D
             -else 
-                a(href="/game/soccer-open?field=D") زمین D
+                a(href="/game/soccer-open?field=D&round=#{round}") زمین D
         .tab-content 
             .score-board
                 img.score(src="/images/score.png")
@@ -53,9 +53,53 @@ block content
             //-         form.hidden.objection(action="/game/objection") 
             //-             textarea(name="objection") 
             //-             input.submit(type="submit" value="ارسال")
-    a.big-link(href="#") 
-        i.fa.fa-external-link
-        | مشاهده بازی های ضبط شده
+    //- a.big-link(href="#") 
+    //-     i.fa.fa-external-link
+    //-     | مشاهده بازی های ضبط شده
+    h1.table-title جدول بازی ها 
+        -if(round == 1)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=1") راند ۱
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=1") راند ۱
+        -if(round == 2)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=2") راند ۲
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=2") راند ۲
+        -if(round == 3)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=3") راند ۳
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=3") راند ۳
+        -if(round == 4)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=4") راند ۴
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=4") راند ۴
+        -if(round == 5)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=5") راند ۵
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=5") راند ۵
+    table.score-table
+        tr 
+            th ردیف
+            th تیم قرمز
+            th تیم آبی
+            th زمین
+            th ساعت
+            th نتیجه
+        -for(var i=0; i<games.length; i++){
+            tr 
+                td= i+1
+                td= games[i].teamA.teamName
+                td= games[i].teamB.teamName
+                td= games[i].field
+                td= games[i].time
+                td #{games[i].goalA} - #{games[i].goalB} 
+                    -if(games[i].goalA > games[i].goalB)
+                        | به نفع #{games[i].teamA.teamName}
+                    -else if(games[i].goalA < games[i].goalB)
+                        | به نفع #{games[i].teamB.teamName}
+
+                
+        -}
     h1.table-title جدول امتیازات
     table.score-table
         tr 
