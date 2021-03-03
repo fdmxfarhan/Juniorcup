@@ -20,6 +20,10 @@ var GameSchema = new mongoose.Schema({
   started: {
     type: Boolean,
     default: false
+  },
+  round: {
+    type: Number,
+    default: 1
   }
 });
 

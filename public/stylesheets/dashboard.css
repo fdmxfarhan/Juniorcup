@@ -1100,6 +1100,30 @@ body{
     }
     a.goto-game:hover{color: chocolate;}
     a.goto-game i{padding-left: 1vw;}
+    form.add-game input.num{
+        background-color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        border: none;
+        border-radius: 1vw;
+        padding: 0.5vw 2vw;
+        box-shadow: -0.2vw -0.2vw 0.3vw 0 rgb(233, 233, 233), 0.2vw 0.2vw 0.3vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 3vw;
+    }
+    form.add-game input.num:focus{outline: none;}
+    .round-links{
+        margin-bottom: 1vw;
+        text-align: center;
+    }
+    a.round{
+        background-color: lightblue;
+        color: black;
+        margin: 0.3vw;
+        padding: 0.1vw 1vw;
+        border-radius: 1vw;
+        text-decoration: none;
+    }
+    a.round:hover, a.round.active{background-color: chocolate; color: white;}
 }
 
 @media only screen and (max-width: 800px) {

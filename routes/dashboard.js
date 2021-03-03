@@ -264,10 +264,10 @@ router.get('/upgrade-to-student', ensureAuthenticated, (req, res, next) => {
 });
 
 router.post('/add-game-light', ensureAuthenticated, (req, res, next) => {
-    var {idA, idB, field} = req.body;
+    var {idA, idB, field, round} = req.body;
     Team.findById(idA, (err, teamA) => {
         Team.findById(idB, (err, teamB) => {
-            var newGame = new Game({teamA, teamB, field, league: teamA.league});
+            var newGame = new Game({teamA, teamB, field, league: teamA.league, round});
             newGame.save().then(doc => {
                 res.redirect('/dashboard/soccer-light');
             }).catch(err => console.log(err));
@@ -437,11 +437,12 @@ router.get('/decrease-goalB', ensureAuthenticated, (req, res, next) => {
 router.get('/soccer-light', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
-            Game.find({league: 'فوتبالیست سبک وزن'}, (err, games) => {
+            Game.find({league: 'فوتبالیست سبک وزن', round: req.query.round}, (err, games) => {
                 res.render('./dashboard/refree-soccer-light',{
                     user: req.user,
                     teams,
-                    games
+                    games,
+                    round: req.query.round
                 });
             });
         });
