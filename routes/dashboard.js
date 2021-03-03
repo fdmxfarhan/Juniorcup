@@ -207,7 +207,17 @@ router.get('/upgrade-user', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
         User.findById(req.query.id, (err, _user) => {
-            res.render('./dashboard/admin-upgrade-user', {id: _user._id, user: req.user});
+            Team.find({}, (err, teams) => {
+                Team.findOne({_id: _user.teamID}, (err, currentTeam) => {
+                    console.log(currentTeam);
+                    res.render('./dashboard/admin-upgrade-user', {
+                        id: _user._id, 
+                        user: req.user,
+                        teams,
+                        currentTeam
+                    });
+                });
+            });
         });
     }
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
@@ -622,6 +632,15 @@ router.get('/soccer2d-delete-game', ensureAuthenticated, (req, res, next) => {
 router.get('/admin-accept-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.updateMany({_id: req.query.id}, {$set: {qualified: true}},(err, doc) => res.redirect('/dashboard/teams-list'));
+    }
+});
+
+router.post('/set-user-team', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        User.updateMany({_id: req.body.id}, {$set: {teamID: req.body.team}}, (err, doc) => {
+            console.log(req.user.team);
+            res.redirect('/dashboard/users-list');
+        });
     }
 });
 
