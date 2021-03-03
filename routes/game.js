@@ -73,8 +73,13 @@ router.get('/smartcar', (req, res, next) => {
 });
 
 router.get('/cospace', (req, res, next) => {
+    var {field} = req.query;
+    if(!field) field = 'H';
     Team.find({league: 'امداد فضای مشترک'}, (err, teams) => {
-        res.render('./game/cospace', {teams});
+        res.render('./game/cospace', {
+            teams,
+            field
+        });
     });
 });
 
