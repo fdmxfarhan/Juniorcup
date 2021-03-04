@@ -5,6 +5,7 @@ const Team = require('../models/Team');
 const Game = require('../models/Game');
 
 const cospaceRooms = [
+    {link: 'https://juniorcupsetup.ir/cospace/', name: 'اتاق داوران'},
     {link: 'https://juniorcupsetup.ir/co_space_abou_ali_sina/', name: 'مجتمع آموزشی ابوعلی سینا'},
     {link: 'https://juniorcupsetup.ir/co_space_danesh/', name: 'دانش'},
     {link: 'https://juniorcupsetup.ir/co_space_emam_ali/', name: 'خانه علم خاکسفید - جمعیت امام علی (ع)'},
