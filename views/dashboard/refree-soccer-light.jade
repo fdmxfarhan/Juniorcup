@@ -35,6 +35,7 @@ block content
                 th زمین
                 th زمان
                 th مشاهده
+                th ویرایش
                 th حذف
             -for(var i=0; i<games.length; i++){
                 tr 
@@ -47,13 +48,40 @@ block content
                     td= games[i].time
                     td 
                         a(href="/dashboard/game?id=#{games[i]._id}") 
-                            i.fa.fa-external-link
+                            i.fa.fa-external-link 
+                            | مشاهده
+                    td 
+                        a.edit-score.smal(id="edit#{i}")
+                            i.fa.fa-edit 
+                            | ویرایش
                     td 
                         a(href="/dashboard/light-delete-game?id=#{games[i]._id}") 
                             i.fa.fa-trash
                     
             -}
-
+    .modal
+    -for(var i=0; i<games.length; i++){
+        .pop-up(id="editpanel#{i}")
+            span.close#close-pup-up &times;
+            h1.popup-title ویرایش بازی #{i+1}
+            form(action="/dashboard/refree-soccer-light-edit" method="POST") 
+                input.hidden(type="number" name="round" value="#{round}")
+                input.hidden(type="text" name="id" value="#{games[i]._id}")
+                .input-pannel
+                    label.num(for="goalA") گل تیم A:‌ 
+                    input.num(type="number" name="goalA" value="#{games[i].goalA}")
+                .input-pannel
+                    label.num(for="goalB") گل تیم B:‌ 
+                    input.num(type="number" name="goalB" value="#{games[i].goalB}")
+                .input-pannel
+                    label.num(for="field") زمین:‌ 
+                    input.num(type="text" name="field" value="#{games[i].field}")
+                .input-pannel
+                    label.num(for="time") تایم:‌ 
+                    input.num(type="text" name="time" value="#{games[i].time}")
+                
+                input.submit(type="submit" value="ثبت")
+    -}
     form.add-game(action="/dashboard/add-game-light" method="POST") 
         label(for="idA") تیم A: 
         select.teamSelect#teamA(name="idA") 

@@ -18,6 +18,7 @@ const cospaceRooms = [
     {link: 'https://juniorcupsetup.ir/co_space_shayestegan_nour/', name: 'دبیرستان شایستگان نور (دوره اول)'},
 ]
 const soccerRooms = [
+    {link: 'https://juniorcupsetup.ir/soccer/', name: 'اتاق داوری'},
     {link: 'https://juniorcupsetup.ir/allameh_tabatabai/', name: 'دبیرستان علامه طباطبائی'},
     {link: 'https://juniorcupsetup.ir/farzanegan_1/', name: 'دبیرستان فرزانگان 1 دوره اول'},
     // {link: 'https://juniorcupsetup.ir/farzanegan_1_1_2/', name: ''},
