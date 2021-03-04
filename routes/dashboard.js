@@ -452,6 +452,15 @@ router.get('/soccer-light', ensureAuthenticated, (req, res, next) => {
 router.get('/soccer-light-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
+            for(var i=1; i<teams.length; i++){
+                for(var j=0; j<teams.length - i; j++){
+                    if(teams[j].score < teams[j + 1].score){
+                        var temp = teams[j];
+                        teams[j] = teams[j+1];
+                        teams[j+1] = temp;
+                    }
+                }
+            }
             res.render('./dashboard/refree-soccer-light-score',{
                 user: req.user,
                 teams
@@ -480,6 +489,15 @@ router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
 router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
+            for(var i=1; i<teams.length; i++){
+                for(var j=0; j<teams.length - i; j++){
+                    if(teams[j].score < teams[j + 1].score){
+                        var temp = teams[j];
+                        teams[j] = teams[j+1];
+                        teams[j+1] = temp;
+                    }
+                }
+            }
             res.render('./dashboard/refree-soccer-open-score',{
                 user: req.user,
                 teams
