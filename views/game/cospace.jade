@@ -64,9 +64,15 @@ block content
             a.stream(href="https://www.twitch.tv/juniorcup#{field}") 
                 i.fa.fa-external-link
                 | نمایش استریم
-            iframe(width="860" height="330" src="https://docs.google.com/document/d/e/2PACX-1vRzy7nKrwpBM0wkWmBRWIDCd6wiFFP2AOwDtWSnwov29zjQOlCfSWTwuFEPfdP20L8YHUHl_h5sscJ7/pub?embedded=true") 
-            br
-            iframe(iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQM0sGbfrakd5LPhVhCuwy8TU-LKgMPnFHpkzZvuQGm3OaeBq_bBf74l3dXgMi6xkYXb7j_HsV4sCoV/pubhtml?widget=true&amp;headers=false" width=600 height=400)
+            .iframe-holder
+                iframe(width="860" height="330" src="https://docs.google.com/document/d/e/2PACX-1vRzy7nKrwpBM0wkWmBRWIDCd6wiFFP2AOwDtWSnwov29zjQOlCfSWTwuFEPfdP20L8YHUHl_h5sscJ7/pub?embedded=true") 
+            .iframe-holder
+                iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5rQb7eiSO1ikCHo6eGDHToRerD5K6a7kzvkaIo6FlVG2jOwkGbjrTZkGSXTo_Zhq8OMTHFaaYZAjV/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false")
+            .iframe-holder
+                iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTeXN9tBvggK3tfwFn8wUcwFoWF0YNysqb6icNgHo_C_731K3xxtiRuH-7JLn1COnGGDXAfD3-lOLl3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false")
+            .iframe-holder
+                iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQM0sGbfrakd5LPhVhCuwy8TU-LKgMPnFHpkzZvuQGm3OaeBq_bBf74l3dXgMi6xkYXb7j_HsV4sCoV/pubhtml?widget=true&amp;headers=false" width=600 height=400)
+            
             //- .two-part
             //-     .partial
             //-         a.upload آپلود برنامه
