@@ -115,10 +115,11 @@ router.get('/contact', (req, res, next) => {
 
 var mail=require('../config/mail');
 router.post('/send-massage', (req, res, next) => {
+    var {problem, name, mail, text} = req.body;
     if(req.body.text != '')
     {
-        mail('mohammadh.z.1393@gmail.com',req.body.problem,req.body.name+'\n'+req.body.mail+'\n'+req.body.text);
-        mail('fdmxfarhan@gmail.com',req.body.problem,req.body.name+'\n'+req.body.mail+'\n'+req.body.text);
+        mail('mohammadh.z.1393@gmail.com',problem,name+'\n'+mail+'\n'+text);
+        mail('fdmxfarhan@gmail.com',problem,name+'\n'+mail+'\n'+text);
         req.flash('success_msg', 'پیام شما با موفقیت ارسال شد');
     }
     else
@@ -128,8 +129,6 @@ router.post('/send-massage', (req, res, next) => {
     res.redirect('/contact');
 
 });
-
-
 
 
 
