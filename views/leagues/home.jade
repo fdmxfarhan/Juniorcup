@@ -5,6 +5,7 @@ block styles
 
 block content
     h1.content-title لیگ های مسابقات جونیورکاپ ۲۰۲۱
+    h2.under-title تعداد تیم های ثبت نام شده: #{count}
     .leagues-cards
         .card
             a(href="/leagues/soccer-light")
@@ -63,9 +64,9 @@ block content
                     .label
                         i.fa.fa-clock-o
                         | غیر حضوری
-                    .label.red
-                        i.fa.fa-clock-o
-                        | در حال آماده سازی
+                    //- .label.red
+                    //-     i.fa.fa-clock-o
+                    //-     | در حال آماده سازی
         .card
             a(href="/leagues/cospace")
                 .img
@@ -100,6 +101,25 @@ block content
                     .number= programmingNum
                 .graph-container
                     .graph(style="width: #{Math.floor((programmingNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+        .card
+            a(href="/leagues/soccer2d")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title فوتبال ۲ بعدی
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | در یک بازی فوتبال دو تیم ۱۱ نفره در یک زمین بازی به مدت ۱۰ دقیقه به رقابت می‌پردازند. 
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= soccer2d
+                .graph-container
+                    .graph(style="width: #{Math.floor((soccer2d/maxNum)*100)}%;")
                 .labels
                     .label
                         i.fa.fa-clock-o

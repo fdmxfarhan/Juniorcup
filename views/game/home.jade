@@ -1,0 +1,123 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/leagues.css")
+
+block content
+    h1.content-title لیگ های مسابقات جونیورکاپ ۲۰۲۱
+    h2.under-title تعداد تیم های ثبت نام شده: #{count}
+    .leagues-cards
+        .card.small
+            a(href="/game/soccer-light")
+                .img
+                    img(src="/images/leagues/light-min.png")
+                h1.title ربات های فوتبالیست سبک وزن
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/soccer-open")
+                .img
+                    img(src="/images/leagues/Open-min.png")
+                h1.title ربات های فوتبالیست وزن آزاد
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/smartcar")
+                .img
+                    img(src="/images/leagues/pathfinder-min.png")
+                h1.title خودرو هوشمند
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/cospace")
+                .img
+                    img(src="/images/leagues/cospace-min.png")
+                h1.title امداد فضای مشترک
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="http://juniorcupjudge.ir/")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title برنامه نویسی
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/soccer2d")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title فوتبال ۲ بعدی
+                br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+    .room-links-area
+        a.bold(href="") تالار اجتماعات
+    
+    .room-choose
+        -if(room == 'soccer')
+            a.room-link.active(href="/game?room=soccer") فوتبالیست 
+        -else
+            a.room-link(href="/game?room=soccer") فوتبالیست 
+        -if(room == 'smartcar')
+            a.room-link.active(href="/game?room=smartcar") خودرو هوشمند 
+        -else
+            a.room-link(href="/game?room=smartcar") خودرو هوشمند 
+        -if(room == 'cospace')
+            a.room-link.active(href="/game?room=cospace") امداد فضای مشترک 
+        -else
+            a.room-link(href="/game?room=cospace") امداد فضای مشترک 
+        -if(room == 'programming')
+            a.room-link.active(href="/game?room=programming") برنامه نویسی 
+        -else
+            a.room-link(href="/game?room=programming") برنامه نویسی 
+        -if(room == 'soccer2d')
+            a.room-link.active(href="/game?room=soccer2d") فوتبال ۲ بعدی 
+        -else
+            a.room-link(href="/game?room=soccer2d") فوتبال ۲ بعدی 
+    .room-links-area
+        -if(room == 'soccer'){
+            -for(var i=0; i<soccerRooms.length; i++){
+                a(href="#{soccerRooms[i].link}")= soccerRooms[i].name 
+            -}
+        -}
+        -if(room == 'smartcar'){
+            -for(var i=0; i<smartcarRooms.length; i++){
+                a(href="#{smartcarRooms[i].link}")= smartcarRooms[i].name 
+            -}
+        -}
+        -if(room == 'cospace'){
+            -for(var i=0; i<cospaceRooms.length; i++){
+                a(href="#{cospaceRooms[i].link}")= cospaceRooms[i].name 
+            -}
+        -}
+        -if(room == 'programming'){
+            -for(var i=0; i<programmingRooms.length; i++){
+                a(href="#{programmingRooms[i].link}")= programmingRooms[i].name 
+            -}
+        -}
+        -if(room == 'soccer2d'){
+            -for(var i=0; i<soccer2dRooms.length; i++){
+                a(href="#{soccer2dRooms[i].link}")= soccer2dRooms[i].name 
+            -}
+        -}
+        
+
+    
+    script(src="/javascripts/leagues.js")

@@ -24,7 +24,7 @@ block content
                     label(for="price") هزینه: 
                     input(type="number" name="price" value="#{team.price}")
                 input.submit(type="submit" value="ثبت تغییرات")
-        .column
+        .column.seccond
             h1.title اعضای تیم
             table.members
                 tr 
@@ -34,6 +34,7 @@ block content
                     th شماره تلفن
                     th آدرس پستی
                     th دریافت تندیس
+                    th حذف
                 - for(var i=0; i<team.members.length; i++){
                     tr 
                         td= team.members[i].fullName
@@ -46,6 +47,9 @@ block content
                                 .green بله
                             -else
                                 .red خیر
+                        td
+                            a(href="/dashboard/remove-member?idNumber=#{team.members[i].idNumber}&teamName=#{team.teamName}")
+                                i.fa.fa-trash
                 - }
-                    
+            a.add-member(href="/dashboard/team?id=#{team._id}") افزودن عضو
 

@@ -1,0 +1,89 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/game.css")
+
+block content
+    h1.league-title لیگ فوتبال ۲ بعدی
+    .tab-view 
+        .tab-links 
+            -if(field == 'G')
+                a.active(href="/game/soccer2d?field=G") زمین G
+            -else 
+                a(href="/game/soccer2d?field=G") زمین G
+            
+        .tab-content 
+            br
+            .score-board
+                img.score(src="/images/score.png")
+                -if(!game){
+                    .team-a تیم A 
+                    .goals 0 - 0
+                    .team-b تیم B
+                -}else{
+                    .team-a= game.teamA.teamName
+                    .goals #{game.goalA} - #{game.goalB}
+                    .team-b= game.teamB.teamName
+                -}
+            .iframe-holder
+                -if(field == 'A')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupa&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'B')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupb&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'C')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupc&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'D')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupd&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'E')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupe&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'F')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupf&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'G')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupg&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                
+            a.stream(href="https://www.twitch.tv/juniorcup#{field}") 
+                i.fa.fa-external-link
+                | نمایش استریم
+            //- .two-part
+            //-     .partial
+            //-         a.upload آپلود برنامه
+            //-         form.hidden.upload(action="/upload/code" method="POST" enctype="multipart/form-data")
+            //-             input.file(type="file" name="myFile")
+            //-             input.submit(type="submit" value="ارسال")
+            //-     .partial
+            //-         a.objection ارسال پیام
+            //-         form.hidden.objection(action="/game/objection") 
+            //-             textarea(name="objection") 
+            //-             input.submit(type="submit" value="ارسال")
+    a.big-link(href="#") 
+        i.fa.fa-external-link
+        | مشاهده بازی های ضبط شده
+    h1.table-title جدول امتیازات
+    table.score-table
+        tr 
+            th رتبه
+            th نام تیم
+            th تعداد برد
+            th تعداد باخت
+            th تعداد مساوی
+            th گل زده
+            th گل خورده
+            th تفاضل گل
+            th امتیاز تکنیکال
+            th امتیاز نهایی
+        -for(var i=0; i<teams.length; i++){
+            tr 
+                td= i + 1
+                td= teams[i].teamName
+                td= teams[i].win
+                td= teams[i].lose
+                td= teams[i].equals
+                td= teams[i].goalzade
+                td= teams[i].goalkhorde
+                td= Math.abs(teams[i].goalkhorde - teams[i].goalzade)
+                td= teams[i].technical
+                td= teams[i].score
+        -}
+
+    script(src="/javascripts/game.js") 
+

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    a(href="/dashboard/upgrade-to-user?id=#{id}") User 
+    br
+    a(href="/dashboard/upgrade-to-admin?id=#{id}") Admin 
+    br
+    a(href="/dashboard/upgrade-to-refree?id=#{id}") Refree 
+    br
+    a(href="/dashboard/upgrade-to-student?id=#{id}") student 
+    br
+    a(href="/dashboard/remove-user?id=#{id}") delete
+    form(action="/dashboard/set-user-team" method="POST") 
+        input.hidden(type="text" name="id" value="#{id}")
+        select(name="team") 
+            -for(var i=0; i<teams.length; i++){
+                option(value="#{teams[i]._id}")= teams[i].teamName
+            -}
+        input.submit(type="submit" value="ثبت")
+    -if(currentTeam)
+        h1 current team: #{currentTeam.teamName}

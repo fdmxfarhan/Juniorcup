@@ -7,7 +7,10 @@ var TeamSchema = new mongoose.Schema({
   email: String,
   phone: String,
   affiliation: String,
-  members: [Object],
+  members: {
+    type: [Object],
+    default: []
+  },
   qualified: {
     type: Boolean,
     default: false
@@ -21,7 +24,36 @@ var TeamSchema = new mongoose.Schema({
   price: {
     type: Number
   },
-  cup: Boolean
+  cup: Boolean,
+  score: {
+    type: Number,
+    default: 0
+  },
+  win: {
+    type: Number,
+    default: 0
+  },
+  lose: {
+    type: Number,
+    default: 0
+  },
+  equals: {
+    type: Number,
+    default: 0
+  },
+  technical: {
+    type: Number,
+    default: 0
+  },
+  goalzade: {
+    type: Number,
+    default: 0
+  },
+  goalkhorde: {
+    type: Number,
+    default: 0
+  }
+  
 });
 
 var Team = mongoose.model('Team', TeamSchema);

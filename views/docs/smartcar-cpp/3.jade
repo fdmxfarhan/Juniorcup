@@ -1,0 +1,60 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+        .content
+            .content-padding
+                h1.purple.medium.font نصب Code Blocks
+                img.fullsize(src="/docs/cpp/img/10.png")
+                p.font.small.text 
+                    | CodeBlocks یک محیط توسعه (IDE) برای برنامه نویسی به زبان C و ++C می باشد که بسیار سبک و قابل نصب بر روی تمام سیستم عامل ها است. جهت نصب این نرم افزار می توانید آن را از طریق لینک زیر دانلود کرده و همانند مراحل زیر آن را نصب کنید.
+                a.font.download.small.blue(href="/docs/cpp/CodeBlocks-setup-(ctalk.ir).exe" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود Code Blocks (ctalk)
+                p.font.small.text 
+                    | پس از دانلود Code Blocks آن را اجرا کنید و بر روی Next کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/01.png")
+                p.font.small.text 
+                    | مسیر نصب مورد نظر خود را انتخاب نمایید و بر روی next کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/02.png")
+                p.font.small.text 
+                    | بر روی Next کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/03.png")
+                p.font.small.text 
+                    | اگر مایل هستید codeblocks به دسکتاپ اضافه کردد گزینه create a desktop icon را فعال کنید و سپس Next را بزنید.
+                img.fullsize(src="/docs/cpp/img/04.png")
+                p.font.small.text 
+                    | بر روی گزینه Install کلیک کنید و منتظر بمانید تا مراحل نصب تکمیل شود.
+                img.fullsize(src="/docs/cpp/img/05.png")
+                img.fullsize(src="/docs/cpp/img/06.png")
+                p.font.small.text 
+                    | در نهایت بر روی گزینه Finish کلیک نمایید. اگر با پیغام compiler auto-detection مواجه شدید بر روی Ok کلیک کنید.
+                img.fullsize(src="/docs/cpp/img/07.png")
+                img.fullsize(src="/docs/cpp/img/08.png")
+                img.fullsize(src="/docs/cpp/img/09.png")
+                img.fullsize(src="/docs/cpp/img/10.png")
+                
+                
+            .buttons
+                a.prev(href="/docs/smartcar-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/smartcar-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

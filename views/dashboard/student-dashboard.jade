@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    .two-part
+        .part
+            img.avatar(src="/images/man.png", alt="avatar")
+            .text
+                h1= user.fullname
+                .item.blue= user.username
+                .item 
+                    i.fa.fa-envelope
+                    | #{user.email}
+                .item 
+                    i.fa.fa-phone
+                    | #{user.phone}
+                a.edit(href="/dashboard")
+                    i.fa.fa-edit
+                    | ویرایش اطلاعات
+        .part
+            h1.part-title
+                i.fa.fa-newspaper-o
+                | آخرین اخبار
+            .last-news
+                table
+                    tr
+                        td.title اطلاعیه شماره ۱
+                        td.text سیزدهمین دوره مسابقات جونیورکاپ به صورت مجازی در فروردین سال ۱۴۰۰ برگزار میگردد و از تمامی دانش آموزان علاقه مند جهت حضور در مسابقه و کسب مهارت و تجربه دعوت به عمل می آید.
+    .file-list
+        table 
+            tr 
+                th ردیف
+                th نام فایل
+                th دانلود
+                th تاریخ
+                th حذف
+            -for(var i=0; i<user.file.length; i++){
+                tr 
+                    td= i+1
+                    td= user.file[i].name
+                    td
+                        a(href="#{user.file[i].path}/#{user.file[i].name}" download)
+                            i.fa.fa-cloud-download
+                    td= shamsi(new Date(user.file[i].date))
+                    td
+                        a(href="/dashboard/remove-upload?path=#{user.file[i].path}") 
+                            i.fa.fa-trash
+            -}
+    form.upload-code(action="/upload/code" enctype="multipart/form-data" method="POST") 
+        input.file(type="file" name="myFile")
+        input.submit(type="submit" value="ارسال")

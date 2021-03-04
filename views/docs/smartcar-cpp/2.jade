@@ -1,0 +1,80 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+            
+        .content
+            .content-padding
+                h1.purple.medium.font نصب شبیه ساز
+                //- p.font.small.text 
+                //-     | دانلود نسخه آزمایشی شبیه ساز خودرو هوشمند.
+                a.font.download.small.blue(href="/docs/SmartCar.rar" download) 
+                    i.fa.fa-cloud-download
+                    | دانلود نسخه آزمایشی شبیه ساز خودرو هوشمند
+                
+                //- p.font.small.text 
+                //-     | ۱. فایل دانلود شده را از حالت فشرده خارج نمایید
+                img.fullsize(src="/docs/smartcar/02.png")
+                //- p.font.small.text 
+                //-     | ۲. برای اجرای سیمولاتور دو بعدی وارد پوشه Juniorcup 2D شده و فایل test را اجرا نمایید.
+                //- img.fullsize(src="/docs/python/02/img-04.png")
+                //- img.fullsize(src="/docs/python/02/img-05.png")
+                //- p.font.small.text 
+                //-     | ۳. برای اجرای سیمولاتور سه بعدی وارد پوشه Juniorcup 3D شده و فایل test را اجرا نمایید.
+                //- img.fullsize(src="/docs/python/02/img-03.png")
+                //- img.fullsize(src="/docs/python/02/img-02.png")
+                
+                //- h1.purple.medium.font کلید های میانبر
+                //- p.font.small.text 
+                //-     | در این برنامه کلید های میانبر جهت تغییر موقعیت توپ و ربات ها به صورت زیر قرار داده شده است.
+                //- ul
+                //-     li.font.small.text
+                //-         .bold.inline کلید esc: 
+                //-         | توقف برنامه
+                //-     li.font.small.text
+                //-         .bold.inline کلیدهای 1،2،3،4،5،6: 
+                //-         | تغییر موقعیت توپ.
+                //-     li.font.small.text
+                //-         .bold.inline کلید های w،a،s،d: 
+                //-         | حرکت کردن به سمت جلو، عقب، چپ و راست.
+                //-     li.font.small.text
+                //-         .bold.inline کلید c: 
+                //-         | منتقل کردن ربات به روی میز. (Damage)
+                //-     li.font.small.text
+                //-         .bold.inline کلید v: 
+                //-         | منتقل کردن ربات به زمین بازی
+                //-     li.font.small.text
+                //-         .bold.inline کلید n: 
+                //-         | برداشتن توپ از داخل زمین بازی
+                //-     li.font.small.text
+                //-         .bold.inline کلید x: 
+                //-         | متوقف کردن ربات ها
+                //-     li.font.small.text
+                //-         .bold.inline کلید z: 
+                //-         | حرکت دادن ربات ها
+                    
+            .buttons
+                a.prev(href="/docs/smartcar-cpp?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/smartcar-cpp?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+            
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

@@ -136,11 +136,13 @@ body{
         font-size: 1.5vw;
         padding: 0.5vw 4vw;
         border-radius: 2vw;
-        background-image: linear-gradient(to right, #7610a5, #7617e4);
+        /* background-image: linear-gradient(to right, #7610a5, #7617e4); */
+        background-image: linear-gradient(to right, #1044a5, #17cce4);
         transition-duration: 600ms;
         animation-name: goUp;
         animation-duration: 3s;
-        box-shadow: 0 0.5vw 0.6vw 0.1vw rgba(131, 5, 190, 0.253);
+        /* box-shadow: 0 0.5vw 0.6vw 0.1vw rgba(131, 5, 190, 0.253); */
+        box-shadow: 0 0.5vw 0.6vw 0.1vw rgba(5, 147, 190, 0.253);
     }
     header .on-image-text a.rounded-rect-button:hover{
         background-image: linear-gradient(to right, #7617e4, #8305be);
@@ -761,7 +763,8 @@ body{
         font-size: 4vw;
         padding: 1vw 7vw;
         border-radius: 3.5vw;
-        background-image: linear-gradient(to right, #7610a5, #7617e4);
+        /* background-image: linear-gradient(to right, #7610a5, #7617e4); */
+        background-image: linear-gradient(to right, #1044a5, #17cce4);
         transition-duration: 600ms;
         animation-name: goUp;
         animation-duration: 3s;

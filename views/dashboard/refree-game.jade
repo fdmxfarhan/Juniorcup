@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    h1.game-title.underLine #{game.teamA.teamName} درمقابل #{game.teamB.teamName} (زمین #{game.field})
+    -if(!game.started){
+        a.start-game(href="/dashboard/start-game?id=#{game._id}") شروع بازی
+        br
+        a.start-game(href="/dashboard") بازگشت
+    -}else{
+        .game-two-part 
+            .part.border 
+                h1 #{game.teamA.teamName} (#{game.goalA})
+                    a(href="/dashboard/add-goalA?id=#{game._id}") +
+                    a(href="/dashboard/decrease-goalA?id=#{game._id}") -
+                .download-file
+                    table
+                        tr 
+                            th نام فایل
+                            th دانلود
+                        -for(var i=0; i<teamAusers.length; i++){
+                            -for(var j=0; j<teamAusers[i].file.length; j++){
+                                tr 
+                                    td= teamAusers[i].file[j].name
+                                    td
+                                        a.download(href="#{teamAusers[i].file[j].path}/#{teamAusers[i].file[j].name}")
+                                            i.fa.fa-cloud-download
+                            -}
+                        -}
+
+            .part
+                h1 #{game.teamB.teamName} (#{game.goalB})
+                    a(href="/dashboard/add-goalB?id=#{game._id}") +
+                    a(href="/dashboard/decrease-goalB?id=#{game._id}") -
+                .download-file
+                    table
+                        tr 
+                            th نام فایل
+                            th دانلود
+                        -for(var i=0; i<teamBusers.length; i++){
+                            -for(var j=0; j<teamBusers[i].file.length; j++){
+                                tr 
+                                    td= teamBusers[i].file[j].name
+                                    td
+                                        a.download(href="#{teamBusers[i].file[j].path}/#{teamBusers[i].file[j].name}")
+                                            i.fa.fa-cloud-download
+                            -}
+                        -}
+
+        a.end-game(href="/dashboard/end-game?id=#{game._id}") اتمام بازی و ثبت امتیازات
+        a.end-game(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی
+        
+    -}

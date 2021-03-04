@@ -26,4 +26,8 @@ block content
                         a.change-user(href="/dashboard/admin-edit-team?id=#{teams[i]._id}") 
                             i.fa.fa-edit 
                             | ویرایش
+                        -if(!teams[i].qualified){
+                            a.change-user(href="/dashboard/admin-accept-team?id=#{teams[i]._id}") 
+                                | تایید
+                        -}
             -}

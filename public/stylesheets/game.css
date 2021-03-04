@@ -1,0 +1,425 @@
+
+.hidden{display: none;}
+.green{color: green;}
+.red{color: red;}
+
+
+@media only screen and (min-width: 800px) {
+    h1.league-title{
+        font-family: 'iransans';
+        font-size: 1.7vw;
+        color: var(--purple);
+        text-align: center;
+        border-bottom: var(--purple) 0.2vw dotted;
+        width: 60%;
+        margin: auto;
+        margin-top: 4vw;
+        padding-bottom: 1vw;
+    }
+    .tab-view{
+        /* background-color: lightblue; */
+        width: 95%;
+        margin: 2vw auto;
+        overflow: hidden;
+    }
+    .tab-view .tab-links{
+        float: right;
+        width: 19%;
+        /* background-color: lightblue; */
+        margin-top: 3vw;
+        padding-right: 1%;
+    }
+    .tab-view .tab-links a{
+        display: block;
+        padding: 0.8vw 1vw;
+        text-decoration: none;
+        color: var(--purple);
+        margin: 1%;
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+    }
+    .tab-view .tab-links a:hover{
+        box-shadow: 0 0 0.6vw 0.3vw rgba(0, 0, 0, 0.2);
+        /* background-color: lightblue; */
+        /* color: white; */
+    }
+    .tab-view .tab-links a.active{
+        box-shadow: 0 0 0.6vw 0.3vw rgba(0, 0, 0, 0.2);
+        background-color: var(--purple);
+        color: white;
+    }
+    .tab-view .tab-content{
+        background-color: white;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.6vw 0.3vw rgba(0, 0, 0, 0.2);
+        float: right;
+        width: 78%;
+        /* text-align: center; */
+        margin: 1%;
+        margin-right: 0;
+    }
+    .tab-view .tab-content .score-board{
+        width: 60%;
+        margin: auto;
+        margin-top: 3vw;
+        margin-bottom: 1vw;
+        position: relative;
+    }
+    .tab-view .tab-content img.score{
+        width: 100%;
+    }
+    .tab-view .tab-content .score-board .team-a{
+        position: absolute;
+        top: 1.2vw;
+        right: 6vw;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        font-weight: bold;
+        color: white;
+    }
+    .tab-view .tab-content .score-board .team-b{
+        position: absolute;
+        top: 1.2vw;
+        left: 6vw;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        font-weight: bold;
+        color: white;
+    }
+    .tab-view .tab-content .score-board .goals{
+        position: absolute;
+        top: 1.2vw;
+        right: 47%;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        font-weight: bold;
+        color: black;
+    }
+    .tab-view .tab-content .iframe-holder{
+        width: 90%;
+        margin: auto;
+    }
+    .tab-view .tab-content iframe{
+        width: 100%;
+        height: 35vw;
+    }
+    a.stream{
+        text-decoration: none;
+        color: var(--purple);
+        font-family: 'iransans';
+        font-size: 1.5vw;
+        margin-right: 3vw;
+        margin-bottom: 3vw;
+        display: block;
+        width: fit-content;
+        transition-duration: 500ms;
+    }
+    a.stream:hover{color: chocolate;}
+    a.stream i{padding-left: 1vw;}
+    .two-part{
+        overflow: hidden;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 3vw;
+    }
+    .partial{
+        width: 48%;
+        margin-right: 2%;
+        float: right;
+        /* background-color: lightblue; */
+    }
+    .partial a{
+        display: block;
+        background-color: var(--purple);
+        color: white;
+        text-decoration: none;
+        padding: 0.5vw 0;
+        text-align: center;
+        transition-duration: 500ms;
+        cursor: pointer;
+    }
+    .partial a:hover{
+        background-color: chocolate;
+    }
+    .partial form textarea{
+        width: 98%;
+        height: 10vw;
+        margin: 1vw 0;
+    }
+    .partial input.submit{
+        background-color: var(--purple);
+        border: none;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        color: white;
+        font-family: 'iransans';
+        cursor: pointer;
+        display: block;
+        width: fit-content;
+    }
+    .partial input.file{
+        margin: 1vw;
+    }
+    a.big-link{
+        font-family: 'iransans';
+        font-size: 1.7vw;
+        margin-right: 5vw;
+        color: var(--purple);
+        text-decoration: none;
+        transition-duration: 500ms;
+    }
+    a.big-link i{padding-left: 1vw;}
+    a.big-link:hover{color: chocolate;}
+    h1.table-title{
+        font-family: 'iransans';
+        font-size: 1.5vw;
+        text-align: center;
+        color: var(--purple);
+    }
+    table.score-table{
+        width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+    table.score-table th{
+        background-color: lightblue;
+        color: black;
+        padding: 0.5vw 0;
+        border-top-right-radius: 1vw;
+        border-top-left-radius: 1vw;
+
+    }
+    table.score-table td{
+        padding: 0.5vw 0;
+        border-bottom: lightgray 0.1vw solid;
+    }
+    .round-links{
+        margin-bottom: 1vw;
+        text-align: center;
+    }
+    a.round{
+        background-color: var(--purple);
+        color: white;
+        margin: 0.3vw;
+        padding: 0.1vw 1vw;
+        border-radius: 1vw;
+        text-decoration: none;
+        font-size: 1vw;
+    }
+    a.round:hover, a.round.active{background-color: chocolate; color: white;}
+    /* ---------------------- flag -------------------- */
+    
+}
+
+@media only screen and (max-width: 800px) {
+    h1.league-title{
+        font-family: 'iransans';
+        font-size: 3.7vw;
+        color: var(--purple);
+        text-align: center;
+        border-bottom: var(--purple) 0.2vw dotted;
+        width: 60%;
+        margin: auto;
+        margin-top: 4vw;
+        padding-bottom: 1vw;
+    }
+    .tab-view{
+        /* background-color: lightblue; */
+        width: 100%;
+        margin: 2vw auto;
+        overflow: hidden;
+    }
+    .tab-view .tab-links{
+        float: right;
+        width: 100%;
+        /* background-color: lightblue; */
+        text-align: center;
+        margin-top: 3vw;
+        margin-bottom: 5vw;
+    }
+    .tab-view .tab-links a{
+        display: block;
+        padding: 1.5vw 1vw;
+        font-size: 3.5vw;
+        text-decoration: none;
+        color: var(--purple);
+        margin: 1%;
+        border-radius: 2vw;
+        width: 90%;
+        margin: auto;
+    }
+    .tab-view .tab-links a:hover{
+        box-shadow: 0 0 0.6vw 0.3vw rgba(0, 0, 0, 0.2);
+        /* background-color: lightblue; */
+        /* color: white; */
+    }
+    .tab-view .tab-links a.active{
+        box-shadow: 0 0 0.6vw 0.3vw rgba(0, 0, 0, 0.2);
+        background-color: var(--purple);
+        color: white;
+    }
+    .tab-view .tab-content{
+        background-color: white;
+        border-radius: 4vw;
+        box-shadow: 0 0 0.6vw 0.3vw rgba(0, 0, 0, 0.2);
+        float: right;
+        width: 98%;
+        /* text-align: center; */
+        margin: 1%;
+    }
+    .tab-view .tab-content .score-board{
+        width: 80%;
+        margin: auto;
+        margin-top: 3vw;
+        margin-bottom: 1vw;
+        position: relative;
+    }
+    .tab-view .tab-content img.score{
+        width: 100%;
+    }
+    .tab-view .tab-content .score-board .team-a{
+        position: absolute;
+        top: 1.7vw;
+        right: 10vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+        font-weight: bold;
+        color: white;
+    }
+    .tab-view .tab-content .score-board .team-b{
+        position: absolute;
+        top: 1.7vw;
+        left: 10vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+        font-weight: bold;
+        color: white;
+    }
+    .tab-view .tab-content .score-board .goals{
+        position: absolute;
+        top: 1.7vw;
+        right: 47%;
+        font-family: 'iransans';
+        font-size: 3vw;
+        font-weight: bold;
+        color: black;
+    }
+    .tab-view .tab-content .iframe-holder{
+        width: 90%;
+        margin: auto;
+    }
+    .tab-view .tab-content iframe{
+        width: 100%;
+        height: 50vw;
+    }
+    a.stream{
+        text-decoration: none;
+        color: var(--purple);
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        margin-right: 5vw;
+        margin-bottom: 5vw;
+        display: block;
+        width: fit-content;
+        transition-duration: 500ms;
+    }
+    a.stream:hover{color: chocolate;}
+    a.stream i{padding-left: 1vw;}
+    .two-part{
+        overflow: hidden;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 3vw;
+    }
+    .partial{
+        width: 100%;
+        margin-right: 2%;
+        margin-bottom: 3vw;
+        float: right;
+        /* background-color: lightblue; */
+    }
+    .partial a{
+        display: block;
+        background-color: var(--purple);
+        color: white;
+        text-decoration: none;
+        padding: 1vw 0;
+        text-align: center;
+        transition-duration: 500ms;
+        cursor: pointer;
+    }
+    .partial a:hover{
+        background-color: chocolate;
+    }
+    .partial form textarea{
+        width: 95%;
+        height: 10vw;
+        margin: 1vw 0;
+    }
+    .partial input.submit{
+        background-color: var(--purple);
+        border: none;
+        padding: 1vw 4vw;
+        border-radius: 2vw;
+        color: white;
+        font-family: 'iransans';
+        cursor: pointer;
+        display: block;
+        width: fit-content;
+    }
+    .partial input.file{
+        margin: 1vw;
+    }
+    a.big-link{
+        font-family: 'iransans';
+        font-size: 4vw;
+        margin-right: 5vw;
+        margin-bottom: 5vw;
+        display: block;
+        color: var(--purple);
+        text-decoration: none;
+        transition-duration: 500ms;
+    }
+    a.big-link i{padding-left: 1vw;}
+    a.big-link:hover{color: chocolate;}
+    h1.table-title{
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        text-align: center;
+        color: var(--purple);
+    }
+    table.score-table{
+        width: 98%;
+        margin: auto;
+        text-align: center;
+    }
+    table.score-table th{
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 0;
+        border-top-right-radius: 1vw;
+        border-top-left-radius: 1vw;
+        font-size: 3vw;
+    }
+    table.score-table td{
+        font-size: 3vw;
+        padding: 0.5vw 0;
+        border-bottom: lightgray 0.5vw solid;
+    }
+    .round-links{
+        margin-bottom: 1vw;
+        text-align: center;
+    }
+    a.round{
+        background-color: var(--purple);
+        color: white;
+        margin: 0.3vw;
+        padding: 0.5vw 3vw;
+        border-radius: 3vw;
+        text-decoration: none;
+        font-size: 3vw;
+    }
+    a.round:hover, a.round.active{background-color: chocolate; color: white;}
+    
+}
+
