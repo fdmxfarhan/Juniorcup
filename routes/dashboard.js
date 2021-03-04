@@ -543,7 +543,7 @@ router.post('/refree-soccer-light-edit', ensureAuthenticated, (req, res, next) =
 });
 
 router.post('/refree-soccer-open-edit', ensureAuthenticated, (req, res, next) => {
-    var {id, goalA, goalB, field, time} = req.body;
+    var {id, goalA, goalB, field, time, round} = req.body;
     if(req.user.role == 'refree'){
         Game.updateMany({_id: id}, {$set: {goalA, goalB, field, time}}, (err, games) => {
             res.redirect(`/dashboard/soccer-open?round=${round}`);
