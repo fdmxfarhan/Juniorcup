@@ -137,7 +137,7 @@ router.get('/soccer-open', (req, res, next) => {
     if(!round) round = 1;
     Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبالیست وزن آزاد', started: true}, (err, game) => {
-            Game.find({league: 'فوتبالیست سبک وزن', round: round}, (err, games) => {
+            Game.find({league: 'فوتبالیست وزن آزاد', round: round}, (err, games) => {
                 if(err) console.log(err);
                 // console.log(game);
                 for(var i=1; i<teams.length; i++){
