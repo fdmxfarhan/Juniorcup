@@ -452,6 +452,15 @@ router.get('/soccer-light', ensureAuthenticated, (req, res, next) => {
 router.get('/soccer-light-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
+            for(var i=1; i<teams.length; i++){
+                for(var j=0; j<teams.length - i; j++){
+                    if(teams[j].score < teams[j + 1].score){
+                        var temp = teams[j];
+                        teams[j] = teams[j+1];
+                        teams[j+1] = temp;
+                    }
+                }
+            }
             res.render('./dashboard/refree-soccer-light-score',{
                 user: req.user,
                 teams
@@ -480,6 +489,15 @@ router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
 router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
+            for(var i=1; i<teams.length; i++){
+                for(var j=0; j<teams.length - i; j++){
+                    if(teams[j].score < teams[j + 1].score){
+                        var temp = teams[j];
+                        teams[j] = teams[j+1];
+                        teams[j+1] = temp;
+                    }
+                }
+            }
             res.render('./dashboard/refree-soccer-open-score',{
                 user: req.user,
                 teams
@@ -529,6 +547,24 @@ router.post('/refree-soccer-light-score', ensureAuthenticated, (req, res, next) 
     if(req.user.role == 'refree'){
         Team.updateMany({_id: id}, {$set: {win, lose, equals, goalzade, goalkhorde, technical, score}}, (err, teams) => {
             res.redirect('/dashboard/soccer-light-score');
+        });
+    }
+});
+
+router.post('/refree-soccer-light-edit', ensureAuthenticated, (req, res, next) => {
+    var {id, goalA, goalB, field, time, round} = req.body;
+    if(req.user.role == 'refree'){
+        Game.updateMany({_id: id}, {$set: {goalA, goalB, field, time}}, (err, games) => {
+            res.redirect(`/dashboard/soccer-light?round=${round}`);
+        });
+    }
+});
+
+router.post('/refree-soccer-open-edit', ensureAuthenticated, (req, res, next) => {
+    var {id, goalA, goalB, field, time, round} = req.body;
+    if(req.user.role == 'refree'){
+        Game.updateMany({_id: id}, {$set: {goalA, goalB, field, time}}, (err, games) => {
+            res.redirect(`/dashboard/soccer-open?round=${round}`);
         });
     }
 });

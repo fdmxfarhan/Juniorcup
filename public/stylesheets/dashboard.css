@@ -1152,6 +1152,9 @@ body{
         left: 15vw;
     }
     a.score-board-edit:hover{background-color: chocolate;}
+    a.edit-score.smal{
+        font-size: 1vw;
+    }
 }
 
 @media only screen and (max-width: 800px) {

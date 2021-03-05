@@ -15,6 +15,14 @@ block content
                 a.active(href="/game/cospace?field=I") زمین I
             -else 
                 a(href="/game/cospace?field=I") زمین I
+            -if(field == 'J')
+                a.active(href="/game/cospace?field=J") زمین J
+            -else 
+                a(href="/game/cospace?field=J") زمین J
+            -if(field == 'K')
+                a.active(href="/game/cospace?field=K") زمین K
+            -else 
+                a(href="/game/cospace?field=K") زمین K
             
         .tab-content 
             br
@@ -48,10 +56,23 @@ block content
                     iframe(src="https://player.twitch.tv/?channel=juniorcuph&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
                 -if(field == 'I')
                     iframe(src="https://player.twitch.tv/?channel=juniorcupi&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'J')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupj&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'K')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupk&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
                 
             a.stream(href="https://www.twitch.tv/juniorcup#{field}") 
                 i.fa.fa-external-link
                 | نمایش استریم
+            .iframe-holder
+                iframe(width="860" height="330" src="https://docs.google.com/document/d/e/2PACX-1vRzy7nKrwpBM0wkWmBRWIDCd6wiFFP2AOwDtWSnwov29zjQOlCfSWTwuFEPfdP20L8YHUHl_h5sscJ7/pub?embedded=true") 
+            .iframe-holder
+                iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5rQb7eiSO1ikCHo6eGDHToRerD5K6a7kzvkaIo6FlVG2jOwkGbjrTZkGSXTo_Zhq8OMTHFaaYZAjV/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false")
+            .iframe-holder
+                iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTeXN9tBvggK3tfwFn8wUcwFoWF0YNysqb6icNgHo_C_731K3xxtiRuH-7JLn1COnGGDXAfD3-lOLl3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false")
+            .iframe-holder
+                iframe(src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQM0sGbfrakd5LPhVhCuwy8TU-LKgMPnFHpkzZvuQGm3OaeBq_bBf74l3dXgMi6xkYXb7j_HsV4sCoV/pubhtml?widget=true&amp;headers=false" width=600 height=400)
+            
             //- .two-part
             //-     .partial
             //-         a.upload آپلود برنامه

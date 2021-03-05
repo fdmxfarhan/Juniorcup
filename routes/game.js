@@ -5,6 +5,7 @@ const Team = require('../models/Team');
 const Game = require('../models/Game');
 
 const cospaceRooms = [
+    {link: 'https://juniorcupsetup.ir/cospace/', name: 'اتاق داوران'},
     {link: 'https://juniorcupsetup.ir/co_space_abou_ali_sina/', name: 'مجتمع آموزشی ابوعلی سینا'},
     {link: 'https://juniorcupsetup.ir/co_space_danesh/', name: 'دانش'},
     {link: 'https://juniorcupsetup.ir/co_space_emam_ali/', name: 'خانه علم خاکسفید - جمعیت امام علی (ع)'},
@@ -18,6 +19,7 @@ const cospaceRooms = [
     {link: 'https://juniorcupsetup.ir/co_space_shayestegan_nour/', name: 'دبیرستان شایستگان نور (دوره اول)'},
 ]
 const soccerRooms = [
+    {link: 'https://juniorcupsetup.ir/soccer/', name: 'اتاق داوری'},
     {link: 'https://juniorcupsetup.ir/allameh_tabatabai/', name: 'دبیرستان علامه طباطبائی'},
     {link: 'https://juniorcupsetup.ir/farzanegan_1/', name: 'دبیرستان فرزانگان 1 دوره اول'},
     // {link: 'https://juniorcupsetup.ir/farzanegan_1_1_2/', name: ''},
@@ -137,7 +139,7 @@ router.get('/soccer-open', (req, res, next) => {
     if(!round) round = 1;
     Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبالیست وزن آزاد', started: true}, (err, game) => {
-            Game.find({league: 'فوتبالیست سبک وزن', round: round}, (err, games) => {
+            Game.find({league: 'فوتبالیست وزن آزاد', round: round}, (err, games) => {
                 if(err) console.log(err);
                 // console.log(game);
                 for(var i=1; i<teams.length; i++){

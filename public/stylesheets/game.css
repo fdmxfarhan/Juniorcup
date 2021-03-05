@@ -208,6 +208,19 @@
     }
     a.round:hover, a.round.active{background-color: chocolate; color: white;}
     /* ---------------------- flag -------------------- */
+    .tab-content a.link{
+        background-color: var(--purple);
+        border: none;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        color: white;
+        font-family: 'iransans';
+        cursor: pointer;
+        display: block;
+        width: fit-content;
+        margin: 1vw;
+        text-decoration: none;
+    }
     
 }
 
