@@ -221,6 +221,11 @@
         margin: 1vw;
         text-decoration: none;
     }
+    .saved-videos{
+        width: 80%;
+        margin: auto;
+        margin-top: 5vw;
+    }
     
 }
 

@@ -7,6 +7,18 @@ block content
     h1.league-title لیگ ربات های فوتبالیست وزن آزاد
     .tab-view 
         .tab-links 
+            //- -if(field == 'A')
+            //-     a.active(href="/game/soccer-light?field=A&round=#{round}") زمین A
+            //- -else
+            //-     a(href="/game/soccer-light?field=A&round=#{round}") زمین A
+            //- -if(field == 'B')
+            //-     a.active(href="/game/soccer-light?field=B&round=#{round}") زمین B
+            //- -else 
+            //-     a(href="/game/soccer-light?field=B&round=#{round}") زمین B
+            //- -if(field == 'C')
+            //-     a.active(href="/game/soccer-light?field=C&round=#{round}") زمین C
+            //- -else 
+            //-     a(href="/game/soccer-light?field=C&round=#{round}") زمین C
             -if(field == 'D')
                 a.active(href="/game/soccer-open?field=D&round=#{round}") زمین D
             -else 
@@ -126,6 +138,10 @@ block content
                 td= teams[i].technical
                 td= teams[i].score
         -}
-    //- <div id="89163630656"><script type="text/JavaScript" src="https://www.aparat.com/embed/YsGWx?data[rnddiv]=89163630656&data[responsive]=yes"></script></div>
+    .saved-videos
+        <div id="79800482726"><script type="text/JavaScript" src="https://www.aparat.com/embed/vcbf7?data[rnddiv]=79800482726&data[responsive]=yes"></script></div>
+        <div id="19072788074"><script type="text/JavaScript" src="https://www.aparat.com/embed/eVoQm?data[rnddiv]=19072788074&data[responsive]=yes"></script></div>
+        <div id="34512494759"><script type="text/JavaScript" src="https://www.aparat.com/embed/sfUyk?data[rnddiv]=34512494759&data[responsive]=yes"></script></div>
+        <div id="89163630656"><script type="text/JavaScript" src="https://www.aparat.com/embed/YsGWx?data[rnddiv]=89163630656&data[responsive]=yes"></script></div>
     script(src="/javascripts/game.js") 
 

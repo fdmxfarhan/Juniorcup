@@ -19,6 +19,10 @@ block content
                 a.active(href="/game/soccer-light?field=C&round=#{round}") زمین C
             -else 
                 a(href="/game/soccer-light?field=C&round=#{round}") زمین C
+            //- -if(field == 'D')
+            //-     a.active(href="/game/soccer-light?field=D&round=#{round}") زمین D
+            //- -else 
+            //-     a(href="/game/soccer-light?field=D&round=#{round}") زمین D
         .tab-content 
             .score-board
                 img.score(src="/images/score.png")
