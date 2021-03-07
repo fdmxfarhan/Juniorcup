@@ -203,6 +203,15 @@ router.post('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.post('/user-edit-team', ensureAuthenticated, (req, res, next) => {
+    var {id, teamName, mentor, affiliation} = req.body;
+
+    Team.updateMany({_id: id}, {$set: {teamName, mentor, affiliation}}, (err, raw) => {
+        res.redirect(`/dashboard/team?id=${id}`);
+    });
+
+});
+
 router.get('/upgrade-user', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -682,6 +691,25 @@ router.post('/set-user-team', ensureAuthenticated, (req, res, next) => {
             res.redirect('/dashboard/users-list');
         });
     }
+});
+
+router.get('/toggle-cup', ensureAuthenticated, (req, res, next) => {
+    Team.findById(req.query.teamID, (err, team) => {
+        if(err) console.log(err);
+        var members = team.members;
+        var price = team.price;
+        for (var i = 0; i < members.length; i++) {
+            if(members[i].idNumber == req.query.idNumber)
+            {
+                if(members[i].cup) price -= cupPrice;
+                else price += cupPrice;
+                members[i].cup = !members[i].cup;
+            }
+        }
+        Team.updateMany({_id: req.query.teamID}, {$set: {members, price}}, (err, doc) => {
+            res.redirect(`/dashboard/team?id=${req.query.teamID}`);
+        });
+    });
 });
 
 module.exports = router;

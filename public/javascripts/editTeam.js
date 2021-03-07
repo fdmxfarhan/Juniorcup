@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $('a.edit').click(()=>{
+        $('#edit-team').fadeIn(500);
+        $('.modal').fadeIn(500);
+    });
+    $('.modal').click(()=>{
+        $('#edit-team').hide();
+        $('.modal').hide();
+    })
+});

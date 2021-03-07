@@ -5,6 +5,8 @@ block content
         .part
             h1.info-title اطلاعات تیم
             .info
+                a.edit
+                    i.fa.fa-edit
                 h1.name نام تیم: #{team.teamName}
                 .item سرپرست: #{team.mentor}
                 .item لیگ: #{team.league}
@@ -20,7 +22,7 @@ block content
                         .green تایید شده
                     -else
                         .purple در حال بررسی
-            a.pay(href="#") 
+            a.pay(href="/payment/pay-team?id=#{team._id}") 
                 i.fa.fa-tag
                 | پرداخت هزینه
         .part
@@ -29,6 +31,12 @@ block content
                 .member
                     .name= team.members[j].fullName
                     .actions
+                        a.get-cup(href="/dashboard/toggle-cup?idNumber=#{team.members[j].idNumber}&teamID=#{team._id}")
+                            -if(team.members[j].cup)
+                                | دریافت تندیس 
+                            -else
+                                | عدم دریافت تندیس 
+                            
                         a(href="/dashboard/remove-member?idNumber=#{team.members[j].idNumber}&teamName=#{team.teamName}")
                             i.fa.fa-trash
             -}
@@ -62,3 +70,25 @@ block content
                     i.fa.fa-user-plus
                     | افزودن عضو جدید
             -}
+    .modal
+    .pop-up#edit-team
+        form.edit-team(action="/dashboard/user-edit-team" method="POST") 
+            input.hidden(type="text" name="id" value="#{team._id}")
+            .input-item
+                label(for="teamName") نام تیم: 
+                input(type="text" name="teamName" value="#{team.teamName}")
+            .input-item
+                label(for="mentor") سرپرست: 
+                input(type="text" name="mentor" value="#{team.mentor}")
+            //- .input-item
+            //-     label(for="league") لیگ: 
+            //-     input(type="text" name="league" value="#{team.league}")
+            .input-item
+                label(for="affiliation") وابستگی: 
+                input(type="text" name="affiliation" value="#{team.affiliation}")
+            //- .input-item
+            //-     label(for="price") هزینه: 
+            //-     input(type="number" name="price" value="#{team.price}")
+            input.submit(type="submit" value="ثبت تغییرات")
+
+    script(src="/javascripts/editTeam.js") 

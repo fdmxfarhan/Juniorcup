@@ -12,13 +12,14 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport'); 
 // routs requirement
+var uploadHandler = require('./routes/upload');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dashboardRouter = require('./routes/dashboard');
 var docsRouter = require('./routes/docs');
 var leagues = require('./routes/leagues');
 var game = require('./routes/game');
-var uploadHandler = require('./routes/upload');
+var payment = require('./routes/payment');
 
 // Mongo DB connect
 mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
@@ -91,6 +92,7 @@ app.use('/dashboard', dashboardRouter);
 app.use('/docs', docsRouter);
 app.use('/leagues', leagues);
 app.use('/game', game);
+app.use('/payment', payment);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
