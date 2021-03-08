@@ -57,7 +57,7 @@ router.get('/pay-team', function(req, res, next){
         'amount': team.price,
         'name': team.mentor,
         'uname': team.username,
-        // 'phone': team.phone,
+        'phone': '09336448037',
         'mail': team.email,
         'desc': team.teamName,
         'callback': 'http://juniorcup.ir/payment/pay-team',
