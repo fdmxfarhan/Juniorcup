@@ -42,23 +42,42 @@ block content
             a.admin-link(href="/dashboard/teams-list") 
                 i.fa.fa-users 
                 | لیست تیم ها 
+            //- a.admin-link(href="/dashboard/make-member-account") 
+            //-     i.fa.fa-users 
+            //-     | ساخت اکانت برای همه دانش آموزان
+            //- a.admin-link(href="/dashboard/delete-member-account") 
+            //-     i.fa.fa-trash
+            //-     | پاک کردن همه اکانت های دانش آموزان
     
         .info-card
-            i.fa.fa-dollar.lightgreen
-            h1 پرداخت شده
+            h1
+                i.fa.fa-dollar
+                | پرداخت شده
             .number.lightgreen #{payedAmount}
                 | ریال
-        .info-card
-            i.fa.fa-dollar.lightred
-            h1 پرداخت نشده
+            h1
+                i.fa.fa-dollar
+                | پرداخت نشده
             .number.lightred #{notPayedAmount}
                 | ریال
-    
-    //- a.admin-link(href="/dashboard/make-member-account") 
-    //-     i.fa.fa-users 
-    //-     | ساخت اکانت برای همه دانش آموزان
-    //- a.admin-link(href="/dashboard/delete-member-account") 
-    //-     i.fa.fa-trash
-    //-     | پاک کردن همه اکانت های دانش آموزان
+        .info-card
+            h1
+                i.fa.fa-pencil
+                | تیم های تایید شده
+            .number.lightgreen #{qualifiedTeams}
+            h1
+                i.fa.fa-pencil
+                | تیم های تایید نشده
+            .number.lightred #{disQualifiedTeams}
+        .info-card
+            h1
+                i.fa.fa-user
+                | تعداد دانش آموزان
+            .number.lightgreen #{students}
+            h1
+                i.fa.fa-users
+                | تعداد کاربران
+            .number.lightred #{usersNum}
+
     
 

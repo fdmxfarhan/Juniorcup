@@ -28,16 +28,26 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
             Team.find({}, (err, teams) => {
                 var payedAmount = 0;
                 var notPayedAmount = 0;
+                var qualifiedTeams = 0;
+                var disQualifiedTeams = 0;
+                var students = 0;
                 for(var i=0; i<teams.length; i++)
                 {
                     if(teams[i].payed) payedAmount += teams[i].price;
                     else notPayedAmount += teams[i].price;
+                    if(teams[i].qualified) qualifiedTeams++;
+                    else disQualifiedTeams++;
+                    students += teams[i].members.length;
                 }
                 res.render('./dashboard/admin-dashboard',{
                     user: req.user,
                     users,
                     payedAmount,
-                    notPayedAmount
+                    notPayedAmount,
+                    qualifiedTeams,
+                    disQualifiedTeams,
+                    students,
+                    usersNum: users.length
                 });
             });
         });

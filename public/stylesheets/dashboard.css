@@ -1176,38 +1176,38 @@ body{
         overflow: hidden;
     }
     .dashboard-adtions .links{
-        width: 48%;
+        width: 38%;
         float: right;
     }
     .dashboard-adtions .info-card{
         width: 15vw;
         float: right;
         border-radius: 1.5vw;
-        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0.8vw 0.1vw rgba(0, 255, 0, 0.2);
         margin: 1vw;
         position: relative;
         text-align: center;
     }
     .dashboard-adtions .info-card i{
-        position: absolute;
+        /* position: absolute;
         top: 1.2vw;
-        left: 2vw;
-        font-size: 1.5vw;
+        left: 2vw; */
+        font-size: 1.2vw;
+        padding-left: 0.3vw;
     }
     .dashboard-adtions .info-card h1{
         font-family: 'iransans';
-        font-size: 1.3vw;
-        margin-bottom: 3vw;
-        color: rgb(181, 181, 181);
+        font-size: 1.1vw;
+        margin-bottom: 0.1vw;
+        color: rgb(157, 157, 157);
     }
     .dashboard-adtions .info-card .number{
         font-family: 'iransans';
         font-size: 1.3vw;
-        margin-bottom: 2vw;
+        margin-bottom: 1.5vw;
     }
     .lightgreen{color: rgb(70, 214, 51);}
     .lightred{color: rgb(214, 51, 51);}
-    
 }
 
 @media only screen and (max-width: 800px) {
