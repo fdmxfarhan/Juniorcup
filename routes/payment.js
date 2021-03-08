@@ -9,6 +9,7 @@ const Team = require('../models/Team');
 
 
 router.post('/pay-team', function(req,res, next){
+  console.log(req.body);
   Team.findOne({_id: req.body.order_id}, (err, team)=>{
     if(team){
       var options2 = {
