@@ -46,6 +46,7 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
                     var qualifiedTeams = 0;
                     var disQualifiedTeams = 0;
                     var students = 0;
+                    var cupRequest = 0;
                     for(var i=0; i<teams.length; i++)
                     {
                         if(teams[i].payed) payedAmount += teams[i].price;
@@ -53,6 +54,9 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
                         if(teams[i].qualified) qualifiedTeams++;
                         else disQualifiedTeams++;
                         students += teams[i].members.length;
+                        teams[i].members.forEach(member => {
+                            if(member.cup) cupRequest++;
+                        });
                     }
                     res.render('./dashboard/admin-dashboard',{
                         user: req.user,
@@ -63,7 +67,8 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
                         disQualifiedTeams,
                         students,
                         usersNum: users.length,
-                        setting
+                        setting,
+                        cupRequest
                     });
                 });
             });
