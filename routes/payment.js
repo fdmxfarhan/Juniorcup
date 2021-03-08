@@ -67,7 +67,7 @@ router.get('/pay-team', function(req, res, next){
     };
     request(options, function (error, response, body) {
       if (error) console.log(error);
-      Debug.log(body.link);
+      console.log(body.link);
       res.redirect(body.link);
     });  
   });
