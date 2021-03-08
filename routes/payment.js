@@ -27,6 +27,7 @@ router.post('/pay-team', function(req,res, next){
       };
       request(options2, function (error, response, body) {
         if (error) throw new Error(error);
+        console.log(body.status);
         if(body.status == 100){
           Team.updateMany({_id: team._id}, { $set: { payed: true } }, function(err){
             if(err) console.log(err);
