@@ -17,7 +17,7 @@ router.post('/pay-team', function(req,res, next){
         headers: {
           'Content-Type': 'application/json',
           'X-API-KEY': 'f069e17a-41ba-4af4-99c1-2c137dda9cdd',
-          // 'X-SANDBOX': 1,
+          'X-SANDBOX': 1,
         },
         body: {
           'id': req.body.id,
@@ -50,7 +50,7 @@ router.get('/pay-team', function(req, res, next){
       headers: {
         'Content-Type': 'application/json',
         'X-API-KEY': 'f069e17a-41ba-4af4-99c1-2c137dda9cdd',
-        // 'X-SANDBOX': 1,
+        'X-SANDBOX': 1,
       },
       body: {
         'order_id': team._id,
@@ -60,11 +60,12 @@ router.get('/pay-team', function(req, res, next){
         'phone': '09336448037',
         'mail': team.email,
         'desc': team.teamName,
-        'callback': 'http://juniorcup.ir/payment/pay-team',
+        'callback': 'https://juniorcup.ir/payment/pay-team',
         'reseller': null,
       },
       json: true,
     };
+    console.log(options);
     request(options, function (error, response, body) {
       if (error) console.log(error);
       console.log(body.link);
