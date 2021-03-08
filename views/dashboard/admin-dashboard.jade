@@ -42,6 +42,15 @@ block content
             a.admin-link(href="/dashboard/teams-list") 
                 i.fa.fa-users 
                 | لیست تیم ها 
+            -if(setting.register){
+                a.admin-link(href="/dashboard/register-off") 
+                    i.fa.fa-plus
+                    | ثبت نام تیم ها باز
+            -} else{
+                a.admin-link(href="/dashboard/register-on") 
+                    i.fa.fa-plus
+                    | ثبت نام تیم ها بسته
+            -}
             //- a.admin-link(href="/dashboard/make-member-account") 
             //-     i.fa.fa-users 
             //-     | ساخت اکانت برای همه دانش آموزان

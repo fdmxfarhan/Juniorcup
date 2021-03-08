@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 var User = require('../models/User');
 var Team = require('../models/Team');
 var Game = require('../models/Game');
+var Setting = require('../models/Setting');
 var shamsi = require('../config/shamsi');
 
 const memberPrice = 750000;
@@ -16,38 +17,54 @@ const cupPrice = 750000;
 router.get('/', ensureAuthenticated,(req, res, next) => {
     if(req.user.role == 'user'){
         Team.find({username: req.user.username}, (err, teams) => {
-            if(err) console.log(err);
-            res.render('./dashboard/user-dashboard',{
-                user: req.user,
-                teams: teams
+            Setting.findOne({}, (err, setting) => {
+                if(!setting)
+                {
+                    var newSetting = new Setting();
+                    newSetting.save().then(doc => {res.redirect('/dashboard');}).catch(err => {console.log(err);});
+                }
+                if(err) console.log(err);
+                res.render('./dashboard/user-dashboard',{
+                    user: req.user,
+                    teams: teams,
+                    setting
+                });
             });
         });
     }
     else if(req.user.role == 'admin'){
         User.find({}, (err, users) => {
             Team.find({}, (err, teams) => {
-                var payedAmount = 0;
-                var notPayedAmount = 0;
-                var qualifiedTeams = 0;
-                var disQualifiedTeams = 0;
-                var students = 0;
-                for(var i=0; i<teams.length; i++)
-                {
-                    if(teams[i].payed) payedAmount += teams[i].price;
-                    else notPayedAmount += teams[i].price;
-                    if(teams[i].qualified) qualifiedTeams++;
-                    else disQualifiedTeams++;
-                    students += teams[i].members.length;
-                }
-                res.render('./dashboard/admin-dashboard',{
-                    user: req.user,
-                    users,
-                    payedAmount,
-                    notPayedAmount,
-                    qualifiedTeams,
-                    disQualifiedTeams,
-                    students,
-                    usersNum: users.length
+                Setting.findOne({}, (err, setting) => {
+                    if(!setting)
+                    {
+                        var newSetting = new Setting();
+                        newSetting.save().then(doc => {res.redirect('/dashboard');}).catch(err => {console.log(err);});
+                    }
+                    var payedAmount = 0;
+                    var notPayedAmount = 0;
+                    var qualifiedTeams = 0;
+                    var disQualifiedTeams = 0;
+                    var students = 0;
+                    for(var i=0; i<teams.length; i++)
+                    {
+                        if(teams[i].payed) payedAmount += teams[i].price;
+                        else notPayedAmount += teams[i].price;
+                        if(teams[i].qualified) qualifiedTeams++;
+                        else disQualifiedTeams++;
+                        students += teams[i].members.length;
+                    }
+                    res.render('./dashboard/admin-dashboard',{
+                        user: req.user,
+                        users,
+                        payedAmount,
+                        notPayedAmount,
+                        qualifiedTeams,
+                        disQualifiedTeams,
+                        students,
+                        usersNum: users.length,
+                        setting
+                    });
                 });
             });
         });
@@ -732,5 +749,39 @@ router.get('/toggle-cup', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
+
+router.get('/register-off', ensureAuthenticated, (req, res, next) => {
+    Setting.find({}, (err, settings) => {
+        if(settings.length == 0)
+        {
+            var setting = new Setting({register: false});
+            setting.save().then(doc => {res.redirect('/dashboard');}).catch(err => {if(err) console.log(err)});
+        }
+        else
+        {
+            Setting.updateMany({}, {$set: {register: false}}, (err, doc) => {
+                res.redirect('/dashboard');
+            });
+        }
+    });
+});
+
+router.get('/register-on', ensureAuthenticated, (req, res, next) => {
+    Setting.find({}, (err, settings) => {
+        if(settings.length == 0)
+        {
+            var setting = new Setting({register: true});
+            setting.save().then(doc => {res.redirect('/dashboard');}).catch(err => {if(err) console.log(err)});
+        }
+        else
+        {
+            Setting.updateMany({}, {$set: {register: true}}, (err, doc) => {
+                res.redirect('/dashboard');
+            });
+        }
+    });
+});
+
+
 
 module.exports = router;

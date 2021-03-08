@@ -47,30 +47,32 @@ block content
     .pop-up#add-team-popup
         span.close#close-pup-up &times;
         h1.popup-title افزودن تیم جدید
-        //- h1.end-reg زمان ثبت نام به پایان رسید
-        form.add-team-form(action="/dashboard/register-team" method="POST")
-            .text-input
-                i.fa.fa-users
-                input(type="text" name="teamName" placeholder="نام تیم" required)
-            .text-input
-                i.fa.fa-user
-                input(type="text" name="mentor" placeholder="نام سرپرست" required)
-            .text-input
-                i.fa.fa-envelope
-                input(type="text" name="email" placeholder="پست الکترنیکی" value="#{user.email}" required)
-            .text-input
-                i.fa.fa-phone
-                input(type="text" name="phone" placeholder="تلفن" value="#{user.phone}" required)
-            .text-input
-                i.fa.fa-link
-                input(type="text" name="affiliation" placeholder="وابستگی" required)
-            .text-input
-                select#select(name="league" required)
-                    option(value="فوتبالیست سبک وزن") فوتبالیست سبک وزن
-                    option(value="فوتبالیست وزن آزاد") فوتبالیست وزن آزاد
-                    option(value="امداد فضای مشترک") امداد فضای مشترک
-                    option(value="برنامه نویسی") برنامه نویسی
-                    option(value="خودروهای هوشمند") خودروهای هوشمند
-                    option(value="فوتبال ۲ بعدی") فوتبال ۲ بعدی
-            input.submit(type="submit" value="ثبت")
-    
+        -if(!setting.register)
+            h1.end-reg زمان ثبت نام به پایان رسید
+        -else{
+            form.add-team-form(action="/dashboard/register-team" method="POST")
+                .text-input
+                    i.fa.fa-users
+                    input(type="text" name="teamName" placeholder="نام تیم" required)
+                .text-input
+                    i.fa.fa-user
+                    input(type="text" name="mentor" placeholder="نام سرپرست" required)
+                .text-input
+                    i.fa.fa-envelope
+                    input(type="text" name="email" placeholder="پست الکترنیکی" value="#{user.email}" required)
+                .text-input
+                    i.fa.fa-phone
+                    input(type="text" name="phone" placeholder="تلفن" value="#{user.phone}" required)
+                .text-input
+                    i.fa.fa-link
+                    input(type="text" name="affiliation" placeholder="وابستگی" required)
+                .text-input
+                    select#select(name="league" required)
+                        option(value="فوتبالیست سبک وزن") فوتبالیست سبک وزن
+                        option(value="فوتبالیست وزن آزاد") فوتبالیست وزن آزاد
+                        option(value="امداد فضای مشترک") امداد فضای مشترک
+                        option(value="برنامه نویسی") برنامه نویسی
+                        option(value="خودروهای هوشمند") خودروهای هوشمند
+                        option(value="فوتبال ۲ بعدی") فوتبال ۲ بعدی
+                input.submit(type="submit" value="ثبت")
+        -}
