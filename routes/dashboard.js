@@ -25,9 +25,20 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
     }
     else if(req.user.role == 'admin'){
         User.find({}, (err, users) => {
-            res.render('./dashboard/admin-dashboard',{
-                user: req.user,
-                users
+            Team.find({}, (err, teams) => {
+                var payedAmount = 0;
+                var notPayedAmount = 0;
+                for(var i=0; i<teams.length; i++)
+                {
+                    if(teams[i].payed) payedAmount += teams[i].price;
+                    else notPayedAmount += teams[i].price;
+                }
+                res.render('./dashboard/admin-dashboard',{
+                    user: req.user,
+                    users,
+                    payedAmount,
+                    notPayedAmount
+                });
             });
         });
     }

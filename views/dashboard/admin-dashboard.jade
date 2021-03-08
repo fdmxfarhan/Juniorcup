@@ -33,12 +33,27 @@ block content
                     tr
                         td.title عنوان
                         td.text در اینجا اخبار سایت قرار خواهد گرفت. این اخبار توسط ادمین سایت اضافه می شدو و تمام کاربر ها آن را مشاهده می کنند.
-    a.admin-link(href="/dashboard/users-list") 
-        i.fa.fa-users 
-        | لیست کاربران
-    a.admin-link(href="/dashboard/teams-list") 
-        i.fa.fa-users 
-        | لیست تیم ها
+    
+    .dashboard-adtions
+        .links
+            a.admin-link(href="/dashboard/users-list") 
+                i.fa.fa-users 
+                | لیست کاربران 
+            a.admin-link(href="/dashboard/teams-list") 
+                i.fa.fa-users 
+                | لیست تیم ها 
+    
+        .info-card
+            i.fa.fa-dollar.lightgreen
+            h1 پرداخت شده
+            .number.lightgreen #{payedAmount}
+                | ریال
+        .info-card
+            i.fa.fa-dollar.lightred
+            h1 پرداخت نشده
+            .number.lightred #{notPayedAmount}
+                | ریال
+    
     //- a.admin-link(href="/dashboard/make-member-account") 
     //-     i.fa.fa-users 
     //-     | ساخت اکانت برای همه دانش آموزان
@@ -46,3 +61,4 @@ block content
     //-     i.fa.fa-trash
     //-     | پاک کردن همه اکانت های دانش آموزان
     
+
