@@ -48,6 +48,7 @@ router.post('/pay-team', function(req,res, next){
 router.get('/pay-team', function(req, res, next){
   if(team.price == 0) console.log('amount is 0');
   Team.findOne({_id: req.query.id}, function(err, team){
+    console.log(team);
     var options = {
       method: 'POST',
       url: 'https://api.idpay.ir/v1.1/payment',
@@ -60,13 +61,13 @@ router.get('/pay-team', function(req, res, next){
       body: {
         'order_id': team._id,
         'amount': team.price,
-        // 'name': team.mentor,
-        // 'uname': team.username,
-        // 'phone': '09336448037',
-        // 'mail': team.email,
-        // 'desc': team.teamName,
+        'name': team.mentor,
+        'uname': team.username,
+        'phone': '09336448037',
+        'mail': team.email,
+        'desc': team.teamName,
         'callback': 'http://juniorcup.ir/payment/pay-team',
-        // 'reseller': null,
+        'reseller': null,
       },
       json: true,
     };
