@@ -22,9 +22,11 @@ block content
                         .green تایید شده
                     -else
                         .purple در حال بررسی
-            a.pay(href="/payment/pay-team?id=#{team._id}") 
-                i.fa.fa-tag
-                | پرداخت هزینه
+            -if(team.qualified && !team.payed){
+                a.pay(href="/payment/pay-team?id=#{team._id}") 
+                    i.fa.fa-tag
+                    | پرداخت هزینه
+            -}
         .part
             h1.info-title اعضا
             -for(var j=0; j<team.members.length; j++){
