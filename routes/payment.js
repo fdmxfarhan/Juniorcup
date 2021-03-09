@@ -31,7 +31,7 @@ router.post('/pay-team', function(req,res, next){
         if (error) throw new Error(error);
         console.log(body);
         if(body.status == 100){
-          Team.updateMany({_id: team._id}, { $set: { payed: true , track_id: body.track_id} }, function(err){
+          Team.updateMany({_id: team._id}, { $set: { payed: true , track_id: body.payment.track_id} }, (err, doc) => {
             if(err) console.log(err);
             Team.findById(team._id, (err, team) => {
               res.render(`/success-pay`, {
