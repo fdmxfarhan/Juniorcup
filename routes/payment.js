@@ -29,11 +29,15 @@ router.post('/pay-team', function(req,res, next){
       };
       request(options2, function (error, response, body) {
         if (error) throw new Error(error);
-        console.log(body.status);
+        console.log(body);
         if(body.status == 100){
-          Team.updateMany({_id: team._id}, { $set: { payed: true } }, function(err){
+          Team.updateMany({_id: team._id}, { $set: { payed: true , track_id: body.track_id} }, function(err){
             if(err) console.log(err);
-            res.redirect(`/dashboard/team?id=${team._id}`);
+            Team.findById(team._id, (err, team) => {
+              res.render(`/success-pay`, {
+                team
+              });
+            });
           });
         }
         else{

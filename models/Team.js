@@ -52,8 +52,8 @@ var TeamSchema = new mongoose.Schema({
   goalkhorde: {
     type: Number,
     default: 0
-  }
-  
+  },
+  track_id: Number
 });
 
 var Team = mongoose.model('Team', TeamSchema);
