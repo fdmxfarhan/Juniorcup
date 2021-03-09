@@ -47,8 +47,8 @@ router.post('/pay-team', function(req,res, next){
 
 router.get('/pay-team', function(req, res, next){
   if(team.price == 0) console.log('amount is 0');
+  console.log('fuck');
   Team.findOne({_id: req.query.id}, function(err, team){
-    console.log(team);
     var options = {
       method: 'POST',
       url: 'https://api.idpay.ir/v1.1/payment',
