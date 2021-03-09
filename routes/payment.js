@@ -21,7 +21,7 @@ router.post('/pay-team', function(req,res, next){
           'Content-Type': 'application/json',
           'X-API-KEY': 'f069e17a-41ba-4af4-99c1-2c137dda9cdd',
           // 'X-API-KEY': 'fe6a4553-cd95-4dff-af2e-80594c1c18c5',
-          'X-SANDBOX': 1,
+          // 'X-SANDBOX': 1,
         },
         body: {
           'id': req.body.id,
@@ -65,7 +65,7 @@ router.get('/pay-team', function(req, res, next){
         'Content-Type': 'application/json',
         'X-API-KEY': 'f069e17a-41ba-4af4-99c1-2c137dda9cdd',
         // 'X-API-KEY': 'fe6a4553-cd95-4dff-af2e-80594c1c18c5',
-          'X-SANDBOX': 1,
+          // 'X-SANDBOX': 1,
       },
       body: {
         'order_id': team._id,
