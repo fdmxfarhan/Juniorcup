@@ -53,3 +53,8 @@ block content
                 - }
             a.add-member(href="/dashboard/team?id=#{team._id}") افزودن عضو
 
+    -if(team.qualified){
+        a.admin-link(href="/dashboard/admin-dq-team?id=#{team._id}") 
+            i.fa.fa-users 
+            | عدم تایید
+    -}

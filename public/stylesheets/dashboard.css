@@ -811,7 +811,6 @@ body{
     }
 
 
-
     h1.game-title{
         color: var(--purple);
         font-family: 'iransans';
@@ -826,7 +825,7 @@ body{
     form.add-game label{
         font-family: 'iransans';
         font-size: 1.3vw;
-        margin-right: 2vw;
+        margin-right: 0.5vw;
     }
     form.add-game select{
         background-color: white;
