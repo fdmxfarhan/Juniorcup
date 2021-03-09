@@ -7,7 +7,9 @@ const User = require('../models/User');
 const Team = require('../models/Team');
 
 
-
+// router.get('/', (req, res, next) => {
+//   res.render(`success-pay`);
+// })
 router.post('/pay-team', function(req,res, next){
   console.log(req.body);
   Team.findOne({_id: req.body.order_id}, (err, team)=>{
@@ -34,7 +36,7 @@ router.post('/pay-team', function(req,res, next){
           Team.updateMany({_id: team._id}, { $set: { payed: true , track_id: body.payment.track_id} }, (err, doc) => {
             if(err) console.log(err);
             Team.findById(team._id, (err, team) => {
-              res.render(`/success-pay`, {
+              res.render(`success-pay`, {
                 team
               });
             });
