@@ -65,8 +65,8 @@ router.get('/pay-team', function(req, res, next){
         'phone': '09336448037',
         'mail': team.email,
         'desc': team.teamName,
-        'callback': 'https://juniorcup.ir/payment/pay-team',
-        'reseller': null,
+        'callback': 'http://juniorcup.ir/payment/pay-team',
+        // 'reseller': null,
       },
       json: true,
     };
