@@ -38,9 +38,10 @@ block content
                                 | دریافت تندیس 
                             -else if(!team.payed)
                                 | عدم دریافت تندیس 
-                            
-                        a(href="/dashboard/remove-member?idNumber=#{team.members[j].idNumber}&teamName=#{team.teamName}")
-                            i.fa.fa-trash
+                        -if(!team.payed){
+                            a(href="/dashboard/remove-member?idNumber=#{team.members[j].idNumber}&teamName=#{team.teamName}")
+                                i.fa.fa-trash
+                        -}
             -}
             -if(team.members.length == 0){
                 .no-members هیچ عضوی برای این تیم ثبت نشده.
