@@ -58,7 +58,7 @@ router.get('/pay-team', function(req, res, next){
           // 'X-SANDBOX': 1,
       },
       body: {
-        'order_id': team._id,
+        'order_id': `${team._id}`,
         'amount': team.price,
         'name': team.mentor,
         'uname': team.username,
