@@ -46,6 +46,7 @@ router.post('/pay-team', function(req,res, next){
 });
 
 router.get('/pay-team', function(req, res, next){
+  if(team.price == 0) console.log('amount is 0');
   Team.findOne({_id: req.query.id}, function(err, team){
     var options = {
       method: 'POST',
@@ -69,10 +70,9 @@ router.get('/pay-team', function(req, res, next){
       },
       json: true,
     };
-    console.log(options);
     request(options, function (error, response, body) {
       if (error) console.log(error);
-      console.log(body.link);
+      console.log(body);
       res.redirect(body.link);
     });  
   });
