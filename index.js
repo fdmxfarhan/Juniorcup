@@ -21,6 +21,7 @@ var leagues = require('./routes/leagues');
 var game = require('./routes/game');
 var payment = require('./routes/payment');
 
+console.log('fuck yeah');
 // Mongo DB connect
 mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
     if(err) throw err;
