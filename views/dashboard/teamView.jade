@@ -34,9 +34,9 @@ block content
                     .name= team.members[j].fullName
                     .actions
                         a.get-cup(href="/dashboard/toggle-cup?idNumber=#{team.members[j].idNumber}&teamID=#{team._id}")
-                            -if(team.members[j].cup)
+                            -if(team.members[j].cup && !team.payed)
                                 | دریافت تندیس 
-                            -else
+                            -else if(!team.payed)
                                 | عدم دریافت تندیس 
                             
                         a(href="/dashboard/remove-member?idNumber=#{team.members[j].idNumber}&teamName=#{team.teamName}")
@@ -67,7 +67,7 @@ block content
                 br
                 p.note (مبلغ ۷۵ هزار تومان بابت ساخت تندیس به هزینه ثبت نام شما اضافه می شود)
                 input.inline-submit(type="submit" value="ثبت")
-            -if(team.members.length < 3){
+            -if(team.members.length < 3 && !team.payed){
                 a.add-member
                     i.fa.fa-user-plus
                     | افزودن عضو جدید
