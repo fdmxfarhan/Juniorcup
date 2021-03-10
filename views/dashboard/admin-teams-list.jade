@@ -11,7 +11,11 @@ block content
                 th عملیات
             -for(var i=0; i<teams.length; i++){
                 tr
-                    td= teams[i].teamName
+                    td
+                        -if(teams[i].payed)
+                            .green= teams[i].teamName
+                        -else
+                            | #{teams[i].teamName}
                     td= teams[i].mentor
                     td= teams[i].league
                     td
