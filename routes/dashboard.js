@@ -266,7 +266,8 @@ router.get('/upgrade-user', ensureAuthenticated, (req, res, next) => {
                         id: _user._id, 
                         user: req.user,
                         teams,
-                        currentTeam
+                        currentTeam,
+                        role: _user.role
                     });
                 });
             });
@@ -793,6 +794,19 @@ router.get('/register-on', ensureAuthenticated, (req, res, next) => {
     });
 });
 
+router.post('/reset-pass', ensureAuthenticated, (req, res, next) => {
+    var {password, confirm, id} = req.body;
+    if(!password && !confirm) res.send('err');
+    if(req.user.role == 'admin'){
+        bcrypt.genSalt(10, (err, salt) => bcrypt.hash(password, salt, (err, hash) => {
+            if(err) throw err;
+            password = hash;
+            User.updateMany({_id: id}, {$set: {password}}, (err, doc) => {
+                res.redirect(`/dashboard/users-list`);
+            });
+          }));
+    }
+});
 
 
 module.exports = router;

@@ -1,21 +1,41 @@
 extends layout
 
 block content
-    a(href="/dashboard/upgrade-to-user?id=#{id}") User 
-    br
-    a(href="/dashboard/upgrade-to-admin?id=#{id}") Admin 
-    br
-    a(href="/dashboard/upgrade-to-refree?id=#{id}") Refree 
-    br
-    a(href="/dashboard/upgrade-to-student?id=#{id}") student 
-    br
-    a(href="/dashboard/remove-user?id=#{id}") delete
-    form(action="/dashboard/set-user-team" method="POST") 
-        input.hidden(type="text" name="id" value="#{id}")
-        select(name="team") 
-            -for(var i=0; i<teams.length; i++){
-                option(value="#{teams[i]._id}")= teams[i].teamName
-            -}
-        input.submit(type="submit" value="ثبت")
-    -if(currentTeam)
-        h1 current team: #{currentTeam.teamName}
+    .upgrade-user-panel
+        .change-role
+            h1 نقش کاربری: 
+            -if(role == 'user')
+                a.role-link.active(href="/dashboard/upgrade-to-user?id=#{id}") User 
+            -else 
+                a.role-link(href="/dashboard/upgrade-to-user?id=#{id}") User 
+            -if(role == 'admin')
+                a.role-link.active(href="/dashboard/upgrade-to-admin?id=#{id}") Admin 
+            -else 
+                a.role-link(href="/dashboard/upgrade-to-admin?id=#{id}") Admin 
+            -if(role == 'refree')
+                a.role-link.active(href="/dashboard/upgrade-to-refree?id=#{id}") Refree 
+            -else 
+                a.role-link(href="/dashboard/upgrade-to-refree?id=#{id}") Refree 
+            -if(role == 'student')
+                a.role-link.active(href="/dashboard/upgrade-to-student?id=#{id}") student 
+            -else 
+                a.role-link(href="/dashboard/upgrade-to-student?id=#{id}") student 
+            -if(role == 'delete')
+                a.role-link.active(href="/dashboard/remove-user?id=#{id}") delete
+            -else 
+                a.role-link(href="/dashboard/remove-user?id=#{id}") delete
+        
+        form.team(action="/dashboard/set-user-team" method="POST") 
+            input.hidden(type="text" name="id" value="#{id}")
+            select(name="team") 
+                -for(var i=0; i<teams.length; i++){
+                    option(value="#{teams[i]._id}")= teams[i].teamName
+                -}
+            input.submit(type="submit" value="ثبت")
+        -if(currentTeam)
+            h1.team-name تیم فعلی: #{currentTeam.teamName}
+        form.reset-pass(action="/dashboard/reset-pass" method="POST") 
+            input.hidden(type="text" name="id" value="#{id}")
+            input.text-input(type="password" name="password" placeholder="رمز عبور جدید")
+            input.text-input(type="password" name="confirm" placeholder="تایید رمز عبور")
+            input.submit(type="submit" value="ثبت")

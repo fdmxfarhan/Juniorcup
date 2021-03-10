@@ -1207,6 +1207,78 @@ body{
     }
     .lightgreen{color: rgb(70, 214, 51);}
     .lightred{color: rgb(214, 51, 51);}
+    .upgrade-user-panel .change-role{
+        width: 80%;
+        margin: 2vw auto;
+    }
+    .upgrade-user-panel .change-role h1{
+        display: inline;
+        color: var(--purple);
+        /* padding: 3vw; */
+        font-family: 'iransans';
+        font-size: 1.3vw;
+    }
+    .upgrade-user-panel .change-role a.role-link{
+        background-color: lightblue;
+        color: black;
+        margin: 0.3vw;
+        padding: 0.1vw 1vw;
+        border-radius: 1vw;
+        text-decoration: none;
+        transition-duration: 500ms;
+    }
+    .upgrade-user-panel .change-role a.role-link.active, .upgrade-user-panel .change-role a.role-link:hover{
+        background-color: chocolate; color: white;
+    }
+    .upgrade-user-panel form{
+        width: 80%;
+        margin: 1vw auto;
+    }
+    .upgrade-user-panel form select{
+        background-color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        border: none;
+        border-radius: 1vw;
+        padding: 0.5vw 2vw;
+        box-shadow: -0.2vw -0.2vw 0.3vw 0 rgb(233, 233, 233), 0.2vw 0.2vw 0.3vw 0.1vw rgba(0, 0, 0, 0.2);
+    }
+    .upgrade-user-panel form input.text-input{
+        background-color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        border: none;
+        border-radius: 1vw;
+        padding: 0.5vw 2vw;
+        box-shadow: -0.2vw -0.2vw 0.3vw 0 rgb(233, 233, 233), 0.2vw 0.2vw 0.3vw 0.1vw rgba(0, 0, 0, 0.2);
+        margin-left: 1vw;
+    }
+    .upgrade-user-panel form input.text-input:focus{
+        outline: none;
+        border: lightblue 0.1vw solid;
+    }
+    .upgrade-user-panel form input.submit{
+        margin: 0 1vw;
+        border: none;
+        cursor: pointer;
+        background-color: var(--purple);
+        box-shadow: 0 0 0.5vw 0.3vw rgba(0, 0, 0, 0.2);
+        color: white;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.4vw 3vw;
+        border-radius: 2vw;
+        transition-duration: 500ms;
+    }
+    .upgrade-user-panel form input.submit:hover{
+        background-color: chocolate;
+    }
+    .upgrade-user-panel h1.team-name{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        width: 80%;
+        margin: 2vw auto;
+    }
 }
 
 @media only screen and (max-width: 800px) {
