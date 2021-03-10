@@ -23,7 +23,16 @@ block content
                 .input-item
                     label(for="price") هزینه: 
                     input(type="number" name="price" value="#{team.price}")
+                .input-item کاربر ثبت نام کننده:‌ #{team.username}
+                .input-item وضعیت پرداخت:‌ 
+                    -if(team.payed){
+                        .green پرداخت شده
+                    -} else{
+                        .red پرداخت نشده
+                    -}
+                
                 input.submit(type="submit" value="ثبت تغییرات")
+
         .column.seccond
             h1.title اعضای تیم
             table.members
