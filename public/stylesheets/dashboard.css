@@ -34,6 +34,18 @@ body{
 .hidden{
     display: none;
 }
+.red{
+    color: red;
+    display: inline;
+}
+.green{
+    color: green;
+    display: inline;
+}
+.purple{
+    color: var(--purple);
+    display: inline;
+}
 
 @media only screen and (min-width: 800px) {
     .navigation{
