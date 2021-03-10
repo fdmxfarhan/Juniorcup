@@ -13,7 +13,9 @@ block content
                 tr
                     td
                         -if(teams[i].payed)
-                            .green= teams[i].teamName
+                            .green
+                                i.fa.fa-check
+                                | #{teams[i].teamName}
                         -else
                             | #{teams[i].teamName}
                     td= teams[i].mentor
