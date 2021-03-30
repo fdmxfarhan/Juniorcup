@@ -1,0 +1,233 @@
+/* @media only screen and (min-width: 600px) { */
+    .content-area{
+        background-color: white;
+        border: lightblue 1px solid;
+        border-radius: 2vw;
+        box-shadow: 0 0 1vw 0.6vw rgba(61, 0, 131, 0.2);
+        width: 83%;
+        margin: 5vw auto;
+        overflow: hidden;
+    }
+    .sidebar{
+        float: right;
+        /* background-color: lightblue; */
+        width: 23%;
+        padding: 1vw;
+    }
+    .vertical-break{
+        display: block;
+        float: right;
+        background-color: rgba(0, 0, 139, 0.664);
+        width: 0.3vw;
+        height: 40vw;
+        margin: 1vw;
+    }
+    .content-tab{
+        float: right;
+        width: 70%;
+        margin-top: 2vw;
+        /* background-color: lightcoral; */
+        direction: rtl;
+    }
+    .sidebar .link{
+        direction: rtl;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.5vw 1vw;
+        margin: 0.3vw 0;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border-radius: 1vw;
+    }
+    .sidebar .link:hover{
+        background-color: var(--bghover);
+    }
+    .sidebar .link.active{
+        background-color: var(--bgcolor);
+        color: white;
+    }
+    .sidebar .link i{
+        font-size: 1.3vw;
+        padding-left: 1vw;
+    }
+    .slideshow{
+        /* background-color: chocolate; */
+        text-align: center;
+        position: relative;
+    }
+    .slideshow img{
+        width: 70%;
+        margin: auto;
+    }
+    .slideshow .next-btn{
+        font-size: 3vw;
+        padding: 3vw 0.8vw;
+        color: white;
+        background-color: rgb(220, 220, 220);
+        position: absolute;
+        top: 25vw;
+        right: 2vw;
+        cursor: pointer;
+    }
+    .slideshow .next-btn:hover{
+        background-color: rgba(0, 0, 0, 0.404);
+    }
+    .slideshow .prev-btn{
+        font-size: 3vw;
+        padding: 3vw 0.8vw;
+        color: white;
+        background-color: rgb(220, 220, 220);
+        position: absolute;
+        top: 25vw;
+        left: 2vw;
+        cursor: pointer;
+    }
+    .slideshow .prev-btn:hover{
+        background-color: rgba(0, 0, 0, 0.404);
+    }
+    .code{
+        direction: ltr;
+        text-align: left;
+        background-color: rgb(236, 236, 236);
+        padding: 1vw;
+        border-left: var(--bgcolor) 0.3vw solid;
+        position: relative;
+    }
+    .code span{
+        font-family: 'iransans';
+        font-size: 1.2vw;
+    }
+    .code span.function{
+        color: chocolate;
+    }
+    .code span.name{
+        color: rgb(64, 184, 224);
+    }
+    .code span.state{
+        color: rgb(49, 160, 34);
+    }
+    .code .scope{
+        padding-left: 2vw;
+    }
+    .code span.text{
+        color: rgb(77, 92, 107);
+    }
+    .tab-collapse{
+        /* background-color: coral; */
+        width: 95%;
+        margin: auto;
+        margin-bottom: 2vw;
+        display: none;
+    }
+    .tab-collapse p{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        text-align: justify;
+        padding: 1vw;
+    }
+    .content-tab .title{
+        background-color: lightblue;
+        border-radius: 1vw;
+        padding: 1vw;
+        position: relative;
+        cursor: pointer;
+        transition-duration: 1s;
+        color: rgba(0, 0, 0, 0.87);
+        margin-bottom: 1.5vw;
+        width: 95%;
+        box-shadow: 0 0 0.4vw 0.1vw rgba(0, 0, 0, 0.2);
+    }
+    .content-tab .title:hover{
+        background-color: rgb(29, 106, 207);
+        color: white;
+    }
+    .content-tab .title h1{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        margin: 0;
+        padding: 0;
+    }
+    .content-tab .title i{
+        position: absolute;
+        left: 2vw;
+        top: 1.6vw;
+    }
+    #minus1, #minus2, #minus3, #minus4, #minus5, #minus6, #minus7, #minus8, #minus9, #minus10, #minus11{
+        display: none;
+    }
+    .tab-collapse a.main-code{
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        text-decoration: none;
+    }
+    .tab-collapse a.main-code i{
+        font-size: 1.5vw;
+        padding-left: 1vw;
+    }
+    .tab-collapse a.main-code:hover{
+        color: chocolate;
+    }
+    .code a.download-code{
+        position: absolute;
+        top: 1vw;
+        right: 2vw;
+        font-size: 2vw;
+        color: rgb(93, 172, 199);
+    }
+    .code a.download-code:hover{
+        color: chocolate;
+    }
+    .content-tab h1.ask-question{
+        font-family: 'iransans';
+        font-size: 1.5vw;
+        color: var(--bgcolor);
+    }
+    .content-tab form.ask input.textinput{
+        /* display: block; */
+        width: 80%;
+        padding: 0.3vw 1vw;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        border: none;
+    }
+    .content-tab form.ask input.textinput:focus{outline: none;}
+    .content-tab form.ask .input-area{
+        width: 60%;
+        border-radius: 1vw;
+        border: lightgray 1px solid;
+        box-shadow: 0 0 0.4vw 0.1vw rgba(0, 0, 0, 0.2);
+        margin: 2vw 0;
+    }
+    .content-tab form.ask .input-area i{
+        color: var(--bgcolor);
+        font-size: 1.4vw;
+        padding-right: 1vw;
+    }
+    .content-tab form.ask textarea{
+        width: 80%;
+        display: block;
+        border-radius: 1vw;
+        border: lightgray 1px solid;
+        box-shadow: 0 0 0.4vw 0.1vw rgba(0, 0, 0, 0.2);
+        height: 20vw;
+        padding: 1vw;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+    }
+    .content-tab form.ask textarea:focus{outline: none;}
+    .content-tab form.ask input.submit{
+        border-radius: 1vw;
+        border: lightgray 1px solid;
+        box-shadow: 0 0 0.4vw 0.1vw rgba(0, 0, 0, 0.2);
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        background-color: var(--bgcolor);
+        color: white;
+        padding: 0.3vw 3vw;
+        margin: 2vw 0;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .content-tab form.ask input.submit:hover{background-color: chocolate;}
+/* } */

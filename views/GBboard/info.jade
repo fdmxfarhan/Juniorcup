@@ -1,0 +1,1689 @@
+extends ../layout
+block styles
+    link(rel="stylesheet", href="/stylesheets/gb.css")
+
+block content
+    .content-area
+        .sidebar
+            .link#link1.active
+                i.fa.fa-info  
+                | دفترچه راهنما  
+            .link#link2
+                i.fa.fa-code  
+                | نمونه برنامه ها  
+            .link#link3
+                i.fa.fa-support  
+                | پشتیبانی  
+            .link#link4
+                i.fa.fa-dollar  
+                | خرید آنلاین  
+            .link#link5
+                i.fa.fa-comment  
+                | نظرات و پیشنهادات  
+        .vertical-break
+        .content-tab#tab1
+            .slideshow
+                i.fa.fa-chevron-right.next-btn
+                i.fa.fa-chevron-left.prev-btn
+                img#img1(src="/GBboard/GB board1.jpg")
+                img#img2(src="/GBboard/GB board2.jpg")
+                img#img3(src="/GBboard/GB board3.jpg")
+                img#img4(src="/GBboard/GB board4.jpg")
+                img#img5(src="/GBboard/GB board5.jpg")
+                img#img6(src="/GBboard/GB board6.jpg")
+                img#img7(src="/GBboard/GB board7.jpg")
+                img#img8(src="/GBboard/GB board8.jpg")
+        .content-tab#tab2
+            //- 1
+            .title#code1
+                h1 LED چشمک زن
+                i.fa.fa-plus.plus#plus1
+                i.fa.fa-minus.minus#minus1
+            .tab-collapse#collapse1
+                p
+                    | در این برنامه LED های سبز و قرمز GBboard که به پایه های ۱۱ و ۱۲ آردوینو نانو متصل هستند، به ترتیب روشن و خاموش می شوند.
+                    | این اتفاق هر ۱۰۰ میلی ثانیه تکرار می شود.
+                    | در تابع setup این دو پایه بر روی حالت خروجی تنظیم می شوند و در تابع loop هر کدام از پایه ها به مدت ۱۰۰ میلی ثانیه روشن شده و سپس خاموش می شوند.
+                .code
+                    a.download-code(href="GBboard/GB board/01-LED_Blink/01-LED_Blink.ino") 
+                        i.fa.fa-download
+                    span.function void 
+                    span.name setup
+                    span.text  () {
+                    .scope
+                        span.function pinMode 
+                        span.text (11, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (12, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.function digitalWrite 
+                        span.text (11, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (12, 0);
+                        br
+                        span.function delay 
+                        span.text (100);
+                        br
+                        span.function digitalWrite 
+                        span.text (11, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (12, 1);
+                        br
+                        span.function delay 
+                        span.text (100);
+                        br
+                    span.text }
+            //- 2
+            .title#code2
+                h1 راه اندازی Buzzer
+                i.fa.fa-plus.plus#plus2
+                i.fa.fa-minus.minus#minus2
+            .tab-collapse#collapse2
+                p
+                    | بازر یا Buzzer قطعه ای است که هنگامی که جریان الکتریکی از آن عبور کند صدای بوق تولید می کند.
+                    | از آنجایی که این قطعه به پایه ۱۳ آردوینو نانو متصل است، با 0 و 1 کردن این پایه می توان بازر را خاموش و روشن کرد.
+                .code
+                    a.download-code(href="GBboard/GB board/02-Buzzer/02-Buzzer.ino") 
+                        i.fa.fa-download
+                    span.function void 
+                    span.name setup
+                    span.text  () {
+                    .scope
+                        span.function pinMode 
+                        span.text (13, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.function digitalWrite 
+                        span.text (13, 1);
+                        br
+                        span.function delay 
+                        span.text (500);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function delay 
+                        span.text (500);
+                        br
+                    span.text }
+            //- 3
+            .title#code3
+                h1 سنسور IR به صورت دیجیتال
+                i.fa.fa-plus.plus#plus3
+                i.fa.fa-minus.minus#minus3
+            .tab-collapse#collapse3
+                p
+                    | با استفاده از این برنامه می توان سنسور مادون قرمز یا IR که به پایه A6 متصل است را به صورت دیجیتال راه اندازی کرد و وضعیت آن را به صورت 0 یا 1 دریافت کرد.
+                    | در صورت 1 بودن بازر روی GBboard روشن می شود.
+                .code
+                    a.download-code(href="GBboard/GB board/03-IR_Digital/03-IR_Digital.ino") 
+                        i.fa.fa-download
+                    span.function void 
+                    span.name setup
+                    span.text  () {
+                    .scope
+                        span.function pinMode 
+                        span.text (A6, 
+                        span.name INPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (13, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A6))
+                        .scope
+                            span.function digitalWrite 
+                            span.text (13, 1);
+                        span.state else
+                        .scope
+                            span.function digitalWrite 
+                            span.text (13, 0);
+                    span.text }
+            //- 4
+            .title#code4
+                h1 نمایشگر (LCD) کاراکتری LiquidCrystal
+                i.fa.fa-plus.plus#plus4
+                i.fa.fa-minus.minus#minus4
+            .tab-collapse#collapse4
+                p
+                    | با استفاده از نمایشگر LiquidCrystal می توان حروف انگلیسی، اعداد و علامت ها را به صورت کارکتر نمایش داد.
+                    | این نمایشگر دو سطر دارد و می تواند ۱۶ کاراکتر در هر سطر نمایش دهد. 
+                    | برای راه اندازی آن می توان از دستورات کتابخانه LiquidCrystal استفاده کرد.
+                .code
+                    a.download-code(href="GBboard/GB board/04-LCD_LiquidCrystal/04-LCD_LiquidCrystal.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.text lcd.
+                        span.function setCursor
+                        span.text (2, 0);
+                        br
+                        span.text lcd.
+                        span.function print
+                        span.text (
+                        span.name "Hello World"
+                        span.text );
+                        br
+                        span.text lcd.
+                        span.function display
+                        span.text ();
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        br
+                    span.text }
+            //- 5
+            .title#code5
+                h1 نوشته چشمک زن
+                i.fa.fa-plus.plus#plus5
+                i.fa.fa-minus.minus#minus5
+            .tab-collapse#collapse5
+                p
+                    | کتابخانه LiquidCrystal دستورات بسیار زیادی دارد که می توان از آن ها با توجه به کاربرد آنها استفاده کرد. 
+                    | یکی از این دستورات دستور noDisplay است. این دستور نوشته های روی LCD را نامرئی می کند. 
+                    | با استفاده از دستور display نیز می توان نوشته را مرئی کرد.
+                .code
+                    a.download-code(href="GBboard/GB board/05-LCD_Blink/05-LCD_Blink.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.text lcd.
+                        span.function setCursor
+                        span.text (2, 0);
+                        br
+                        span.text lcd.
+                        span.function print
+                        span.text (
+                        span.name "Hello World"
+                        span.text );
+                        br
+                        span.text lcd.
+                        span.function display
+                        span.text ();
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.text lcd.
+                        span.function noBlink
+                        span.text ();
+                        br
+                        span.function delay
+                        span.text (3000);
+                        br
+                        span.text lcd.
+                        span.function blink
+                        span.text ();
+                        br
+                        span.function delay
+                        span.text (3000);
+                    span.text }
+            //- 6
+            .title#code6
+                h1 سنسور تشخیص نور LDR
+                i.fa.fa-plus.plus#plus6
+                i.fa.fa-minus.minus#minus6
+            .tab-collapse#collapse6
+                p
+                    | با استفاده از مقاومت نوری یا LDR می توان سنسور نوری با خروجی آنالوگ ساخت. 
+                    | برای دریافت مقدار آنالوگ از این سنسور و تبدیل آن به یک عدد دیجیتال کافی است از دستور analogRead استفاده کنیم.
+                .code
+                    a.download-code(href="GBboard/GB board/06-LDR_Analog_Read/06-LDR_Analog_Read.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name int 
+                    span.text a;
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode
+                        span.text (A7, 
+                        span.name INPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.text a = 
+                        span.function analogRead 
+                        span.text (A7);
+                        br
+                        span.text lcd.
+                        span.function clear 
+                        span.text ();
+                        br
+                        span.text lcd.
+                        span.function setCursor 
+                        span.text (0, 0);
+                        br
+                        span.text lcd.
+                        span.function print 
+                        span.text (a);
+                        br
+                        span.text lcd.
+                        span.function display 
+                        span.text ();
+                        br
+                        span.function delay 
+                        span.text (100);
+                    span.text }
+            //- 7
+            .title#code7
+                h1 سنسور IR به صورت آنالوگ
+                i.fa.fa-plus.plus#plus7
+                i.fa.fa-minus.minus#minus7
+            .tab-collapse#collapse7
+                p
+                    | راه اندازی سنسور مادون قرمز به صورت آنالوگ دقت بیشتری نسبت به حالت دیجیتال دارد. 
+                    | از طرفی از آنجایی که این سنسور به پایه A6 آردوینو متصل است، لازم است که با استفاده از ADC راه اندازی شود.
+                .code
+                    a.download-code(href="GBboard/GB board/07-IR_Analog_Read/07-IR_Analog_Read.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name int 
+                    span.text a;
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode
+                        span.text (A6, 
+                        span.name INPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.text a = 
+                        span.function analogRead 
+                        span.text (A6);
+                        br
+                        span.text lcd.
+                        span.function clear 
+                        span.text ();
+                        br
+                        span.text lcd.
+                        span.function setCursor 
+                        span.text (0, 0);
+                        br
+                        span.text lcd.
+                        span.function print 
+                        span.text (a);
+                        br
+                        span.text lcd.
+                        span.function display 
+                        span.text ();
+                        br
+                        span.function delay 
+                        span.text (100);
+                    span.text }
+            //- 8
+            .title#code8
+                h1 سنسور فاصله اولتراسونیک SRF04
+                i.fa.fa-plus.plus#plus8
+                i.fa.fa-minus.minus#minus8
+            .tab-collapse#collapse8
+                p
+                    | نحوه کار با سنسور فاصله سنج SRF04 به این صورت است که ابتدا پایه trig را آن به مدت ۱۰ میکروثانیه به HIGH (1 منطقی) تغییر می دهیم.
+                    | سپس مدت زمان پالسی که از پایه echo می گیریم را با استفاده از دستور pulseIn اندازه گیری می کنیم.
+                    | در نهایت مقدار اندازه گیری شده را در ضریب مشخصی ضرب می کنیم تا فاصله بر حسب سانتی متر بدست آید.
+                p 
+                    | برای راحت تر شدن کار می توانیم این اعمال را به صورت یک تابع بنویسیم و از آن استفاده کنیم. خروجی این تابع فاصله بر حسب سانتی متر خواهد بود.
+                .code
+                    span.name int 
+                    span.text srf(
+                    span.name int 
+                    span.text trig, 
+                    span.name int 
+                    span.text echo) {
+                    .scope
+                        span.function digitalWrite
+                        span.text (trig, 1);
+                        br
+                        span.function delayMicroseconds
+                        span.text (10);
+                        br
+                        span.function digitalWrite
+                        span.text (trig, 0);
+                        br
+                        span.state return
+                        span.text (
+                        span.function pulseIn
+                        span.text (echo, 1) * 0.034 / 2);
+                    span.text }
+                p
+                    | حال می توانیم با استفاده از این تابع مقدار فاصله را از سنسور دریافت کنیم. ورودی های این تابع شماره پایه های Trig و Echo خواهند بود.
+                .code
+                    a.download-code(href="GBboard/GB board/08-SRF04_Ultrasonic/08-SRF04_Ultrasonic.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name int 
+                    span.text a;
+                    br
+                    span.name int 
+                    span.text srf(
+                    span.name int 
+                    span.text trig, 
+                    span.name int 
+                    span.text echo) {
+                    .scope
+                        span.function digitalWrite
+                        span.text (trig, 1);
+                        br
+                        span.function delayMicroseconds
+                        span.text (10);
+                        br
+                        span.function digitalWrite
+                        span.text (trig, 0);
+                        br
+                        span.state return
+                        span.text (
+                        span.function pulseIn
+                        span.text (echo, 1) * 0.034 / 2);
+                    span.text }
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode
+                        span.text (2, 
+                        span.name OUPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.text a = srf(2, 4);
+                        br
+                        span.text lcd.
+                        span.function clear 
+                        span.text ();
+                        br
+                        span.text lcd.
+                        span.function setCursor 
+                        span.text (0, 0);
+                        br
+                        span.text lcd.
+                        span.function print 
+                        span.text (a);
+                        br
+                        span.text lcd.
+                        span.function display 
+                        span.text ();
+                        br
+                        span.function delay 
+                        span.text (100);
+                    span.text }
+            //- 9
+            .title#code9
+                h1 هشدار فاصله 
+                i.fa.fa-plus.plus#plus9
+                i.fa.fa-minus.minus#minus9
+            .tab-collapse#collapse9
+                p
+                    | در این برنامه همانند سنسور دنده عقب خودرو با کم شدن فاصله، بازر بوق می زند.
+                .code
+                    a.download-code(href="GBboard/GB board/09-Distance_Alarm/09-Distance_Alarm.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name int 
+                    span.text a;
+                    br
+                    span.name int 
+                    span.text srf(
+                    span.name int 
+                    span.text trig, 
+                    span.name int 
+                    span.text echo) {
+                    .scope
+                        span.function digitalWrite
+                        span.text (trig, 1);
+                        br
+                        span.function delayMicroseconds
+                        span.text (10);
+                        br
+                        span.function digitalWrite
+                        span.text (trig, 0);
+                        br
+                        span.state return
+                        span.text (
+                        span.function pulseIn
+                        span.text (echo, 1) * 0.034 / 2);
+                    span.text }
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode
+                        span.text (2, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode
+                        span.text (13, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.text a = srf(2, 4);
+                        br
+                        span.state if 
+                        span.text (a &lt; 8) 
+                        span.function digitalWrite
+                        span.text (13, 1);
+                        br
+                        span.state else 
+                        span.text {
+                        .scope
+                            span.function digitalWrite 
+                            span.text (13, 1);
+                            br
+                            span.function delay 
+                            span.text (100);
+                            br
+                            span.function digitalWrite 
+                            span.text (13, 0);
+                            br
+                            span.function delay 
+                            span.text (a * 10);
+                        span.text }
+                        br
+                        span.text lcd.
+                        span.function clear 
+                        span.text ();
+                        br
+                        span.text lcd.
+                        span.function setCursor 
+                        span.text (0, 0);
+                        br
+                        span.text lcd.
+                        span.function print 
+                        span.text (a);
+                        br
+                        span.text lcd.
+                        span.function display 
+                        span.text ();
+                        br
+                        span.function delay 
+                        span.text (100);
+                    span.text }
+            //- 10
+            .title#code10
+                h1 تشخیص شدت نور
+                i.fa.fa-plus.plus#plus10
+                i.fa.fa-minus.minus#minus10
+            .tab-collapse#collapse10
+                p
+                    | در این برنامه با تاریک شدن محیط اطراف LED سبز روشن می شود.
+                .code
+                    a.download-code(href="GBboard/GB board/10-Light_Sensor/10-Light_Sensor.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name int 
+                    span.text a;
+                    br
+                    span.function void 
+                    span.name setup 
+                    span.text  () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode
+                        span.text (A7, 
+                        span.name INPUT
+                        span.text );
+                        br
+                        span.function pinMode
+                        span.text (12, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop 
+                    span.text () {
+                    .scope
+                        span.text a = 
+                        span.function analogRead 
+                        span.text (A7);
+                        br
+                        span.state if
+                        span.text (a &gt; 800) 
+                        .scope 
+                            span.function digitalWrite 
+                            span.text (12, 1);
+                        br
+                        span.state else
+                        .scope
+                            span.function digitalWrite 
+                            span.text (12, 0);
+                        br
+                        span.text lcd.
+                        span.function clear 
+                        span.text ();
+                        br
+                        span.text lcd.
+                        span.function setCursor 
+                        span.text (0, 0);
+                        br
+                        span.text lcd.
+                        span.function print 
+                        span.text (a);
+                        br
+                        span.text lcd.
+                        span.function display 
+                        span.text ();
+                        br
+                        span.function delay 
+                        span.text (100);
+                    span.text }
+            //- 11
+            .title#code11
+                h1 راه اندازی کیپد ماتریسی
+                i.fa.fa-plus.plus#plus11
+                i.fa.fa-minus.minus#minus11
+            .tab-collapse#collapse11
+                p
+                    | کیپد ماتریسی ۴*۴ که بر روی GBboard قرار دارد شامل ۱۶ کلید است که یک پایه از کلید های هر ردیف و هر ستون مشترک است.
+                    | برای راه اندازی آن پایه های هر ستون را ۱ می کنیم و وضعیت پایه های دیگر را بررسی می کنیم.
+                .code
+                    a.download-code(href="GBboard/GB board/11-Keypad/11-Keypad.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name char 
+                    span.text num = 
+                    span.name ' '
+                    span.text ;
+                    br
+                    span.function void 
+                    span.name setup
+                    span.text () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode 
+                        span.text (13, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (3, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (A0, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (A1, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop
+                    span.text () {
+                    .scope
+                        span.function digitalWrite 
+                        span.text (13, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num = 
+                        span.name '3'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num = 
+                        span.name '6'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num = 
+                        span.name '9'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num = 
+                        span.name '#'
+                        span.text ;
+                        br
+                        span.function delay 
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num = 
+                        span.name 'A'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num = 
+                        span.name 'B'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num = 
+                        span.name 'C'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num = 
+                        span.name 'D'
+                        span.text ;
+                        br
+                        span.function delay 
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num = 
+                        span.name '2'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num = 
+                        span.name '5'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num = 
+                        span.name '8'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num = 
+                        span.name '0'
+                        span.text ;
+                        br
+                        span.function delay
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 1);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num = 
+                        span.name '1'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num = 
+                        span.name '4'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num = 
+                        span.name '7'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num = 
+                        span.name '*'
+                        span.text ;
+                        br
+                        span.function delay
+                        span.text (1);
+                        br
+                        span.text lcd.
+                        span.function setCursor
+                        span.text (0,0);
+                        br
+                        span.text lcd.
+                        span.function print
+                        span.text (num);
+                        br
+                        span.text lcd.
+                        span.function display
+                        span.text ();
+                        br
+                    span.text }
+            //- 12
+            .title#code12
+                h1 تایپ کردن با کیپد ماتریسی
+                i.fa.fa-plus.plus#plus12
+                i.fa.fa-minus.minus#minus12
+            .tab-collapse#collapse12
+                p
+                    | در این برنامه هر کلیدی که فشار داده شود به رشته num اضافه می شود و بر روی LCD نمایش داده می شود.
+                .code
+                    a.download-code(href="GBboard/GB board/12-Keypad_number/12-Keypad_number.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name String 
+                    span.text num = 
+                    span.name ""
+                    span.text ;
+                    br
+                    span.function void 
+                    span.name setup
+                    span.text () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode 
+                        span.text (13, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (3, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (A0, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (A1, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop
+                    span.text () {
+                    .scope
+                        span.function digitalWrite 
+                        span.text (13, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name '3'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name '6'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name '9'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name '#'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay 
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name 'A'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name 'B'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name 'C'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name 'D'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay 
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name '2'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name '5'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name '8'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name '0'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 1);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name '1'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name '4'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name '7'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name '*'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay
+                        span.text (1);
+                        br
+                        span.text lcd.
+                        span.function setCursor
+                        span.text (0,0);
+                        br
+                        span.text lcd.
+                        span.function print
+                        span.text (num);
+                        br
+                        span.text lcd.
+                        span.function display
+                        span.text ();
+                        br
+                    span.text }
+            //- 13
+            .title#code13
+                h1 قفل دیجیتال
+                i.fa.fa-plus.plus#plus13
+                i.fa.fa-minus.minus#minus13
+            .tab-collapse#collapse13
+                p
+                    | در این برنامه از کاربر یک کلمه عبور خواسته می شود. اگر کلمه عبور وارد شده درست باشد LED سبز و در غیر این صورت LED قرمز روشن می شود.
+                .code
+                    a.download-code(href="GBboard/GB board/13-Password_Lock/13-Password_Lock.ino") 
+                        i.fa.fa-download
+                    span.state #include 
+                    span.text &lt;
+                    span.function LiquidCrystal
+                    span.text .h&gt;
+                    br
+                    span.name const int 
+                    span.text rs = 10, en = 9, d4 = 8, d5 = 7, d6 = 6, d7 = 5;
+                    br
+                    span.function LiquidCrystal 
+                    span.text lcd(rs, en, d4, d5, d6, d7);
+                    br
+                    span.name String 
+                    span.text num = 
+                    span.name ""
+                    span.text ;
+                    br
+                    span.name String 
+                    span.text password = 
+                    span.name "1234"
+                    span.text ;
+                    br
+                    span.function void 
+                    span.name setup
+                    span.text () {
+                    .scope
+                        span.text lcd.
+                        span.function begin
+                        span.text (16, 2);
+                        br
+                        span.function pinMode 
+                        span.text (13, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (3, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (A0, 
+                        span.name OUTPUT
+                        span.text );
+                        br
+                        span.function pinMode 
+                        span.text (A1, 
+                        span.name OUTPUT
+                        span.text );
+                    span.text }
+                    br
+                    span.function void 
+                    span.name loop
+                    span.text () {
+                    .scope
+                        span.function digitalWrite 
+                        span.text (13, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name '3'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name '6'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name '9'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name '#'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay 
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name 'A'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name 'B'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name 'C'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name 'D'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay 
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 1);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 0);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name '2'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name '5'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name '8'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) num += 
+                        span.name '0'
+                        span.text ;
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay
+                        span.text (1);
+                        br
+                        span.function digitalWrite 
+                        span.text (13, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (3 , 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A0, 0);
+                        br
+                        span.function digitalWrite 
+                        span.text (A1, 1);
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2)) num += 
+                        span.name '1'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A3)) num += 
+                        span.name '4'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A4)) num += 
+                        span.name '7'
+                        span.text ;
+                        br
+                        span.state if
+                        span.text (
+                        span.function digitalRead
+                        span.text (A5)) {
+                        .scope
+                            span.text lcd.
+                            span.function clear
+                            span.text ();
+                            br
+                            span.state if
+                            span.text (num == password) {
+                            .scope
+                                span.function digitalWrite
+                                span.text (12, 1);
+                                br
+                                span.function digitalWrite
+                                span.text (11, 0);
+                                br
+                                span.text lcd.
+                                span.function print
+                                span.text (
+                                span.name "Wellcome..."
+                                span.text );
+                                br
+                                span.text lcd.
+                                span.function display
+                                span.text ();
+                                br
+                                span.function delay
+                                span.text (10000);
+                            span.text }
+                            br
+                            span.state else 
+                            span.text {
+                            .scope
+                                span.function digitalWrite
+                                span.text (12, 0);
+                                br
+                                span.function digitalWrite
+                                span.text (11, 1);
+                                br
+                                span.text lcd.
+                                span.function print
+                                span.text (
+                                span.name "Failed!"
+                                span.text );
+                                br
+                                span.text lcd.
+                                span.function display
+                                span.text ();
+                            span.text }
+                            br
+                            span.text num = 
+                            span.name ""
+                            span.text ;
+                            br
+                            span.function delay
+                            span.text (3000);
+                            span.function digitalWrite
+                            span.text (12, 0);
+                            br
+                            span.function digitalWrite
+                            span.text (11, 0);
+                            br
+                            span.text lcd.
+                            span.function clear
+                            span.text ();
+                            br
+                            span.text lcd.
+                            span.function print
+                            span.text (
+                            span.name "Password: "
+                            span.text );
+                            br
+                            span.text lcd.
+                            span.function setCursor
+                            span.text (0,1);
+                            br
+                            span.text lcd.
+                            span.function print
+                            span.text (
+                            span.name "Press *"
+                            span.text );
+                        span.text }
+                        br
+                        span.state while
+                        span.text (
+                        span.function digitalRead
+                        span.text (A2) || 
+                        span.function digitalRead
+                        span.text (A3) || 
+                        span.function digitalRead
+                        span.text (A4) || 
+                        span.function digitalRead
+                        span.text (A5));
+                        br
+                        span.function delay
+                        span.text (1);
+                        br
+                        span.text lcd.
+                        span.function setCursor
+                        span.text (0,0);
+                        br
+                        span.state for
+                        span.text (
+                        span.name int 
+                        span.text i=0; i<num.
+                        span.function length
+                        span.text (); i++)
+                        .scope 
+                            span.text lcd.
+                            span.function print
+                            span.text (
+                            span.name "*"
+                            span.text );
+                        span.text lcd.
+                        span.function display
+                        span.text ();
+                        br
+                    span.text }
+            //- 14
+            .title#code14
+                h1 برنامه اصلی GBboard
+                i.fa.fa-plus.plus#plus14
+                i.fa.fa-minus.minus#minus14
+            .tab-collapse#collapse14
+                p
+                    | این برنامه شامل خواندن تمام سنسور ها و نمایش آنها بر روی LCD می باشد.
+                a.main-code(href="GBboard/GB board/14-GBboard_Main/14-GBboard_Main.ino" download)
+                    i.fa.fa-cloud-download
+                    | دانلود برنامه اصلی
+        .content-tab#tab3
+            h1.ask-question هر سوالی داری می تونی اینجا بپرسی!!
+            form.ask(action="/gb-ask" method="POST")
+                .input-area
+                    i.fa.fa-user
+                    input.textinput(type="text" name="fullName" placeholder="نام و نام خانوادگی")
+                .input-area
+                    i.fa.fa-envelope
+                    input.textinput(type="text" name="email" placeholder="پست الکرونیکی (E-mail)")
+                textarea(name="text" placeholder="سوال خود را در اینجا بنویسید...")
+                input.submit(type="submit" value="ثبت")
+        .content-tab#tab4
+            h1.ask-question سفارش آنلاین GBboard
+            h1.ask-question برای سفارش با شماره تلفن 09197228658 تماس بگیرید.
+            
+            //- form.ask(action="/gb-order" method="POST")
+            //-     .input-area
+            //-         i.fa.fa-user
+            //-         input.textinput(type="text" name="fullName" placeholder="نام و نام خانوادگی")
+            //-     .input-area
+            //-         i.fa.fa-envelope
+            //-         input.textinput(type="text" name="email" placeholder="پست الکرونیکی (E-mail)")
+            //-     .input-area
+            //-         i.fa.fa-phone
+            //-         input.textinput(type="text" name="phone" placeholder="شماره تماس")
+            //-     .input-area
+            //-         i.fa.fa-pencil
+            //-         input.textinput(type="number" name="number" placeholder="تعداد")
+            //-     textarea(name="address" placeholder="آدرس")
+            //-     input.submit(type="submit" value="ثبت")
+        .content-tab#tab5
+            
+    script(src="/javascripts/gb.js")
+        

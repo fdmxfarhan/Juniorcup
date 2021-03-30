@@ -131,5 +131,17 @@ router.post('/send-massage', (req, res, next) => {
 });
 
 
+router.get('/gb', (req, res, next)=>{
+    if(req.user){
+        res.render('./GBboard/info', {
+        user: req.user
+        });
+    }
+    else {
+        res.render('./GBboard/info', {
+        user: false
+        });
+    }
+});
 
 module.exports = router;
