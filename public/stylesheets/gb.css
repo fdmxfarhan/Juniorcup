@@ -1,3 +1,12 @@
+:root {
+    /*--bgcolor: #29b329;
+    --bghover: #86c488;*/
+    --bgcolor: #341a7a;
+    --bghover: #987cc5;
+    --loginbg: #473ab88e;
+    --loginhv: #473ab8;
+    --textcolor: rgb(29, 29, 29);
+  }
 /* @media only screen and (min-width: 600px) { */
     .content-area{
         background-color: white;
