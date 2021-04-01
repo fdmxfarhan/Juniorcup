@@ -119,6 +119,42 @@ router.get('/soccer-light', (req, res, next) => {
                             teams[j] = teams[j+1];
                             teams[j+1] = temp;
                         }
+                        else if(teams[j].score == teams[j+1].score)
+                        {
+                            if(teams[j].goalzade - teams[j].goalkhorde < teams[j+1].goalzade - teams[j+1].goalkhorde)
+                            {
+                                var temp = teams[j];
+                                teams[j] = teams[j+1];
+                                teams[j+1] = temp;
+                            }
+                            else if(teams[j].goalzade - teams[j].goalkhorde == teams[j+1].goalzade - teams[j+1].goalkhorde)
+                            {
+                                if(teams[j].goalzade < teams[j+1].goalzade)
+                                {
+                                    var temp = teams[j];
+                                    teams[j] = teams[j+1];
+                                    teams[j+1] = temp;
+                                }
+                                else if(teams[j].goalzade == teams[j+1].goalzade)
+                                {
+                                    if(teams[j].win < teams[j+1].win)
+                                    {
+                                        var temp = teams[j];
+                                        teams[j] = teams[j+1];
+                                        teams[j+1] = temp;
+                                    }
+                                    else if(teams[j].win == teams[j+1].win)
+                                    {
+                                        if(teams[j].equals < teams[j+1].equals)
+                                        {
+                                            var temp = teams[j];
+                                            teams[j] = teams[j+1];
+                                            teams[j+1] = temp;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 res.render('./game/soccer-light', {
