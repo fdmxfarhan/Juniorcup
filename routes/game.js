@@ -151,6 +151,15 @@ router.get('/soccer-light', (req, res, next) => {
                                             teams[j] = teams[j+1];
                                             teams[j+1] = temp;
                                         }
+                                        else if(teams[j].equals == teams[j+1].equals)
+                                        {
+                                            if(teams[j].goalkhorde > teams[j+1].goalkhorde)
+                                            {
+                                                var temp = teams[j];
+                                                teams[j] = teams[j+1];
+                                                teams[j+1] = temp;
+                                            }
+                                        }
                                     }
                                 }
                             }
