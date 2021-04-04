@@ -16,7 +16,7 @@ var getMax = (arr) => {
 
 router.get('/', (req, res, next) => {
     Team.find({}, (err, teams) => {
-        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0;
+        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0, virtualRescueNum = 0;
         for(var i=0; i < teams.length; i++)
         {
             if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
@@ -25,8 +25,9 @@ router.get('/', (req, res, next) => {
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
             if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             if(teams[i].league == 'فوتبال ۲ بعدی')      soccer2d++;
+            if(teams[i].league == 'virtual rescue')     virtualRescueNum++;
         }
-        var maxNum = getMax([soccerLightNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum, soccer2d]);
+        var maxNum = getMax([soccerLightNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum, soccer2d, virtualRescueNum]);
         res.render('./leagues/home', {
             teams,
             soccerLightNum,
@@ -35,6 +36,7 @@ router.get('/', (req, res, next) => {
             cospaceNum,
             programmingNum,
             soccer2d,
+            virtualRescueNum,
             maxNum,
             count: teams.length
         });
@@ -78,6 +80,12 @@ router.get('/programming', (req, res, next) => {
 router.get('/soccer2d', (req, res, next) => {
     Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
         res.render('./leagues/soccer2d', {teams});
+    });
+});
+
+router.get('/virtualrescue', (req, res, next) => {
+    Team.find({league: 'virtual rescue'}, (err, teams) => {
+        res.render('./leagues/virtualrescue', {teams});
     });
 });
 

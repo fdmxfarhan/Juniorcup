@@ -124,4 +124,24 @@ block content
                     .label
                         i.fa.fa-clock-o
                         | غیر حضوری
+        .card
+            a(href="/leagues/virtualrescue")
+                .img
+                    img(src="/images/leagues/programming-min.png")
+                h1.title virtual rescue
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | لیگ ربات های امدادگر مجازی.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= virtualRescueNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((virtualRescueNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+        
     script(src="/javascripts/leagues.js")
