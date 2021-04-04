@@ -824,6 +824,12 @@ router.get('/admin-dq-team', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/admin-unpay-team', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Team.updateMany({_id: req.query.id}, {$set: {payed: false}},(err, doc) => res.redirect('/dashboard/teams-list'));
+    }
+});
+
 router.post('/set-user-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         User.updateMany({_id: req.body.id}, {$set: {teamID: req.body.team}}, (err, doc) => {
