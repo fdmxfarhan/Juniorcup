@@ -128,7 +128,7 @@ app.use(function(err, req, res, next) {
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-const io = require('socket.io')(httpsServer);
+const io = require('socket.io')(httpServer);
 
 
 // IO
@@ -142,6 +142,46 @@ io.on('connection', (socket) => {
     socket.on('chatA', (msg) => {
         console.log(msg);
         io.emit('chatA', msg);
+    });
+    socket.on('chatB', (msg) => {
+        console.log(msg);
+        io.emit('chatB', msg);
+    });
+    socket.on('chatC', (msg) => {
+        console.log(msg);
+        io.emit('chatC', msg);
+    });
+    socket.on('chatD', (msg) => {
+        console.log(msg);
+        io.emit('chatD', msg);
+    });
+    socket.on('chatE', (msg) => {
+        console.log(msg);
+        io.emit('chatE', msg);
+    });
+    socket.on('chatF', (msg) => {
+        console.log(msg);
+        io.emit('chatF', msg);
+    });
+    socket.on('chatG', (msg) => {
+        console.log(msg);
+        io.emit('chatG', msg);
+    });
+    socket.on('chatH', (msg) => {
+        console.log(msg);
+        io.emit('chatH', msg);
+    });
+    socket.on('chatI', (msg) => {
+        console.log(msg);
+        io.emit('chatI', msg);
+    });
+    socket.on('chatJ', (msg) => {
+        console.log(msg);
+        io.emit('chatJ', msg);
+    });
+    socket.on('chatK', (msg) => {
+        console.log(msg);
+        io.emit('chatK', msg);
     });
 
 });
