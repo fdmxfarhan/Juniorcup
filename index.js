@@ -128,7 +128,7 @@ app.use(function(err, req, res, next) {
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-const io = require('socket.io')(httpServer);
+const io = require('socket.io')(httpsServer);
 
 
 // IO
