@@ -2,6 +2,7 @@ extends ../layout
 
 block styles
     link(rel="stylesheet", href="/stylesheets/game.css")
+    script(src="/socket.io/socket.io.js")
 
 block content
     h1.league-title لیگ ربات های فوتبالیست وزن آزاد
@@ -183,4 +184,5 @@ block content
         //- <div id="34512494759"><script type="text/JavaScript" src="https://www.aparat.com/embed/sfUyk?data[rnddiv]=34512494759&data[responsive]=yes"></script></div>
         //- <div id="89163630656"><script type="text/JavaScript" src="https://www.aparat.com/embed/YsGWx?data[rnddiv]=89163630656&data[responsive]=yes"></script></div>
     script(src="/javascripts/game.js") 
+    script(src="/javascripts/chatClient.js") 
 

@@ -1,0 +1,59 @@
+extends layout
+
+block content
+    h1.score-title جدول امتیازات
+    .game-list 
+        table
+            tr 
+                th رتبه
+                th نام تیم
+                th امتیاز نهایی
+                th زمان
+                th ویرایش
+            -for(var i=0; i<teams.length; i++){
+                tr 
+                    td= i + 1
+                    td= teams[i].teamName
+                    td= teams[i].score
+                    td= teams[i].time
+                    td 
+                        a.edit-score(id="edit#{i}")
+                            i.fa.fa-edit
+            -}
+    a.link.return(href="/dashboard/smartcar") بازگشت
+    a.download-excel(href="/smartcar.xlsx" download) 
+        i.fa.fa-cloud-download
+        | excel
+    .modal
+    -for(var i=0; i<teams.length; i++){
+        .pop-up(id="editpanel#{i}")
+            span.close#close-pup-up &times;
+            h1.popup-title ویرایش امتیازات #{teams[i].teamName}
+            form(action="/dashboard/refree-smartcar-score" method="POST") 
+                input.hidden(type="text" name="teamName" value="#{teams[i].teamName}")
+                input.hidden(type="text" name="id" value="#{teams[i]._id}")
+                .input-pannel
+                    label.num(for="win") تعداد برد:‌ 
+                    input.num(type="number" name="win" value="#{teams[i].win}")
+                .input-pannel
+                    label.num(for="lose") تعداد باخت:‌ 
+                    input.num(type="number" name="lose" value="#{teams[i].lose}")
+                .input-pannel
+                    label.num(for="equals") تعداد مساوی:‌ 
+                    input.num(type="number" name="equals" value="#{teams[i].equals}")
+                .input-pannel
+                    label.num(for="goalzade") گل زده:‌ 
+                    input.num(type="number" name="goalzade" value="#{teams[i].goalzade}")
+                .input-pannel
+                    label.num(for="goalkhorde") گل خورده:‌ 
+                    input.num(type="number" name="goalkhorde" value="#{teams[i].goalkhorde}")
+                .input-pannel
+                    label.num(for="technical") امتیاز تکنیکال:‌ 
+                    input.num(type="number" name="technical" value="#{teams[i].technical}")
+                .input-pannel
+                    label.num(for="score") امتیاز نهایی:‌ 
+                    input.num(type="number" name="score" value="#{teams[i].score}")
+                
+                input.submit(type="submit" value="ثبت")
+    -}
+            

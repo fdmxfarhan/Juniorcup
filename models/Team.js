@@ -53,6 +53,10 @@ var TeamSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  time: {
+    type: Number,
+    default: 0
+  },
   track_id: Number,
   blueFile: Object,
   redFile: Object

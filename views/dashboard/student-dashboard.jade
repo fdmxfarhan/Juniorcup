@@ -28,37 +28,56 @@ block content
                         td.title اطلاعیه شماره ۱
                         td.text سیزدهمین دوره مسابقات جونیورکاپ به صورت مجازی در فروردین سال ۱۴۰۰ برگزار میگردد و از تمامی دانش آموزان علاقه مند جهت حضور در مسابقه و کسب مهارت و تجربه دعوت به عمل می آید.
     -if(team.payed){
-        .file-list
-            .file-container.red-border
-                h1.file-title برنامه ربات قرمز
-                p.text لطفا فایل exe ربات قرمز با پورت 2000 و 7000 را در این قسمت آپلود نمایید.
-                -if(team.redFile){
-                    .uploaded-file 
-                        a(href="#{team.redFile.path}/#{team.redFile.name}" download)= team.redFile.name
-                            i.fa.fa-cloud-download
-                -}
-                    
-                form.upload-code(action="/upload/red-code" enctype="multipart/form-data" method="POST") 
-                    input.hidden(type="text" value="#{user.teamID}")
-                    .upload-area فایل خود را انتخاب کنید
-                        i.fa.fa-cloud-upload
-                        input.file(type="file" name="myFile") 
-                    input.submit(type="submit" value="ارسال")
-            .file-container.blue-border
-                h1.file-title برنامه ربات آبی
-                p.text لطفا فایل exe ربات آبی با پورت 3000 و 8000 را در این قسمت آپلود نمایید.
-                -if(team.blueFile){
-                    .uploaded-file 
-                        a(href="#{team.blueFile.path}/#{team.blueFile.name}" download)= team.blueFile.name
-                            i.fa.fa-cloud-download
-                -}
-                    
-                form.upload-code(action="/upload/blue-code" enctype="multipart/form-data" method="POST") 
-                    input.hidden(type="text" value="#{user.teamID}")                
-                    .upload-area فایل خود را انتخاب کنید
-                        i.fa.fa-cloud-upload
-                        input.file(type="file" name="myFile") 
-                    input.submit(type="submit" value="ارسال")
+        -if(team.league == 'خودروهای هوشمند'){
+            .file-list
+                .file-container.red-border
+                    h1.file-title آپلود برنامه ربات
+                    p.text لطفا فایل exe برنامه که در پوشه bin/debug موجود می باشد را در قسمت زیر انتخاب کرده و سپس گزینه ارسال را بزنید.
+                    -if(team.redFile){
+                        .uploaded-file 
+                            a(href="#{team.redFile.path}/#{team.redFile.name}" download)= team.redFile.name
+                                i.fa.fa-cloud-download
+                    -}
+                        
+                    form.upload-code(action="/upload/red-code" enctype="multipart/form-data" method="POST") 
+                        input.hidden(type="text" value="#{user.teamID}")
+                        .upload-area فایل خود را انتخاب کنید
+                            i.fa.fa-cloud-upload
+                            input.file(type="file" name="myFile") 
+                        input.submit(type="submit" value="ارسال")
+        -}else{
+            .file-list
+                .file-container.red-border
+                    h1.file-title برنامه ربات قرمز
+                    p.text لطفا فایل exe ربات قرمز با پورت 2000 و 7000 را در این قسمت آپلود نمایید.
+                    -if(team.redFile){
+                        .uploaded-file 
+                            a(href="#{team.redFile.path}/#{team.redFile.name}" download)= team.redFile.name
+                                i.fa.fa-cloud-download
+                    -}
+                        
+                    form.upload-code(action="/upload/red-code" enctype="multipart/form-data" method="POST") 
+                        input.hidden(type="text" value="#{user.teamID}")
+                        .upload-area فایل خود را انتخاب کنید
+                            i.fa.fa-cloud-upload
+                            input.file(type="file" name="myFile") 
+                        input.submit(type="submit" value="ارسال")
+                .file-container.blue-border
+                    h1.file-title برنامه ربات آبی
+                    p.text لطفا فایل exe ربات آبی با پورت 3000 و 8000 را در این قسمت آپلود نمایید.
+                    -if(team.blueFile){
+                        .uploaded-file 
+                            a(href="#{team.blueFile.path}/#{team.blueFile.name}" download)= team.blueFile.name
+                                i.fa.fa-cloud-download
+                    -}
+                        
+                    form.upload-code(action="/upload/blue-code" enctype="multipart/form-data" method="POST") 
+                        input.hidden(type="text" value="#{user.teamID}")                
+                        .upload-area فایل خود را انتخاب کنید
+                            i.fa.fa-cloud-upload
+                            input.file(type="file" name="myFile") 
+                        input.submit(type="submit" value="ارسال")
+        -}
     -}else{
         h1.title پرداخت تیم شما تکمیل نشده. جهت پرداخت 
             a(href="/dashboard/team?id=#{team._id}") اینجا

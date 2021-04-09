@@ -7,10 +7,10 @@ block content
     h1.league-title لیگ فوتبال ۲ بعدی
     .tab-view 
         .tab-links 
-            -if(field == 'G')
-                a.active(href="/game/soccer2d?field=G") زمین G
+            -if(field == 'L')
+                a.active(href="/game/soccer2d?field=L") زمین L
             -else 
-                a(href="/game/soccer2d?field=G") زمین G
+                a(href="/game/soccer2d?field=L") زمین L
             
         .tab-content 
             br
@@ -40,6 +40,8 @@ block content
                     iframe(src="https://player.twitch.tv/?channel=juniorcupf&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
                 -if(field == 'G')
                     iframe(src="https://player.twitch.tv/?channel=juniorcupg&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
+                -if(field == 'L')
+                    iframe(src="https://player.twitch.tv/?channel=juniorcupl&parent=juniorcup.ir" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620") 
                 
             a.stream(href="https://www.twitch.tv/juniorcup#{field}") 
                 i.fa.fa-external-link

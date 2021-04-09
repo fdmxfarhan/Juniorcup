@@ -42,6 +42,9 @@ body{
     color: green;
     display: inline;
 }
+.coral{
+    color: coral;
+}
 .purple{
     color: var(--purple);
     display: inline;
@@ -1363,9 +1366,17 @@ body{
     }
     .game-view h1.game-title{
         font-family: 'iransans';
-        font-size: 1.3vw;
+        font-size: 1.2vw;
         text-align: center;
         margin-top: 3vw;
+        margin-bottom: 0;
+    }
+    .game-view h1.game-under-title{
+        font-family: 'iransans';
+        font-size: 1vw;
+        text-align: center;
+        margin-top: 0;
+        color: rgb(162, 162, 162);
     }
     .game-view .game-two-part{
         overflow: hidden;

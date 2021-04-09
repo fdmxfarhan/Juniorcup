@@ -6,44 +6,76 @@ block styles
 block content
     .overflow-hidden
         .game-view 
-            h1.game-title بازی در حال اجرا (زمین #{game.field})...
+            -if(game.started){
+                h1.game-title.coral بازی در حال اجرا (زمین #{game.field})
+            -}else{
+                -if(game.scoreSaved){
+                    h1.game-title.blue بازی پایان یافته (زمین #{game.field})
+                -}else{
+                    h1.game-title بازی شروع نشده (زمین #{game.field})
+                -}
+            -}
+            h1.game-under-title #{game.league}
             .game-two-part
-                .part
-                    h1.game-part-title= teamA.teamName
-                    .team-container
-                        form(action="/dashboard/edit-goalA" method="POST") 
-                            label(for="goalA") تعداد گل: 
-                            input.textinput(type="number" name="goalA" value="#{game.goalA}")
-                            input.hidden(type="text" name="id" value="#{game._id}")
-                            input.submit(type="submit" value="ثبت")
-                        .info امتیاز:‌ #{teamA.score}
-                        .info تعداد برد:‌ #{teamA.win}
-                        .info تعداد باخت:‌ #{teamA.lose}
-                        .info گل زده:‌ #{teamA.goalzade}
-                        .info گل خورده:‌ #{teamA.goalkhorde}
-                        .download-files 
-                            -if(teamA.redFile)
-                                a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد قرمز 
-                            -if(teamA.blueFile)
-                                a.blue-file(href="#{teamA.blueFile.path}/#{teamA.blueFile.name}" download) کد آبی 
-                .part
-                    h1.game-part-title= teamB.teamName
-                    .team-container
-                        form(action="/dashboard/edit-goalB" method="POST") 
-                            label(for="goalB") تعداد گل: 
-                            input.textinput(type="number" name="goalB" value="#{game.goalB}")
-                            input.hidden(type="text" name="id" value="#{game._id}")
-                            input.submit(type="submit" value="ثبت")
-                        .info امتیاز:‌ #{teamB.score}
-                        .info تعداد برد:‌ #{teamB.win}
-                        .info تعداد باخت:‌ #{teamB.lose}
-                        .info گل زده:‌ #{teamB.goalzade}
-                        .info گل خورده:‌ #{teamB.goalkhorde}
-                        .download-files 
-                            -if(teamB.redFile)
-                                a.red-file(href="#{teamB.redFile.path}/#{teamB.redFile.name}" download) کد قرمز 
-                            -if(teamB.blueFile)
-                                a.blue-file(href="#{teamB.blueFile.path}/#{teamB.blueFile.name}" download) کد آبی 
+                -if(game.league == 'خودروهای هوشمند'){
+                    .part
+                        h1.game-part-title= teamA.teamName
+                        .team-container
+                            form(action="/dashboard/edit-goalA" method="POST") 
+                                label(for="goalA") رکورد: 
+                                input.textinput(type="number" name="goalA" value="#{game.goalA}")
+                                input.hidden(type="text" name="id" value="#{game._id}")
+                                input.submit(type="submit" value="ثبت")
+                            .info امتیاز:‌ #{teamA.score}
+                            .info تعداد برد:‌ #{teamA.win}
+                            .info تعداد باخت:‌ #{teamA.lose}
+                            .info گل زده:‌ #{teamA.goalzade}
+                            .info گل خورده:‌ #{teamA.goalkhorde}
+                            .download-files 
+                                -if(teamA.redFile)
+                                    a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد ربات 
+                                -if(teamA.blueFile)
+                                    a.blue-file(href="#{teamA.blueFile.path}/#{teamA.blueFile.name}" download) کد آبی 
+                -}else{
+                    .part
+                        h1.game-part-title= teamA.teamName
+                        .team-container
+                            form(action="/dashboard/edit-goalA" method="POST") 
+                                label(for="goalA") تعداد گل: 
+                                input.textinput(type="number" name="goalA" value="#{game.goalA}")
+                                input.hidden(type="text" name="id" value="#{game._id}")
+                                input.submit(type="submit" value="ثبت")
+                            .info امتیاز:‌ #{teamA.score}
+                            .info تعداد برد:‌ #{teamA.win}
+                            .info تعداد باخت:‌ #{teamA.lose}
+                            .info گل زده:‌ #{teamA.goalzade}
+                            .info گل خورده:‌ #{teamA.goalkhorde}
+                            .download-files 
+                                -if(teamA.redFile)
+                                    a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد قرمز 
+                                -if(teamA.blueFile)
+                                    a.blue-file(href="#{teamA.blueFile.path}/#{teamA.blueFile.name}" download) کد آبی 
+                -}
+                -if(game.league != 'خودروهای هوشمند'){
+                    .part
+                        h1.game-part-title= teamB.teamName
+                        .team-container
+                            form(action="/dashboard/edit-goalB" method="POST") 
+                                label(for="goalB") تعداد گل: 
+                                input.textinput(type="number" name="goalB" value="#{game.goalB}")
+                                input.hidden(type="text" name="id" value="#{game._id}")
+                                input.submit(type="submit" value="ثبت")
+                            .info امتیاز:‌ #{teamB.score}
+                            .info تعداد برد:‌ #{teamB.win}
+                            .info تعداد باخت:‌ #{teamB.lose}
+                            .info گل زده:‌ #{teamB.goalzade}
+                            .info گل خورده:‌ #{teamB.goalkhorde}
+                            .download-files 
+                                -if(teamB.redFile)
+                                    a.red-file(href="#{teamB.redFile.path}/#{teamB.redFile.name}" download) کد قرمز 
+                                -if(teamB.blueFile)
+                                    a.blue-file(href="#{teamB.blueFile.path}/#{teamB.blueFile.name}" download) کد آبی 
+                -}
             .game-links
                 -if(game.started){
                     a(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی 

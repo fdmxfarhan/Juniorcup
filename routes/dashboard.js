@@ -354,6 +354,16 @@ router.post('/add-game-open', ensureAuthenticated, (req, res, next) => {
     });
 });
 
+router.post('/add-game-smartcar', ensureAuthenticated, (req, res, next) => {
+    var {idA, field, round, time} = req.body;
+    Team.findById(idA, (err, teamA) => {
+        var newGame = new Game({teamA, field, league: teamA.league, round, time});
+        newGame.save().then(doc => {
+            res.redirect(`/dashboard/smartcar?round=${round}`);
+        }).catch(err => console.log(err));
+    });
+});
+
 router.post('/add-game-soccer2d', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -370,14 +380,26 @@ router.get('/game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
             Team.findById(game.teamA._id, (err, teamA) => {
-                Team.findById(game.teamB._id, (err, teamB) => {
-                    res.render('./dashboard/refree-game', {
-                        user: req.user,
-                        game,
-                        teamA,
-                        teamB
+                if(game.league == 'خودروهای هوشمند'){
+                    Team.findById(game.teamA._id, (err, teamB) => {
+                        res.render('./dashboard/refree-game', {
+                            user: req.user,
+                            game,
+                            teamA,
+                            teamB
+                        });
                     });
-                });
+                }
+                else{
+                    Team.findById(game.teamB._id, (err, teamB) => {
+                        res.render('./dashboard/refree-game', {
+                            user: req.user,
+                            game,
+                            teamA,
+                            teamB
+                        });
+                    });
+                }
             });
         });
     }
@@ -386,11 +408,16 @@ router.get('/game', ensureAuthenticated, (req, res, next) => {
 
 router.get('/start-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
-        Game.updateMany({_id: req.query.id}, {$set: {started: true}}, (err, doc) => {
-            res.redirect(`/dashboard/game?id=${req.query.id}`);
+        Game.findById(req.query.id, (err, game) => {
+            Game.updateMany({league: game.league}, {$set: {started: false}}, (err, doc) => {
+                Game.updateMany({_id: req.query.id}, {$set: {started: true}}, (err, doc) => {
+                    res.redirect(`/dashboard/game?id=${req.query.id}`);
+                });
+            });
         });
     }
 });
+
 router.get('/end-game-nosave', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.updateMany({_id: req.query.id}, {$set: {started: false}}, (err, doc) => {
@@ -398,61 +425,73 @@ router.get('/end-game-nosave', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
+
 router.get('/end-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) =>{
             if(!game.scoreSaved){
-                if(game.goalA > game.goalB){
+                if(game.league == 'خودروهای هوشمند')
+                {
                     Team.findById(game.teamA._id, (err, team) => {
                         Team.updateMany({_id: team._id}, {$set: {
-                            goalzade: team.goalzade + game.goalA,
-                            goalkhorde: team.goalkhorde + game.goalB,
-                            score: team.score + 3,
-                            win: team.win + 1
-                        }}, (err, doc) => {if(err) console.log(err)});
-                    });
-                    Team.findById(game.teamB._id, (err, team) => {
-                        Team.updateMany({_id: team._id}, {$set: {
-                            goalzade: team.goalzade + game.goalB,
-                            goalkhorde: team.goalkhorde + game.goalA,
-                            lose: team.lose + 1
-                        }}, (err, doc) => {if(err) console.log(err)});
-                    });
-                }
-                else if(game.goalA < game.goalB){
-                    Team.findById(game.teamA._id, (err, team) => {
-                        Team.updateMany({_id: team._id}, {$set: {
-                            goalzade: team.goalzade + game.goalA,
-                            goalkhorde: team.goalkhorde + game.goalB,
-                            lose: team.lose + 1
-                        }}, (err, doc) => {if(err) console.log(err)});
-                    });
-                    Team.findById(game.teamB._id, (err, team) => {
-                        Team.updateMany({_id: team._id}, {$set: {
-                            goalzade: team.goalzade + game.goalB,
-                            goalkhorde: team.goalkhorde + game.goalA,
-                            score: team.score + 3,
-                            win: team.win + 1
+                            score: game.goalA,
+                            time: 0
                         }}, (err, doc) => {if(err) console.log(err)});
                     });
                 }
                 else{
-                    Team.findById(game.teamA._id, (err, team) => {
-                        Team.updateMany({_id: team._id}, {$set: {
-                            goalzade: team.goalzade + game.goalA,
-                            goalkhorde: team.goalkhorde + game.goalB,
-                            score: team.score + 1,
-                            equals: team.equals + 1
-                        }}, (err, doc) => {if(err) console.log(err)});
-                    });
-                    Team.findById(game.teamB._id, (err, team) => {
-                        Team.updateMany({_id: team._id}, {$set: {
-                            goalzade: team.goalzade + game.goalB,
-                            goalkhorde: team.goalkhorde + game.goalA,
-                            score: team.score + 1,
-                            equals: team.equals + 1
-                        }}, (err, doc) => {if(err) console.log(err)});
-                    });
+                    if(game.goalA > game.goalB){
+                        Team.findById(game.teamA._id, (err, team) => {
+                            Team.updateMany({_id: team._id}, {$set: {
+                                goalzade: team.goalzade + game.goalA,
+                                goalkhorde: team.goalkhorde + game.goalB,
+                                score: team.score + 3,
+                                win: team.win + 1
+                            }}, (err, doc) => {if(err) console.log(err)});
+                        });
+                        Team.findById(game.teamB._id, (err, team) => {
+                            Team.updateMany({_id: team._id}, {$set: {
+                                goalzade: team.goalzade + game.goalB,
+                                goalkhorde: team.goalkhorde + game.goalA,
+                                lose: team.lose + 1
+                            }}, (err, doc) => {if(err) console.log(err)});
+                        });
+                    }
+                    else if(game.goalA < game.goalB){
+                        Team.findById(game.teamA._id, (err, team) => {
+                            Team.updateMany({_id: team._id}, {$set: {
+                                goalzade: team.goalzade + game.goalA,
+                                goalkhorde: team.goalkhorde + game.goalB,
+                                lose: team.lose + 1
+                            }}, (err, doc) => {if(err) console.log(err)});
+                        });
+                        Team.findById(game.teamB._id, (err, team) => {
+                            Team.updateMany({_id: team._id}, {$set: {
+                                goalzade: team.goalzade + game.goalB,
+                                goalkhorde: team.goalkhorde + game.goalA,
+                                score: team.score + 3,
+                                win: team.win + 1
+                            }}, (err, doc) => {if(err) console.log(err)});
+                        });
+                    }
+                    else{
+                        Team.findById(game.teamA._id, (err, team) => {
+                            Team.updateMany({_id: team._id}, {$set: {
+                                goalzade: team.goalzade + game.goalA,
+                                goalkhorde: team.goalkhorde + game.goalB,
+                                score: team.score + 1,
+                                equals: team.equals + 1
+                            }}, (err, doc) => {if(err) console.log(err)});
+                        });
+                        Team.findById(game.teamB._id, (err, team) => {
+                            Team.updateMany({_id: team._id}, {$set: {
+                                goalzade: team.goalzade + game.goalB,
+                                goalkhorde: team.goalkhorde + game.goalA,
+                                score: team.score + 1,
+                                equals: team.equals + 1
+                            }}, (err, doc) => {if(err) console.log(err)});
+                        });
+                    }
                 }
             }
         });
@@ -461,46 +500,6 @@ router.get('/end-game', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
-// router.get('/add-goalA', ensureAuthenticated, (req, res, next) => {
-//     if(req.user.role != 'user'){
-//         Game.findById(req.query.id, (err, game) => {
-//             Game.updateMany({_id: req.query.id}, {$set: {goalA: game.goalA+1}}, (err, doc) => {
-//                 res.redirect(`/dashboard/game?id=${req.query.id}`);
-//             });
-//         })
-//     }
-// });
-
-// router.get('/add-goalB', ensureAuthenticated, (req, res, next) => {
-//     if(req.user.role != 'user'){
-//         Game.findById(req.query.id, (err, game) => {
-//             Game.updateMany({_id: req.query.id}, {$set: {goalB: game.goalB+1}}, (err, doc) => {
-//                 res.redirect(`/dashboard/game?id=${req.query.id}`);
-//             });
-//         })
-//     }
-// });
-
-// router.get('/decrease-goalA', ensureAuthenticated, (req, res, next) => {
-//     if(req.user.role != 'user'){
-//         Game.findById(req.query.id, (err, game) => {
-//             Game.updateMany({_id: req.query.id}, {$set: {goalA: game.goalA-1}}, (err, doc) => {
-//                 res.redirect(`/dashboard/game?id=${req.query.id}`);
-//             });
-//         })
-//     }
-// });
-
-// router.get('/decrease-goalB', ensureAuthenticated, (req, res, next) => {
-//     if(req.user.role != 'user'){
-//         Game.findById(req.query.id, (err, game) => {
-//             Game.updateMany({_id: req.query.id}, {$set: {goalB: game.goalB-1}}, (err, doc) => {
-//                 res.redirect(`/dashboard/game?id=${req.query.id}`);
-//             });
-//         })
-//     }
-// });
 
 router.get('/soccer-light-primary', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
@@ -843,6 +842,56 @@ router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/smartcar-score', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree'){
+        Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
+            var workbook = new excel.Workbook();
+            var worksheet = workbook.addWorksheet('Sheet 1');
+            var style = workbook.createStyle({
+                font: {
+                color: '#FF0800',
+                size: 12
+                },
+                numberFormat: '$#,##0.00; ($#,##0.00); -'
+            });
+
+            worksheet.cell(1,1).string(`teamName`).style(style);
+            worksheet.cell(1,2).string(`score`).style(style);
+            worksheet.cell(1,3).string(`time`).style(style);
+
+            for(var i=1; i<teams.length; i++){
+                
+                for(var j=0; j<teams.length - i; j++){
+                    if(teams[j].score < teams[j + 1].score){
+                        var temp = teams[j];
+                        teams[j] = teams[j+1];
+                        teams[j+1] = temp;
+                    }
+                    else if(teams[j].score == teams[j+1].score)
+                    {
+                        if(teams[j].time < teams[j+1].time)
+                        {
+                            var temp = teams[j];
+                            teams[j] = teams[j+1];
+                            teams[j+1] = temp;
+                        }
+                    }
+                }
+            }
+            for (let i = 0; i < teams.length; i++) {
+                worksheet.cell(i+2,1).string(`${teams[i].teamName}`).style(style);
+                worksheet.cell(i+2,2).string(`${teams[i].score}`).style(style);
+                worksheet.cell(i+2,3).string(`${teams[i].time}`).style(style);
+            }
+            workbook.write('./public/smartcar.xlsx');
+            res.render('./dashboard/refree-smartcar-score',{
+                user: req.user,
+                teams
+            });
+        });
+    }
+});
+
 router.get('/soccer2d-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
@@ -855,11 +904,17 @@ router.get('/soccer2d-score', ensureAuthenticated, (req, res, next) => {
 });
 
 router.get('/smartcar', ensureAuthenticated, (req, res, next) => {
+    var round = req.query.round;
+    if(!round) round = 1;
     if(req.user.role == 'refree'){
         Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
-            res.render('./dashboard/refree-smartcar',{
-                user: req.user,
-                teams,
+            Game.find({league: 'خودروهای هوشمند', round: round}, (err, games) => {
+                res.render('./dashboard/refree-smartcar',{
+                    user: req.user,
+                    teams,
+                    games,
+                    round
+                });
             });
         });
     }
@@ -920,6 +975,15 @@ router.post('/refree-soccer-open-edit', ensureAuthenticated, (req, res, next) =>
     if(req.user.role == 'refree'){
         Game.updateMany({_id: id}, {$set: {goalA, goalB, field, time}}, (err, games) => {
             res.redirect(`/dashboard/soccer-open?round=${round}`);
+        });
+    }
+});
+
+router.post('/refree-smartcar-edit', ensureAuthenticated, (req, res, next) => {
+    var {id, goalA, field, time, round} = req.body;
+    if(req.user.role == 'refree'){
+        Game.updateMany({_id: id}, {$set: {goalA, field, time}}, (err, games) => {
+            res.redirect(`/dashboard/smartcar?round=${round}`);
         });
     }
 });
@@ -1020,7 +1084,13 @@ router.get('/light-secondary-delete-game', ensureAuthenticated, (req, res, next)
 
 router.get('/open-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
-        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer-open'));
+        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect(`/dashboard/soccer-open?round=${req.query.round}`));
+    }
+});
+
+router.get('/smartcar-delete-game', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role != 'user'){
+        Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect(`/dashboard/smartcar?round=${req.query.round}`));
     }
 });
 

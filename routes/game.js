@@ -327,12 +327,16 @@ router.get('/soccer-open', (req, res, next) => {
                         }
                     }
                 }
+                var user;
+                if(req.user) user = req.user;
+                else         user = false;
                 res.render('./game/soccer-open', {
                     teams,
                     field,
                     game,
                     games,
-                    round
+                    round,
+                    user
                 });
             });
         });
@@ -341,11 +345,44 @@ router.get('/soccer-open', (req, res, next) => {
 
 router.get('/smartcar', (req, res, next) => {
     var {field} = req.query;
-    if(!field) field = 'E';
+    if(!field) field = 'F';
+    var round = req.query.round;
+    if(!round) round = 1;
     Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
-        res.render('./game/smartcar', {
-            teams,
-            field
+        Game.findOne({field: field, league: 'خودروهای هوشمند', started: true}, (err, game) => {
+            Game.find({league: 'خودروهای هوشمند', round: round}, (err, games) => {
+                if(err) console.log(err);
+                // console.log(game);
+                for(var i=1; i<teams.length; i++){
+                    for(var j=0; j<teams.length - i; j++){
+                        if(teams[j].score < teams[j + 1].score){
+                            var temp = teams[j];
+                            teams[j] = teams[j+1];
+                            teams[j+1] = temp;
+                        }
+                        else if(teams[j].score == teams[j+1].score)
+                        {
+                            if(teams[j].time < teams[j+1].time)
+                            {
+                                var temp = teams[j];
+                                teams[j] = teams[j+1];
+                                teams[j+1] = temp;
+                            }
+                        }
+                    }
+                }
+                var user;
+                if(req.user) user = req.user;
+                else         user = false;
+                res.render('./game/smartcar', {
+                    teams,
+                    field,
+                    game,
+                    games,
+                    round,
+                    user
+                });
+            });
         });
     });
 });
@@ -368,7 +405,7 @@ router.get('/programming', (req, res, next) => {
 });
 
 router.get('/soccer2d', (req, res, next) => {
-    var field = 'G';
+    var field = 'L';
     Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبال ۲ بعدی', started: true}, (err, game) => {
             if(err) console.log(err);
@@ -390,5 +427,17 @@ router.get('/soccer2d', (req, res, next) => {
         });
     });
 });
+
+router.get('/virtual-rescue', (req, res, next) => {
+    var {field} = req.query;
+    if(!field) field = 'M';
+    Team.find({league: 'virtual rescue'}, (err, teams) => {
+        res.render('./game/virtual-rescue', {
+            teams,
+            field
+        });
+    });
+});
+
 
 module.exports = router;
