@@ -22,8 +22,10 @@ block content
                         .info گل زده:‌ #{teamA.goalzade}
                         .info گل خورده:‌ #{teamA.goalkhorde}
                         .download-files 
-                            a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد قرمز 
-                            a.blue-file(href="#{teamA.blueFile.path}/#{teamA.blueFile.name}" download) کد آبی 
+                            -if(teamA.redFile)
+                                a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد قرمز 
+                            -if(teamA.blueFile)
+                                a.blue-file(href="#{teamA.blueFile.path}/#{teamA.blueFile.name}" download) کد آبی 
                 .part
                     h1.game-part-title= teamB.teamName
                     .team-container
@@ -38,8 +40,10 @@ block content
                         .info گل زده:‌ #{teamB.goalzade}
                         .info گل خورده:‌ #{teamB.goalkhorde}
                         .download-files 
-                            a.red-file(href="#{teamB.redFile.path}/#{teamB.redFile.name}" download) کد قرمز 
-                            a.blue-file(href="#{teamB.blueFile.path}/#{teamB.blueFile.name}" download) کد آبی 
+                            -if(teamB.redFile)
+                                a.red-file(href="#{teamB.redFile.path}/#{teamB.redFile.name}" download) کد قرمز 
+                            -if(teamB.blueFile)
+                                a.blue-file(href="#{teamB.blueFile.path}/#{teamB.blueFile.name}" download) کد آبی 
             .game-links
                 -if(game.started){
                     a(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی 
