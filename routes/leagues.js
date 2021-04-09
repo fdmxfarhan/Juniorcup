@@ -16,10 +16,11 @@ var getMax = (arr) => {
 
 router.get('/', (req, res, next) => {
     Team.find({}, (err, teams) => {
-        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0, virtualRescueNum = 0;
+        var soccerLightPrimaryNum = 0, soccerLightSecondaryNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0, virtualRescueNum = 0;
         for(var i=0; i < teams.length; i++)
         {
-            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
+            if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
+            if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
             if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
             if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
@@ -27,10 +28,11 @@ router.get('/', (req, res, next) => {
             if(teams[i].league == 'فوتبال ۲ بعدی')      soccer2d++;
             if(teams[i].league == 'virtual rescue')     virtualRescueNum++;
         }
-        var maxNum = getMax([soccerLightNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum, soccer2d, virtualRescueNum]);
+        var maxNum = getMax([soccerLightPrimaryNum, soccerLightSecondaryNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum, soccer2d, virtualRescueNum]);
         res.render('./leagues/home', {
             teams,
-            soccerLightNum,
+            soccerLightPrimaryNum,
+            soccerLightSecondaryNum,
             soccerOpenNum,
             smartCarNum,
             cospaceNum,
@@ -43,9 +45,17 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/soccer-light', (req, res, next) => {
-    Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
-        res.render('./leagues/soccer-light', {
+router.get('/soccer-light-primary', (req, res, next) => {
+    Team.find({league: 'فوتبالیست سبک وزن primary'}, (err, teams) => {
+        res.render('./leagues/soccer-light-primary', {
+            teams
+        });
+    });
+});
+
+router.get('/soccer-light-secondary', (req, res, next) => {
+    Team.find({league: 'فوتبالیست سبک وزن secondary'}, (err, teams) => {
+        res.render('./leagues/soccer-light-secondary', {
             teams
         });
     });

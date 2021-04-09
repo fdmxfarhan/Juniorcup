@@ -1,72 +1,115 @@
 extends ../layout
 
 block styles
-    link(rel="stylesheet", href="/stylesheets/leagues.css")
+    link(rel="stylesheet", href="/stylesheets/game-home.css")
 
 block content
-    h1.content-title لیگ های مسابقات جونیورکاپ ۲۰۲۱
-    h2.under-title تعداد تیم های ثبت نام شده: #{count}
     .leagues-cards
         .card.small
-            a(href="/game/soccer-light")
-                .img
-                    img(src="/images/leagues/light-min.png")
-                h1.title ربات های فوتبالیست سبک وزن
-                br
+            a(href="/game/soccer-light-primary")
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/light-min.png")
+                    .content
+                        h1.title ربات های فوتبالیست سبک وزن primary
+                        p زمین A, B
+                    br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        .card.small
+            a(href="/game/soccer-light-secondary")
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/light-min.png")
+                    .content
+                        h1.title ربات های فوتبالیست سبک وزن secondary
+                        p زمین C, D
+                    br
                 .labels
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
         .card.small
             a(href="/game/soccer-open")
-                .img
-                    img(src="/images/leagues/Open-min.png")
-                h1.title ربات های فوتبالیست وزن آزاد
-                br
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/Open-min.png")
+                    .content
+                        h1.title ربات های فوتبالیست وزن آزاد
+                        p زمین E
+                    br
                 .labels
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
         .card.small
             a(href="/game/smartcar")
-                .img
-                    img(src="/images/leagues/pathfinder-min.png")
-                h1.title خودرو هوشمند
-                br
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/pathfinder-min.png")
+                    .content
+                        h1.title خودرو هوشمند
+                        p زمین F, G
+                    br
                 .labels
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
         .card.small
             a(href="/game/cospace")
-                .img
-                    img(src="/images/leagues/cospace-min.png")
-                h1.title امداد فضای مشترک
-                br
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/cospace-min.png")
+                    .content
+                        h1.title امداد فضای مشترک
+                        p زمین H, I, J, K
+                    br
                 .labels
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
         .card.small
             a(href="http://juniorcupjudge.ir/")
-                .img
-                    img(src="/images/leagues/programming-min.png")
-                h1.title برنامه نویسی
-                br
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/programming-min.png")
+                    .content
+                        h1.title برنامه نویسی
+                        p وب سایت judge
+                    br
                 .labels
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
         .card.small
             a(href="/game/soccer2d")
-                .img
-                    img(src="/images/leagues/programming-min.png")
-                h1.title فوتبال ۲ بعدی
-                br
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/programming-min.png")
+                    .content
+                        h1.title فوتبال ۲ بعدی
+                        p زمین L
+                    br
                 .labels
                     .label.red
                         i.fa.fa-clock-o
                         | در حال برگزاری
+        .card.small
+            a(href="/game/virtual-rescue")
+                .overflow-hidden
+                    .img
+                        img(src="/images/leagues/programming-min.png")
+                    .content
+                        h1.title virtual rescue
+                        p زمین M, N
+                    br
+                .labels
+                    .label.red
+                        i.fa.fa-clock-o
+                        | در حال برگزاری
+        
     .room-links-area
         a.bold(href="https://juniorcupsetup.ir/conference_hall/?proto=true") تالار اجتماعات
     
@@ -121,3 +164,8 @@ block content
 
     
     script(src="/javascripts/leagues.js")
+    script.
+        $(document).ready(function(){
+            $('#nav-link2').removeClass('active');
+            $('#nav-link10').addClass('active');
+        });

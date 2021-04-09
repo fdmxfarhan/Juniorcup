@@ -23,6 +23,9 @@ html
                 a.nav-link#nav-link1.active(href='/') 
                     i.fa.fa-home.nav-icon 
                     | صفحه اصلی
+                a.nav-link#nav-link10(href='/game')
+                    //- i.fa.fa-photo.nav-icon 
+                    | مسابقه
                 a.nav-link#nav-link2(href='/leagues')
                     //- i.fa.fa-photo.nav-icon 
                     | لیگ ها
@@ -38,9 +41,15 @@ html
                 a.nav-link#nav-link6(href='/contact') 
                     //- i.fa.fa-phone.nav-icon 
                     | تماس با ما
-            a.user-login(href="/users/login")
-                | ورود
-                i.fa.fa-user-o
+            -if(user){
+                a.user-login(href="/users/login")
+                    | #{user.fullname}
+                    i.fa.fa-user-o
+            -}else{
+                a.user-login(href="/users/login")
+                    | ورود
+                    i.fa.fa-user-o
+            -}
 
         block content
         

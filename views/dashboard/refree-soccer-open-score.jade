@@ -24,7 +24,7 @@ block content
     //-                     a(href="/dashboard/game?id=#{games[i]._id}") 
     //-                         i.fa.fa-external-link
     //-         -}
-    h1.game-title جدول امتیازات
+    h1.score-title جدول امتیازات
     .game-list 
         table
             tr 
@@ -56,6 +56,9 @@ block content
                             i.fa.fa-edit
             -}
     a.link.return(href="/dashboard/soccer-open") بازگشت
+    a.download-excel(href="/soccerOpen.xlsx" download) 
+        i.fa.fa-cloud-download
+        | excel
     .modal
     -for(var i=0; i<teams.length; i++){
         .pop-up(id="editpanel#{i}")

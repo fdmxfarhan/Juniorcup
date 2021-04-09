@@ -8,10 +8,10 @@ block content
     h2.under-title تعداد تیم های ثبت نام شده: #{count}
     .leagues-cards
         .card
-            a(href="/leagues/soccer-light")
+            a(href="/leagues/soccer-light-primary")
                 .img
                     img(src="/images/leagues/light-min.png")
-                h1.title ربات های فوتبالیست سبک وزن
+                h1.title ربات های فوتبالیست سبک وزن primary
                 .contact
                     i.fa.fa-envelope 
                     | fdmxfarhan@yahoo.com
@@ -19,9 +19,28 @@ block content
                     | بازی فوتبال بین ربات ها با توپ خاصی که از خود نور مادون قرمز ارسال میکند و ربات ها با تشخیص این توپ می توانند به طرف آن حرکت کنند.
                 h2 
                     .text تیم های ثبت نام شده
-                    .number= soccerLightNum
+                    .number= soccerLightPrimaryNum
                 .graph-container
-                    .graph(style="width: #{Math.floor((soccerLightNum/maxNum)*100)}%;")
+                    .graph(style="width: #{Math.floor((soccerLightPrimaryNum/maxNum)*100)}%;")
+                .labels
+                    .label
+                        i.fa.fa-clock-o
+                        | غیر حضوری
+        .card
+            a(href="/leagues/soccer-light-secondary")
+                .img
+                    img(src="/images/leagues/light-min.png")
+                h1.title ربات های فوتبالیست سبک وزن secondary
+                .contact
+                    i.fa.fa-envelope 
+                    | fdmxfarhan@yahoo.com
+                p.text
+                    | بازی فوتبال بین ربات ها با توپ خاصی که از خود نور مادون قرمز ارسال میکند و ربات ها با تشخیص این توپ می توانند به طرف آن حرکت کنند.
+                h2 
+                    .text تیم های ثبت نام شده
+                    .number= soccerLightSecondaryNum
+                .graph-container
+                    .graph(style="width: #{Math.floor((soccerLightSecondaryNum/maxNum)*100)}%;")
                 .labels
                     .label
                         i.fa.fa-clock-o

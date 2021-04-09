@@ -47,7 +47,7 @@
         border: rgb(236, 236, 236) 0.1vw solid;
         box-shadow: 0 0 0.3vw 0.1vw rgba(0, 0, 0, 0.15);
         transition-duration: 500ms;
-        min-height: 28vw;
+        min-height: 29vw;
         margin-left: 2vw;
         margin-top: 2vw;
     }
@@ -75,7 +75,7 @@
     .leagues-cards .card h1.title{
         color: var(--purple);
         font-family: 'iransans';
-        font-size: 1.5vw;
+        font-size: 1.3vw;
         margin: 0;
         margin-top: 1vw;
         padding: 0;

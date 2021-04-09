@@ -73,10 +73,11 @@ router.get('/', (req, res, next) => {
     var room = req.query.room;
     if(!room) room = 'soccer';
     Team.find({}, (err, teams) => {
-        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0;
+        var soccerLightPrimaryNum = 0, soccerLightSecondaryNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0, soccer2d = 0;
         for(var i=0; i < teams.length; i++)
         {
-            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
+            if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
+            if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
             if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
             if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
@@ -85,7 +86,8 @@ router.get('/', (req, res, next) => {
         }
         res.render('./game/home', {
             teams,
-            soccerLightNum,
+            soccerLightPrimaryNum,
+            soccerLightSecondaryNum,
             soccerOpenNum,
             smartCarNum,
             cospaceNum,
@@ -102,14 +104,14 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/soccer-light', (req, res, next) => {
+router.get('/soccer-light-primary', (req, res, next) => {
     var {field} = req.query;
     if(!field) field = 'A';
     var round = req.query.round;
     if(!round) round = 1;
-    Team.find({league: 'فوتبالیست سبک وزن'}, (err, teams) => {
-        Game.findOne({field: field, league: 'فوتبالیست سبک وزن', started: true}, (err, game) => {
-            Game.find({league: 'فوتبالیست سبک وزن', round: round}, (err, games) => {
+    Team.find({league: 'فوتبالیست سبک وزن primary'}, (err, teams) => {
+        Game.findOne({field: field, league: 'فوتبالیست سبک وزن primary', started: true}, (err, game) => {
+            Game.find({league: 'فوتبالیست سبک وزن primary', round: round}, (err, games) => {
                 if(err) console.log(err);
                 // console.log(game);
                 for(var i=1; i<teams.length; i++){
@@ -169,7 +171,87 @@ router.get('/soccer-light', (req, res, next) => {
                 var user;
                 if(req.user) user = req.user;
                 else         user = false;
-                res.render('./game/soccer-light', {
+                res.render('./game/soccer-light-primary', {
+                    teams,
+                    field,
+                    game,
+                    games,
+                    round,
+                    user
+                });
+            });
+        });
+    });
+});
+
+router.get('/soccer-light-secondary', (req, res, next) => {
+    var {field} = req.query;
+    if(!field) field = 'C';
+    var round = req.query.round;
+    if(!round) round = 1;
+    Team.find({league: 'فوتبالیست سبک وزن secondary'}, (err, teams) => {
+        Game.findOne({field: field, league: 'فوتبالیست سبک وزن secondary', started: true}, (err, game) => {
+            Game.find({league: 'فوتبالیست سبک وزن secondary', round: round}, (err, games) => {
+                if(err) console.log(err);
+                // console.log(game);
+                for(var i=1; i<teams.length; i++){
+                    for(var j=0; j<teams.length - i; j++){
+                        if(teams[j].score < teams[j + 1].score){
+                            var temp = teams[j];
+                            teams[j] = teams[j+1];
+                            teams[j+1] = temp;
+                        }
+                        else if(teams[j].score == teams[j+1].score)
+                        {
+                            if(teams[j].goalzade - teams[j].goalkhorde < teams[j+1].goalzade - teams[j+1].goalkhorde)
+                            {
+                                var temp = teams[j];
+                                teams[j] = teams[j+1];
+                                teams[j+1] = temp;
+                            }
+                            else if(teams[j].goalzade - teams[j].goalkhorde == teams[j+1].goalzade - teams[j+1].goalkhorde)
+                            {
+                                if(teams[j].goalzade < teams[j+1].goalzade)
+                                {
+                                    var temp = teams[j];
+                                    teams[j] = teams[j+1];
+                                    teams[j+1] = temp;
+                                }
+                                else if(teams[j].goalzade == teams[j+1].goalzade)
+                                {
+                                    if(teams[j].win < teams[j+1].win)
+                                    {
+                                        var temp = teams[j];
+                                        teams[j] = teams[j+1];
+                                        teams[j+1] = temp;
+                                    }
+                                    else if(teams[j].win == teams[j+1].win)
+                                    {
+                                        if(teams[j].equals < teams[j+1].equals)
+                                        {
+                                            var temp = teams[j];
+                                            teams[j] = teams[j+1];
+                                            teams[j+1] = temp;
+                                        }
+                                        else if(teams[j].equals == teams[j+1].equals)
+                                        {
+                                            if(teams[j].goalkhorde > teams[j+1].goalkhorde)
+                                            {
+                                                var temp = teams[j];
+                                                teams[j] = teams[j+1];
+                                                teams[j+1] = temp;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                var user;
+                if(req.user) user = req.user;
+                else         user = false;
+                res.render('./game/soccer-light-secondary', {
                     teams,
                     field,
                     game,
@@ -197,6 +279,51 @@ router.get('/soccer-open', (req, res, next) => {
                             var temp = teams[j];
                             teams[j] = teams[j+1];
                             teams[j+1] = temp;
+                        }
+                        else if(teams[j].score == teams[j+1].score)
+                        {
+                            if(teams[j].goalzade - teams[j].goalkhorde < teams[j+1].goalzade - teams[j+1].goalkhorde)
+                            {
+                                var temp = teams[j];
+                                teams[j] = teams[j+1];
+                                teams[j+1] = temp;
+                            }
+                            else if(teams[j].goalzade - teams[j].goalkhorde == teams[j+1].goalzade - teams[j+1].goalkhorde)
+                            {
+                                if(teams[j].goalzade < teams[j+1].goalzade)
+                                {
+                                    var temp = teams[j];
+                                    teams[j] = teams[j+1];
+                                    teams[j+1] = temp;
+                                }
+                                else if(teams[j].goalzade == teams[j+1].goalzade)
+                                {
+                                    if(teams[j].win < teams[j+1].win)
+                                    {
+                                        var temp = teams[j];
+                                        teams[j] = teams[j+1];
+                                        teams[j+1] = temp;
+                                    }
+                                    else if(teams[j].win == teams[j+1].win)
+                                    {
+                                        if(teams[j].equals < teams[j+1].equals)
+                                        {
+                                            var temp = teams[j];
+                                            teams[j] = teams[j+1];
+                                            teams[j+1] = temp;
+                                        }
+                                        else if(teams[j].equals == teams[j+1].equals)
+                                        {
+                                            if(teams[j].goalkhorde > teams[j+1].goalkhorde)
+                                            {
+                                                var temp = teams[j];
+                                                teams[j] = teams[j+1];
+                                                teams[j+1] = temp;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -24,6 +24,10 @@ var GameSchema = new mongoose.Schema({
   round: {
     type: Number,
     default: 1
+  },
+  scoreSaved: {
+    type: Boolean,
+    default: false
   }
 });
 

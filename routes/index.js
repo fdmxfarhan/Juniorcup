@@ -27,24 +27,30 @@ router.get('/', (req, res, next) => {
     var secconds = Math.floor(a%60);
     // console.log(milisecUntilCompetition);
     Team.find({}, (err, teams) => {
-        var soccerLightNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
+        var soccerLightPrimaryNum = 0, soccerLightSecondaryNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
         for(var i=0; i < teams.length; i++)
         {
-            if(teams[i].league == 'فوتبالیست سبک وزن')  soccerLightNum++;
+            if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
+            if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
             if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
             if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
             if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             
         }
+        var user;
+        if(req.user) user = req.user;
+        else         user = false;
         res.render('index', {
             time: {weeks, days, hours, minuts, secconds},
             teams,
-            soccerLightNum,
+            soccerLightPrimaryNum,
+            soccerLightSecondaryNum,
             soccerOpenNum,
             smartCarNum,
             cospaceNum,
-            programmingNum
+            programmingNum,
+            user
         });
     })
 });

@@ -51,6 +51,7 @@ socket.on(`chat${field.value}`, function(msg) {
         message.appendChild(timeMsg);
         inMessage.appendChild(message);
         messageContainer.appendChild(inMessage);
+        messageContainer.scrollTo(0,1000000000);
     }
     else
     {
@@ -76,5 +77,6 @@ socket.on(`chat${field.value}`, function(msg) {
         message.appendChild(timeMsg);
         inMessage.appendChild(message);
         messageContainer.appendChild(inMessage);
+        messageContainer.scrollTo(0,1000000000);
     }
 });

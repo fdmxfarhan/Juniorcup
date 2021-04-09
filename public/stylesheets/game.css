@@ -207,7 +207,7 @@
         font-size: 1vw;
     }
     a.round:hover, a.round.active{background-color: chocolate; color: white;}
-    /* ---------------------- flag -------------------- */
+    
     .tab-content a.link{
         background-color: var(--purple);
         border: none;
@@ -320,6 +320,9 @@
         color: white;
         font-family: 'iransans';
         font-size: 1vw;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word; 
     }
     .chat-container .in-message .message .time{
         color: rgb(155, 155, 155);
@@ -348,6 +351,9 @@
         color: white;
         font-family: 'iransans';
         font-size: 1vw;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word; 
     }
     .chat-container .out-message .message .time{
         color: rgb(194, 194, 194);
@@ -373,6 +379,9 @@
         background-color: var(--purple);
         color: white;
     }
+    
+    /* ---------------------- flag -------------------- */
+    
 }
 
 @media only screen and (max-width: 800px) {
@@ -585,5 +594,180 @@
     }
     a.round:hover, a.round.active{background-color: chocolate; color: white;}
     
+
+
+    .tab-content a.link{
+        background-color: var(--purple);
+        border: none;
+        padding: 0.5vw 4vw;
+        border-radius: 3vw;
+        color: white;
+        font-family: 'iransans';
+        cursor: pointer;
+        display: block;
+        width: fit-content;
+        margin: 1vw;
+        text-decoration: none;
+    }
+    .saved-videos{
+        width: 95%;
+        margin: auto;
+        margin-top: 7vw;
+    }
+    
+
+    .chat-container{
+        margin: 5%;
+        width: 90%;
+        float: right;
+    }
+    .chat-container .chat-view{
+        background-color: #525252;
+        border-radius: 3vw;
+        color: white;
+    }
+    .chat-container .chat-view h1.chat-title{
+        background-color: #313131;
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        padding: 2vw 0;
+        text-align: center;
+        margin: 0;
+    }
+    .chat-container .messages-container{
+        height: 80vw;
+        overflow-y: scroll;
+        margin: 0;
+    }
+    .chat-container .messages-container::-webkit-scrollbar{
+        display: none;
+    }
+    .chat-container .options-container{
+        background-color: #414141;
+        border-bottom-left-radius: 3vw;
+        border-bottom-right-radius: 3vw;
+        padding: 1vw 3vw;
+    }
+    .chat-container .options-container h1{
+        font-family: 'iransans';
+        font-size: 3.3vw;
+        margin: 1vw 0;
+        text-align: center;
+        color: lightgray;
+    }
+    .chat-container .options-container input.textinput{
+        font-family: 'iransans';
+        font-size: 3vw;
+        background-color: #525252;
+        border: none;
+        border-radius: 3vw;
+        padding: 1vw 3vw;
+        width: 70%;
+        color: white;
+    }
+    .chat-container .options-container input.textinput:focus{
+        outline: none;
+    }
+    .chat-container .options-container input.submit{
+        background-color: var(--purple);
+        border-radius: 3vw;
+        border: none;
+        color: white;
+        font-family: 'iransans';
+        font-size: 3vw;
+        padding: 1vw 4vw;
+        margin-right: 3vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .chat-container .options-container input.submit:hover{
+        background-color: chocolate;
+    }
+    .chat-container .options-container input.submit:focus{outline: none;}
+    .chat-container .in-message{
+        direction: ltr;
+        padding: 1vw 3vw;
+    }
+    .chat-container .in-message .message{
+        background-color: #313131;
+        width: fit-content;
+        max-width: 90%;
+        padding: 1vw 3vw;
+        border-radius: 3vw;
+        text-align: right;
+        direction: rtl;
+    }
+    .chat-container .in-message .message .sender{
+        color: rgb(76, 172, 204);
+        font-family: 'iransans';
+        font-size: 3vw;
+    }
+    .chat-container .in-message .message .msg-content{
+        color: white;
+        font-family: 'iransans';
+        font-size: 3vw;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word; 
+    }
+    .chat-container .in-message .message .time{
+        color: rgb(155, 155, 155);
+        font-family: 'iransans';
+        font-size: 2.5vw;
+    }
+    .chat-container .out-message{
+        direction: rtl;
+        padding: 1vw 3vw;
+    }
+    .chat-container .out-message .message{
+        background-color: #6791a0;
+        width: fit-content;
+        max-width: 90%;
+        padding: 1vw 3vw;
+        border-radius: 3vw;
+        text-align: right;
+        direction: rtl;
+    }
+    .chat-container .out-message .message .sender{
+        color: rgb(76, 172, 204);
+        font-family: 'iransans';
+        font-size: 3vw;
+    }
+    .chat-container .out-message .message .msg-content{
+        color: white;
+        font-family: 'iransans';
+        font-size: 3vw;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word; 
+    }
+    .chat-container .out-message .message .time{
+        color: rgb(194, 194, 194);
+        font-family: 'iransans';
+        font-size: 2.5vw;
+    }
+    .tab-links-with-chat{
+        text-align: center;
+        overflow-y: hidden;
+        padding: 1vw;
+    }
+    .tab-links-with-chat a{
+        text-decoration: none;
+        padding: 0.2vw 2vw;
+        margin: 0 2vw;
+        font-family: 'iransans';
+        font-size: 3.3vw;
+        /* display: block;
+        float: right; */
+        border-radius: 3vw;
+        border: var(--purple) 0.1vw solid;
+        color: var(--purple);
+    }
+    .tab-links-with-chat a.active{
+        background-color: var(--purple);
+        color: white;
+    }
 }
 

@@ -686,13 +686,13 @@ body{
         background-color: lightcoral;
         color: white;
         font-family: 'iransans';
-        font-size: 1.3vw;
+        font-size: 1.1vw;
         text-decoration: none;
         display: block;
         width: fit-content;
         margin-right: 5vw;
         margin-top: 1vw;
-        padding: 0.5vw 2vw;
+        padding: 0.4vw 2vw;
         border-radius: 1vw;
         box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.2);
         transition-duration: 500ms;
@@ -1011,6 +1011,17 @@ body{
         left: 5vw;
         bottom: 2vw;
     }
+    a.download-excel{
+        position: absolute;
+        right: 5vw;
+        bottom: 2vw;
+        color: var(--purple);
+        text-decoration: none;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+    }
+    a.download-excel i{padding-left: 1vw;}
+    
     a.link.return:hover{background-color: chocolate;}
     .file-list{
         /* max-height: 17vw; */
@@ -1531,6 +1542,9 @@ body{
         color: white;
         font-family: 'iransans';
         font-size: 1vw;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word; 
     }
     .chat-container .in-message .message .time{
         color: rgb(155, 155, 155);
@@ -1559,13 +1573,49 @@ body{
         color: white;
         font-family: 'iransans';
         font-size: 1vw;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word; 
     }
     .chat-container .out-message .message .time{
         color: rgb(194, 194, 194);
         font-family: 'iransans';
         font-size: 0.8vw;
     }
-    
+    .confirm-message{
+        text-align: center;
+        padding: 5vw 0;
+    }
+    .confirm-message h1{
+        color: var(--purple);
+        font-size: 2vw;
+        margin-bottom: 0;
+    }
+    .confirm-message p{
+        color: rgb(89, 89, 89);
+        font-size: 1vw;
+        margin-bottom: 2vw;
+    }
+    .confirm-message i{
+        color: red;
+        padding-left: 1vw;
+        font-size: 5vw;
+    }
+    .confirm-message a{
+        text-decoration: none;
+        color: white;
+        padding: 0.4vw 2vw;
+        margin: 1vw;
+        border-radius: 1vw;
+    }
+    .confirm-message a.submit{background-color: red;}
+    .confirm-message a.cancel{background-color: green;}
+    h1.score-title{
+        color: var(--purple);
+        text-align: center;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+    }
 }
 
 @media only screen and (max-width: 800px) {
@@ -2288,3 +2338,4 @@ body{
     table.list-info td a:hover{background-color: chocolate;}
     table.list-info td a i{padding-left: 1vw;}
 }
+

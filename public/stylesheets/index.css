@@ -101,7 +101,7 @@ body{
     }
     nav a.user-login{
         float: left;
-        font-size: 1.7vw;
+        font-size: 1.3vw;
         color: var(--light);
         text-decoration: none;
         font-family: 'iransans';
@@ -464,6 +464,11 @@ body{
         font-size: 1.3vw;
         color: var(--textcolor);
         padding-right: 1vw;
+    }
+    .two-side-content .item .top h1.name a{
+
+        color: var(--blue);
+        text-decoration: none;
     }
     .two-side-content .item .top h1.state{
         position: absolute;

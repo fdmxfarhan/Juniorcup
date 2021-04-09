@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    .confirm-message
+        i.fa.fa-warning
+        h1
+            | آیا قصد دارید تمام بازی ها را ریست کنید؟
+        p با انجام این کار تمام اطلاعات بازی ها پاک می شود و دیگر قابل بازیابی نخواهد بود.
+        a.cancel(href="/dashboard/") انصراف 
+        a.submit(href="/dashboard/admin-confirm-reset-game") بله 
+
+    .pop-up-modal
+    script(src="/javascripts/")
+    

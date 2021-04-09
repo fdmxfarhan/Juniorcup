@@ -36,7 +36,7 @@ mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUni
 // express session middleware
 const{
     SESS_NAME = 'sid',
-    SESS_TIME = 1000 * 60 * 60 * 2 
+    SESS_TIME = 10000 * 60 * 60 * 2 
 } = process.env
 
 app.use(session({
@@ -187,9 +187,63 @@ io.on('connection', (socket) => {
 });
 
 
+const io2 = require('socket.io')(httpServer);
 
 
+// IO
+io2.on('connection', (socket) => {
+    // console.log('a user connected');
 
+    socket.on('disconnect', () => {
+        // console.log('user disconnected');
+    });
+
+    socket.on('chatA', (msg) => {
+        console.log(msg);
+        io2.emit('chatA', msg);
+    });
+    socket.on('chatB', (msg) => {
+        console.log(msg);
+        io2.emit('chatB', msg);
+    });
+    socket.on('chatC', (msg) => {
+        console.log(msg);
+        io2.emit('chatC', msg);
+    });
+    socket.on('chatD', (msg) => {
+        console.log(msg);
+        io2.emit('chatD', msg);
+    });
+    socket.on('chatE', (msg) => {
+        console.log(msg);
+        io2.emit('chatE', msg);
+    });
+    socket.on('chatF', (msg) => {
+        console.log(msg);
+        io2.emit('chatF', msg);
+    });
+    socket.on('chatG', (msg) => {
+        console.log(msg);
+        io2.emit('chatG', msg);
+    });
+    socket.on('chatH', (msg) => {
+        console.log(msg);
+        io2.emit('chatH', msg);
+    });
+    socket.on('chatI', (msg) => {
+        console.log(msg);
+        io2.emit('chatI', msg);
+    });
+    socket.on('chatJ', (msg) => {
+        console.log(msg);
+        io2.emit('chatJ', msg);
+    });
+    socket.on('chatK', (msg) => {
+        console.log(msg);
+        io2.emit('chatK', msg);
+    });
+
+});
 
 
 httpServer.listen(3000);

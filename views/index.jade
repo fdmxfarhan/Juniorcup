@@ -40,9 +40,16 @@ html
                     a.nav-link#nav-link5(href='/contact') 
                         //- i.fa.fa-phone.nav-icon 
                         | تماس با ما
-                a.user-login(href="/users/login")
-                    | ورود
-                    i.fa.fa-user-o
+                -if(user){
+                    a.user-login(href="/users/login")
+                        | #{user.fullname}
+                        i.fa.fa-user-o
+                -}else{
+                    a.user-login(href="/users/login")
+                        | ورود
+                        i.fa.fa-user-o
+                -}
+
             .on-image-text
                 h1.small.yellow سیزدهمین دوره
                 h1.medium مسابقات رباتیک دانش آموزی
@@ -128,7 +135,8 @@ html
                 .item
                     .top
                         i.fa.fa-gears
-                        h1.name ربات های فوتبالیست سبک وزن
+                        h1.name 
+                            a(href="/game/soccer-light-primary") ربات های فوتبالیست سبک وزن primary
                         h1.state غیر حضوری
                     .bottom
                         table
@@ -137,14 +145,32 @@ html
                                 th پذیرفته شده
                                 th قوانین
                             tr
-                                td= soccerLightNum
+                                td= soccerLightPrimaryNum
                                 td 0
                                 td 
                                     a(href="/rules/JuniorSoccer-LightWeightSoccerRuls-2021.pdf" download) دانلود قوانین
                 .item
                     .top
                         i.fa.fa-gears
-                        h1.name ربات های فوتبالیست وزن آزاد
+                        h1.name
+                            a(href="/game/soccer-light-secondary") ربات های فوتبالیست سبک وزن secondary
+                        h1.state غیر حضوری
+                    .bottom
+                        table
+                            tr
+                                th تعداد تیم ها
+                                th پذیرفته شده
+                                th قوانین
+                            tr
+                                td= soccerLightSecondaryNum
+                                td 0
+                                td 
+                                    a(href="/rules/JuniorSoccer-LightWeightSoccerRuls-2021.pdf" download) دانلود قوانین
+                .item
+                    .top
+                        i.fa.fa-gears
+                        h1.name
+                            a(href="/game/soccer-open") ربات های فوتبالیست وزن آزاد
                         h1.state غیر حضوری
                     .bottom
                         table
@@ -160,7 +186,8 @@ html
                 .item
                     .top
                         i.fa.fa-gears
-                        h1.name خودرو هوشمند
+                        h1.name
+                            a(href="/game/smartcar") خودرو هوشمند
                         h1.state غیر حضوری
                     .bottom
                         table
@@ -176,7 +203,8 @@ html
                 .item
                     .top
                         i.fa.fa-code
-                        h1.name برنامه نویسی
+                        h1.name
+                            a(href="http://juniorcupjudge.ir") برنامه نویسی
                         h1.state غیر حضوری
                     .bottom
                         table
@@ -192,7 +220,8 @@ html
                 .item
                     .top
                         i.fa.fa-code
-                        h1.name ربات های امداد فضای مشترک
+                        h1.name
+                            a(href="/game/cospace") ربات های امداد فضای مشترک
                         h1.state غیر حضوری
                     .bottom
                         table

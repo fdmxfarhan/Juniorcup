@@ -11,7 +11,7 @@ block content
                 .part
                     h1.game-part-title= teamA.teamName
                     .team-container
-                        form(action="/" method="POST") 
+                        form(action="/dashboard/edit-goalA" method="POST") 
                             label(for="goalA") تعداد گل: 
                             input.textinput(type="number" name="goalA" value="#{game.goalA}")
                             input.hidden(type="text" name="id" value="#{game._id}")
@@ -29,7 +29,7 @@ block content
                 .part
                     h1.game-part-title= teamB.teamName
                     .team-container
-                        form(action="/" method="POST") 
+                        form(action="/dashboard/edit-goalB" method="POST") 
                             label(for="goalB") تعداد گل: 
                             input.textinput(type="number" name="goalB" value="#{game.goalB}")
                             input.hidden(type="text" name="id" value="#{game._id}")
@@ -47,7 +47,9 @@ block content
             .game-links
                 -if(game.started){
                     a(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی 
-                    a(href="/dashboard/end-game?id=#{game._id}") اتمام بازی و ثبت امتیازات 
+                    -if(!game.scoreSaved){
+                        a(href="/dashboard/end-game?id=#{game._id}") اتمام بازی و ثبت امتیازات 
+                    -}
                 -}else{
                     a(href="/dashboard/start-game?id=#{game._id}") شروع بازی
                 -}
