@@ -1,52 +1,131 @@
 extends layout
 
+block styles 
+    script(src="/socket.io/socket.io.js")
+
 block content
-    h1.game-title.underLine #{game.teamA.teamName} درمقابل #{game.teamB.teamName} (زمین #{game.field})
-    -if(!game.started){
-        a.start-game(href="/dashboard/start-game?id=#{game._id}") شروع بازی
-        br
-        a.start-game(href="/dashboard") بازگشت
-    -}else{
-        .game-two-part 
-            .part.border 
-                h1 #{game.teamA.teamName} (#{game.goalA})
-                    a(href="/dashboard/add-goalA?id=#{game._id}") +
-                    a(href="/dashboard/decrease-goalA?id=#{game._id}") -
-                .download-file
-                    table
-                        tr 
-                            th نام فایل
-                            th دانلود
-                        -for(var i=0; i<teamAusers.length; i++){
-                            -for(var j=0; j<teamAusers[i].file.length; j++){
-                                tr 
-                                    td= teamAusers[i].file[j].name
-                                    td
-                                        a.download(href="#{teamAusers[i].file[j].path}/#{teamAusers[i].file[j].name}")
-                                            i.fa.fa-cloud-download
-                            -}
-                        -}
+    .overflow-hidden
+        .game-view 
+            h1.game-title بازی در حال اجرا (زمین #{game.field})...
+            .game-two-part
+                .part
+                    h1.game-part-title= teamA.teamName
+                    .team-container
+                        form(action="/" method="POST") 
+                            label(for="goalA") تعداد گل: 
+                            input.textinput(type="number" name="goalA" value="#{game.goalA}")
+                            input.hidden(type="text" name="id" value="#{game._id}")
+                            input.submit(type="submit" value="ثبت")
+                        .info امتیاز:‌ #{teamA.score}
+                        .info تعداد برد:‌ #{teamA.win}
+                        .info تعداد باخت:‌ #{teamA.lose}
+                        .info گل زده:‌ #{teamA.goalzade}
+                        .info گل خورده:‌ #{teamA.goalkhorde}
+                        .download-files 
+                            a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد قرمز 
+                            a.blue-file(href="#{teamA.blueFile.path}/#{teamA.blueFile.name}" download) کد آبی 
+                .part
+                    h1.game-part-title= teamB.teamName
+                    .team-container
+                        form(action="/" method="POST") 
+                            label(for="goalB") تعداد گل: 
+                            input.textinput(type="number" name="goalB" value="#{game.goalB}")
+                            input.hidden(type="text" name="id" value="#{game._id}")
+                            input.submit(type="submit" value="ثبت")
+                        .info امتیاز:‌ #{teamB.score}
+                        .info تعداد برد:‌ #{teamB.win}
+                        .info تعداد باخت:‌ #{teamB.lose}
+                        .info گل زده:‌ #{teamB.goalzade}
+                        .info گل خورده:‌ #{teamB.goalkhorde}
+                        .download-files 
+                            a.red-file(href="#{teamB.redFile.path}/#{teamB.redFile.name}" download) کد قرمز 
+                            a.blue-file(href="#{teamB.blueFile.path}/#{teamB.blueFile.name}" download) کد آبی 
+            .game-links
+                -if(game.started){
+                    a(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی 
+                    a(href="/dashboard/end-game?id=#{game._id}") اتمام بازی و ثبت امتیازات 
+                -}else{
+                    a(href="/dashboard/start-game?id=#{game._id}") شروع بازی
+                -}
+        .chat-container 
+            .chat-view 
+                h1.chat-title زمین #{game.field}
+                .messages-container#messages-container
+                    //- .in-message 
+                    //-     .message
+                    //-         .sender ممد (team)
+                    //-         .msg-content سلام داور چطوری؟
+                    //-         .time 10:30
+                    //- .out-message 
+                    //-     .message
+                    //-         .msg-content سلام داداش خوبم تو چطوری؟
+                    //-         .time 10:30
+                    
+                .options-container 
+                    form(id="sendchat" action="/dashboard/game") 
+                        input.hidden(type="text" name="id" value="#{game._id}")
+                        input.hidden(type="text" id="chat-sender" value="refree")
+                        input.hidden(type="text" id="chat-field" value="#{game.field}")
+                        input.textinput(type="text" id="chat-msg" placeholder="ارسال پیام..." autocomplete="off")
+                        input.submit(type="submit" value="ارسال")
+            
+    script(src="/javascripts/gamePlay.js") 
 
-            .part
-                h1 #{game.teamB.teamName} (#{game.goalB})
-                    a(href="/dashboard/add-goalB?id=#{game._id}") +
-                    a(href="/dashboard/decrease-goalB?id=#{game._id}") -
-                .download-file
-                    table
-                        tr 
-                            th نام فایل
-                            th دانلود
-                        -for(var i=0; i<teamBusers.length; i++){
-                            -for(var j=0; j<teamBusers[i].file.length; j++){
-                                tr 
-                                    td= teamBusers[i].file[j].name
-                                    td
-                                        a.download(href="#{teamBusers[i].file[j].path}/#{teamBusers[i].file[j].name}")
-                                            i.fa.fa-cloud-download
-                            -}
-                        -}
 
-        a.end-game(href="/dashboard/end-game?id=#{game._id}") اتمام بازی و ثبت امتیازات
-        a.end-game(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی
+
+
+
+
+
+
+
+
+    //- h1.game-title.underLine #{game.teamA.teamName} درمقابل #{game.teamB.teamName} (زمین #{game.field})
+    //- -if(!game.started){
+    //-     a.start-game(href="/dashboard/start-game?id=#{game._id}") شروع بازی
+    //-     br
+    //-     a.start-game(href="/dashboard") بازگشت
+    //- -}else{
+    //-     .game-two-part 
+    //-         .part.border 
+    //-             h1 #{game.teamA.teamName} (#{game.goalA})
+    //-                 a(href="/dashboard/add-goalA?id=#{game._id}") +
+    //-                 a(href="/dashboard/decrease-goalA?id=#{game._id}") -
+    //-             .download-file
+    //-                 table
+    //-                     tr 
+    //-                         th نام فایل
+    //-                         th دانلود
+    //-                     -for(var i=0; i<teamAusers.length; i++){
+    //-                         -for(var j=0; j<teamAusers[i].file.length; j++){
+    //-                             tr 
+    //-                                 td= teamAusers[i].file[j].name
+    //-                                 td
+    //-                                     a.download(href="#{teamAusers[i].file[j].path}/#{teamAusers[i].file[j].name}")
+    //-                                         i.fa.fa-cloud-download
+    //-                         -}
+    //-                     -}
+
+    //-         .part
+    //-             h1 #{game.teamB.teamName} (#{game.goalB})
+    //-                 a(href="/dashboard/add-goalB?id=#{game._id}") +
+    //-                 a(href="/dashboard/decrease-goalB?id=#{game._id}") -
+    //-             .download-file
+    //-                 table
+    //-                     tr 
+    //-                         th نام فایل
+    //-                         th دانلود
+    //-                     -for(var i=0; i<teamBusers.length; i++){
+    //-                         -for(var j=0; j<teamBusers[i].file.length; j++){
+    //-                             tr 
+    //-                                 td= teamBusers[i].file[j].name
+    //-                                 td
+    //-                                     a.download(href="#{teamBusers[i].file[j].path}/#{teamBusers[i].file[j].name}")
+    //-                                         i.fa.fa-cloud-download
+    //-                         -}
+    //-                     -}
+
+    //-     a.end-game(href="/dashboard/end-game?id=#{game._id}") اتمام بازی و ثبت امتیازات
+    //-     a.end-game(href="/dashboard/end-game-nosave?id=#{game._id}") اتمام بازی
         
-    -}
+    //- -}

@@ -166,12 +166,16 @@ router.get('/soccer-light', (req, res, next) => {
                         }
                     }
                 }
+                var user;
+                if(req.user) user = req.user;
+                else         user = false;
                 res.render('./game/soccer-light', {
                     teams,
                     field,
                     game,
                     games,
-                    round
+                    round,
+                    user
                 });
             });
         });

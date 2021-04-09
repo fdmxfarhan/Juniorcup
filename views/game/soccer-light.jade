@@ -2,11 +2,13 @@ extends ../layout
 
 block styles
     link(rel="stylesheet", href="/stylesheets/game.css")
+    script(src="/socket.io/socket.io.js")
 
 block content
     h1.league-title لیگ ربات های فوتبالیست سبک وزن
     .tab-view 
-        .tab-links 
+        
+        .tab-links-with-chat
             -if(field == 'A')
                 a.active(href="/game/soccer-light?field=A&round=#{round}") زمین A
             -else
@@ -23,6 +25,37 @@ block content
             //-     a.active(href="/game/soccer-light?field=D&round=#{round}") زمین D
             //- -else 
             //-     a(href="/game/soccer-light?field=D&round=#{round}") زمین D
+        .chat-container 
+            .chat-view 
+                h1.chat-title زمین #{field}
+                .messages-container#messages-container
+                    //- .in-message 
+                    //-     .message
+                    //-         .sender ممد (team)
+                    //-         .msg-content سلام داور چطوری؟
+                    //-         .time 10:30
+                    //- .out-message 
+                    //-     .message
+                    //-         .msg-content سلام داداش خوبم تو چطوری؟
+                    //-         .time 10:30
+                    
+                .options-container
+                    -if(game){
+                        -if(user){
+                            form(id="sendchat" action="") 
+                                input.hidden(type="text" name="id" value="#{game._id}")
+                                input.hidden(type="text" id="chat-sender" value="#{user.fullname}")
+                                input.hidden(type="text" id="chat-field" value="#{game.field}")
+                                input.hidden(type="text" id="chat-team" value="#{user.teamID}")
+                                input.textinput(type="text" id="chat-msg" placeholder="ارسال پیام..." autocomplete="off")
+                                input.submit(type="submit" value="ارسال")
+                        -}else{
+                            h1 لطفا ابتدا وارد حساب کاربری خود شوید
+                        -}
+                    -}else{
+                        h1 بازی هنوز شروع نشده
+                    -}
+        
         .tab-content 
             .score-board
                 img.score(src="/images/score.png")
@@ -54,7 +87,7 @@ block content
             a.stream(href="https://www.twitch.tv/juniorcup#{field}") 
                 i.fa.fa-external-link
                 | نمایش استریم
-            a.link(href="/docs/sendcode.pdf" download) آموزش نحوه آپلود برنامه
+            //- a.link(href="/docs/sendcode.pdf" download) آموزش نحوه آپلود برنامه
             //- .two-part
             //-     .partial
             //-         a.upload آپلود برنامه
@@ -142,4 +175,5 @@ block content
         -}
         
     script(src="/javascripts/game.js") 
+    script(src="/javascripts/chatClient.js") 
 

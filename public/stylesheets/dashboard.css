@@ -823,12 +823,12 @@ body{
     }
 
 
-    h1.game-title{
+    /* h1.game-title{
         color: var(--purple);
         font-family: 'iransans';
         font-size: 1.5vw;
         text-align: center;
-    }
+    } */
     form.add-game{
         width: 90%;
         margin: auto;
@@ -898,7 +898,7 @@ body{
         padding: 0.5vw 0;
         border-bottom: lightgray 0.1vw solid;
     }
-    a.start-game, a.end-game{
+    /* a.start-game, a.end-game{
         text-decoration: none;
         font-family: 'iransans';
         font-size: 1.3vw;
@@ -912,9 +912,8 @@ body{
         margin: auto;
     }
     a.start-game:hover, a.end-game:hover{background-color: chocolate;}
-    a.end-game{margin-top: 2vw;}
-    .game-two-part{
-        /* background-color: lightblue; */
+    a.end-game{margin-top: 2vw;} */
+    /* .game-two-part{
         width: 90%;
         margin: auto;
         overflow: hidden;
@@ -948,11 +947,9 @@ body{
         padding: 0.2vw 1vw;
         border-radius: 1vw;
         transition-duration: 500ms;
-        /* display: block;
-        width: fit-content; */
         margin-right: 0.5vw;
     }
-    .game-two-part .part a:hover{background-color: chocolate;}
+    .game-two-part .part a:hover{background-color: chocolate;} */
     .modal{
         background-color: rgba(0, 0, 0, 0.5);
         position: fixed;
@@ -1016,10 +1013,41 @@ body{
     }
     a.link.return:hover{background-color: chocolate;}
     .file-list{
-        max-height: 17vw;
-        overflow-y: scroll;
+        /* max-height: 17vw; */
+        /* overflow-y: scroll; */
+        overflow: hidden;
     }
-    .file-list table{
+    .file-list .file-container{
+        float: right;
+        width: 30%;
+        margin: 1vw 0;
+        margin-right: 10%;
+        border-radius: 1.5vw;
+        text-align: center;
+    }
+    .file-list .file-container.red-border{
+        border: red 0.2vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(255, 0, 0, 0.316);
+    }
+    .file-list .file-container.blue-border{
+        border: blue 0.2vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 255, 0.274);
+    }
+    .file-list .file-container.red-border h1.file-title{
+        color: red;
+    }
+    .file-list .file-container.blue-border h1.file-title{
+        color: blue;
+    }
+    .file-list .file-container h1.file-title{
+        font-family: 'iransans';
+        font-size: 1.5vw;
+    }
+    .file-list .file-container p.text{
+        color: rgb(126, 126, 126);
+
+    }
+    /* .file-list table{
         width: 80%;
         margin: auto;
         text-align: center;
@@ -1041,21 +1069,21 @@ body{
         font-size: 1.5vw;
         transition-duration: 500ms;
     }
-    .file-list table td a:hover{color: chocolate;}
+    .file-list table td a:hover{color: chocolate;} */
     form.upload-code{
-        width: 80%;
+        width: 70%;
         margin: auto;
         padding: 1vw 0;
         /* background-color: lightgreen; */
     }
     form.upload-code input.file{
-        border: lightsalmon 0.1vw dashed;
-        border-radius: 1vw;
-        padding: 0.5vw;
-    }
-    form.upload-code input.file:focus{
-        outline: none;
-        color: red;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
     }
     form.upload-code input.submit{
         border: none;
@@ -1070,7 +1098,24 @@ body{
         margin-right: 2vw;
     }
     form.upload-code input.submit:hover{background-color: chocolate;}
-    .download-file{
+    form.upload-code .upload-area{
+        border: lightblue 2px dashed;
+        position: relative;
+        cursor: pointer;
+        padding: 1vw 0;
+        text-align: center;
+        color: #798AAF;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        width: 98%;
+        border-radius: 1vw;
+        margin-bottom: 1vw;
+    }
+    .translation-panel .upload-area i{
+        padding-right: 1vw;
+        font-size: 1.8vw;
+    }
+    /* .download-file{
         width: 60%;
         margin: auto;
         margin-top: 2vw;
@@ -1100,7 +1145,7 @@ body{
     .download-file table td a.download:hover{
         background-color: transparent;
         color: chocolate;
-    }
+    } */
     a.goto-game{
         text-decoration: none;
         font-family: 'iransans';
@@ -1291,6 +1336,236 @@ body{
         width: 80%;
         margin: 2vw auto;
     }
+
+    .overflow-hidden{overflow: hidden;}
+    .game-view{
+        /* background-color: lightblue; */
+        float: right;
+        width: 50%;
+        margin: 0 5%;
+    }
+    .chat-container {
+        /* background-color: lightgreen; */
+        float: right;
+        width: 30%;
+        margin: 0 3%;
+    }
+    .game-view h1.game-title{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        text-align: center;
+        margin-top: 3vw;
+    }
+    .game-view .game-two-part{
+        overflow: hidden;
+        /* background-color: lightcoral; */
+    }
+    .game-view .game-two-part .part{
+        float: right;
+        width: 46%;
+        margin: 1vw 2%;
+        /* background-color: lightcyan; */
+        text-align: center;
+    }
+    .game-view .game-two-part .part h1.game-part-title{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        color: var(--purple);
+    }
+    .game-view .game-two-part .part .team-container{
+        border: lightgray 0.1vw solid;
+        padding: 2vw 1vw;
+        border-radius: 1.5vw;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        text-align: right;
+    }
+    .game-view .game-two-part .part input.textinput{
+        border-radius: 1vw;
+        padding: 0.5vw 1vw;
+        width: 5vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+    }
+    .game-view .game-two-part .part input.textinput::-webkit-inner-spin-button, 
+    .game-view .game-two-part .part input.textinput::-webkit-outer-spin-button{
+        opacity: 1;
+    }
+    .game-view .game-two-part .part input.textinput:focus{
+        outline: none;
+        border: var(--purple) 0.1vw solid;
+    }
+    .game-view .game-two-part .part input.submit{
+        margin-right: 1vw;
+        border: none;
+        cursor: pointer;
+        background-color: var(--purple);
+        box-shadow: 0 0 0.5vw 0.3vw rgba(0, 0, 0, 0.2);
+        color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.3vw 1vw;
+        border-radius: 2vw;
+        transition-duration: 500ms;
+    }
+    .game-view .game-two-part .part input.submit:hover{
+        background-color: chocolate;
+    }
+    .game-view .game-two-part .part .info{
+        color: rgb(131, 131, 131);
+        font-family: 'iransans';
+        font-size: 1vw;
+    }
+    .game-view .game-two-part .part .download-files{
+        text-align: center;
+        padding: 0.5vw 0;
+    }
+    .game-view .game-two-part .part .download-files a{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: white;
+        padding: 0.4vw 1vw;
+        border-radius: 1.5vw;
+        text-decoration: none;
+        margin: 0.5vw;
+    }
+    .game-view .game-two-part .part .download-files a.red-file{background-color: rgb(255, 0, 0);}
+    .game-view .game-two-part .part .download-files a.red-file:hover{background-color: rgb(255, 123, 0);}
+    .game-view .game-two-part .part .download-files a.blue-file{background-color: rgb(0, 166, 255);}
+    .game-view .game-two-part .part .download-files a.blue-file:hover{background-color: rgb(34, 0, 255);}
+    .game-view .game-links{
+        text-align: center;
+        padding: 1vw 0;
+    }
+    .game-view .game-links a{
+        margin-right: 1vw;
+        border: none;
+        cursor: pointer;
+        background-color: var(--purple);
+        box-shadow: 0 0 0.5vw 0.3vw rgba(0, 0, 0, 0.2);
+        color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.5vw 1vw;
+        border-radius: 2vw;
+        transition-duration: 500ms;
+        text-decoration: none;
+    }
+    .game-view .game-links a:hover{background-color: chocolate;}
+    .chat-container .chat-view{
+        background-color: #525252;
+        border-radius: 1.5vw;
+        color: white;
+    }
+    .chat-container .chat-view h1.chat-title{
+        background-color: #313131;
+        border-top-left-radius: 1.5vw;
+        border-top-right-radius: 1.5vw;
+        font-family: 'iransans';
+        font-size: 1.5vw;
+        padding: 0.5vw 0;
+        text-align: center;
+        margin: 0;
+    }
+    .chat-container .messages-container{
+        height: 28vw;
+        overflow-y: scroll;
+        margin: 0;
+    }
+    .chat-container .messages-container::-webkit-scrollbar{
+        display: none;
+    }
+    .chat-container .options-container{
+        background-color: #414141;
+        border-bottom-left-radius: 1.5vw;
+        border-bottom-right-radius: 1.5vw;
+        padding: 0.4vw 1vw;
+    }
+    .chat-container .options-container input.textinput{
+        font-family: 'iransans';
+        font-size: 1vw;
+        background-color: #525252;
+        border: none;
+        border-radius: 1vw;
+        padding: 0.4vw 1vw;
+        width: 70%;
+        color: white;
+    }
+    .chat-container .options-container input.textinput:focus{
+        outline: none;
+    }
+    .chat-container .options-container input.submit{
+        background-color: var(--purple);
+        border-radius: 1vw;
+        border: none;
+        color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.5vw 1vw;
+        margin-right: 1vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .chat-container .options-container input.submit:hover{
+        background-color: chocolate;
+    }
+    .chat-container .options-container input.submit:focus{outline: none;}
+    .chat-container .in-message{
+        direction: ltr;
+        padding: 0.4vw 1vw;
+    }
+    .chat-container .in-message .message{
+        background-color: #313131;
+        width: fit-content;
+        max-width: 90%;
+        padding: 0.4vw 1vw;
+        border-radius: 1vw;
+        text-align: right;
+        direction: rtl;
+    }
+    .chat-container .in-message .message .sender{
+        color: rgb(76, 172, 204);
+        font-family: 'iransans';
+        font-size: 1vw;
+    }
+    .chat-container .in-message .message .msg-content{
+        color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+    }
+    .chat-container .in-message .message .time{
+        color: rgb(155, 155, 155);
+        font-family: 'iransans';
+        font-size: 0.8vw;
+    }
+    .chat-container .out-message{
+        direction: rtl;
+        padding: 0.4vw 1vw;
+    }
+    .chat-container .out-message .message{
+        background-color: #6791a0;
+        width: fit-content;
+        max-width: 90%;
+        padding: 0.4vw 1vw;
+        border-radius: 1vw;
+        text-align: right;
+        direction: rtl;
+    }
+    .chat-container .out-message .message .sender{
+        color: rgb(76, 172, 204);
+        font-family: 'iransans';
+        font-size: 1vw;
+    }
+    .chat-container .out-message .message .msg-content{
+        color: white;
+        font-family: 'iransans';
+        font-size: 1vw;
+    }
+    .chat-container .out-message .message .time{
+        color: rgb(194, 194, 194);
+        font-family: 'iransans';
+        font-size: 0.8vw;
+    }
+    
 }
 
 @media only screen and (max-width: 800px) {

@@ -6,6 +6,7 @@ const multer = require('multer');
 const mail = require('../config/mail');
 const {ensureAuthenticated} = require('../config/auth');
 const User = require('../models/User');
+const Team = require('../models/Team');
 const Game = require('../models/Game');
 const mkdirp = require('mkdirp');
 
@@ -23,19 +24,36 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.post('/code', ensureAuthenticated, upload.single('myFile'), (req, res, next) => {
+router.post('/blue-code', ensureAuthenticated, upload.single('myFile'), (req, res, next) => {
     const file = req.file;
     if (!file) {
         res.send('no file to upload');
     }
     else{
-        var userFile = req.user.file;
-        userFile.push({
+        var newFile = {
             date: Date.now(),
             path: file.destination.slice(6),
             name: file.originalname
+        };
+        Team.updateOne({_id: req.user.teamID}, {$set: {blueFile: newFile}}, (err, doc) => {
+            if(err) console.log(err);
+            res.redirect('/dashboard');
         });
-        User.updateOne({_id: req.user._id}, {$set: {file: userFile}}, (err, doc) => {
+    }
+});
+
+router.post('/red-code', ensureAuthenticated, upload.single('myFile'), (req, res, next) => {
+    const file = req.file;
+    if (!file) {
+        res.send('no file to upload');
+    }
+    else{
+        var newFile = {
+            date: Date.now(),
+            path: file.destination.slice(6),
+            name: file.originalname
+        };
+        Team.updateOne({_id: req.user.teamID}, {$set: {redFile: newFile}}, (err, doc) => {
             if(err) console.log(err);
             res.redirect('/dashboard');
         });

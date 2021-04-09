@@ -86,7 +86,7 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
         });
     }
     else if(req.user.role == 'student'){
-        Team.find({_id: req.user.teamID}, (err, team) =>{
+        Team.findById( req.user.teamID, (err, team) =>{
             res.render('./dashboard/student-dashboard', {
                 user: req.user,
                 team,
@@ -355,14 +355,13 @@ router.post('/add-game-soccer2d', ensureAuthenticated, (req, res, next) => {
 router.get('/game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
-            User.find({teamID: game.teamA._id}, (err, teamAusers) => {
-                User.find({teamID: game.teamB._id}, (err, teamBusers) => {
-                    // console.log(teamAusers);
+            Team.findById(game.teamA._id, (err, teamA) => {
+                Team.findById(game.teamB._id, (err, teamB) => {
                     res.render('./dashboard/refree-game', {
                         user: req.user,
                         game,
-                        teamAusers,
-                        teamBusers
+                        teamA,
+                        teamB
                     });
                 });
             });

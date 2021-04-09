@@ -22,6 +22,11 @@ var leagues = require('./routes/leagues');
 var game = require('./routes/game');
 var payment = require('./routes/payment');
 
+
+
+
+
+
 // Mongo DB connect
 mongoose.connect('mongodb://localhost/juniorcup', {useNewUrlParser: true, useUnifiedTopology: true}, (err) =>{
     if(err) throw err;
@@ -107,7 +112,7 @@ app.use(function(err, req, res, next) {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     // render the error page
     res.status(err.status || 500);
-    // console.log(err);
+    console.log(err);
     if(!req.user) res.render('error',{
         uname: false,
         user: false,
@@ -122,6 +127,30 @@ app.use(function(err, req, res, next) {
 
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
+
+const io = require('socket.io')(httpServer);
+
+
+// IO
+io.on('connection', (socket) => {
+    // console.log('a user connected');
+
+    socket.on('disconnect', () => {
+        // console.log('user disconnected');
+    });
+
+    socket.on('chatA', (msg) => {
+        // console.log(msg);
+        io.emit('chatA', msg);
+    });
+
+});
+
+
+
+
+
+
 
 httpServer.listen(3000);
 httpsServer.listen(443);
