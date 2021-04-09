@@ -140,7 +140,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('chatA', (msg) => {
-        // console.log(msg);
+        console.log(msg);
         io.emit('chatA', msg);
     });
 
