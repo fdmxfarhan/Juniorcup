@@ -382,7 +382,120 @@
     
     /* ---------------------- flag -------------------- */
     
+
+
+    .file-list{
+        /* max-height: 17vw; */
+        /* overflow-y: scroll; */
+        overflow: hidden;
+        margin-bottom: 3vw;
+    }
+    .file-list .file-container{
+        float: right;
+        width: 40%;
+        margin: 1vw 0;
+        margin-right: 5%;
+        border-radius: 1.5vw;
+        text-align: center;
+    }
+    .file-list .file-container.red-border{
+        border: red 0.2vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(255, 0, 0, 0.316);
+    }
+    .file-list .file-container.blue-border{
+        border: blue 0.2vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 255, 0.274);
+    }
+    .file-list .file-container.red-border h1.file-title{
+        color: red;
+    }
+    .file-list .file-container.blue-border h1.file-title{
+        color: blue;
+    }
+    .file-list .file-container h1.file-title{
+        font-family: 'iransans';
+        font-size: 1.5vw;
+    }
+    .file-list .file-container p.text{
+        color: rgb(126, 126, 126);
+
+    }
+    /* .file-list table{
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+    .file-list table th{
+        background-color: var(--purple);
+        padding: 0.4vw 0;
+        color: white;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+    }
+    .file-list table td{
+        padding: 0.4vw 0;
+        border-bottom: lightgray 0.1vw solid;
+    }
+    .file-list table td a{
+        color: var(--purple);
+        text-decoration: none;
+        font-size: 1.5vw;
+        transition-duration: 500ms;
+    }
+    .file-list table td a:hover{color: chocolate;} */
+    form.upload-code{
+        width: 70%;
+        margin: auto;
+        padding: 1vw 0;
+        /* background-color: lightgreen; */
+    }
+    form.upload-code input.file{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    form.upload-code input.submit{
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        background-color: var(--purple);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+        margin-right: 2vw;
+    }
+    form.upload-code input.submit:hover{background-color: chocolate;}
+    form.upload-code .upload-area{
+        border: lightblue 2px dashed;
+        position: relative;
+        cursor: pointer;
+        padding: 1vw 0;
+        text-align: center;
+        color: #798AAF;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        width: 98%;
+        border-radius: 1vw;
+        margin-bottom: 1vw;
+    }
+    .translation-panel .upload-area i{
+        padding-right: 1vw;
+        font-size: 1.8vw;
+    }
 }
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 800px) {
     h1.league-title{

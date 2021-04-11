@@ -84,6 +84,12 @@ router.get('/', (req, res, next) => {
             if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             if(teams[i].league == 'فوتبال ۲ بعدی')      soccer2d++;
         }
+        var user;
+        if(req.user) 
+        {
+            user = req.user;
+        }
+        else         user = false;
         res.render('./game/home', {
             teams,
             soccerLightPrimaryNum,
@@ -99,7 +105,8 @@ router.get('/', (req, res, next) => {
             programmingRooms,
             smartcarRooms,
             soccer2dRooms,
-            room
+            room,
+            user
         });
     })
 });
@@ -168,8 +175,15 @@ router.get('/soccer-light-primary', (req, res, next) => {
                         }
                     }
                 }
-                var user;
-                if(req.user) user = req.user;
+                var user, team = null;
+                if(req.user) 
+                {
+                    user = req.user;
+                    teams.forEach(t => {
+                        if(t._id == user.teamID) 
+                            team = t;
+                    });
+                }
                 else         user = false;
                 res.render('./game/soccer-light-primary', {
                     teams,
@@ -177,7 +191,9 @@ router.get('/soccer-light-primary', (req, res, next) => {
                     game,
                     games,
                     round,
-                    user
+                    user,
+                    team,
+                    page: '/game/soccer-light-primary'
                 });
             });
         });
@@ -248,8 +264,15 @@ router.get('/soccer-light-secondary', (req, res, next) => {
                         }
                     }
                 }
-                var user;
-                if(req.user) user = req.user;
+                var user, team = null;
+                if(req.user) 
+                {
+                    user = req.user;
+                    teams.forEach(t => {
+                        if(t._id == user.teamID) 
+                            team = t;
+                    });
+                }
                 else         user = false;
                 res.render('./game/soccer-light-secondary', {
                     teams,
@@ -257,7 +280,9 @@ router.get('/soccer-light-secondary', (req, res, next) => {
                     game,
                     games,
                     round,
-                    user
+                    user,
+                    team,
+                    page: '/game/soccer-light-secondary'
                 });
             });
         });
@@ -327,8 +352,15 @@ router.get('/soccer-open', (req, res, next) => {
                         }
                     }
                 }
-                var user;
-                if(req.user) user = req.user;
+                var user, team = null;
+                if(req.user) 
+                {
+                    user = req.user;
+                    teams.forEach(t => {
+                        if(t._id == user.teamID) 
+                            team = t;
+                    });
+                }
                 else         user = false;
                 res.render('./game/soccer-open', {
                     teams,
@@ -336,7 +368,9 @@ router.get('/soccer-open', (req, res, next) => {
                     game,
                     games,
                     round,
-                    user
+                    user,
+                    team,
+                    page: '/game/soccer-open'
                 });
             });
         });
@@ -371,8 +405,15 @@ router.get('/smartcar', (req, res, next) => {
                         }
                     }
                 }
-                var user;
-                if(req.user) user = req.user;
+                var user, team = null;
+                if(req.user) 
+                {
+                    user = req.user;
+                    teams.forEach(t => {
+                        if(t._id == user.teamID) 
+                            team = t;
+                    });
+                }
                 else         user = false;
                 res.render('./game/smartcar', {
                     teams,
@@ -380,7 +421,9 @@ router.get('/smartcar', (req, res, next) => {
                     game,
                     games,
                     round,
-                    user
+                    user,
+                    team,
+                    page: '/game/smartcar'
                 });
             });
         });

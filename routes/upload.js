@@ -37,7 +37,7 @@ router.post('/blue-code', ensureAuthenticated, upload.single('myFile'), (req, re
         };
         Team.updateOne({_id: req.user.teamID}, {$set: {blueFile: newFile}}, (err, doc) => {
             if(err) console.log(err);
-            res.redirect('/dashboard');
+            res.redirect(req.body.page);
         });
     }
 });
@@ -55,7 +55,7 @@ router.post('/red-code', ensureAuthenticated, upload.single('myFile'), (req, res
         };
         Team.updateOne({_id: req.user.teamID}, {$set: {redFile: newFile}}, (err, doc) => {
             if(err) console.log(err);
-            res.redirect('/dashboard');
+            res.redirect(req.body.page);
         });
     }
 });
