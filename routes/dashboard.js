@@ -6,6 +6,7 @@ var User = require('../models/User');
 var Team = require('../models/Team');
 var Game = require('../models/Game');
 var Setting = require('../models/Setting');
+var Todo = require('../models/Todo');
 var shamsi = require('../config/shamsi');
 var excel = require('excel4node');
 
@@ -80,10 +81,14 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
     else if(req.user.role == 'refree'){
         Team.find({}, (err, teams) => {
             Game.find({}, (err, games) => {
-                res.render('./dashboard/refree-dashboard',{
-                    user: req.user,
-                    teams,
-                    games
+                Todo.find({}, (err, todos) => {
+                    // console.log(todos);
+                    res.render('./dashboard/refree-dashboard',{
+                        user: req.user,
+                        teams,
+                        games,
+                        todos
+                    });
                 });
             });
         });
@@ -1267,6 +1272,34 @@ router.get('/double-price-a', ensureAuthenticated, (req, res, next) =>{
             }
         });
         res.redirect('/dashboard');
+    }
+});
+
+router.post('/add-todo', ensureAuthenticated, (req, res, next) => {
+    const content = req.body.content;
+    if(req.user.role == 'refree')
+    {
+        var d = new Date();
+        const newTodo = new Todo({
+            content: content,
+            date: Date.now(),
+            time: `${d.getHours()}:${d.getMinutes()}`
+        });
+        newTodo.save().then(doc => {
+            res.redirect('/dashboard');
+        }).catch(err => {
+            if(err) console.log(err);
+        });
+    }
+});
+
+router.get('/remove-todo', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree')
+    {
+        Todo.deleteOne({_id: req.query.id}, err =>{
+            if(err) console.log(err);
+            res.redirect('/dashboard');
+        })
     }
 });
 

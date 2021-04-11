@@ -1,0 +1,92 @@
+.overfelow-hidden{
+    overflow: hidden;
+}
+.refree-links{
+    float: right;
+    width: 50%;
+}
+.refree-todo{
+    float: right;
+    width: 40%;
+}
+.refree-todo h1.todo-title{
+    color: var(--purple);
+    font-family: 'iransans';
+    font-size: 1.3vw;
+    text-align: center;
+}
+.refree-todo form{
+    text-align: center;
+    padding: 0.6vw 0;
+}
+.refree-todo input.textinput{
+    font-family: 'iransans';
+    font-size: 1vw;
+    padding: 0.5vw 2vw;
+    border-radius: 1.5vw;
+    border: white 0.1vw solid;
+    box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+    width: 70%;
+}
+.refree-todo input.textinput:focus{
+    outline: none;
+    border: var(--purple) 0.1vw solid;
+}
+.refree-todo input.submit{
+    font-family: 'iransans';
+    font-size: 1vw;
+    padding: 0.5vw 2vw;
+    border-radius: 1.5vw;
+    border: none;
+    box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+    background-color: var(--purple);
+    color: white;
+    margin-right: 1vw;
+}
+.scroll-area{
+    /* background-color: lightblue; */
+    height: 30vw;
+    overflow-y: scroll;
+    border-top: lightgray 0.1vw solid;
+}
+.scroll-area::-webkit-scrollbar{
+    display: none;
+}
+.refree-todo .todo-content{
+    width: 95%;
+    margin: 1vw auto;
+    background-color: lightcyan;
+    border-radius: 1vw;
+    position: relative;
+}
+.refree-todo .todo-content .text{
+    color: rgb(70, 83, 95);
+    padding: 1vw;
+    font-size: 1.1vw;
+    text-align: justify;
+}
+.refree-todo .todo-content .time{
+    color: rgb(130, 135, 139);
+    padding-right: 1vw;
+    padding-bottom: 0.5vw;
+    text-align: justify;
+    font-size: 0.8vw;
+}
+.refree-todo .todo-content .actions{
+    position: absolute;
+    bottom: 0;
+    left: 1vw;
+    overflow: hidden;
+}
+.refree-todo .todo-content .actions .icon{
+    float: left;
+    margin: 0 0.5vw;
+    font-size: 1.4vw;
+    cursor: pointer;
+}
+.refree-todo .todo-content .actions .icon.delete{
+    color: rgb(231, 145, 83);
+}
+.refree-todo .todo-content .actions .icon.done{
+    color: rgb(83, 231, 145);
+}
