@@ -9,8 +9,9 @@ var Setting = require('../models/Setting');
 var shamsi = require('../config/shamsi');
 var excel = require('excel4node');
 
-const memberPrice = 750000;
-const cupPrice = 750000;
+const memberPrice = 750000 * 2;
+const mentorPrice = 750000 * 2;
+const cupPrice = 750000 * 2;
 
 
 // Team.deleteMany({}, (err) => console.log(err));
@@ -102,7 +103,7 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
     // I'm writing this part of code. but the only thing that 
     // I can think is that she left me and its all because of me. I loved her and I still do :(
     var {teamName, mentor, email, phone, affiliation, league} = req.body;
-    var price = 750000;
+    var price = mentorPrice;
     Team.findOne({teamName: teamName}, (err, foundTeam) => {
         if(!foundTeam)
         {
@@ -1241,5 +1242,32 @@ router.post('/edit-goalB', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/double-price', ensureAuthenticated, (req, res, next) =>{
+    if(req.user.role == 'admin')
+    {
+        Team.find({payed: false}, (err, teams) => {
+            for (let i = 0; i < teams.length; i++) {
+                Team.updateMany({_id: teams[i]._id}, {$set: {price: (teams[i].price * 2)}}, (err, doc)=> {
+                    if(err) console.log(err);
+                });
+            }
+        });
+        res.redirect('/dashboard');
+    }
+});
+
+router.get('/double-price-a', ensureAuthenticated, (req, res, next) =>{
+    if(req.user.role == 'admin')
+    {
+        Team.find({payed: false}, (err, teams) => {
+            for (let i = 0; i < teams.length; i++) {
+                Team.updateMany({_id: teams[i]._id}, {$set: {price: (teams[i].price / 2)}}, (err, doc)=> {
+                    if(err) console.log(err);
+                });
+            }
+        });
+        res.redirect('/dashboard');
+    }
+});
 
 module.exports = router;

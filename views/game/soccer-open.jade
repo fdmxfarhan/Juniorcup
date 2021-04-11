@@ -20,10 +20,14 @@ block content
             //-     a.active(href="/game/soccer-light?field=C&round=#{round}") زمین C
             //- -else 
             //-     a(href="/game/soccer-light?field=C&round=#{round}") زمین C
-            -if(field == 'D')
-                a.active(href="/game/soccer-open?field=D&round=#{round}") زمین D
+            //- -if(field == 'D')
+            //-     a.active(href="/game/soccer-open?field=D&round=#{round}") زمین D
+            //- -else 
+            //-     a(href="/game/soccer-open?field=D&round=#{round}") زمین D
+            -if(field == 'E')
+                a.active(href="/game/soccer-open?field=E&round=#{round}") زمین E
             -else 
-                a(href="/game/soccer-open?field=D&round=#{round}") زمین D
+                a(href="/game/soccer-open?field=E&round=#{round}") زمین E
         
         .chat-container 
             .chat-view 

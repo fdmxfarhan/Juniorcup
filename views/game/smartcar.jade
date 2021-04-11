@@ -130,7 +130,59 @@ block content
     //-             td= teams[i].technical
     //-             td= teams[i].score
     //-     -}
-
+    h1.table-title#game-table جدول بازی ها 
+        -if(round == 1)
+            a.round.active(href="/game/smartcar?field=#{field}&round=1#game-table") راند ۱
+        -else
+            a.round(href="/game/smartcar?field=#{field}&round=1#game-table") راند ۱
+        -if(round == 2)
+            a.round.active(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
+        -else
+            a.round(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
+        -if(round == 3)
+            a.round.active(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
+        -else
+            a.round(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
+        -if(round == 4)
+            a.round.active(href="/game/smartcar?field=#{field}&round=4#game-table") راند ۴
+        -else
+            a.round(href="/game/smartcar?field=#{field}&round=4#game-table") راند ۴
+        -if(round == 5)
+            a.round.active(href="/game/smartcar?field=#{field}&round=5#game-table") راند ۵
+        -else
+            a.round(href="/game/smartcar?field=#{field}&round=5#game-table") راند ۵
+    table.score-table
+        tr 
+            th ردیف
+            th نام تیم
+            th زمین
+            th ساعت
+            th رکورد
+        -for(var i=0; i<games.length; i++){
+            tr 
+                td= i+1
+                td= games[i].teamA.teamName
+                td= games[i].field
+                td= games[i].time
+                td 
+                    -if(games[i].goalA != 0)
+                        | #{games[i].goalA}
+        -}
+    h1.table-title جدول امتیازات
+    table.score-table
+        tr 
+            th رتبه
+            th نام تیم
+            th امتیاز نهایی
+            th زمان
+        -for(var i=0; i<teams.length; i++){
+            tr 
+                td= i + 1
+                td= teams[i].teamName
+                td= teams[i].score
+                td= teams[i].time
+        -}
+        
     script(src="/javascripts/game.js") 
     script(src="/javascripts/chatClient.js") 
 
