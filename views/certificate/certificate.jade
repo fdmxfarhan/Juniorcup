@@ -1,0 +1,23 @@
+extends ../layout
+block styles
+    link(rel="stylesheet", href="stylesheets/certificate.css")
+
+block content
+    .certificate 
+        h1.title #{member.fullName} از تیم #{team.teamName}
+        form(action="/certificate" method="POST") 
+            label(for="englishFirstName") نام (به انگلیسی):
+            input(type="text" name="englishFirstName" placeholder="first name...")
+            br
+            label(for="englishLastName") نام خانوادگی (به انگلیسی):
+            input(type="text" name="englishLastName" placeholder="last name...")
+            br
+            label(for="englishAffiliation") وابستگی (به انگلیسی):
+            input(type="text" name="englishAffiliation" placeholder="Affiliation...")
+            br
+            input.hidden(type="text" name="league" value="#{team.league}")
+            input.hidden(type="text" name="phoneNumber" value="#{member.phone}")
+            input.hidden(type="text" name="teamName" value="#{team.teamName}")
+            input.hidden(type="text" name="teamID" value="#{team._id}")
+            input.hidden(type="text" name="idNumber" value="#{member.idNumber}")
+            input.submit(type="submit" value="ثبت")

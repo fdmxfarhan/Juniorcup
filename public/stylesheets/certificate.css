@@ -1,0 +1,166 @@
+
+.hidden{display: none;}
+.green{color: green;}
+.red{color: red;}
+
+
+@media only screen and (min-width: 800px) {
+    .identification{
+        background-color: white;
+        border-radius: 2vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 40%;
+        margin: 3vw auto;
+        padding: 3vw 3vw;
+        text-align: center;
+    }
+    .identification h1{
+        color: var(--purple);
+        font-size: 1.4vw;
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 1vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        padding-bottom: 1vw;
+    }
+    .identification .textinput{
+        border-radius: 2vw;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 90%;
+        margin: 2vw auto;
+    }
+    .identification .textinput input{
+        border: none;
+        width: 80%;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.5vw 1vw;
+    }
+    .identification .textinput input:focus{outline: none;}
+    .identification .textinput i{
+        font-size: 1.2vw;
+        color: var(--purple);
+    }
+    .identification input.submit{
+        background-color: var(--purple);
+        color: white;
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.5vw 3vw;
+        border-radius: 2vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .identification input.submit:focus{outline: none;}
+    .identification input.submit:hover{
+        background-color: chocolate;
+    }
+
+    /* ---------------------------------------------------------------------------- */
+    /* ------------------------------ flag ---------------------------------------- */
+
+    .certificate {
+        background-color: white;
+        border-radius: 2vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 50%;
+        margin: 3vw auto;
+        padding: 3vw 3vw;
+        text-align: center;
+    }
+    .certificate h1{
+        color: var(--purple);
+        font-size: 1.4vw;
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 1vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        padding-bottom: 1vw;
+    }    
+    .certificate input{
+        border: none;
+        border-radius: 2vw;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        /* width: 90%; */
+        margin: 1vw auto;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.5vw 2vw;
+        margin-right: 1vw;
+        text-align: left;
+        direction: ltr;
+    }
+    .certificate input:focus{outline: none;}
+    .certificate input.submit{
+        background-color: var(--purple);
+        color: white;
+        border: none;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        padding: 0.5vw 3vw;
+        border-radius: 2vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+
+    }
+
+}
+
+
+@media only screen and (max-width: 800px) {
+    .identification{
+        background-color: white;
+        border-radius: 4vw;
+        box-shadow: 0 0 2vw 0.3vw rgba(0, 0, 0, 0.2);
+        width: 80%;
+        margin: 6vw auto;
+        padding: 6vw 6vw;
+        text-align: center;
+    }
+    .identification h1{
+        color: var(--purple);
+        font-size: 3.4vw;
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 7vw;
+        border-bottom: var(--purple) 0.2vw solid;
+        padding-bottom: 1vw;
+    }
+    .identification .textinput{
+        border-radius: 4vw;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 90%;
+        margin: 5vw auto;
+    }
+    .identification .textinput input{
+        border: none;
+        width: 80%;
+        font-family: 'iransans';
+        font-size: 3.2vw;
+        padding: 1vw 3vw;
+    }
+    .identification .textinput input:focus{outline: none;}
+    .identification .textinput i{
+        font-size: 3.2vw;
+        color: var(--purple);
+    }
+    .identification input.submit{
+        background-color: var(--purple);
+        color: white;
+        border: none;
+        font-family: 'iransans';
+        font-size: 3.2vw;
+        padding: 1vw 6vw;
+        border-radius: 4vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+    }
+    .identification input.submit:focus{outline: none;}
+    .identification input.submit:hover{
+        background-color: chocolate;
+    }
+}
+

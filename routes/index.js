@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Gallery = require('../models/Gallery');
 const Team = require('../models/Team');
+const Certificate = require('../models/Certificate');
 
 const competitionDate = new Date('April 15, 2021 07:00:00');
 
@@ -147,6 +148,54 @@ router.get('/gb', (req, res, next)=>{
         res.render('./GBboard/info', {
         user: false
         });
+    }
+});
+
+router.get('/edit-info', (req, res, next) => {
+    res.render('./certificate/edit-info');
+});
+
+router.post('/edit-info', (req, res, next) => {
+    var rendered = false;
+    Team.find({}, (err, teams) => {
+        teams.forEach(team => {
+            team.members.forEach(member => {
+                if(member.idNumber == req.body.idNumber)
+                {
+                    rendered = true;
+                    res.render('./certificate/certificate', {
+                        member,
+                        team
+                    });
+                    return;
+                }
+            });
+        });
+        if(!rendered) res.send('id not found');
+    })
+});
+
+router.post('/certificate', (req, res, next) => {
+    var {idNumber, englishFirstName, englishLastName, englishAffiliation, league, phoneNumber, teamName, teamID} = req.body;
+    if(!idNumber || !englishFirstName || !englishLastName || !englishAffiliation || !league || !phoneNumber || !teamName || !teamID)
+    {
+        res.send('error');
+    }
+    else
+    {
+        var englishLeague;
+        if(league == "فوتبالیست سبک وزن primary")    englishLeague = 'Soccer Lihgt Weight Primary'           
+        if(league == "فوتبالیست سبک وزن secondary")  englishLeague = 'Soccer Lihgt Weight Secondary'             
+        if(league == "فوتبالیست وزن آزاد")           englishLeague = 'Soccer Open Weight'   
+        if(league == "امداد فضای مشترک")             englishLeague = 'Cospace'   
+        if(league == "برنامه نویسی")                 englishLeague = 'Programming'   
+        if(league == "خودروهای هوشمند")              englishLeague = 'Smart Cars'   
+        if(league == "فوتبال ۲ بعدی")                englishLeague = 'Soccer 2D'   
+        if(league == "virtual rescue")               englishLeague = 'Virtual Rescue'  
+        const newCertificate = new Certificate({idNumber, englishFirstName, englishLastName, englishAffiliation, englishLeague, phoneNumber, teamName, teamID});
+        newCertificate.save().then(doc => {
+            res.render('./certificate/seccess');
+        }).catch(err => {if(err) console.log(err);});
     }
 });
 
