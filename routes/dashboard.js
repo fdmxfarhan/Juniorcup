@@ -6,11 +6,13 @@ var User = require('../models/User');
 var Team = require('../models/Team');
 var Game = require('../models/Game');
 var Setting = require('../models/Setting');
+var Todo = require('../models/Todo');
 var shamsi = require('../config/shamsi');
 var excel = require('excel4node');
 
-const memberPrice = 750000;
-const cupPrice = 750000;
+const memberPrice = 750000 * 2;
+const mentorPrice = 750000 * 2;
+const cupPrice = 750000 * 2;
 
 
 // Team.deleteMany({}, (err) => console.log(err));
@@ -79,10 +81,14 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
     else if(req.user.role == 'refree'){
         Team.find({}, (err, teams) => {
             Game.find({}, (err, games) => {
-                res.render('./dashboard/refree-dashboard',{
-                    user: req.user,
-                    teams,
-                    games
+                Todo.find({}, (err, todos) => {
+                    // console.log(todos);
+                    res.render('./dashboard/refree-dashboard',{
+                        user: req.user,
+                        teams,
+                        games,
+                        todos
+                    });
                 });
             });
         });
@@ -102,7 +108,7 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
     // I'm writing this part of code. but the only thing that 
     // I can think is that she left me and its all because of me. I loved her and I still do :(
     var {teamName, mentor, email, phone, affiliation, league} = req.body;
-    var price = 750000;
+    var price = mentorPrice;
     Team.findOne({teamName: teamName}, (err, foundTeam) => {
         if(!foundTeam)
         {
@@ -1241,5 +1247,60 @@ router.post('/edit-goalB', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/double-price', ensureAuthenticated, (req, res, next) =>{
+    if(req.user.role == 'admin')
+    {
+        Team.find({payed: false}, (err, teams) => {
+            for (let i = 0; i < teams.length; i++) {
+                Team.updateMany({_id: teams[i]._id}, {$set: {price: (teams[i].price * 2)}}, (err, doc)=> {
+                    if(err) console.log(err);
+                });
+            }
+        });
+        res.redirect('/dashboard');
+    }
+});
+
+router.get('/double-price-a', ensureAuthenticated, (req, res, next) =>{
+    if(req.user.role == 'admin')
+    {
+        Team.find({payed: false}, (err, teams) => {
+            for (let i = 0; i < teams.length; i++) {
+                Team.updateMany({_id: teams[i]._id}, {$set: {price: (teams[i].price / 2)}}, (err, doc)=> {
+                    if(err) console.log(err);
+                });
+            }
+        });
+        res.redirect('/dashboard');
+    }
+});
+
+router.post('/add-todo', ensureAuthenticated, (req, res, next) => {
+    const content = req.body.content;
+    if(req.user.role == 'refree')
+    {
+        var d = new Date();
+        const newTodo = new Todo({
+            content: content,
+            date: Date.now(),
+            time: `${d.getHours()}:${d.getMinutes()}`
+        });
+        newTodo.save().then(doc => {
+            res.redirect('/dashboard');
+        }).catch(err => {
+            if(err) console.log(err);
+        });
+    }
+});
+
+router.get('/remove-todo', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree')
+    {
+        Todo.deleteOne({_id: req.query.id}, err =>{
+            if(err) console.log(err);
+            res.redirect('/dashboard');
+        })
+    }
+});
 
 module.exports = router;
