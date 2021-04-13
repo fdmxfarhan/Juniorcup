@@ -170,7 +170,7 @@ router.post('/edit-info', (req, res, next) => {
                         member,
                         team
                     });
-                    return;
+                    // return;
                 }
             });
         });
