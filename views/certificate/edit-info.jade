@@ -5,7 +5,7 @@ block styles
 block content
     .identification 
         h1 لطفا کد ملی خود را وارد کنید
-        form(action="/edit-info-check") 
+        form(action="/edit-info" method="POST") 
             .textinput 
                 i.fa.fa-user
                 input(type="text" name="idNumber" placeholder="کد ملی...")
