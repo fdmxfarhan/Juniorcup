@@ -15,9 +15,12 @@ block content
             label(for="englishAffiliation") وابستگی (به انگلیسی):
             input(type="text" name="englishAffiliation" placeholder="Affiliation...")
             br
-            input.hidden(type="text" name="league" value="#{team.league}")
+            input.hidden(type="text" name="persianLeague" value="#{team.league}")
             input.hidden(type="text" name="phoneNumber" value="#{member.phone}")
             input.hidden(type="text" name="teamName" value="#{team.teamName}")
             input.hidden(type="text" name="teamID" value="#{team._id}")
             input.hidden(type="text" name="idNumber" value="#{member.idNumber}")
+            input.hidden(type="text" name="persianName" value="#{member.fullName}")
+            input.hidden(type="text" name="persianAffiliation" value="#{team.affiliation}")
+            
             input.submit(type="submit" value="ثبت")

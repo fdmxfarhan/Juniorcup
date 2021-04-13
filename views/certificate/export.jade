@@ -1,0 +1,25 @@
+extends ../layout
+block styles
+    link(rel="stylesheet", href="stylesheets/certificate.css")
+
+block content
+    a(href="/certificate.xlsx" download) دانلود خروجی
+    table
+        tr 
+            th ردیف
+            th نام
+            th نام خانوادگی
+            th لیگ
+            th وابستگی
+            th نام تیم
+            th کد ملی
+        -for(var i=0; i < certificates.length; i++){
+            tr 
+                td= i+1
+                td= certificates[i].englishFirstName
+                td= certificates[i].englishLastName
+                td= certificates[i].englishLeague
+                td= certificates[i].englishAffiliation
+                td= certificates[i].teamName
+                td= certificates[i].idNumber
+        -}

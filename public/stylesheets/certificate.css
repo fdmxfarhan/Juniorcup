@@ -58,9 +58,7 @@
         background-color: chocolate;
     }
 
-    /* ---------------------------------------------------------------------------- */
-    /* ------------------------------ flag ---------------------------------------- */
-
+    
     .certificate {
         background-color: white;
         border-radius: 2vw;
@@ -106,6 +104,9 @@
         transition-duration: 500ms;
 
     }
+    /* ---------------------------------------------------------------------------- */
+    /* ------------------------------ flag ---------------------------------------- */
+
 
 }
 
@@ -161,6 +162,63 @@
     .identification input.submit:focus{outline: none;}
     .identification input.submit:hover{
         background-color: chocolate;
+    }
+    
+
+
+    .certificate {
+        background-color: white;
+        border-radius: 4vw;
+        border: lightgray 0.1vw solid;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 80%;
+        margin: 3vw auto;
+        padding: 3vw 3vw;
+        text-align: center;
+    }
+    .certificate h1{
+        color: var(--purple);
+        font-size: 3.4vw;
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 3vw;
+        border-bottom: var(--purple) 0.3vw solid;
+        padding-bottom: 3vw;
+    }    
+    .certificate form{
+        text-align: center;
+    }
+    .certificate label{
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        display: block;
+        text-align: center;
+    }
+    .certificate input{
+        border: none;
+        border-radius: 4vw;
+        box-shadow: 0 0 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+        width: 80%;
+        margin: 3vw auto;
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        padding: 1vw 3vw;
+        text-align: center;
+        direction: ltr;
+
+    }
+    .certificate input:focus{outline: none;}
+    .certificate input.submit{
+        background-color: var(--purple);
+        color: white;
+        border: none;
+        font-family: 'iransans';
+        font-size: 4vw;
+        padding: 1vw 6vw;
+        border-radius: 4vw;
+        cursor: pointer;
+        transition-duration: 500ms;
+
     }
 }
 
