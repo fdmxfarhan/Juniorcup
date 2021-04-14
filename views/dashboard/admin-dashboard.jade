@@ -71,8 +71,12 @@ block content
             h1
                 i.fa.fa-dollar
                 | پرداخت شده
-            .number.lightgreen #{payedAmount}
-                | ریال
+            -if(user.username == "fdmxfarhan"){
+                .number.lightgreen #{payedAmount}
+                    | ریال
+            -}else {
+                .number.lightgreen دسترسی مجاز نیست
+            -}
             h1
                 i.fa.fa-dollar
                 | پرداخت نشده
