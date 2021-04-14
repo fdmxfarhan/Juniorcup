@@ -571,7 +571,7 @@ router.get('/soccer-light-secondary', ensureAuthenticated, (req, res, next) => {
 
 router.get('/soccer-light-primary-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
-        Team.find({league: 'فوتبالیست سبک وزن primary'}, (err, teams) => {
+        Team.find({league: 'فوتبالیست سبک وزن primary', payed: true}, (err, teams) => {
             var workbook = new excel.Workbook();
             var worksheet = workbook.addWorksheet('Sheet 1');
             var style = workbook.createStyle({
@@ -669,7 +669,7 @@ router.get('/soccer-light-primary-score', ensureAuthenticated, (req, res, next) 
 
 router.get('/soccer-light-secondary-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
-        Team.find({league: 'فوتبالیست سبک وزن secondary'}, (err, teams) => {
+        Team.find({league: 'فوتبالیست سبک وزن secondary', payed: true}, (err, teams) => {
             var workbook = new excel.Workbook();
             var worksheet = workbook.addWorksheet('Sheet 1');
             var style = workbook.createStyle({
@@ -784,7 +784,7 @@ router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
 
 router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
-        Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
+        Team.find({league: 'فوتبالیست وزن آزاد', payed: true}, (err, teams) => {
             var workbook = new excel.Workbook();
             var worksheet = workbook.addWorksheet('Sheet 1');
             var style = workbook.createStyle({
@@ -882,7 +882,7 @@ router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
 
 router.get('/smartcar-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
-        Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
+        Team.find({league: 'خودروهای هوشمند', payed: true}, (err, teams) => {
             var workbook = new excel.Workbook();
             var worksheet = workbook.addWorksheet('Sheet 1');
             var style = workbook.createStyle({
@@ -932,7 +932,7 @@ router.get('/smartcar-score', ensureAuthenticated, (req, res, next) => {
 
 router.get('/soccer2d-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
-        Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
+        Team.find({league: 'فوتبال ۲ بعدی', payed: true}, (err, teams) => {
             res.render('./dashboard/refree-soccer2d-score',{
                 user: req.user,
                 teams
