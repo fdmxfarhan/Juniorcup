@@ -1339,7 +1339,10 @@ router.get('/remove-todo', ensureAuthenticated, (req, res, next) => {
 router.get('/admin-change-idnumber', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.find({}, (err, teams) => {
-            res.render('./dashboard/admin-upgrade-member', {teams});
+            res.render('./dashboard/admin-upgrade-member', {
+                teams,
+                user: req.user
+            });
         });
     }
 });
