@@ -972,6 +972,7 @@ router.get('/soccer2d', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+
 router.post('/refree-soccer-light-primary-score', ensureAuthenticated, (req, res, next) => {
     var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
     if(req.user.role == 'refree'){
