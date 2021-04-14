@@ -9,14 +9,14 @@ block content
     .tab-view 
         
         .tab-links-with-chat
-            //- -if(field == 'A')
-            //-     a.active(href="/game/soccer-light-secondary?field=A&round=#{round}") زمین A
-            //- -else
-            //-     a(href="/game/soccer-light-secondary?field=A&round=#{round}") زمین A
-            //- -if(field == 'B')
-            //-     a.active(href="/game/soccer-light-secondary?field=B&round=#{round}") زمین B
-            //- -else 
-            //-     a(href="/game/soccer-light-secondary?field=B&round=#{round}") زمین B
+            -if(field == 'A')
+                a.active(href="/game/soccer-light-secondary?field=A&round=#{round}") زمین A
+            -else
+                a(href="/game/soccer-light-secondary?field=A&round=#{round}") زمین A
+            -if(field == 'B')
+                a.active(href="/game/soccer-light-secondary?field=B&round=#{round}") زمین B
+            -else 
+                a(href="/game/soccer-light-secondary?field=B&round=#{round}") زمین B
             -if(field == 'C')
                 a.active(href="/game/soccer-light-secondary?field=C&round=#{round}") زمین C
             -else 
@@ -25,6 +25,10 @@ block content
                 a.active(href="/game/soccer-light-secondary?field=D&round=#{round}") زمین D
             -else 
                 a(href="/game/soccer-light-secondary?field=D&round=#{round}") زمین D
+            -if(field == 'E')
+                a.active(href="/game/soccer-light-secondary?field=E&round=#{round}") زمین E
+            -else 
+                a(href="/game/soccer-light-secondary?field=E&round=#{round}") زمین E
         .chat-container 
             .chat-view 
                 h1.chat-title زمین #{field}
