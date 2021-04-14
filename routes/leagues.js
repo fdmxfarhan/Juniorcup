@@ -76,7 +76,7 @@ router.get('/smartcar', (req, res, next) => {
 });
 
 router.get('/cospace', (req, res, next) => {
-    Team.find({league: 'امداد فضای مشترک'}, (err, teams) => {
+    Team.find({league: 'امداد فضای مشترک', payed: true}, (err, teams) => {
         res.render('./leagues/cospace', {teams});
     });
 });
