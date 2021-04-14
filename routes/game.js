@@ -116,7 +116,7 @@ router.get('/soccer-light-primary', (req, res, next) => {
     if(!field) field = 'A';
     var round = req.query.round;
     if(!round) round = 1;
-    Team.find({league: 'فوتبالیست سبک وزن primary'}, (err, teams) => {
+    Team.find({league: 'فوتبالیست سبک وزن primary', payed: true}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبالیست سبک وزن primary', started: true}, (err, game) => {
             Game.find({league: 'فوتبالیست سبک وزن primary', round: round}, (err, games) => {
                 if(err) console.log(err);
@@ -205,7 +205,7 @@ router.get('/soccer-light-secondary', (req, res, next) => {
     if(!field) field = 'C';
     var round = req.query.round;
     if(!round) round = 1;
-    Team.find({league: 'فوتبالیست سبک وزن secondary'}, (err, teams) => {
+    Team.find({league: 'فوتبالیست سبک وزن secondary', payed: true}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبالیست سبک وزن secondary', started: true}, (err, game) => {
             Game.find({league: 'فوتبالیست سبک وزن secondary', round: round}, (err, games) => {
                 if(err) console.log(err);
@@ -293,7 +293,7 @@ router.get('/soccer-open', (req, res, next) => {
     var field = 'E';
     var round = req.query.round;
     if(!round) round = 1;
-    Team.find({league: 'فوتبالیست وزن آزاد'}, (err, teams) => {
+    Team.find({league: 'فوتبالیست وزن آزاد', payed: true}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبالیست وزن آزاد', started: true}, (err, game) => {
             Game.find({league: 'فوتبالیست وزن آزاد', round: round}, (err, games) => {
                 if(err) console.log(err);
@@ -382,7 +382,7 @@ router.get('/smartcar', (req, res, next) => {
     if(!field) field = 'F';
     var round = req.query.round;
     if(!round) round = 1;
-    Team.find({league: 'خودروهای هوشمند'}, (err, teams) => {
+    Team.find({league: 'خودروهای هوشمند', payed: true}, (err, teams) => {
         Game.findOne({field: field, league: 'خودروهای هوشمند', started: true}, (err, game) => {
             Game.find({league: 'خودروهای هوشمند', round: round}, (err, games) => {
                 if(err) console.log(err);
@@ -433,7 +433,7 @@ router.get('/smartcar', (req, res, next) => {
 router.get('/cospace', (req, res, next) => {
     var {field} = req.query;
     if(!field) field = 'H';
-    Team.find({league: 'امداد فضای مشترک'}, (err, teams) => {
+    Team.find({league: 'امداد فضای مشترک', payed: true}, (err, teams) => {
         res.render('./game/cospace', {
             teams,
             field
@@ -442,14 +442,14 @@ router.get('/cospace', (req, res, next) => {
 });
 
 router.get('/programming', (req, res, next) => {
-    Team.find({league: 'برنامه نویسی'}, (err, teams) => {
+    Team.find({league: 'برنامه نویسی', payed: true}, (err, teams) => {
         res.render('./game/programming', {teams});
     });
 });
 
 router.get('/soccer2d', (req, res, next) => {
     var field = 'L';
-    Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
+    Team.find({league: 'فوتبال ۲ بعدی', payed: true}, (err, teams) => {
         Game.findOne({field: field, league: 'فوتبال ۲ بعدی', started: true}, (err, game) => {
             if(err) console.log(err);
             // console.log(game);
@@ -474,7 +474,7 @@ router.get('/soccer2d', (req, res, next) => {
 router.get('/virtual-rescue', (req, res, next) => {
     var {field} = req.query;
     if(!field) field = 'M';
-    Team.find({league: 'virtual rescue'}, (err, teams) => {
+    Team.find({league: 'virtual rescue', payed: true}, (err, teams) => {
         res.render('./game/virtual-rescue', {
             teams,
             field
