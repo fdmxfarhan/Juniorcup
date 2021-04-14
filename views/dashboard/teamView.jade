@@ -23,9 +23,14 @@ block content
                     -else
                         .purple در حال بررسی
             -if(team.qualified && !team.payed){
-                a.pay(href="/payment/pay-team?id=#{team._id}") 
-                    i.fa.fa-tag
-                    | پرداخت هزینه
+                -if(team.league == "فوتبالیست سبک وزن primary" || team.league == "فوتبالیست سبک وزن secondary" || team.league == "فوتبالیست وزن آزاد"){
+                    a.pay 
+                        | زمان پرداخت به پایان رسیده 
+                -}else{
+                    a.pay(href="/payment/pay-team?id=#{team._id}") 
+                        i.fa.fa-tag
+                        | پرداخت هزینه
+                -}
             -}
         .part
             h1.info-title اعضا
