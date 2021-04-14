@@ -1336,4 +1336,25 @@ router.get('/remove-todo', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/admin-change-idnumber', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Teams.find({}, (err, teams) => {
+            res.render('./dashboard/admin-upgrade-member', {teams});
+        });
+    }
+});
+
+router.post('/change-idnumber', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.findOne({_id: req.body.teamID}, (err, team) => {
+            var members = team.members;
+            members[req.body.number].idNumber = req.body.idNumber;
+            Team.updateOne({_id: req.body.teamID}, {$set: {members}}, (err, doc) => {
+                res.redirect('/dashboard/admin-change-idnumber');
+            });
+        });
+    }
+});
+
 module.exports = router;

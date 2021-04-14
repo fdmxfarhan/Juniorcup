@@ -1,0 +1,12 @@
+extends ../layout
+block styles
+    link(rel="stylesheet", href="stylesheets/certificate.css")
+
+block content
+    .identification 
+        h1 لطفا کد ملی خود را وارد کنید
+        form(action="/certificate/download" method="POST") 
+            .textinput 
+                i.fa.fa-user
+                input(type="text" name="idNumber" placeholder="کد ملی...")
+            input.submit(type="submit" value="بررسی")

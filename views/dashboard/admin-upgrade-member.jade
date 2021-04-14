@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    .upgrade-user-panel
+        form.team(action="/dashboard/change-idnumber" method="POST") 
+            select(name="teamID") 
+                -for(var i=0; i<teams.length; i++){
+                    option(value="#{teams[i]._id}")= teams[i].teamName
+                -}
+            input.textinput(type="number" name="number")
+            input.textinput(type="text" name="idNumber")
+            input.submit(type="submit" value="ثبت")
+        

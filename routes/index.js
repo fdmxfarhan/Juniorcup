@@ -262,4 +262,31 @@ router.get('/export-certificate', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+
+router.get('/certificate/download', (req, res, next) => {
+    res.render('./certificate/download');
+});
+
+
+router.post('/certificate/download', (req, res, next) => {
+    var rendered = false;
+    Team.find({}, (err, teams) => {
+        teams.forEach(team => {
+            team.members.forEach(member => {
+                // console.log(member);
+                if(member.idNumber == req.body.idNumber && !rendered)
+                {
+                    rendered = true;
+                    res.render('./certificate/download-certificate', {
+                        member,
+                        team
+                    });
+                    return;
+                }
+            });
+        });
+        if(!rendered) res.send('id not found');
+    })
+});
+
 module.exports = router;
