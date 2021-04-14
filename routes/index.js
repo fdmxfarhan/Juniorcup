@@ -273,13 +273,13 @@ router.post('/certificate/download', (req, res, next) => {
     Team.find({}, (err, teams) => {
         teams.forEach(team => {
             team.members.forEach(member => {
-                // console.log(member);
                 if(member.idNumber == req.body.idNumber && !rendered)
                 {
                     rendered = true;
                     res.render('./certificate/download-certificate', {
                         member,
-                        team
+                        team,
+                        id: req.body.idNumber
                     });
                     return;
                 }
