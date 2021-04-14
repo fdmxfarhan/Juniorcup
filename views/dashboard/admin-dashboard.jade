@@ -42,21 +42,23 @@ block content
             a.admin-link(href="/dashboard/teams-list") 
                 i.fa.fa-users 
                 | لیست تیم ها 
-            -if(setting.register){
-                a.admin-link(href="/dashboard/register-off") 
-                    i.fa.fa-plus
-                    | ثبت نام تیم ها باز
-            -} else{
-                a.admin-link(href="/dashboard/register-on") 
-                    i.fa.fa-plus
-                    | ثبت نام تیم ها بسته
+            -if(user.username == "fdmxfarhan"){
+                -if(setting.register){
+                    a.admin-link(href="/dashboard/register-off") 
+                        i.fa.fa-plus
+                        | ثبت نام تیم ها باز
+                -} else{
+                    a.admin-link(href="/dashboard/register-on") 
+                        i.fa.fa-plus
+                        | ثبت نام تیم ها بسته
+                -}
+                a.admin-link(href="/dashboard/reset-game-admin") 
+                    i.fa.fa-refresh
+                    | ریست کردن بازی ها
+                a.admin-link(href="/dashboard/double-price") 
+                    i.fa.fa-refresh
+                    | دوبرابر کردن هزینه ها
             -}
-            a.admin-link(href="/dashboard/reset-game-admin") 
-                i.fa.fa-refresh
-                | ریست کردن بازی ها
-            a.admin-link(href="/dashboard/double-price") 
-                i.fa.fa-refresh
-                | دوبرابر کردن هزینه ها
             a.admin-link(href="/export-certificate") 
                 i.fa.fa-refresh
                 | لیست سرتیفیکیت
@@ -66,26 +68,20 @@ block content
             //- a.admin-link(href="/dashboard/delete-member-account") 
             //-     i.fa.fa-trash
             //-     | پاک کردن همه اکانت های دانش آموزان
-
-        .info-card
-            h1
-                i.fa.fa-dollar
-                | پرداخت شده
-            -if(user.username == "fdmxfarhan"){
+        
+        -if(user.username == "fdmxfarhan"){
+            .info-card
+                h1
+                    i.fa.fa-dollar
+                    | پرداخت شده
                 .number.lightgreen #{payedAmount}
                     | ریال
-            -}else {
-                .number.lightgreen دسترسی مجاز نیست
-            -}
-            h1
-                i.fa.fa-dollar
-                | پرداخت نشده
-            -if(user.username == "fdmxfarhan"){
+                h1
+                    i.fa.fa-dollar
+                    | پرداخت نشده
                 .number.lightred #{notPayedAmount}
                     | ریال
-            -}else {
-                .number.lightgreen دسترسی مجاز نیست
-            -}
+        -}
         .info-card
             h1
                 i.fa.fa-pencil
