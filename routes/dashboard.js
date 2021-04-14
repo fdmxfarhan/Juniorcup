@@ -222,6 +222,38 @@ router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
     else res.send('Access Denied!!')
 });
 
+router.get('/teams-list-notpayed', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.find({payed: false}, (err, teams) => {
+            if(err) console.log(err);
+            else{
+                res.render('./dashboard/admin-teams-list', {
+                    user: req.user,
+                    teams: teams
+                });
+            }
+        });
+    }
+    else res.send('Access Denied!!')
+});
+
+router.get('/teams-list-payed', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.find({payed: true}, (err, teams) => {
+            if(err) console.log(err);
+            else{
+                res.render('./dashboard/admin-teams-list', {
+                    user: req.user,
+                    teams: teams
+                });
+            }
+        });
+    }
+    else res.send('Access Denied!!')
+});
+
 router.get('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {

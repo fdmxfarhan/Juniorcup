@@ -11,14 +11,16 @@ block content
                 th زمان
                 th ویرایش
             -for(var i=0; i<teams.length; i++){
-                tr 
-                    td= i + 1
-                    td= teams[i].teamName
-                    td= teams[i].score
-                    td= teams[i].time
-                    td 
-                        a.edit-score(id="edit#{i}")
-                            i.fa.fa-edit
+                -if(teams[i].payed){
+                    tr 
+                        td= i + 1
+                        td= teams[i].teamName
+                        td= teams[i].score
+                        td= teams[i].time
+                        td 
+                            a.edit-score(id="edit#{i}")
+                                i.fa.fa-edit
+                -}
             -}
     a.link.return(href="/dashboard/smartcar") بازگشت
     a.download-excel(href="/smartcar.xlsx" download) 

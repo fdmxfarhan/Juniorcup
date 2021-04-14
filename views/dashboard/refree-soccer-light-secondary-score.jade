@@ -40,20 +40,22 @@ block content
                 th امتیاز نهایی
                 th ویرایش
             -for(var i=0; i<teams.length; i++){
-                tr 
-                    td= i + 1
-                    td= teams[i].teamName
-                    td= teams[i].win
-                    td= teams[i].lose
-                    td= teams[i].equals
-                    td= teams[i].goalzade
-                    td= teams[i].goalkhorde
-                    td= teams[i].goalzade - teams[i].goalkhorde
-                    td= teams[i].technical
-                    td= teams[i].score
-                    td 
-                        a.edit-score(id="edit#{i}")
-                            i.fa.fa-edit
+                -if(teams[i].payed){
+                    tr 
+                        td= i + 1
+                        td= teams[i].teamName
+                        td= teams[i].win
+                        td= teams[i].lose
+                        td= teams[i].equals
+                        td= teams[i].goalzade
+                        td= teams[i].goalkhorde
+                        td= teams[i].goalzade - teams[i].goalkhorde
+                        td= teams[i].technical
+                        td= teams[i].score
+                        td 
+                            a.edit-score(id="edit#{i}")
+                                i.fa.fa-edit
+                }
             -}
     a.link.return(href="/dashboard/soccer-light-secondary") بازگشت
     a.download-excel(href="/soccerLightSecondary.xlsx" download) 
