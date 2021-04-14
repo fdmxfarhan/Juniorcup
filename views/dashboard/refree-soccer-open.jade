@@ -87,12 +87,16 @@ block content
         label(for="idA") تیم A: 
         select.teamSelect#teamA(name="idA") 
             -for(var i=0; i<teams.length; i++){
-                option(value="#{teams[i]._id}")= teams[i].teamName
+                -if(teams[i].payed){
+                    option(value="#{teams[i]._id}")= teams[i].teamName
+                -}
             -}
         label(for="idB") تیم B: 
         select.teamSelect#teamB(name="idB") 
             -for(var i=0; i<teams.length; i++){
-                option(value="#{teams[i]._id}")= teams[i].teamName
+                -if(teams[i].payed){
+                    option(value="#{teams[i]._id}")= teams[i].teamName
+                -}
             -}
         label(for="field") زمین: 
         select#field(name="field") 

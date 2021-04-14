@@ -171,17 +171,19 @@ block content
             th امتیاز تکنیکال
             th امتیاز نهایی
         -for(var i=0; i<teams.length; i++){
-            tr 
-                td= i + 1
-                td= teams[i].teamName
-                td= teams[i].win
-                td= teams[i].lose
-                td= teams[i].equals
-                td= teams[i].goalzade
-                td= teams[i].goalkhorde
-                td= teams[i].goalzade - teams[i].goalkhorde
-                td= teams[i].technical
-                td= teams[i].score
+            -if(teams[i].payed){
+                tr 
+                    td= i + 1
+                    td= teams[i].teamName
+                    td= teams[i].win
+                    td= teams[i].lose
+                    td= teams[i].equals
+                    td= teams[i].goalzade
+                    td= teams[i].goalkhorde
+                    td= teams[i].goalzade - teams[i].goalkhorde
+                    td= teams[i].technical
+                    td= teams[i].score
+            -}
         -}
     .saved-videos
         //- <div id="79800482726"><script type="text/JavaScript" src="https://www.aparat.com/embed/vcbf7?data[rnddiv]=79800482726&data[responsive]=yes"></script></div>
