@@ -80,8 +80,10 @@ block content
             h1
                 i.fa.fa-dollar
                 | پرداخت نشده
-            .number.lightred #{notPayedAmount}
-                | ریال
+            -if(user.username == "fdmxfarhan"){
+                .number.lightred #{notPayedAmount}
+                    | ریال
+            -}
         .info-card
             h1
                 i.fa.fa-pencil
