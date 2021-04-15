@@ -32,7 +32,7 @@ block content
                             .info گل زده:‌ #{teamA.goalzade}
                             .info گل خورده:‌ #{teamA.goalkhorde}
                             .info 
-                                a(href="/dashboard/refree-last-code?teamID=#{teamA._id}") 
+                                a(href="/dashboard/refree-last-code?teamID=#{teamA._id}") کد های قبلی
                             .download-files 
                                 -if(teamA.redFile)
                                     a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد ربات 
@@ -53,7 +53,7 @@ block content
                             .info گل زده:‌ #{teamA.goalzade}
                             .info گل خورده:‌ #{teamA.goalkhorde}
                             .info 
-                                a(href="/dashboard/refree-last-code?teamID=#{teamA._id}") 
+                                a(href="/dashboard/refree-last-code?teamID=#{teamA._id}") کد های قبلی
                             .download-files 
                                 -if(teamA.redFile)
                                     a.red-file(href="#{teamA.redFile.path}/#{teamA.redFile.name}" download) کد قرمز 
@@ -75,7 +75,7 @@ block content
                             .info گل زده:‌ #{teamB.goalzade}
                             .info گل خورده:‌ #{teamB.goalkhorde}
                             .info 
-                                a(href="/dashboard/refree-last-code?teamID=#{teamB._id}") 
+                                a(href="/dashboard/refree-last-code?teamID=#{teamB._id}") کد های قبلی
                             .download-files 
                                 -if(teamB.redFile)
                                     a.red-file(href="#{teamB.redFile.path}/#{teamB.redFile.name}" download) کد قرمز 
