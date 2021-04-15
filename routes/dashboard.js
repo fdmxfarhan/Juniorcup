@@ -447,11 +447,11 @@ router.get('/game', ensureAuthenticated, (req, res, next) => {
 router.get('/start-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
-            Game.updateMany({league: game.league}, {$set: {started: false}}, (err, doc) => {
+            // Game.updateMany({league: game.league}, {$set: {started: false}}, (err, doc) => {
                 Game.updateMany({_id: req.query.id}, {$set: {started: true}}, (err, doc) => {
                     res.redirect(`/dashboard/game?id=${req.query.id}`);
                 });
-            });
+            // });
         });
     }
 });
