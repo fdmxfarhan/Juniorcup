@@ -1360,7 +1360,7 @@ router.post('/change-idnumber', ensureAuthenticated, (req, res, next) => {
     }
 });
 
-router.get('refree-last-code', ensureAuthenticated, (req, res, next) => {
+router.get('/refree-last-code', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree')
     {
         Team.findOne({_id: req.query.teamID}, (err, team) => {
