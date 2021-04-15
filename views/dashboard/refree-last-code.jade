@@ -13,7 +13,7 @@ block content
             tr 
                 td= i+1
                 td
-                    a(href="#{blueCode[i].path}/#{blueCode[i].name}" download) 
+                    a(href="#{blueCode[i].path}/#{blueCode[i].name}" download) #{redCode[i].name}
         -}
     h1 قرمز
     table 
@@ -24,5 +24,5 @@ block content
             tr 
                 td= i+1
                 td
-                    a(href="#{redCode[i].path}/#{redCode[i].name}" download) 
+                    a(href="#{redCode[i].path}/#{redCode[i].name}" download) #{redCode[i].name}
         -}
