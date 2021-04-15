@@ -1,0 +1,28 @@
+extends layout
+
+block styles 
+    script(src="/socket.io/socket.io.js")
+
+block content
+    h1 آبی
+    table 
+        tr 
+            th ردیف
+            th دانلود    
+        -for(var i=0; i< blueCode.length; i++){
+            tr 
+                td= i+1
+                td
+                    a(href="#{blueCode[i].path}/#{blueCode[i].name}") 
+        -}
+    h1 قرمز
+    table 
+        tr 
+            th ردیف
+            th دانلود    
+        -for(var i=0; i< redCode.length; i++){
+            tr 
+                td= i+1
+                td
+                    a(href="#{redCode[i].path}/#{redCode[i].name}") 
+        -}

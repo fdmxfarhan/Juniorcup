@@ -59,7 +59,9 @@ var TeamSchema = new mongoose.Schema({
   },
   track_id: Number,
   blueFile: Object,
-  redFile: Object
+  redFile: Object,
+  lastBlueFile: [Object],
+  lastRedFile: [Object]
   
 });
 
