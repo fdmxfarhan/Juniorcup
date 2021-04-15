@@ -290,7 +290,8 @@ router.get('/soccer-light-secondary', (req, res, next) => {
 });
 
 router.get('/soccer-open', (req, res, next) => {
-    var field = 'E';
+    var {field} = req.query;
+    if(!field) field = 'E';
     var round = req.query.round;
     if(!round) round = 1;
     Team.find({league: 'فوتبالیست وزن آزاد', payed: true}, (err, teams) => {
