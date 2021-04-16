@@ -19,7 +19,7 @@ var getMax = (arr) => {
 
 
 
-router.get('/asdf', (req, res, next) => {
+router.get('/', (req, res, next) => {
     res.render('home');
     // var todayDate = Date.now();
     // var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
