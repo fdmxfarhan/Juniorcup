@@ -19,43 +19,44 @@ var getMax = (arr) => {
 
 
 
-router.get('/', (req, res, next) => {
-    var todayDate = Date.now();
-    var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
-    var a = Math.floor(milisecUntilCompetition/1000);
-    var weeks = Math.floor(a / 604800);
-    var days = Math.floor((a - weeks * 604800) / 86400);
-    var hours = Math.floor((a - weeks * 604800 - days * 86400) / 3600);
-    var minuts = Math.floor((a - weeks * 604800 - days * 86400 - hours * 3600) / 60);
-    var secconds = Math.floor(a%60);
-    // console.log(milisecUntilCompetition);
-    Team.find({}, (err, teams) => {
-        var soccerLightPrimaryNum = 0, soccerLightSecondaryNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
-        for(var i=0; i < teams.length; i++)
-        {
-            if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
-            if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
-            if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
-            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
-            if(teams[i].league == 'برنامه نویسی')       programmingNum++;
-            if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
+router.get('/asdf', (req, res, next) => {
+    res.render('home');
+    // var todayDate = Date.now();
+    // var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
+    // var a = Math.floor(milisecUntilCompetition/1000);
+    // var weeks = Math.floor(a / 604800);
+    // var days = Math.floor((a - weeks * 604800) / 86400);
+    // var hours = Math.floor((a - weeks * 604800 - days * 86400) / 3600);
+    // var minuts = Math.floor((a - weeks * 604800 - days * 86400 - hours * 3600) / 60);
+    // var secconds = Math.floor(a%60);
+    // // console.log(milisecUntilCompetition);
+    // Team.find({}, (err, teams) => {
+    //     var soccerLightPrimaryNum = 0, soccerLightSecondaryNum = 0, soccerOpenNum = 0, smartCarNum = 0, cospaceNum = 0, programmingNum = 0;
+    //     for(var i=0; i < teams.length; i++)
+    //     {
+    //         if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
+    //         if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
+    //         if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
+    //         if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+    //         if(teams[i].league == 'برنامه نویسی')       programmingNum++;
+    //         if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             
-        }
-        var user;
-        if(req.user) user = req.user;
-        else         user = false;
-        res.render('index', {
-            time: {weeks, days, hours, minuts, secconds},
-            teams,
-            soccerLightPrimaryNum,
-            soccerLightSecondaryNum,
-            soccerOpenNum,
-            smartCarNum,
-            cospaceNum,
-            programmingNum,
-            user
-        });
-    })
+    //     }
+    //     var user;
+    //     if(req.user) user = req.user;
+    //     else         user = false;
+    //     res.render('index', {
+    //         time: {weeks, days, hours, minuts, secconds},
+    //         teams,
+    //         soccerLightPrimaryNum,
+    //         soccerLightSecondaryNum,
+    //         soccerOpenNum,
+    //         smartCarNum,
+    //         cospaceNum,
+    //         programmingNum,
+    //         user
+    //     });
+    // })
 });
 
 router.get('/gallery', (req, res, next) => {
