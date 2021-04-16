@@ -39,6 +39,13 @@ router.post('/blue-code', ensureAuthenticated, upload.single('myFile'), (req, re
             if(err) console.log(err);
             res.redirect(req.body.page);
         });
+        Team.findOne({_id: req.user.teamID}, (err, team) => {
+            var lastBlueFile = team.lastBlueFile;
+            lastBlueFile.push(newFile);
+            Team.updateOne({_id: req.user.teamID}, {$set: {lastBlueFile: lastBlueFile}}, (err, doc) => {
+                if(err) console.log(err);
+            });
+        });
     }
 });
 
@@ -56,6 +63,13 @@ router.post('/red-code', ensureAuthenticated, upload.single('myFile'), (req, res
         Team.updateOne({_id: req.user.teamID}, {$set: {redFile: newFile}}, (err, doc) => {
             if(err) console.log(err);
             res.redirect(req.body.page);
+        });
+        Team.findOne({_id: req.user.teamID}, (err, team) => {
+            var lastRedFile = team.lastRedFile;
+            lastRedFile.push(newFile);
+            Team.updateOne({_id: req.user.teamID}, {$set: {lastRedFile: lastRedFile}}, (err, doc) => {
+                if(err) console.log(err);
+            });
         });
     }
 });

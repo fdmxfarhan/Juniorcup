@@ -138,6 +138,14 @@ block content
             a.round.active(href="/game/soccer-light-primary?field=#{field}&round=5#game-table") راند ۵
         -else
             a.round(href="/game/soccer-light-primary?field=#{field}&round=5#game-table") راند ۵
+        -if(round == 6)
+            a.round.active(href="/game/soccer-light-primary?field=#{field}&round=6") راند 6
+        -else
+            a.round(href="/game/soccer-light-primary?field=#{field}&round=6") راند 6
+        -if(round == 7)
+            a.round.active(href="/game/soccer-light-primary?field=#{field}&round=7") راند 7
+        -else
+            a.round(href="/game/soccer-light-primary?field=#{field}&round=7") راند 7
     table.score-table
         tr 
             th ردیف

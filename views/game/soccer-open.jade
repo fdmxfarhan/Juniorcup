@@ -9,17 +9,17 @@ block content
     .tab-view 
         .tab-links-with-chat
             -if(field == 'A')
-                a.active(href="/game/soccer-light?field=A&round=#{round}") زمین A
+                a.active(href="/game/soccer-open?field=A&round=#{round}") زمین A
             -else
-                a(href="/game/soccer-light?field=A&round=#{round}") زمین A
+                a(href="/game/soccer-open?field=A&round=#{round}") زمین A
             -if(field == 'B')
-                a.active(href="/game/soccer-light?field=B&round=#{round}") زمین B
+                a.active(href="/game/soccer-open?field=B&round=#{round}") زمین B
             -else 
-                a(href="/game/soccer-light?field=B&round=#{round}") زمین B
+                a(href="/game/soccer-open?field=B&round=#{round}") زمین B
             -if(field == 'C')
-                a.active(href="/game/soccer-light?field=C&round=#{round}") زمین C
+                a.active(href="/game/soccer-open?field=C&round=#{round}") زمین C
             -else 
-                a(href="/game/soccer-light?field=C&round=#{round}") زمین C
+                a(href="/game/soccer-open?field=C&round=#{round}") زمین C
             -if(field == 'D')
                 a.active(href="/game/soccer-open?field=D&round=#{round}") زمین D
             -else 
@@ -136,6 +136,15 @@ block content
             a.round.active(href="/game/soccer-open?field=#{field}&round=5") راند ۵
         -else
             a.round(href="/game/soccer-open?field=#{field}&round=5") راند ۵
+        -if(round == 6)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=6") راند 6
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=6") راند 6
+        -if(round == 7)
+            a.round.active(href="/game/soccer-open?field=#{field}&round=7") راند 7
+        -else
+            a.round(href="/game/soccer-open?field=#{field}&round=7") راند 7
+        
     table.score-table
         tr 
             th ردیف

@@ -20,6 +20,7 @@ var getMax = (arr) => {
 
 
 router.get('/', (req, res, next) => {
+    // res.render('home');
     var todayDate = Date.now();
     var milisecUntilCompetition = (Date.parse(competitionDate) - todayDate);
     var a = Math.floor(milisecUntilCompetition/1000);

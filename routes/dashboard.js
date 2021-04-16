@@ -447,11 +447,11 @@ router.get('/game', ensureAuthenticated, (req, res, next) => {
 router.get('/start-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
-            Game.updateMany({league: game.league}, {$set: {started: false}}, (err, doc) => {
+            // Game.updateMany({league: game.league}, {$set: {started: false}}, (err, doc) => {
                 Game.updateMany({_id: req.query.id}, {$set: {started: true}}, (err, doc) => {
                     res.redirect(`/dashboard/game?id=${req.query.id}`);
                 });
-            });
+            // });
         });
     }
 });
@@ -1355,6 +1355,20 @@ router.post('/change-idnumber', ensureAuthenticated, (req, res, next) => {
             members[req.body.number].idNumber = req.body.idNumber;
             Team.updateOne({_id: req.body.teamID}, {$set: {members}}, (err, doc) => {
                 res.redirect('/dashboard/admin-change-idnumber');
+            });
+        });
+    }
+});
+
+router.get('/refree-last-code', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'refree')
+    {
+        Team.findOne({_id: req.query.teamID}, (err, team) => {
+            res.render('./dashboard/refree-last-code', {
+                user: req.user,
+                team,
+                blueCode: team.lastBlueFile,
+                redCode: team.lastRedFile
             });
         });
     }
