@@ -290,4 +290,8 @@ router.post('/certificate/download', (req, res, next) => {
     })
 });
 
+router.get('/ari', (req, res, next) => {
+    res.render('ari');
+});
+
 module.exports = router;
