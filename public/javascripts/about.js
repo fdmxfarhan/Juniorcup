@@ -1,5 +1,3 @@
 $(document).ready(function(){
-    $('#nav-link1').removeClass('active');
-    $('#nav-link5').addClass('active');
-    
+    $('#first').fadeIn(500).delay(3000).fadeOut(500);
 });
