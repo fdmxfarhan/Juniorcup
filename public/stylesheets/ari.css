@@ -4,6 +4,10 @@
 }
 
 
+@keyframes fade {
+    from {background-color: black;}
+    to {background-color: purple;}
+}
 body{
     margin: 0;
     padding: 0;
@@ -24,7 +28,7 @@ h1{
     height: 100%;
     width: 100%;
     padding: 40vh 0;
-    font-size: 5vw;
+    font-size: 6vw;
 }
 
 
