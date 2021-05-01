@@ -16,13 +16,14 @@ body{
 h1{
     /* position: absolute; */
     text-align: center;
+    align-content: center;
     margin: auto;
     background-color: black;
     color: white;
-    align-content: center;
     height: 100%;
     width: 100%;
-    /* padding: 50% 0; */
+    padding: 50vh 0;
+    font-size: 5vw;
 }
 
 
