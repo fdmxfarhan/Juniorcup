@@ -16,6 +16,8 @@ body{
     font-family: 'iransans';
     direction: rtl;
     background-color: #000000;
+    /* animation-name: fade; */
+    animation-duration: 2s;
 }
 h1{
     display: none;
@@ -27,8 +29,10 @@ h1{
     color: white;
     height: 100%;
     width: 100%;
-    padding: 40vh 0;
+    padding: 40vh 2vw;
     font-size: 6vw;
 }
-
+h1#fourth{
+    padding: 20vh 2vw;
+}
 
