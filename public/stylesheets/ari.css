@@ -29,10 +29,10 @@ h1{
     color: white;
     height: 100%;
     width: 100%;
-    padding: 40vh 2vw;
+    padding: 40vh 0;
     font-size: 6vw;
 }
 h1#fourth{
-    padding: 20vh 2vw;
+    padding: 20vh 0;
 }
 

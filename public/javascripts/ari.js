@@ -3,5 +3,8 @@ $(document).ready(function(){
     $('#second').delay(6000).fadeIn(1000).delay(3000).fadeOut(1000);
     $('#third').delay(11000).fadeIn(1000).delay(3000).fadeOut(1000);
     $('#fourth').delay(16000).fadeIn(1000);
-    $('body').delay(16000).css('animation-name', 'fade');
+    setTimeout(function() {
+        $('body').css('animation-name', 'fade');
+        $('body').css('background-color', 'purple');
+    }, 16000);
 });
