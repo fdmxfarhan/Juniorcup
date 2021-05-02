@@ -7,6 +7,7 @@ const Certificate = require('../models/Certificate');
 var excel = require('excel4node');
 
 const competitionDate = new Date('April 15, 2021 07:00:00');
+const ariDate = new Date('March 14, 2021 18:32:00');
 
 var getMax = (arr) => {
     max = 0;
@@ -291,7 +292,18 @@ router.post('/certificate/download', (req, res, next) => {
 });
 
 router.get('/ari', (req, res, next) => {
-    res.render('ari');
+    var todayDate = Date.now();
+    var milisecUntilCompetition = (todayDate - Date.parse(ariDate));
+    var a = Math.floor(milisecUntilCompetition/1000);
+    var weeks = Math.floor(a / 604800);
+    var days = Math.floor((a - weeks * 604800) / 86400);
+    var hours = Math.floor((a - weeks * 604800 - days * 86400) / 3600);
+    var minuts = Math.floor((a - weeks * 604800 - days * 86400 - hours * 3600) / 60);
+    var secconds = Math.floor(a%60);
+    
+    res.render('ari', {
+        time: {weeks, days, hours, minuts, secconds}
+    });
 });
 
 module.exports = router;
