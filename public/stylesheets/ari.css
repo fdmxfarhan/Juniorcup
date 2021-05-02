@@ -28,7 +28,8 @@ h1{
     background-color: transparent;
     color: white;
     height: 100%;
-    width: 100%;
+    width: 90%;
+    margin: auto;
     padding: 40vh 0;
     font-size: 6vw;
 }
