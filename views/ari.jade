@@ -15,6 +15,22 @@ html(lang="en")
         h1#second You are the one
         h1#third Who I Love the Most in this world
         h1#fourth It's been #{time.weeks * 7 + time.days} days and #{time.hours} hours and #{time.minuts} minuts and #{time.secconds} secconds that my heart is beating for you
+        
+        .timer 
+            .part 
+                .num #{time.weeks * 7 + time.days}
+                .text days
+            .part 
+                .num #{time.hours} 
+                .text hours
+            .part 
+                .num #{time.minuts}
+                .text minuts
+            .part 
+                .num #{time.secconds}
+                .text secconds
+            
         audio.audio(autoplay="autoplay" controls loop  id="playAudio")
             source(src="/musics/Calum-Scott-You-are-the-reason.mp3")
+        
         script(src="/javascripts/ari.js")

@@ -34,8 +34,33 @@ h1{
     font-size: 6vw;
 }
 h1#fourth{
-    padding: 20vh 0;
+    padding: 10vh 0;
 
 }
 .audio{visibility: hidden;}
 
+.timer{
+    background-color: rgba(0, 0, 0, 0.39);
+    border-radius: 3vw;
+    overflow: hidden;
+    width: 90%;
+    margin: auto;
+    padding: 3vw;
+    display: none;
+}
+.timer .part{
+    float: left;
+    width: 22%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.774);
+    color: black;
+    border-radius: 3vw;
+    margin: 3vw 1vw;
+    padding: 2vw 0;
+}
+.timer .part .num{
+    font-size: 5vw;
+}
+.timer .part .text{
+    font-size: 3vw;
+}
