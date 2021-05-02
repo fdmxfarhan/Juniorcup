@@ -7,4 +7,5 @@ $(document).ready(function(){
         $('body').css('animation-name', 'fade');
         $('body').css('background-color', 'purple');
     }, 13000);
+    $('.audio').play();
 });
