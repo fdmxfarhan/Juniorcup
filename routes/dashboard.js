@@ -1378,7 +1378,18 @@ router.get('/delete-other-users', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
         User.find({role: 'student'}, (err, users) => {
-            console.log(users);
+            users.forEach(user => {
+                Team.findOne({_id: user.teamID}, (err, team) => {
+                    if(team.league != 'خودروهای هوشمند')
+                    {
+                        console.log(team.teamName);
+                        User.deleteOne({_id: user._id}, (err) => {
+                            if(err) console.log(err);
+                        });
+                    }
+                });
+            });
+            res.send('done');
         });
     }
 });
