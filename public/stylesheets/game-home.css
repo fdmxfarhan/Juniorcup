@@ -163,6 +163,10 @@
         background-color: lightsalmon;
         color: white;
     }
+    .leagues-cards .card .labels .label.green{
+        background-color: lightgreen;
+        color: white;
+    }
     .leagues-cards .card .labels .label i{
         padding-left: 0.5vw;
     }
