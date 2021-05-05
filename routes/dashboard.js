@@ -1374,4 +1374,12 @@ router.get('/refree-last-code', ensureAuthenticated, (req, res, next) => {
     }
 });
 
+router.get('/delete-other-users', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        User.find({role: 'student'}, (err, users) => {
+            console.log(users);
+        });
+    }
+});
 module.exports = router;
