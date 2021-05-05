@@ -3,6 +3,7 @@ var router = express.Router();
 var Gallery = require('../models/Gallery');
 const Team = require('../models/Team');
 const Game = require('../models/Game');
+var excel = require('excel4node');
 
 const cospaceRooms = [
     {link: 'https://juniorcupsetup.ir/cospace/', name: 'اتاق داوران'},
@@ -387,6 +388,18 @@ router.get('/smartcar', (req, res, next) => {
         Game.findOne({field: field, league: 'خودروهای هوشمند', started: true}, (err, game) => {
             Game.find({league: 'خودروهای هوشمند', round: round}, (err, games) => {
                 if(err) console.log(err);
+                var workbook = new excel.Workbook();
+                var worksheet = workbook.addWorksheet('Sheet 1');
+                var style = workbook.createStyle({
+                    font: {
+                    color: '#FF0800',
+                    size: 12
+                    },
+                    numberFormat: '$#,##0.00; ($#,##0.00); -'
+                });
+
+                worksheet.cell(1,1).string(`teamName`).style(style);
+
                 // console.log(game);
                 for(var i=1; i<teams.length; i++){
                     for(var j=0; j<teams.length - i; j++){
@@ -416,6 +429,10 @@ router.get('/smartcar', (req, res, next) => {
                     });
                 }
                 else         user = false;
+                for (let i = 0; i < teams.length; i++) {
+                    worksheet.cell(i+2,1).string(`${teams[i].teamName}`).style(style);
+                }
+                workbook.write('./public/smartcarList.xlsx');
                 res.render('./game/smartcar', {
                     teams,
                     field,
