@@ -16,10 +16,10 @@ block content
                 a.active(href="/game/smartcar?field=F") زمین F
             -else 
                 a(href="/game/smartcar?field=F") زمین F
-            -if(field == 'G')
-                a.active(href="/game/smartcar?field=G") زمین G
-            -else 
-                a(href="/game/smartcar?field=G") زمین G
+            //- -if(field == 'G')
+            //-     a.active(href="/game/smartcar?field=G") زمین G
+            //- -else 
+            //-     a(href="/game/smartcar?field=G") زمین G
         .chat-container 
             .chat-view 
                 h1.chat-title زمین #{field}
@@ -136,22 +136,22 @@ block content
             a.round.active(href="/game/smartcar?field=#{field}&round=1#game-table") راند ۱
         -else
             a.round(href="/game/smartcar?field=#{field}&round=1#game-table") راند ۱
-        -if(round == 2)
-            a.round.active(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
-        -else
-            a.round(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
-        -if(round == 3)
-            a.round.active(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
-        -else
-            a.round(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
-        -if(round == 4)
-            a.round.active(href="/game/smartcar?field=#{field}&round=4#game-table") راند ۴
-        -else
-            a.round(href="/game/smartcar?field=#{field}&round=4#game-table") راند ۴
-        -if(round == 5)
-            a.round.active(href="/game/smartcar?field=#{field}&round=5#game-table") راند ۵
-        -else
-            a.round(href="/game/smartcar?field=#{field}&round=5#game-table") راند ۵
+        //- -if(round == 2)
+        //-     a.round.active(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
+        //- -else
+        //-     a.round(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
+        //- -if(round == 3)
+        //-     a.round.active(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
+        //- -else
+        //-     a.round(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
+        //- -if(round == 4)
+        //-     a.round.active(href="/game/smartcar?field=#{field}&round=4#game-table") راند ۴
+        //- -else
+        //-     a.round(href="/game/smartcar?field=#{field}&round=4#game-table") راند ۴
+        //- -if(round == 5)
+        //-     a.round.active(href="/game/smartcar?field=#{field}&round=5#game-table") راند ۵
+        //- -else
+        //-     a.round(href="/game/smartcar?field=#{field}&round=5#game-table") راند ۵
     table.score-table
         tr 
             th ردیف
