@@ -136,10 +136,10 @@ block content
             a.round.active(href="/game/smartcar?field=#{field}&round=1#game-table") راند ۱
         -else
             a.round(href="/game/smartcar?field=#{field}&round=1#game-table") راند ۱
-        //- -if(round == 2)
-        //-     a.round.active(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
-        //- -else
-        //-     a.round(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
+        -if(round == 2)
+            a.round.active(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
+        -else
+            a.round(href="/game/smartcar?field=#{field}&round=2#game-table") راند ۲
         //- -if(round == 3)
         //-     a.round.active(href="/game/smartcar?field=#{field}&round=3#game-table") راند ۳
         //- -else
