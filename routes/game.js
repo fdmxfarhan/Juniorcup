@@ -428,7 +428,7 @@ router.get('/smartcar', (req, res, next) => {
                             team = t;
                     });
                 }
-                else         user = false;
+                else user = false;
                 for (let i = 0; i < teams.length; i++) {
                     worksheet.cell(i+2,1).string(`${teams[i].teamName}`).style(style);
                 }
