@@ -238,9 +238,9 @@ router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
                 for(var j=0; j<teams[i].members.length; j++)
                 {
                     if(teams[i].members[j].cup)
-                        worksheet.cell(i+2,5).string(`${teams[i].members[j].fullName}` + ' (دریافت تندیس)').style(style);
+                        worksheet.cell(i+2,5 + j).string(`${teams[i].members[j].fullName}` + ' (دریافت تندیس)').style(style);
                     else
-                        worksheet.cell(i+2,5).string(`${teams[i].members[j].fullName}`).style(style);
+                        worksheet.cell(i+2,5 + j).string(`${teams[i].members[j].fullName}`).style(style);
                 }
             }
             workbook.write('./public/teamList.xlsx');
