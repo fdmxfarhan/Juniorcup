@@ -194,6 +194,22 @@ router.get('/users-list', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
         User.find({}, (err, users) => {
+            if(err) console.log(err);
+            else{
+                res.render('./dashboard/admin-users-list', {
+                    user: req.user,
+                    users: users
+                });
+            }
+        });
+    }
+    else res.send('Access Denied!!')
+});
+
+router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin')
+    {
+        Team.find({}, (err, teams) => {
             var workbook = new excel.Workbook();
             var worksheet = workbook.addWorksheet('Sheet 1');
             var style = workbook.createStyle({
@@ -229,23 +245,6 @@ router.get('/users-list', ensureAuthenticated, (req, res, next) => {
             }
             workbook.write('./public/teamList.xlsx');
             
-            if(err) console.log(err);
-            else{
-                res.render('./dashboard/admin-users-list', {
-                    user: req.user,
-                    users: users
-                });
-            }
-        });
-    }
-    else res.send('Access Denied!!')
-});
-
-router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role == 'admin')
-    {
-        Team.find({}, (err, teams) => {
-
             if(err) console.log(err);
             else{
                 res.render('./dashboard/admin-teams-list', {
