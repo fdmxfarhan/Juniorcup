@@ -214,7 +214,7 @@ router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
             var worksheet = workbook.addWorksheet('Sheet 1');
             var style = workbook.createStyle({
                 font: {
-                color: '#FFFFFF',
+                color: '#000000',
                 size: 12
                 },
                 numberFormat: '$#,##0.00; ($#,##0.00); -'
