@@ -194,6 +194,41 @@ router.get('/users-list', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
         User.find({}, (err, users) => {
+            var workbook = new excel.Workbook();
+            var worksheet = workbook.addWorksheet('Sheet 1');
+            var style = workbook.createStyle({
+                font: {
+                color: '#FFFFFF',
+                size: 12
+                },
+                numberFormat: '$#,##0.00; ($#,##0.00); -'
+            });
+
+            worksheet.cell(1,1).string(`teamName`).style(style);
+            worksheet.cell(1,2).string(`mentor`).style(style);
+            worksheet.cell(1,3).string(`league`).style(style);
+            worksheet.cell(1,4).string(`affiliation`).style(style);
+            worksheet.cell(1,5).string(`member1`).style(style);
+            worksheet.cell(1,6).string(`member2`).style(style);
+            worksheet.cell(1,7).string(`member3`).style(style);
+            worksheet.cell(1,8).string(`member4`).style(style);
+            worksheet.cell(1,9).string(`member5`).style(style);
+            
+            for (let i = 0; i < teams.length; i++) {
+                worksheet.cell(i+2,1).string(`${teams[i].teamName}`).style(style);
+                worksheet.cell(i+2,2).string(`${teams[i].mentor}`).style(style);
+                worksheet.cell(i+2,3).string(`${teams[i].league}`).style(style);
+                worksheet.cell(i+2,4).string(`${teams[i].affiliation}`).style(style);
+                for(var j=0; j<teams[i].members.length; j++)
+                {
+                    if(teams[i].members[j].cup)
+                        worksheet.cell(i+2,5).string(`${teams[i].members[j].fullName}` + ' (دریافت تندیس)').style(style);
+                    else
+                        worksheet.cell(i+2,5).string(`${teams[i].members[j].fullName}`).style(style);
+                }
+            }
+            workbook.write('./public/teamList.xlsx');
+            
             if(err) console.log(err);
             else{
                 res.render('./dashboard/admin-users-list', {
@@ -210,6 +245,7 @@ router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
         Team.find({}, (err, teams) => {
+
             if(err) console.log(err);
             else{
                 res.render('./dashboard/admin-teams-list', {
