@@ -42,7 +42,7 @@ body{
     font-family: 'iransans';
     direction: rtl;
     background-color: var(--boxbackground);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .transparent-modal{
     display: none;
