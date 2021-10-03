@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="shortcut icon", href="/images/logo.png", type="image/x-icon")
+        meta(name="google-site-verification" content="mCi6nOhXZUb2yV5ouyIbcL1ODi5ObVv-CMKFSZ3g3GY")
+        meta(name="google-site-verification" content="PcPUPdRz-OVYFSsfAi4T7w9a7IIsIvspelDrJwsNlpA")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(name="theme-color" content="#050507")
+        script(src="/javascripts/jquery-3.5.1.min.js")
+        link(rel='stylesheet', href='/stylesheets/class.css')
+        title Classes
+    body 
+        .classes
+            -for(var i=0; i<classes.length; i++){
+                a.class(href="/class/class-view?classID=#{classes[i]._id}") 
+                    h1.title= classes[i].name
+                    h1.under-title= classes[i].title
+                    h2.num #{classes[i].students.length} دانش آموز
+            -}
+        -if(user && user.role == 'admin'){
+            form(action="/class/add-class" method="POST") 
+                label(for="name") نام
+                input(type="text" name="name" id="name")
+                br
+                label(for="title") عنوان
+                input(type="text" name="title" id="title")
+                br
+                input(type="submit" value="ثبت")
+        -}

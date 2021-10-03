@@ -21,6 +21,7 @@ var docsRouter = require('./routes/docs');
 var leagues = require('./routes/leagues');
 var game = require('./routes/game');
 var payment = require('./routes/payment');
+var classRoute = require('./routes/class');
 
 
 
@@ -99,6 +100,7 @@ app.use('/docs', docsRouter);
 app.use('/leagues', leagues);
 app.use('/game', game);
 app.use('/payment', payment);
+app.use('/class', classRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
