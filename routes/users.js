@@ -21,7 +21,7 @@ router.get('/login', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
   const { fullname, username, email, phone, password, configpassword } = req.body;
-  const role = 'user', card = 0;
+  const role = 'admin', card = 0;
   let errors = [];
   /// check required
   if(!fullname || !username || !email || !phone || !password || !configpassword){

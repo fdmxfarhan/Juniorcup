@@ -24,7 +24,7 @@ html(lang="en")
                             .progressbar 
                                 -var progress = cls.students[i].posetive*5 - cls.students[i].negetive*5 - cls.students[i].apsence*3
                                 .bar(style="width: #{progress > 0 ? progress : 0}%;")
-                        td 
+                        td.points
                             -for(var j=0; j<cls.students[i].posetive; j++)
                                 i.fa.fa-plus.posetive 
                             -for(var j=0; j<cls.students[i].negetive; j++)

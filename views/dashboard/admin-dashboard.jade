@@ -43,7 +43,7 @@ block content
                 i.fa.fa-users 
                 | لیست تیم ها 
             -if(user.username == "fdmxfarhan"){
-                -if(setting.register){
+                -if(setting && setting.register){
                     a.admin-link(href="/dashboard/register-off") 
                         i.fa.fa-plus
                         | ثبت نام تیم ها باز

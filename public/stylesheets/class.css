@@ -178,7 +178,135 @@ body{
 
 }
 @media only screen and (max-width: 800px) {
+    .classes{
+        /* background-color: blue; */
+        width: 80%;
+        margin: 3vw auto;
+        overflow: hidden;
+        padding: 4vw 0;
+    }
+    .classes .class{
+        text-decoration: none;
+        display: block;
+        font-family: 'iransans';
+        background-color: var(--background);
+        float: right;
+        width: 48%;
+        margin: 0 1%;
+        box-shadow: 0.2vw 0.2vw 0.5vw 0.1vw rgba(255, 255, 255, 0.1);
+        border-radius: 1vw;
+        margin-bottom: 2vw;
+        transition-duration: 500ms;
+        /* border: var(--boxbackground) 0.1vw solid; */
+    }
+    .classes .class:hover{
+        box-shadow: 0.2vw 0.2vw 0.5vw 0.2vw rgba(255, 255, 255, 0.3);
+    }
+    .classes .class h1.title{ 
+        color: var(--blue);
+        font-size: 3.3vw;
+        padding: 0 3vw;
+        margin: 0;
+        margin-top: 4vw;
+    }
+    .classes .class h1.under-title{ 
+        color: var(--gray);
+        font-size: 3vw;
+        padding: 0 3vw;
+        margin: 0;
+    }
+    .classes .class h2{ 
+        color: var(--light);
+        font-size: 3vw;
+        padding: 0 3vw;
+        margin: 0;
+        margin-bottom: 3vw;
+        margin-top: 1vw;
+        font-weight: normal;
+    }
+
+
+
+    .class-view h1.name{
+        color: var(--blue);
+        font-family: 'iransans';
+        font-size: 3.6vw;
+        text-align: center;
+        margin: 0;
+        margin-top: 4vw;
+    }    
+    .class-view h1.title{
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 3.3vw;
+        text-align: center;
+        margin-top: 0;
+        font-weight: normal;
+    }    
+    .class-view table{
+        background-color: var(--background);
+        /* display: block; */
+        width: 95%;
+        margin: 3vw auto;
+        border-radius: 2vw;
+        padding: 2vw 0;
+        text-align: right;
+        color: white;
+    }
+    .class-view table td{
+        padding: 1vw 0;
+        font-size: 3vw;
+        /* background-color: white; */
+    }
+    .class-view table td .progressbar{
+        border-radius: 3vw;
+        background-color: var(--dark);
+        height: 3vw;
+        width: 20vw;
+    }
+    .class-view table td.progress{
+        width: 22vw;
+    }
+    .class-view table td .bar{
+        border-radius: 3vw;
+        background-color: var(--blue);
+        height: 3vw;
+        width: 30%;
+    }
+    .class-view table td.user{
+        width: 10vw;
+        text-align: center;
+        color: var(--blue);
+    }
+    .class-view table td.apsence{
+        width: 15vw;
+        color: var(--red);
+    }
+    .class-view table td i.posetive{
+        color: var(--green);
+        font-size: 3vw;
+        padding: 0 0.3vw;
+    }
+    .class-view table td i.negetive{
+        color: var(--red);
+        font-size: 3vw;
+        padding: 0 0.3vw;
+    }
+    .class-view table td a{
+        color: var(--gray);
+        font-size: 2vw;
+        text-decoration: none;
+        padding-right: 0.8vw;
+    }
+    .class-view table td a:hover{
+        color: var(--blue);
+    }
+    .class-view table td.points{
+        max-width: 5vw;
+        padding: 1vw 1vw;
+    }
     
+
 }
 
 
