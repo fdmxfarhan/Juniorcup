@@ -1,0 +1,44 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | RCJ-Soccer-sim
+            include pages
+        .content
+            .content-padding
+                h1.purple.medium.font شبیه ساز RCJ-Soccer-sim
+
+                p.font.small.text 
+                    | شبیه ساز rcj-soccer-sim در سال 2021 توسط ربوکاپ جهانی تحت عنوان چالش شبیه سازی ربات های فوتبالیست معرفی شده که در نرم افزار قدرتمند WeBot طرحی شده. این شبیه ساز متناسب با 
+                    a.font.inline.small.blue(href="https://cdn.robocup.org/junior/wp/2021/05/2021_SoccerSim_Rules_final02.pdf" download) قوانین مسابقات ربوکاپ 
+                    | طراحی شده. این آموزش برگرفته از 
+                    a.font.inline.small.blue(href="https://robocupjuniortc.github.io/rcj-soccer-sim/" target="_blank") مستندات 
+                    | معرفی شده توسط کمته ربوکاپ جهانی نوشته شده.
+                img.fullsize(src="/docs/soccer-sim/soccer_sim.png")
+                .caption محیط شبیه ساز RCJ-Soccer-Sim
+                h1.purple.medium.font زبان برنامه نویسی
+                p.font.small.text 
+                    | از آنجایی که این شبیه ساز با استفاده از WeBot طراحی شده، زبان برنامه نویسی مورد نیاز جهت اجرای شبیه سازی و دریافت اطلاعات از روبات ها و ارسال دستور به آن ها زبان پایتون است. 
+                    | پایتون یکی از زبان های برنامه نویسی بسیار محبوب در جهان است که علت محبوبیت آن سادگی و در عین حال کاربردی بودن آن می باشد. 
+            .buttons
+                //- a.prev(href="/docs/soccer-open-cpp?page=#{page-1}") 
+                //-     i.fa.fa-chevron-right
+                //-     | صفحه قبل
+                a.next(href="/docs/soccer-sim?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")

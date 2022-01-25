@@ -1,0 +1,52 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+            
+        .content
+            .content-padding
+                h1.purple.medium.font 1. نصب پایتون
+                p.font.small.text 
+                    | در ابتدا باید پایتون نسخه 3.7 یا بالاتر را از 
+                    a.font.inline.small.blue(href="https://www.python.org/downloads/" target="_blank") وبسایت رسمی پایتون 
+                    | دانلود و نصب کنید. در هنگام نصب دقت کنید که مانند تصویر زیر تیک add Python to PATH را فعال نمایید.
+                img.fullsize(src="/docs/soccer-sim/python.png")
+                h1.purple.medium.font 2. نصب WeBots
+                p.font.small.text 
+                    | نرم افزار WeBots را از 
+                    a.font.inline.small.blue(href="https://www.cyberbotics.com/#download" target="_blank") وبسایت رسمی WeBots 
+                    | دانلود و نصب کنید. پس از نصب، نرم افزار را اجرا کرده و از منوی بالا به قسمت tools رفته و preferences را انتخاب کنید. سپس در قسمت python command دستور python را وارد نمایید.
+                img.fullsize(src="/docs/soccer-sim/webot.png")
+                h1.purple.medium.font 3. نصب شبیه ساز
+                p.font.small.text 
+                    | آخرین نسخه شبیه ساز RCJ-Sim را با کلیک بر روی 
+                    a.font.inline.small.blue(href="https://github.com/RoboCupJuniorTC/rcj-soccer-sim/archive/master.zip" target="_blank") این لینک 
+                    | دانلود کرده و از حالت فشرده خارج نمایید. سپس فایل world.wbt را که در پوشه worlds قرار دارد اجرا نمایید. در صورتی که نرم افزار python نصب شده بر روی سیستم شما را نشناسد در فضای console پایین صفحه خطاهای قرمز مشاهده خواهد شد. در این صورت دستور python command را به python3 تغییر دهید. در صورتی که خطایی وجود نداشته باشد روبات ها شروع به حرکت خواهند کرد.
+                img.fullsize(src="/docs/soccer-sim/rcj-sim.png")
+                
+                
+            .buttons
+                a.prev(href="/docs/soccer-sim?page=#{page-1}") 
+                    i.fa.fa-chevron-right
+                    | صفحه قبل
+                a.next(href="/docs/soccer-sim?page=#{page+1}") 
+                    | صفحه بعد
+                    i.fa.fa-chevron-left
+            
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")
