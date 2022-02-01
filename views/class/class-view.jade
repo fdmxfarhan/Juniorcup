@@ -20,8 +20,10 @@ html(lang="en")
                         td.user
                             i.fa.fa-user 
                         td= cls.students[i].name
+                            a(href="/class/delete-user?classID=#{cls._id}&index=#{i}") 
+                                i.fa.fa-times.times
                         td.progress
-                            .progressbar 
+                            .progressbar
                                 -var progress = cls.students[i].posetive*5 - cls.students[i].negetive*5 - cls.students[i].apsence*3
                                 .bar(style="width: #{progress > 0 ? progress : 0}%;")
                         td.points

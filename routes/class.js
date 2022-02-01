@@ -104,6 +104,16 @@ router.get('/decrease-apsence', (req, res, next) => {
         })
     })
 });
+router.get('/delete-user', (req, res, next) => {
+    var {classID, index} = req.query;
+    Class.findById(classID, (err, cls) => {
+        var students = cls.students;
+        students.splice(index, 1);
+        Class.updateMany({_id: classID}, {$set: {students}}, (err) => {
+            res.redirect(`/class/class-view?classID=${classID}`)
+        })
+    })
+});
 
 
 module.exports = router;

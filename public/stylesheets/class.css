@@ -174,7 +174,7 @@ body{
     .class-view table td a:hover{
         color: var(--blue);
     }
-    
+    .class-view table td a i.times:hover{color: var(--red);}
 
 }
 @media only screen and (max-width: 800px) {
@@ -306,7 +306,7 @@ body{
         padding: 1vw 1vw;
     }
     
-
+    .class-view table td a i.times:hover{color: var(--red);}
 }
 
 
