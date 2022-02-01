@@ -263,6 +263,23 @@ p.code{
         /* color: rgb(210, 153, 30); */
         
     }
+    .classes-view{
+        overflow: hidden;
+    }
+    .classes-view a.class{
+        color: white;
+        display: block;
+        width: fit-content;
+        float: right;
+        padding: 0.3vw 1vw;
+        background-color: var(--blue);
+        border-radius: 0.5vw;
+        margin-left: 1vw;
+        text-decoration: none;
+    }
+    .classes-view a.class:hover{
+        background-color: var(--hover);
+    }
     /* ----- flag ------- */
     
 }
@@ -534,5 +551,21 @@ p.code{
         /* color: rgb(210, 153, 30); */
         
     }
-
+    .classes-view{
+        overflow: hidden;
+    }
+    .classes-view a.class{
+        color: white;
+        display: block;
+        width: fit-content;
+        float: right;
+        padding: 0.3vw 3vw;
+        background-color: var(--blue);
+        border-radius: 1.5vw;
+        margin-left: 3vw;
+        text-decoration: none;
+    }
+    .classes-view a.class:hover{
+        background-color: var(--hover);
+    }
 }

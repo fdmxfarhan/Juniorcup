@@ -1,0 +1,34 @@
+extends ../../layout
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/docs.css')
+
+block content
+    .docs
+        .sidebar
+            h1.title
+                i.fa.fa-book
+                | شبیه ساز ربات فوتبالیست 
+            include pages
+        .content
+            .content-padding
+                h1.purple.medium.font ورود به کلاس
+                a.font.download.small.blue(href="https://live8.tehranclass.ir/juniorcupsetup?proto=true" target="_blank") 
+                    i.fa.fa-external-link
+                    | کلاس مجازی RCJ-Soccer-Sim
+                
+                h1.purple.medium.font کلاس های ضبط شده
+                .classes-view
+                    a.class(href="https://live8.tehranclass.ir/p73b6aa1amof/") جلسه اول 
+                    a.class(href="https://live8.tehranclass.ir/pk0isfyu91ql/") جلسه دوم 
+                    a.class(href="https://live8.tehranclass.ir/pczd9rcdwvpd/") جلسه سوم 
+
+    .bg-toggle
+        .bg-button
+            i.fa.fa-moon-o.moon
+            i.fa.fa-sun-o.sun
+            
+    .sidebar-modal
+    .sidebar-toggle
+        i.fa.fa-chevron-left
+    script(src="/javascripts/docs.js")
