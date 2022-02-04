@@ -14,7 +14,6 @@ const memberPrice = 750000 * 2;
 const mentorPrice = 750000 * 2;
 const cupPrice = 750000 * 2;
 
-
 // Team.deleteMany({}, (err) => console.log(err));
 // Game.deleteMany({}, (err) => console.log(err));
 
@@ -103,7 +102,6 @@ router.get('/', ensureAuthenticated,(req, res, next) => {
         });
     }
 });
-
 router.post('/register-team', ensureAuthenticated,(req, res, next) => {
     // I'm writing this part of code. but the only thing that 
     // I can think is that she left me and its all because of me. I loved her and I still do :(
@@ -125,7 +123,6 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
         else res.send('نام تیم قبلا ثبت شده');
     });
 });
-
 router.post('/add-member', ensureAuthenticated, (req, res, next) => {
     var {teamName, fullName, idNumber, birth, phone, address, cup} = req.body;
     if(teamName && fullName && idNumber && birth && phone && address){
@@ -149,7 +146,6 @@ router.post('/add-member', ensureAuthenticated, (req, res, next) => {
         });
     } else res.send('error');
 });
-
 router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
     const {idNumber, teamName} = req.query;
     Team.findOne({teamName: teamName}, (err, team)=>{
@@ -170,13 +166,11 @@ router.get('/remove-member', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
-
 router.get('/setting', ensureAuthenticated, (req, res, next) => {
     res.render('./dashboard/user-setting', {
         user: req.user
     });
 });
-
 router.get('/team', ensureAuthenticated, (req, res, next) => {
     if(req.query.id){
         Team.findById(req.query.id, (err, team)=> {
@@ -189,7 +183,6 @@ router.get('/team', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('error');
 });
-
 router.get('/users-list', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -205,7 +198,6 @@ router.get('/users-list', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('Access Denied!!')
 });
-
 router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -256,7 +248,6 @@ router.get('/teams-list', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('Access Denied!!')
 });
-
 router.get('/teams-list-notpayed', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -272,7 +263,6 @@ router.get('/teams-list-notpayed', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('Access Denied!!')
 });
-
 router.get('/teams-list-payed', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -288,7 +278,6 @@ router.get('/teams-list-payed', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('Access Denied!!')
 });
-
 router.get('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -300,7 +289,6 @@ router.get('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/delete-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -310,7 +298,6 @@ router.get('/delete-team', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.post('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
     var {id, teamName, mentor, affiliation, league, price} = req.body;
     if(req.user.role == 'admin')
@@ -320,7 +307,6 @@ router.post('/admin-edit-team', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.post('/user-edit-team', ensureAuthenticated, (req, res, next) => {
     var {id, teamName, mentor, affiliation} = req.body;
 
@@ -329,7 +315,6 @@ router.post('/user-edit-team', ensureAuthenticated, (req, res, next) => {
     });
 
 });
-
 router.get('/upgrade-user', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -350,7 +335,6 @@ router.get('/upgrade-user', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
-
 router.get('/upgrade-to-user', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -360,7 +344,6 @@ router.get('/upgrade-to-user', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
-
 router.get('/upgrade-to-admin', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -370,7 +353,6 @@ router.get('/upgrade-to-admin', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
-
 router.get('/upgrade-to-refree', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -380,7 +362,6 @@ router.get('/upgrade-to-refree', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
-
 router.get('/upgrade-to-student', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -390,7 +371,6 @@ router.get('/upgrade-to-student', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('He He...!!\nFek kardi kheyli zerangi bache?!\n:)');
 });
-
 router.post('/add-game-light-secondary', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field, round, time} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -402,7 +382,6 @@ router.post('/add-game-light-secondary', ensureAuthenticated, (req, res, next) =
         });
     });
 });
-
 router.post('/add-game-light-primary', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field, round, time} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -414,7 +393,6 @@ router.post('/add-game-light-primary', ensureAuthenticated, (req, res, next) => 
         });
     });
 });
-
 router.post('/add-game-open', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field, round, time} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -426,7 +404,6 @@ router.post('/add-game-open', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
-
 router.post('/add-game-smartcar', ensureAuthenticated, (req, res, next) => {
     var {idA, field, round, time} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -436,7 +413,6 @@ router.post('/add-game-smartcar', ensureAuthenticated, (req, res, next) => {
         }).catch(err => console.log(err));
     });
 });
-
 router.post('/add-game-soccer2d', ensureAuthenticated, (req, res, next) => {
     var {idA, idB, field} = req.body;
     Team.findById(idA, (err, teamA) => {
@@ -448,7 +424,6 @@ router.post('/add-game-soccer2d', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
-
 router.get('/game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
@@ -478,7 +453,6 @@ router.get('/game', ensureAuthenticated, (req, res, next) => {
     }
     else res.send('Error!!');
 });
-
 router.get('/start-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) => {
@@ -490,7 +464,6 @@ router.get('/start-game', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/end-game-nosave', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.updateMany({_id: req.query.id}, {$set: {started: false}}, (err, doc) => {
@@ -498,7 +471,6 @@ router.get('/end-game-nosave', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/end-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.findById(req.query.id, (err, game) =>{
@@ -573,7 +545,6 @@ router.get('/end-game', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/soccer-light-primary', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن primary'}, (err, teams) => {
@@ -588,7 +559,6 @@ router.get('/soccer-light-primary', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/soccer-light-secondary', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن secondary'}, (err, teams) => {
@@ -603,7 +573,6 @@ router.get('/soccer-light-secondary', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/soccer-light-primary-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن primary', payed: true}, (err, teams) => {
@@ -701,7 +670,6 @@ router.get('/soccer-light-primary-score', ensureAuthenticated, (req, res, next) 
         });
     }
 });
-
 router.get('/soccer-light-secondary-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست سبک وزن secondary', payed: true}, (err, teams) => {
@@ -799,7 +767,6 @@ router.get('/soccer-light-secondary-score', ensureAuthenticated, (req, res, next
         });
     }
 });
-
 router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
     var round = req.query.round;
     if(!round) round = 1;
@@ -816,7 +783,6 @@ router.get('/soccer-open', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبالیست وزن آزاد', payed: true}, (err, teams) => {
@@ -914,7 +880,6 @@ router.get('/soccer-open-score', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/smartcar-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'خودروهای هوشمند', payed: true}, (err, teams) => {
@@ -964,7 +929,6 @@ router.get('/smartcar-score', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/soccer2d-score', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبال ۲ بعدی', payed: true}, (err, teams) => {
@@ -975,7 +939,6 @@ router.get('/soccer2d-score', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/smartcar', ensureAuthenticated, (req, res, next) => {
     var round = req.query.round;
     if(!round) round = 1;
@@ -992,7 +955,6 @@ router.get('/smartcar', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/soccer2d', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Team.find({league: 'فوتبال ۲ بعدی'}, (err, teams) => {
@@ -1006,8 +968,6 @@ router.get('/soccer2d', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
-
 router.post('/refree-soccer-light-primary-score', ensureAuthenticated, (req, res, next) => {
     var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
     if(req.user.role == 'refree'){
@@ -1016,7 +976,6 @@ router.post('/refree-soccer-light-primary-score', ensureAuthenticated, (req, res
         });
     }
 });
-
 router.post('/refree-soccer-light-secondary-score', ensureAuthenticated, (req, res, next) => {
     var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
     if(req.user.role == 'refree'){
@@ -1025,7 +984,6 @@ router.post('/refree-soccer-light-secondary-score', ensureAuthenticated, (req, r
         });
     }
 });
-
 router.post('/refree-soccer-light-primary-edit', ensureAuthenticated, (req, res, next) => {
     var {id, goalA, goalB, field, time, round} = req.body;
     if(req.user.role == 'refree'){
@@ -1034,7 +992,6 @@ router.post('/refree-soccer-light-primary-edit', ensureAuthenticated, (req, res,
         });
     }
 });
-
 router.post('/refree-soccer-light-secondary-edit', ensureAuthenticated, (req, res, next) => {
     var {id, goalA, goalB, field, time, round} = req.body;
     if(req.user.role == 'refree'){
@@ -1043,7 +1000,6 @@ router.post('/refree-soccer-light-secondary-edit', ensureAuthenticated, (req, re
         });
     }
 });
-
 router.post('/refree-soccer-open-edit', ensureAuthenticated, (req, res, next) => {
     var {id, goalA, goalB, field, time, round} = req.body;
     if(req.user.role == 'refree'){
@@ -1052,7 +1008,6 @@ router.post('/refree-soccer-open-edit', ensureAuthenticated, (req, res, next) =>
         });
     }
 });
-
 router.post('/refree-smartcar-edit', ensureAuthenticated, (req, res, next) => {
     var {id, goalA, field, time, round} = req.body;
     if(req.user.role == 'refree'){
@@ -1061,7 +1016,6 @@ router.post('/refree-smartcar-edit', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.post('/refree-soccer-open-score', ensureAuthenticated, (req, res, next) => {
     var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
     if(req.user.role == 'refree'){
@@ -1070,7 +1024,6 @@ router.post('/refree-soccer-open-score', ensureAuthenticated, (req, res, next) =
         });
     }
 });
-
 router.post('/refree-soccer2d-score', ensureAuthenticated, (req, res, next) => {
     var {teamName, id, win, lose, equals, goalzade, goalkhorde, technical, score} = req.body;
     if(req.user.role == 'refree'){
@@ -1079,7 +1032,6 @@ router.post('/refree-soccer2d-score', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/make-member-account', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.find({}, (err, teams) => {
@@ -1113,7 +1065,6 @@ router.get('/make-member-account', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/delete-member-account', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.find({}, (err, teams) => {
@@ -1126,13 +1077,11 @@ router.get('/delete-member-account', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/remove-user', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         User.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/users-list'));
     }
 });
-
 router.get('/remove-upload', ensureAuthenticated, (req, res, next) => {
     var path = req.query.path;
     var newFile = [];
@@ -1143,49 +1092,41 @@ router.get('/remove-upload', ensureAuthenticated, (req, res, next) => {
         res.redirect('/dashboard');
     });
 });
-
 router.get('/light-primary-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect(`/dashboard/soccer-light-primary?round=${req.query.round}`));
     }
 });
-
 router.get('/light-secondary-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect(`/dashboard/soccer-light-secondary?round=${req.query.round}`));
     }
 });
-
 router.get('/open-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect(`/dashboard/soccer-open?round=${req.query.round}`));
     }
 });
-
 router.get('/smartcar-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect(`/dashboard/smartcar?round=${req.query.round}`));
     }
 });
-
 router.get('/soccer2d-delete-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role != 'user'){
         Game.deleteOne({_id: req.query.id}, (err, doc) => res.redirect('/dashboard/soccer2d'));
     }
 });
-
 router.get('/admin-accept-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.updateMany({_id: req.query.id}, {$set: {qualified: true}},(err, doc) => res.redirect('/dashboard/teams-list'));
     }
 });
-
 router.get('/admin-dq-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.updateMany({_id: req.query.id}, {$set: {qualified: false}},(err, doc) => res.redirect('/dashboard/teams-list'));
     }
 });
-
 router.get('/admin-unpay-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.updateMany({_id: req.query.id}, {$set: {payed: false}},(err, doc) => res.redirect('/dashboard/teams-list'));
@@ -1196,7 +1137,6 @@ router.get('/admin-pay-team', ensureAuthenticated, (req, res, next) => {
         Team.updateMany({_id: req.query.id}, {$set: {payed: true}},(err, doc) => res.redirect('/dashboard/teams-list'));
     }
 });
-
 router.post('/set-user-team', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         User.updateMany({_id: req.body.id}, {$set: {teamID: req.body.team}}, (err, doc) => {
@@ -1205,7 +1145,6 @@ router.post('/set-user-team', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/toggle-cup', ensureAuthenticated, (req, res, next) => {
     Team.findById(req.query.teamID, (err, team) => {
         if(err) console.log(err);
@@ -1224,7 +1163,6 @@ router.get('/toggle-cup', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
-
 router.get('/register-off', ensureAuthenticated, (req, res, next) => {
     Setting.find({}, (err, settings) => {
         if(settings.length == 0)
@@ -1240,7 +1178,6 @@ router.get('/register-off', ensureAuthenticated, (req, res, next) => {
         }
     });
 });
-
 router.get('/register-on', ensureAuthenticated, (req, res, next) => {
     Setting.find({}, (err, settings) => {
         if(settings.length == 0)
@@ -1256,7 +1193,6 @@ router.get('/register-on', ensureAuthenticated, (req, res, next) => {
         }
     });
 });
-
 router.post('/reset-pass', ensureAuthenticated, (req, res, next) => {
     var {password, confirm, id} = req.body;
     if(!password && !confirm) res.send('err');
@@ -1270,7 +1206,6 @@ router.post('/reset-pass', ensureAuthenticated, (req, res, next) => {
           }));
     }
 });
-
 router.get('/reset-game-admin', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         res.render('./dashboard/admin-reset-game', {
@@ -1279,7 +1214,6 @@ router.get('/reset-game-admin', ensureAuthenticated, (req, res, next) => {
     }
     else{res.send('متاسفم واقعا:( خجالت نمیکشی؟؟؟؟؟؟')}
 });
-
 router.get('/admin-confirm-reset-game', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Game.deleteMany({}, (err) => {
@@ -1298,7 +1232,6 @@ router.get('/admin-confirm-reset-game', ensureAuthenticated, (req, res, next) =>
     }
     else{res.send('متاسفم واقعا:( خجالت نمیکشی؟؟؟؟؟؟')}
 });
-
 router.post('/edit-goalA', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Game.updateMany({_id: req.body.id}, {$set: {goalA: req.body.goalA}}, (err, doc) => {
@@ -1306,7 +1239,6 @@ router.post('/edit-goalA', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.post('/edit-goalB', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree'){
         Game.updateMany({_id: req.body.id}, {$set: {goalB: req.body.goalB}}, (err, doc) => {
@@ -1314,7 +1246,6 @@ router.post('/edit-goalB', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/double-price', ensureAuthenticated, (req, res, next) =>{
     if(req.user.role == 'admin')
     {
@@ -1328,7 +1259,6 @@ router.get('/double-price', ensureAuthenticated, (req, res, next) =>{
         res.redirect('/dashboard');
     }
 });
-
 router.get('/double-price-a', ensureAuthenticated, (req, res, next) =>{
     if(req.user.role == 'admin')
     {
@@ -1342,7 +1272,6 @@ router.get('/double-price-a', ensureAuthenticated, (req, res, next) =>{
         res.redirect('/dashboard');
     }
 });
-
 router.post('/add-todo', ensureAuthenticated, (req, res, next) => {
     const content = req.body.content;
     if(req.user.role == 'refree')
@@ -1360,7 +1289,6 @@ router.post('/add-todo', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/remove-todo', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree')
     {
@@ -1370,7 +1298,6 @@ router.get('/remove-todo', ensureAuthenticated, (req, res, next) => {
         })
     }
 });
-
 router.get('/admin-change-idnumber', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Team.find({}, (err, teams) => {
@@ -1381,7 +1308,6 @@ router.get('/admin-change-idnumber', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.post('/change-idnumber', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -1394,7 +1320,6 @@ router.post('/change-idnumber', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/refree-last-code', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'refree')
     {
@@ -1408,7 +1333,6 @@ router.get('/refree-last-code', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
 router.get('/delete-other-users', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin')
     {
@@ -1431,4 +1355,15 @@ router.get('/delete-other-users', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
+// 2022
+router.get('/delete-all-users-and-teams', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Team.deleteMany({}, (err) => {
+            User.deleteMany({role: 'user'}, (err) => {
+                res.send('done');
+            })
+        });
+    }
+});
+
 module.exports = router;
