@@ -114,7 +114,7 @@ router.post('/register-team', ensureAuthenticated,(req, res, next) => {
                 if(foundTeam) price = 0;
                 const newTeam = new Team({username: req.user.username, teamName, mentor, email, phone, affiliation, league, price});
                 newTeam.save().then(doc => {
-                    res.redirect('/dashboard');
+                    res.redirect(`/dashboard/team?id=${newTeam._id}`);
                 }).catch(err => {
                     if(err) console.log(err);
                 });

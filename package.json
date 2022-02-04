@@ -1,7 +1,7 @@
 {
   "name": "juniorcup",
   "version": "1.0.0",
-  "description": "Juniorcup2021 Robotic Competition WebSite",
+  "description": "Juniorcup Robotic Competition WebSite",
   "main": "index.js",
   "scripts": {
     "test": "start"

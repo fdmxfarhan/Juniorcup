@@ -4,7 +4,7 @@ block styles
     link(rel="stylesheet", href="/stylesheets/leagues.css")
 
 block content
-    h1.content-title لیگ های مسابقات جونیورکاپ ۲۰۲۱
+    h1.content-title لیگ های مسابقات جونیورکاپ 2022
     h2.under-title تعداد تیم های ثبت نام شده: #{count}
     .leagues-cards
         .card
@@ -23,9 +23,9 @@ block content
                 .graph-container
                     .graph(style="width: #{Math.floor((soccerLightPrimaryNum/maxNum)*100)}%;")
                 .labels
-                    .label
-                        i.fa.fa-clock-o
-                        | غیر حضوری
+                    .label.green-bg
+                        i.fa.fa-check
+                        | حضوری
         .card
             a(href="/leagues/soccer-light-secondary")
                 .img
@@ -42,9 +42,9 @@ block content
                 .graph-container
                     .graph(style="width: #{Math.floor((soccerLightSecondaryNum/maxNum)*100)}%;")
                 .labels
-                    .label
-                        i.fa.fa-clock-o
-                        | غیر حضوری
+                    .label.green-bg
+                        i.fa.fa-check
+                        | حضوری
         .card
             a(href="/leagues/soccer-open")
                 .img
@@ -61,9 +61,9 @@ block content
                 .graph-container
                     .graph(style="width: #{Math.floor((soccerOpenNum/maxNum)*100)}%;")
                 .labels
-                    .label
-                        i.fa.fa-clock-o
-                        | غیر حضوری
+                    .label.green-bg
+                        i.fa.fa-check
+                        | حضوری
         .card
             a(href="/leagues/smartcar")
                 .img
@@ -90,7 +90,7 @@ block content
             a(href="/leagues/cospace")
                 .img
                     img(src="/images/leagues/cospace-min.png")
-                h1.title امداد فضای مشترک
+                h1.title مسیریاب
                 .contact
                     i.fa.fa-envelope 
                     | f_daemi@yahoo.com
@@ -147,12 +147,12 @@ block content
             a(href="/leagues/virtualrescue")
                 .img
                     img(src="/images/leagues/programming-min.png")
-                h1.title virtual rescue
+                h1.title RCJ-Soccer-Sim
                 .contact
                     i.fa.fa-envelope 
                     | fdmxfarhan@yahoo.com
                 p.text
-                    | لیگ ربات های امدادگر مجازی.
+                    | شبیه ساز ربات های فوتبالیست.
                 h2 
                     .text تیم های ثبت نام شده
                     .number= virtualRescueNum

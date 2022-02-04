@@ -6,7 +6,7 @@ const Team = require('../models/Team');
 const Certificate = require('../models/Certificate');
 var excel = require('excel4node');
 
-const competitionDate = new Date('April 15, 2021 07:00:00');
+const competitionDate = new Date('April 15, 2022 07:00:00');
 const ariDate = new Date('March 14, 2021 18:32:00');
 
 var getMax = (arr) => {
@@ -38,7 +38,7 @@ router.get('/', (req, res, next) => {
             if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
             if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
             if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
-            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+            if(teams[i].league == 'مسیریاب')   cospaceNum++;
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
             if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             
@@ -193,11 +193,11 @@ router.post('/certificate', (req, res, next) => {
             if(persianLeague == "فوتبالیست سبک وزن primary")    englishLeague = 'Soccer Lihgt Weight Primary'           
             if(persianLeague == "فوتبالیست سبک وزن secondary")  englishLeague = 'Soccer Lihgt Weight Secondary'             
             if(persianLeague == "فوتبالیست وزن آزاد")           englishLeague = 'Soccer Open Weight'   
-            if(persianLeague == "امداد فضای مشترک")             englishLeague = 'Cospace'   
+            if(persianLeague == "مسیریاب")             englishLeague = 'Cospace'   
             if(persianLeague == "برنامه نویسی")                 englishLeague = 'Programming'   
             if(persianLeague == "خودروهای هوشمند")              englishLeague = 'Smart Cars'   
             if(persianLeague == "فوتبال ۲ بعدی")                englishLeague = 'Soccer 2D'   
-            if(persianLeague == "virtual rescue")               englishLeague = 'Virtual Rescue'  
+            if(persianLeague == "RCJ-Soccer-Sim")               englishLeague = 'RCJ-Soccer-Sim'  
             const newCertificate = new Certificate({
                 idNumber, 
                 englishFirstName, 

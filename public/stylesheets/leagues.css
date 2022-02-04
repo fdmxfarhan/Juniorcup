@@ -523,3 +523,7 @@
         padding: 1vw 7vw;
     }
 }
+.leagues-cards .card .labels .label.green-bg{
+    background-color: rgb(29, 221, 29);
+    color: white;
+}

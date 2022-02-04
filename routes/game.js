@@ -80,7 +80,7 @@ router.get('/', (req, res, next) => {
             if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
             if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
             if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
-            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+            if(teams[i].league == 'مسیریاب')   cospaceNum++;
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
             if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             if(teams[i].league == 'فوتبال ۲ بعدی')      soccer2d++;
@@ -492,7 +492,7 @@ router.get('/soccer2d', (req, res, next) => {
 router.get('/virtual-rescue', (req, res, next) => {
     var {field} = req.query;
     if(!field) field = 'M';
-    Team.find({league: 'virtual rescue', payed: true}, (err, teams) => {
+    Team.find({league: 'RCJ-Soccer-Sim', payed: true}, (err, teams) => {
         res.render('./game/virtual-rescue', {
             teams,
             field

@@ -3,7 +3,7 @@ var router = express.Router();
 var Gallery = require('../models/Gallery');
 const Team = require('../models/Team');
 
-const competitionDate = new Date('April 15, 2021 07:00:00');
+const competitionDate = new Date('April 15, 2022 07:00:00');
 
 var getMax = (arr) => {
     max = 0;
@@ -22,11 +22,11 @@ router.get('/', (req, res, next) => {
             if(teams[i].league == 'فوتبالیست سبک وزن primary')  soccerLightPrimaryNum++;
             if(teams[i].league == 'فوتبالیست سبک وزن secondary')  soccerLightSecondaryNum++;
             if(teams[i].league == 'فوتبالیست وزن آزاد') soccerOpenNum++;
-            if(teams[i].league == 'امداد فضای مشترک')   cospaceNum++;
+            if(teams[i].league == 'مسیریاب')   cospaceNum++;
             if(teams[i].league == 'برنامه نویسی')       programmingNum++;
             if(teams[i].league == 'خودروهای هوشمند')    smartCarNum++;
             if(teams[i].league == 'فوتبال ۲ بعدی')      soccer2d++;
-            if(teams[i].league == 'virtual rescue')     virtualRescueNum++;
+            if(teams[i].league == 'RCJ-Soccer-Sim')     virtualRescueNum++;
         }
         var maxNum = getMax([soccerLightPrimaryNum, soccerLightSecondaryNum, soccerOpenNum, cospaceNum, programmingNum, smartCarNum, soccer2d, virtualRescueNum]);
         res.render('./leagues/home', {
@@ -76,7 +76,7 @@ router.get('/smartcar', (req, res, next) => {
 });
 
 router.get('/cospace', (req, res, next) => {
-    Team.find({league: 'امداد فضای مشترک', payed: true}, (err, teams) => {
+    Team.find({league: 'مسیریاب', payed: true}, (err, teams) => {
         res.render('./leagues/cospace', {teams});
     });
 });
@@ -94,7 +94,7 @@ router.get('/soccer2d', (req, res, next) => {
 });
 
 router.get('/virtualrescue', (req, res, next) => {
-    Team.find({league: 'virtual rescue'}, (err, teams) => {
+    Team.find({league: 'RCJ-Soccer-Sim'}, (err, teams) => {
         res.render('./leagues/virtualrescue', {teams});
     });
 });
