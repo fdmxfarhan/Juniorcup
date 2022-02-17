@@ -292,18 +292,19 @@ router.post('/certificate/download', (req, res, next) => {
 });
 
 router.get('/ari', (req, res, next) => {
-    var todayDate = Date.now();
-    var milisecUntilCompetition = (todayDate - Date.parse(ariDate));
-    var a = Math.floor(milisecUntilCompetition/1000);
-    var weeks = Math.floor(a / 604800);
-    var days = Math.floor((a - weeks * 604800) / 86400);
-    var hours = Math.floor((a - weeks * 604800 - days * 86400) / 3600);
-    var minuts = Math.floor((a - weeks * 604800 - days * 86400 - hours * 3600) / 60);
-    var secconds = Math.floor(a%60);
+    console.log('This is over');
+    // var todayDate = Date.now();
+    // var milisecUntilCompetition = (todayDate - Date.parse(ariDate));
+    // var a = Math.floor(milisecUntilCompetition/1000);
+    // var weeks = Math.floor(a / 604800);
+    // var days = Math.floor((a - weeks * 604800) / 86400);
+    // var hours = Math.floor((a - weeks * 604800 - days * 86400) / 3600);
+    // var minuts = Math.floor((a - weeks * 604800 - days * 86400 - hours * 3600) / 60);
+    // var secconds = Math.floor(a%60);
     
-    res.render('ari', {
-        time: {weeks, days, hours, minuts, secconds}
-    });
+    // res.render('ari', {
+    //     time: {weeks, days, hours, minuts, secconds}
+    // });
 });
 
 module.exports = router;
