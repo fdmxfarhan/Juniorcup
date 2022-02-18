@@ -32,7 +32,7 @@ p.code{
         margin-bottom: 0;
     }
     .sidebar{
-        border-radius: 1vw;
+        border-radius: 0.5vw;
         border: var(--bordercolor) 0.1vw solid;
         box-shadow: 0 0.3vw 0.8vw 0.3vw #5b167a3b;
         background-color: white;
@@ -45,7 +45,7 @@ p.code{
         float: right;
         width: 65%;
         margin-right: 3%;
-        border-radius: 2vw;
+        border-radius: 0.5vw;
         border: var(--bordercolor) 0.1vw solid;
         box-shadow: 0 0.3vw 0.8vw 0.3vw #5b167a3b;
         background-color: white;
