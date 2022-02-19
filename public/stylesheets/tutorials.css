@@ -43,14 +43,14 @@ body{
     outline: none;
     font-family: 'iransans';
     direction: rtl;
-    background: var(--light-background);
+    background: var(--dark-background);
     
 }
 video::-internal-media-controls-download-button{display:none;}
 ::-webkit-scrollbar {width: 0.3vw;}
 ::-webkit-scrollbar-track {background: var(--lightgray);}
 ::-webkit-scrollbar-thumb {background: var(--gray);}
-::-webkit-scrollbar-thumb:hover{background: var(--dark);}
+::-webkit-scrollbar-thumb:hover{background: var(--light);}
 .hidden{display: none;}
 .visible{display: block;}
 .black-modal{
@@ -99,7 +99,7 @@ video::-internal-media-controls-download-button{display:none;}
     .tutorial .sidebar-view .sidebar{
         position: relative;
         height: 80vh;
-        background: var(--light);
+        background: var(--dark);
         
         overflow: hidden;
         border-radius: 1vw;
@@ -109,7 +109,7 @@ video::-internal-media-controls-download-button{display:none;}
         top: 2vw;
         left: 2vw;
         text-decoration: none;
-        color: var(--dark-background);
+        color: var(--light-background);
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch i{
         font-size: 1.3vw;
@@ -119,13 +119,13 @@ video::-internal-media-controls-download-button{display:none;}
         display: none;
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch i.dark-switch{
-        color: var(--dark);
+        color: var(--light);
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch i:hover{
         color: var(--blue);
     }
     .tutorial .sidebar-view .sidebar h1{
-        color: var(--dark);
+        color: var(--light);
         font-family: 'iransans';
         font-size: 1vw;
         padding: 0 1vw;
@@ -140,12 +140,14 @@ video::-internal-media-controls-download-button{display:none;}
         margin: 0;
         font-weight: normal;
     }
-    .tutorial video{
+    .tutorial video, .tutorial iframe{
         width: 100%;
-        
-        background: var(--light);
+        height: 80vh;
+        background: var(--dark);
         border-radius: 1vw;
+        overflow: hidden;
         display: block;
+        border: none;
     }
     .box-shadows{
         box-shadow:  25px 25px 55px #a3aaab, -25px -25px 55px #ffffff;
@@ -158,16 +160,16 @@ video::-internal-media-controls-download-button{display:none;}
     .tutorial .sidebar-view .sidebar .session-list a{
         display: block;
         text-decoration: none;
-        color: var(--dark-background);
+        color: var(--light-background);
         overflow: hidden;
         padding: 0.5vw 0;
         font-size: 1vw;
     }
     .tutorial .sidebar-view .sidebar .session-list a.active{
-        background-color: var(--light-background);
+        background-color: var(--dark-background);
     }
     .tutorial .sidebar-view .sidebar .session-list a:hover{
-        background-color: var(--light-background);
+        background-color: var(--dark-background);
     }
     .tutorial .sidebar-view .sidebar .session-list a .name{
         float: right;
@@ -195,7 +197,7 @@ video::-internal-media-controls-download-button{display:none;}
         direction: ltr;
         margin-right: 1vw;
         font-size: 1.2vw;
-        color: var(--dark-background);
+        color: var(--light-background);
         
     }
     .tutorial .content .actions .item .val{
@@ -204,6 +206,7 @@ video::-internal-media-controls-download-button{display:none;}
     }
     .tutorial .content .actions .item i{
         padding-right: 0.5vw;
+        padding-left: 0.5vw;
     }
     .tutorial .content .actions .item i.heart{display: none;}
     .tutorial .content .actions .item i.heart-o{display: inline;}
@@ -233,7 +236,7 @@ video::-internal-media-controls-download-button{display:none;}
     }
     .tutorial .sidebar-view .sidebar{
         position: relative;
-        background: var(--light);
+        background: var(--dark);
         overflow: hidden;
         border-radius: 2vw;
     }
@@ -242,7 +245,7 @@ video::-internal-media-controls-download-button{display:none;}
         top: 2vw;
         left: 2vw;
         text-decoration: none;
-        color: var(--dark-background);
+        color: var(--light-background);
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch i{
         font-size: 4vw;
@@ -252,13 +255,13 @@ video::-internal-media-controls-download-button{display:none;}
         display: none;
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch i.dark-switch{
-        color: var(--dark);
+        color: var(--light);
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch i:hover{
         color: var(--blue);
     }
     .tutorial .sidebar-view .sidebar h1{
-        color: var(--dark);
+        color: var(--light);
         font-family: 'iransans';
         font-size: 3vw;
         padding: 0 3vw;
@@ -273,11 +276,13 @@ video::-internal-media-controls-download-button{display:none;}
         margin: 0;
         font-weight: normal;
     }
-    .tutorial video{
+    .tutorial video, .tutorial iframe{
         width: 100%;
-        background: var(--light);
+        height: 30vh;
+        background: var(--dark);
         border-radius: 2vw;
         display: block;
+        border: none;
     }
     .box-shadows{
         box-shadow:  25px 25px 55px #a3aaab, -25px -25px 55px #ffffff;
@@ -288,13 +293,13 @@ video::-internal-media-controls-download-button{display:none;}
     .tutorial .sidebar-view .sidebar .session-list a{
         display: block;
         text-decoration: none;
-        color: var(--dark-background);
+        color: var(--light-background);
         overflow: hidden;
         padding: 1vw 0;
         font-size: 3vw;
     }
     .tutorial .sidebar-view .sidebar .session-list a:hover{
-        background-color: var(--light-background);
+        background-color: var(--dark-background);
     }
     .tutorial .sidebar-view .sidebar .session-list a .name{
         float: right;
@@ -322,7 +327,7 @@ video::-internal-media-controls-download-button{display:none;}
         direction: ltr;
         margin-right: 3vw;
         font-size: 3.2vw;
-        color: var(--dark-background);
+        color: var(--light-background);
     }
     .tutorial .content .actions .item .val{
         display: inline;

@@ -3,8 +3,10 @@ extends ../layout
 block content 
     .tutorial 
         .content
-            video(controls preload="auto"  controlsList="nodownload" oncontextmenu="return false;")
-                source(src="https://doc-00-5s-docs.googleusercontent.com/docs/securesc/soju2vgv86ddtifr1skfq96okqgfckjn/1u34o4bpdt5gmmi5ukplld7imkivi3n6/1645282050000/09998924344030974518/09998924344030974518/1fzBDgBy8EvY6Ux612dZXcxYCr_VhBnGn?e=download&ax=ACxEAsYzuzca5GP4NZ2kXOM2OWaFot6CV9L8MMZqT2n5yN2gUEmEwgyDuDUuBcwkrlQD8MgDK6nFcu3MaaM06q3HiOUCfzxa7atBlmuqVwzmFkHZmaseh7wfCZcN3uHPF-MdRX5TG4ZMVqIs016wDl6bF3VnbMA-AEpVzO9hCILcvZci8sISQKVTrdlxBIeGgXHj4DZYx00poXdRLw91E3dr5F_ghdoiUO6DesEROKhEdHw1rB4H87t1Unoeyu6rxG0t-PREpy5Np0E1FSU4c3k1VFNn_Kxsc-J2yfWASbNuA3N-SdP3TE4VAbqeXbnGXCD-uTGUjX45zSgdVgkPgIREmOF_O0f2-FnFBAG_O_ftd1YEixmmwtB79me3xVh9S6AUCWjvBZzPXVG1T_4fzRRCVmaDV7mBgPEQGlVS8Lhl7C-yeQjU6fCBYqYIcKwgJoabzw9LB05YhCp6NEbq62q4WGs60NTpqNdiPntS3Et59sZPmB5KB7M1xy27E_JLkPUPJMloRiX2aT9O-_hKWJVluOGqfPxL4gjSRi_THR6fc8N8i9oTTdTr13kIA261gqmdfAtPxzjdn0UMxbQv85fafSpHMwZ9ytOWM8axhim9byoX-LTm-d5bbps5eslgaRUFAGjCzRL3LcuYKlOTS1PSUB6gRHygoJreEUeatyI&authuser=0&nonce=emibbhgsikpb8&user=09998924344030974518&hash=uorho1tf7nllut87h999f2gg017e85c4" type="video/mp4")
+            .iframe-view
+                iframe(src="https://drive.google.com/file/d/1fzBDgBy8EvY6Ux612dZXcxYCr_VhBnGn/preview" allow="autoplay")
+            //- video(controls preload="auto"  controlsList="nodownload" oncontextmenu="return false;")
+            //-     source(src="https://drive.google.com/uc?export=download&id=1fzBDgBy8EvY6Ux612dZXcxYCr_VhBnGn" type="video/mp4")
             .actions 
                 a.item(href="/tutorials/like?tutorialID=#{tutorial._id}&session=#{session}") 
                     i.fa.fa-heart-o.heart-o
@@ -16,8 +18,8 @@ block content
         .sidebar-view 
             .sidebar 
                 a.dark-light-switch(href="/tutorials/dark-light?tutorialID=#{tutorial._id}&session=#{session}") 
-                    i.fa.fa-sun-o.light-switch
-                    i.fa.fa-moon-o.dark-switch
+                    i.fa.fa-moon-o.light-switch
+                    i.fa.fa-sun-o.dark-switch
                 h1 RCJ Soccer Sim 
                 h2 شبیه ساز ربات های فوتبالیست
                 .session-list
