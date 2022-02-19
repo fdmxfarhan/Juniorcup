@@ -165,9 +165,6 @@ video::-internal-media-controls-download-button{display:none;}
         padding: 0.5vw 0;
         font-size: 1vw;
     }
-    .tutorial .sidebar-view .sidebar .session-list a.active{
-        background-color: var(--dark-background);
-    }
     .tutorial .sidebar-view .sidebar .session-list a:hover{
         background-color: var(--dark-background);
     }
@@ -242,8 +239,8 @@ video::-internal-media-controls-download-button{display:none;}
     }
     .tutorial .sidebar-view .sidebar .dark-light-switch{
         position: absolute;
-        top: 2vw;
-        left: 2vw;
+        top: 4vw;
+        left: 6vw;
         text-decoration: none;
         color: var(--light-background);
     }
@@ -295,7 +292,7 @@ video::-internal-media-controls-download-button{display:none;}
         text-decoration: none;
         color: var(--light-background);
         overflow: hidden;
-        padding: 1vw 0;
+        padding: 2vw 0;
         font-size: 3vw;
     }
     .tutorial .sidebar-view .sidebar .session-list a:hover{
@@ -339,6 +336,8 @@ video::-internal-media-controls-download-button{display:none;}
     .tutorial .content .actions .item i.heart{display: none;}
     .tutorial .content .actions .item i.heart-o{display: inline;}
     .tutorial .content .actions .item:hover i.heart{display: inline; color: var(--red);}
-    .tutorial .content .actions .item:hover i.heart-o{display: none;}
-    
+    .tutorial .content .actions .item:hover i.heart-o{display: none;}   
 }
+.tutorial .sidebar-view .sidebar .session-list a .item i.red{color: var(--red);}
+/* .tutorial .sidebar-view .sidebar .session-list a.active{background-color: var(--dark-background);} */
+.tutorial .sidebar-view .sidebar .session-list a.active .name{color: var(--blue);}

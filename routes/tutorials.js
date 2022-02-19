@@ -61,7 +61,7 @@ router.get('/dark-light', (req, res, next) => {
             req.session.darkMode = false;
         else
             req.session.darkMode = true;
-        res.redirect(`/tutorials/${tutorial.name}`);
+        res.redirect(`/tutorials/${tutorial.name}?session=${session}`);
     });
 });
 router.post('/add', upload.single('myFile'), (req, res, next) => {
