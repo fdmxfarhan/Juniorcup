@@ -160,7 +160,7 @@ body{
         color: var(--dark-background);
         overflow: hidden;
         padding: 0.5vw 0;
-        
+        font-size: 1vw;
     }
     .tutorial .sidebar-view .sidebar .session-list a:hover{
         background-color: var(--light-background);
@@ -200,6 +200,132 @@ body{
     }
     .tutorial .content .actions .item i{
         padding-right: 0.5vw;
+    }
+    .tutorial .content .actions .item i.heart{display: none;}
+    .tutorial .content .actions .item i.heart-o{display: inline;}
+    .tutorial .content .actions .item:hover i.heart{display: inline; color: var(--red);}
+    .tutorial .content .actions .item:hover i.heart-o{display: none;}
+    
+}
+
+@media only screen and (max-width: 800px) {
+    .tutorial{
+        overflow: hidden;
+        padding-top: 3vw;
+        min-height: 100vh;
+    }
+    .tutorial .content{
+        width: 90%;
+        padding: 0;
+        float: left;
+        margin-left: 5%;
+    }
+    .tutorial .sidebar-view{
+        width: 90%;
+        padding: 0;
+        float: left;
+        margin-left: 5%;
+        margin-top: 5vw;
+    }
+    .tutorial .sidebar-view .sidebar{
+        position: relative;
+        background: var(--light);
+        overflow: hidden;
+        border-radius: 2vw;
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch{
+        position: absolute;
+        top: 2vw;
+        left: 2vw;
+        text-decoration: none;
+        color: var(--dark-background);
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i{
+        font-size: 4vw;
+        cursor: pointer;
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i.light-switch{
+        display: none;
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i.dark-switch{
+        color: var(--dark);
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i:hover{
+        color: var(--blue);
+    }
+    .tutorial .sidebar-view .sidebar h1{
+        color: var(--dark);
+        font-family: 'iransans';
+        font-size: 3vw;
+        padding: 0 3vw;
+        margin: 0;
+        margin-top: 4vw;
+    }
+    .tutorial .sidebar-view .sidebar h2{
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 2.9vw;
+        padding: 0 3vw;
+        margin: 0;
+        font-weight: normal;
+    }
+    .tutorial video{
+        width: 100%;
+        background: var(--light);
+        border-radius: 2vw;
+        display: block;
+    }
+    .box-shadows{
+        box-shadow:  25px 25px 55px #a3aaab, -25px -25px 55px #ffffff;
+    }
+    .tutorial .sidebar-view .sidebar .session-list{
+        padding: 3vw;
+    }
+    .tutorial .sidebar-view .sidebar .session-list a{
+        display: block;
+        text-decoration: none;
+        color: var(--dark-background);
+        overflow: hidden;
+        padding: 1vw 0;
+        font-size: 3vw;
+    }
+    .tutorial .sidebar-view .sidebar .session-list a:hover{
+        background-color: var(--light-background);
+    }
+    .tutorial .sidebar-view .sidebar .session-list a .name{
+        float: right;
+    }
+    .tutorial .sidebar-view .sidebar .session-list a .item{
+        float: left;
+        margin-left: 2vw;
+        font-family: 'iransans';
+        font-size: 2.9vw;
+        color: var(--lightgray);
+    }
+    .tutorial .sidebar-view .sidebar .session-list a .item i{
+        color: var(--blue);
+        font-size: 3vw;
+        padding: 0 1vw;
+    }
+    .tutorial .content .actions{
+        overflow: hidden;
+        padding-top: 2vw;
+    }
+    .tutorial .content .actions .item{
+        display: block;
+        text-decoration: none;
+        float: left;
+        direction: ltr;
+        margin-right: 3vw;
+        font-size: 3.2vw;
+        color: var(--dark-background);
+    }
+    .tutorial .content .actions .item .val{
+        display: inline;
+        font-size: 3vw;
+    }
+    .tutorial .content .actions .item i{
+        padding-right: 2vw;
     }
     .tutorial .content .actions .item i.heart{display: none;}
     .tutorial .content .actions .item i.heart-o{display: inline;}
