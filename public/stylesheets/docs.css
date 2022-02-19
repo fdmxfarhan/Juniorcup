@@ -81,13 +81,11 @@ p.code{
         background-color: lightgray;
     }
     .content .document{
-        /* background-color: lightblue; */
         width: 80%;
         padding: 1vw;
         overflow: hidden;
-        border-radius: 1vw;
-        /* border: var(--purple) 0.1vw solid; */
-        margin: 3vw auto;
+        border-radius: 0.5vw;
+        margin: 1vw auto;
         box-shadow: none;
         transition-duration: 700ms;
         color: var(--txtcolor);
@@ -102,7 +100,7 @@ p.code{
     }
     .content .document .img-area img{
         width: 100%;
-        border-radius: 1vw;
+        border-radius: 0.5vw;
     }
     .content .document .info{
         float: right;
@@ -114,25 +112,25 @@ p.code{
         margin: 0;
         color: var(--purple);
         font-family: 'iransans';
-        font-size: 1.5vw;
+        font-size: 1vw;
     }
     .content .document .info p.desc{
         margin: 0;
         color: var(--txtcolor);
         font-family: 'iransans';
-        font-size: 1.1vw;
+        font-size: 0.9vw;
         text-align: justify;
     }
     .content .document .info a.link{
         font-family: 'iransans';
-        font-size: 1vw;
-        margin-top: 1vw;
+        font-size: 0.9vw;
+        margin-top: 0.5vw;
         display: block;
         width: fit-content;
         background-color: var(--purple);
         color: white;
-        padding: 0.4vw 3vw;
-        border-radius: 1vw;
+        padding: 0.2vw 3vw;
+        border-radius: 0.4vw;
         text-decoration: none;
         transition-duration: 500ms;
     }

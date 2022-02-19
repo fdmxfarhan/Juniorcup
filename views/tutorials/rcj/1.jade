@@ -1,0 +1,41 @@
+extends ../layout
+
+block content 
+    .tutorial 
+        .content
+            video(controls preload="auto"  controlsList="nodownload")
+                source(src="/files/rcj-sim-01.mp4" type="video/mp4")
+            .actions 
+                a.item(href="/tutorials/like?tutorialID=#{tutorial._id}&session=#{session}") 
+                    i.fa.fa-heart-o.heart-o
+                    i.fa.fa-heart.heart
+                    .val= tutorial.likes[session]
+                .item 
+                    i.fa.fa-eye 
+                    .val= tutorial.seen[session]
+        .sidebar-view 
+            .sidebar 
+                a.dark-light-switch(href="/tutorials/dark-light?tutorialID=#{tutorial._id}&session=#{session}") 
+                    i.fa.fa-sun-o.light-switch
+                    i.fa.fa-moon-o.dark-switch
+                h1 RCJ Soccer Sim 
+                h2 شبیه ساز ربات های فوتبالیست
+                .session-list
+                    a(href="/tutorials/rcj?session=1") 
+                        .name 1: مقدمه
+                        .item 
+                            i.fa.fa-play-circle 
+                        .item 
+                            i.fa.fa-unlock
+                        .item 00:02:24
+                            i.fa.fa-clock-o 
+    script(src="/javascripts/tutorials.js") 
+    -if(darkMode){
+        script.
+            $('.dark-switch').hide();
+            $('.light-switch').show();
+            $(':root').css('--dark-background', '#e2ecee');
+            $(':root').css('--light-background', '#324054');
+            $(':root').css('--light', '#181b2c');
+            $(':root').css('--dark', 'white');
+    -}

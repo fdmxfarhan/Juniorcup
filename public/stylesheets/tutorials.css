@@ -1,0 +1,209 @@
+/* --------- Declarations ----------- */
+@font-face{
+    font-family: 'iransans';
+    src: url('../iransans.ttf');
+}
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes goRight {
+    from {margin-right: 3vw;}
+    to {margin-right: 0;}
+}
+@keyframes goUp {
+    from {margin-top: 5vw;}
+    to {margin-top: 0.5vw;}
+}
+:root {
+    --dark-background: #324054;
+    --light-background: #e2ecee;
+    --light: white;
+    --dark: #181b2c;
+    --darkblue: #2781aa;
+    --blue: #28A5DC;
+    --lightgray: #CACFD6;
+    --orange: #FF8A47;
+    --red: #ff4747;
+    --purple: #9c1db5;
+    --yellow: #FFDD00;
+    --darkgreen: #7FAE2E;
+    --green: #00DB68;
+    --lightblue: #C8EBFE;
+    --lightergray: #EAF2F6;
+    --grayblue: #9CB0C4;
+    --gray: #848C98;
+    --text: #56595e;
+}
+body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    direction: rtl;
+    background: var(--light-background);
+    
+}
+::-webkit-scrollbar {width: 0.3vw;}
+::-webkit-scrollbar-track {background: var(--lightgray);}
+::-webkit-scrollbar-thumb {background: var(--gray);}
+::-webkit-scrollbar-thumb:hover{background: var(--dark);}
+.hidden{display: none;}
+.visible{display: block;}
+.black-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.transparent-modal{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.dashboard{
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (min-width: 800px) {
+    .tutorial{
+        overflow: hidden;
+        padding-top: 3vw;
+        min-height: 100vh;
+    }
+    .tutorial .content{
+        width: 55%;
+        padding: 0;
+        float: left;
+        margin-left: 9%;
+    }
+    .tutorial .sidebar-view{
+        width: 27%;
+        padding: 0;
+        float: left;
+        margin-left: 3%;
+    }
+    .tutorial .sidebar-view .sidebar{
+        position: relative;
+        height: 80vh;
+        background: var(--light);
+        
+        overflow: hidden;
+        border-radius: 1vw;
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch{
+        position: absolute;
+        top: 2vw;
+        left: 2vw;
+        text-decoration: none;
+        color: var(--dark-background);
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i{
+        font-size: 1.3vw;
+        cursor: pointer;
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i.light-switch{
+        display: none;
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i.dark-switch{
+        color: var(--dark);
+    }
+    .tutorial .sidebar-view .sidebar .dark-light-switch i:hover{
+        color: var(--blue);
+    }
+    .tutorial .sidebar-view .sidebar h1{
+        color: var(--dark);
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0 1vw;
+        margin: 0;
+        margin-top: 2vw;
+    }
+    .tutorial .sidebar-view .sidebar h2{
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 0.9vw;
+        padding: 0 1vw;
+        margin: 0;
+        font-weight: normal;
+    }
+    .tutorial video{
+        width: 100%;
+        
+        background: var(--light);
+        border-radius: 1vw;
+        display: block;
+    }
+    .box-shadows{
+        box-shadow:  25px 25px 55px #a3aaab, -25px -25px 55px #ffffff;
+    }
+    .tutorial .sidebar-view .sidebar .session-list{
+        padding: 1vw;
+        height: 60vh;
+        overflow-y: scroll;
+    }
+    .tutorial .sidebar-view .sidebar .session-list a{
+        display: block;
+        text-decoration: none;
+        color: var(--dark-background);
+        overflow: hidden;
+        padding: 0.5vw 0;
+        
+    }
+    .tutorial .sidebar-view .sidebar .session-list a:hover{
+        background-color: var(--light-background);
+    }
+    .tutorial .sidebar-view .sidebar .session-list a .name{
+        float: right;
+    }
+    .tutorial .sidebar-view .sidebar .session-list a .item{
+        float: left;
+        margin-left: 0.5vw;
+        font-family: 'iransans';
+        font-size: 0.9vw;
+        color: var(--lightgray);
+    }
+    .tutorial .sidebar-view .sidebar .session-list a .item i{
+        color: var(--blue);
+        font-size: 1vw;
+        padding: 0 0.5vw;
+    }
+    .tutorial .content .actions{
+        overflow: hidden;
+        padding-top: 1vw;
+    }
+    .tutorial .content .actions .item{
+        display: block;
+        text-decoration: none;
+        float: left;
+        direction: ltr;
+        margin-right: 1vw;
+        font-size: 1.2vw;
+        color: var(--dark-background);
+        
+    }
+    .tutorial .content .actions .item .val{
+        display: inline;
+        font-size: 1vw;
+    }
+    .tutorial .content .actions .item i{
+        padding-right: 0.5vw;
+    }
+    .tutorial .content .actions .item i.heart{display: none;}
+    .tutorial .content .actions .item i.heart-o{display: inline;}
+    .tutorial .content .actions .item:hover i.heart{display: inline; color: var(--red);}
+    .tutorial .content .actions .item:hover i.heart-o{display: none;}
+    
+}

@@ -22,6 +22,7 @@ var leagues = require('./routes/leagues');
 var game = require('./routes/game');
 var payment = require('./routes/payment');
 var classRoute = require('./routes/class');
+var tutorialsRoute = require('./routes/tutorials');
 
 
 
@@ -80,6 +81,7 @@ const port = 3000
 
 // Upload
 app.use('/upload', uploadHandler);
+app.use('/tutorials', tutorialsRoute);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -131,16 +133,13 @@ var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
 const io = require('socket.io')(httpsServer);
+const io2 = require('socket.io')(httpServer);
 
-
-// IO
-io.on('connection', (socket) => {
+var socketHandler = (socket, io) => {
     // console.log('a user connected');
-
     socket.on('disconnect', () => {
         // console.log('user disconnected');
     });
-
     socket.on('chatA', (msg) => {
         console.log(msg);
         io.emit('chatA', msg);
@@ -185,67 +184,10 @@ io.on('connection', (socket) => {
         console.log(msg);
         io.emit('chatK', msg);
     });
+}
 
-});
-
-
-const io2 = require('socket.io')(httpServer);
-
-
-// IO
-io2.on('connection', (socket) => {
-    // console.log('a user connected');
-
-    socket.on('disconnect', () => {
-        // console.log('user disconnected');
-    });
-
-    socket.on('chatA', (msg) => {
-        console.log(msg);
-        io2.emit('chatA', msg);
-    });
-    socket.on('chatB', (msg) => {
-        console.log(msg);
-        io2.emit('chatB', msg);
-    });
-    socket.on('chatC', (msg) => {
-        console.log(msg);
-        io2.emit('chatC', msg);
-    });
-    socket.on('chatD', (msg) => {
-        console.log(msg);
-        io2.emit('chatD', msg);
-    });
-    socket.on('chatE', (msg) => {
-        console.log(msg);
-        io2.emit('chatE', msg);
-    });
-    socket.on('chatF', (msg) => {
-        console.log(msg);
-        io2.emit('chatF', msg);
-    });
-    socket.on('chatG', (msg) => {
-        console.log(msg);
-        io2.emit('chatG', msg);
-    });
-    socket.on('chatH', (msg) => {
-        console.log(msg);
-        io2.emit('chatH', msg);
-    });
-    socket.on('chatI', (msg) => {
-        console.log(msg);
-        io2.emit('chatI', msg);
-    });
-    socket.on('chatJ', (msg) => {
-        console.log(msg);
-        io2.emit('chatJ', msg);
-    });
-    socket.on('chatK', (msg) => {
-        console.log(msg);
-        io2.emit('chatK', msg);
-    });
-
-});
+io.on('connection', socket => socketHandler(socket, io));
+io2.on('connection', socket => socketHandler(socket, io2));
 
 
 httpServer.listen(3000);
