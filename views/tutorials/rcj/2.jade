@@ -4,7 +4,7 @@ block content
     .tutorial 
         .content
             video(controls preload="auto"  controlsList="nodownload" oncontextmenu="return false;")
-                source(src="/tutorials/rcj-sim-01.mp4" type="video/mp4")
+                source(src="/tutorials/rcj-sim-02.mp4" type="video/mp4")
             .actions 
                 a.item(href="/tutorials/like?tutorialID=#{tutorial._id}&session=#{session}") 
                     i.fa.fa-heart-o.heart-o
@@ -22,6 +22,7 @@ block content
                 h2 شبیه ساز ربات های فوتبالیست
                 .session-list
                     include ../links
+                    
     script(src="/javascripts/tutorials.js") 
     -if(darkMode){
         script.

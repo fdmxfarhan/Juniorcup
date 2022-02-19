@@ -46,6 +46,7 @@ body{
     background: var(--light-background);
     
 }
+video::-internal-media-controls-download-button{display:none;}
 ::-webkit-scrollbar {width: 0.3vw;}
 ::-webkit-scrollbar-track {background: var(--lightgray);}
 ::-webkit-scrollbar-thumb {background: var(--gray);}
@@ -161,6 +162,9 @@ body{
         overflow: hidden;
         padding: 0.5vw 0;
         font-size: 1vw;
+    }
+    .tutorial .sidebar-view .sidebar .session-list a.active{
+        background-color: var(--light-background);
     }
     .tutorial .sidebar-view .sidebar .session-list a:hover{
         background-color: var(--light-background);
