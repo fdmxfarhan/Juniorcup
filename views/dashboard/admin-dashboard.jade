@@ -42,7 +42,7 @@ block content
             a.admin-link(href="/dashboard/teams-list") 
                 i.fa.fa-users 
                 | لیست تیم ها 
-            -if(user.username == "fdmxfarhan"){
+            -if(user.username == "fdmxfarhan" || user.username == "f_daemi"){
                 -if(setting && setting.register){
                     a.admin-link(href="/dashboard/register-off") 
                         i.fa.fa-plus
@@ -69,7 +69,7 @@ block content
             //-     i.fa.fa-trash
             //-     | پاک کردن همه اکانت های دانش آموزان
         
-        -if(user.username == "fdmxfarhan"){
+        -if(user.username == "fdmxfarhan" || user.username == "f_daemi"){
             .info-card
                 h1
                     i.fa.fa-dollar
